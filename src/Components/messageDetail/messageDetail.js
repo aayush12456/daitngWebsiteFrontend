@@ -7,6 +7,7 @@ import { BACKEND_BASE_URL } from "../../Services/api";
 import send from '../../assets/modalIcons/sendIcon.png';
 
 const MessageDetail = ({ messageDetail }) => {
+    console.log('message detail is',messageDetail)
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const dispatch = useDispatch();
@@ -29,12 +30,11 @@ const MessageDetail = ({ messageDetail }) => {
     }, [id, socket]);
 
     useEffect(() => {
-        // Listen for "message received" event from the server
         socket.on("message received", (newMessage) => {
             console.log('New message received:', newMessage);
             setMessages((prev) => [...prev, newMessage]);
         });
-        
+
         // Clean up function to remove the listener on component unmount
         return () => {
             socket.off("message received");
@@ -50,7 +50,7 @@ const MessageDetail = ({ messageDetail }) => {
         const messageData = {
             sender: id,
             message: message,
-            chat: messageDetail._id
+            chat: messageDetail.chatId
         };
         console.log('messageData',messageData)
         try {
@@ -59,7 +59,7 @@ const MessageDetail = ({ messageDetail }) => {
 
             // Send message data to the server
             const response = await axios.post("http://localhost:4000/message/send", messageData);
-            
+            console.log('message of data is',response.data.message)
             // Emit "new message" event to the server
             socket.emit("new message", response.data.message);
 
@@ -74,12 +74,11 @@ const MessageDetail = ({ messageDetail }) => {
   
       try {
           const response = await axios.post("http://localhost:4000/message/fetch", {
-              chat: messageDetail._id
+              chat: messageDetail.chatId
           });
           setMessages(response.data.message);
-
           // Join chat room associated with the message
-          socket.emit("join chat", messageDetail._id);
+          socket.emit("join chat", messageDetail.chatId);
       } catch (error) {
           console.error("Error fetching messages:", error);
       }
@@ -99,12 +98,12 @@ fetchMessage()
                 </div>
                 <hr className="w-full mt-5" />
             </div>
-            <div>
+            <div className={`${messages.length>5?'overflow-y-auto':''}`}>
                 {messages.map((message, index) => (
-                    <div key={index} className={`text-${message.sender === id ? 'right' : 'left'} flex justify-${message.sender === id ? 'end' : 'start'}`}>
-                        <span className={`bg-${message.sender === id ? 'to-blue-600' : 'white'} p-2 rounded-lg`}>
-                            {message.message}
-                        </span>
+                    <div key={index} className={`text-${message.sender === id ? 'right' : 'left'} flex justify-${message.sender === id ? 'end' : 'start'} `}>
+                       <span className={`p-2 rounded-lg ${message.sender === id ? 'bg-blue-600 text-white' : 'bg-white'}`}>
+        {message.message}
+      </span>
                     </div>
                 ))}
             </div>
