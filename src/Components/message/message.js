@@ -6,7 +6,7 @@ import {  useDispatch } from "react-redux"
 import { addToChatAsync } from "../../Redux/Slice/addToChatSlice/addToChatSlice"
 import axios from '../../Redux/axios/messageAxios'
 import io from "socket.io-client";
-const Message=({chatArray,chatId})=>{
+const Message=({chatArray})=>{
     const navigate=useNavigate()
     const [obj,setObj]=useState({})
     const [show,setShow]=useState(false)
@@ -22,15 +22,14 @@ const Message=({chatArray,chatId})=>{
     let currentYear = currentDate.getFullYear();
     const age = year ? currentYear - parseInt(year) : "";
     const messageDetail=(chatItem)=>{
-        const updatedChatItem = { ...chatItem, chatId: chatId };
+    console.log('message detail',chatItem)
     const addToChat={
         id:id,
         chatId:chatItem._id
       }
-    dispatch(addToChatAsync(addToChat))
-    navigate('/mainContent/messageDetail',{state:updatedChatItem})    
+    // dispatch(addToChatAsync(addToChat))
+    navigate('/mainContent/messageDetail',{state:chatItem})    
     }
-    console.log('chat is',chatId)
     // const chatDetail=(item)=>{
     //     console.log('itemfdfd',item)
     //     const addToChat={

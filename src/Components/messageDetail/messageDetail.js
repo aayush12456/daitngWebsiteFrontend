@@ -71,7 +71,6 @@ const MessageDetail = ({ messageDetail }) => {
         fetchMessage()
     };
     const fetchMessage = async () => {
-  
       try {
           const response = await axios.post("http://localhost:4000/message/fetch", {
               chat: messageDetail.chatId

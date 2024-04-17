@@ -1,4 +1,3 @@
-
 import modalSlice from "../Slice/modalSlice"
 import { configureStore } from "@reduxjs/toolkit"
 import registerSlice from "../Slice/registerSlice/registerSlice"
@@ -18,8 +17,11 @@ import sendMessageSlice from "../Slice/sendMessageSlice/sendMessageSlice"
 import getChatSlice from '../Slice/getChatDataSlice/getChatDataSlice'
 import addChatHandlerSlice from "../Slice/addChatHandlerSlice/addChatHandlerSlice"
 import getChatHandlerSlice from "../Slice/getChatHandlerSlice/getChatHandlerSlice"
+import updateUserSlice from "../Slice/updateUserSlice/updateUserSlice"
+import passDataSlice from "../Slice/passDataSlice/passDataSlice"
 const store=configureStore({
     reducer:{
+
     modal:modalSlice,
     // city:cityCartSlice 
     registerData:registerSlice, 
@@ -38,7 +40,9 @@ const store=configureStore({
     sendMessage:sendMessageSlice,
     getChat:getChatSlice,
     addChat:addChatHandlerSlice,
-    // getChat:getChatHandlerSlice
+    // getChat:getChatHandlerSlice,
+    updateUser:updateUserSlice,
+    passData:passDataSlice
     }
 })
 export default store
