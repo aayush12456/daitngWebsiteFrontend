@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { BACKEND_BASE_URL } from "../../../Services/api";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
-import message from "../../../assets/modalIcons/message.png";
-import send from "../../../assets/modalIcons/sendIcon.png";
+import axios from "axios";
+// import Typography from "@mui/material/Typography";
+// import Modal from "@mui/material/Modal";
+// import Box from "@mui/material/Box";
+// import message from "../../../assets/modalIcons/message.png";
+// import send from "../../../assets/modalIcons/sendIcon.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addVisitorAsync } from "../../../Redux/Slice/addVisitorSlice/addVisitorSlice";
 import { addToChatAsync } from "../../../Redux/Slice/addToChatSlice/addToChatSlice";
-import { sendMessageAsync } from "../../../Redux/Slice/sendMessageSlice/sendMessageSlice";
-import { addChatHandlerAsync } from "../../../Redux/Slice/addChatHandlerSlice/addChatHandlerSlice";
+// import { sendMessageAsync } from "../../../Redux/Slice/sendMessageSlice/sendMessageSlice";
+// import { addChatHandlerAsync } from "../../../Redux/Slice/addChatHandlerSlice/addChatHandlerSlice";
+// import { modalActions } from "../../../Redux/Slice/modalSlice";
+import { addCounterUserAsync } from "../../../Redux/Slice/addCounterUserSlice/addCounterUserSlice";
+import io from "socket.io-client";
+import { modalActions } from "../../../Redux/Slice/modalSlice";
+import { addNotifyAsync } from "../../../Redux/Slice/addNotifySlice/addNotifySlice";
 const style = {
   position: "absolute",
   top: "50%",
@@ -23,6 +29,7 @@ const style = {
   p: 4,
 };
 export const SmallCard = ({ userData, signupUserData, email, signupEmail }) => {
+  const socket = io.connect("http://localhost:4000");
   const [open, setOpen] = React.useState(false);
   const [name, setName] = useState("");
   const [messages,setMessage]=useState('')
@@ -43,7 +50,37 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail }) => {
   //   setName(Name);
   //   dispatch(addToChatAsync(addToChat))
   // };
-  const mainContentHandler=(item)=>{
+  // useEffect(() => {
+  //   // WebSocket message listener
+  //   socket.on("visitorAdded", (visitorData) => {
+  //     console.log("New visitor added:", visitorData);
+  //     // You can update your UI or perform other actions here
+  //   });
+  //   // socket.on("countUserAdded", (counterData) => {
+  //   //   console.log("New user count added:", counterData);
+  //   //   // You can update your UI or perform other actions here
+  //   // });
+  //   // Clean up WebSocket listener on component unmount
+  //   return () => {
+  //     socket.off("visitorAdded");
+  //     socket.off('countUserAdded')
+  //   };
+  // }, []);
+  useEffect(() => {
+    // Emit "setup" event to the server to establish the connection with the user's id
+    socket.emit("setup", id);
+
+    // Listen for "connected" event from the server
+    socket.on("connected", (message) => {
+        console.log('Socket is connected:', message);
+    });
+
+    // Clean up function to disconnect the socket on component unmount
+    return () => {
+        socket.disconnect();
+    };
+}, [id, socket]);
+  const mainContentHandler=async(item)=>{
   console.log('main content',item)
   navigate('/mainContent/newMainContent',{state:item})
   const visitorObjId={
@@ -51,10 +88,22 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail }) => {
     userId:item._id
   }
   dispatch(addVisitorAsync(visitorObjId))
+  // dispatch(modalActions.visibleToggle())
+  dispatch(addCounterUserAsync(visitorObjId))
+  dispatch(addNotifyAsync(visitorObjId))
+  // window.location.reload()
+//  try{
+//   const response = await axios.post(`http://localhost:4000/user/addCountUser/${visitorObjId.id}`, visitorObjId);
+//   console.log('message of data is',response.data)
+//   socket.emit("new counter", response.data);
+//  }catch (error) {
+//             console.error('Error sending message:', error);
+//         }
 }
 // const textHandler=(event)=>{
 // setMessage(event.target.value)
 // }
+
 
 // const sendMessageHandler=(e)=>{
 //   e.preventDefault()
@@ -79,6 +128,8 @@ const addToChat={
     }
 // dispatch(addChatHandlerAsync(addChatId))
 dispatch(addToChatAsync(addToChat))
+
+
 }
   return (
     <>

@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { BACKEND_BASE_URL } from '../../../Services/api'
 import { useNavigate } from 'react-router-dom';
+import {  useDispatch } from 'react-redux';
+import { loginObjectSliceAcions } from '../../../Redux/Slice/loginObjectSlice/loginObjectSlice';
 export const ExtraSmallCard = ({visitor}) => {
   const navigate=useNavigate()
+  const dispatch=useDispatch()
   const getProfile = () =>visitor|| {};
   const dob = getProfile().DOB;
   const dobBreak = dob?.split("/");
@@ -15,6 +18,9 @@ export const ExtraSmallCard = ({visitor}) => {
     sessionStorage.setItem('visitor',visitor)
   navigate('/mainContent/visitorProfile',{state:visitor})
   }
+  useEffect(()=>{
+  dispatch(loginObjectSliceAcions.loginObjectData(visitor))
+  },[])
   return (
     <>
    <div class="w-52 h-80  rounded-2xl overflow-hidden shadow-lg ">

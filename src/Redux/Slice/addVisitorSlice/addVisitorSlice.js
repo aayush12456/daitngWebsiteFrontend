@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from '../../axios/axios'
+import io from 'socket.io-client';
+const socket = io('http://localhost:4000');
 export const addVisitorAsync = createAsyncThunk(
   'Visitor/addVisitorAsync',
   async (visitorObj, { rejectWithValue }) => {
@@ -14,7 +16,7 @@ export const addVisitorAsync = createAsyncThunk(
      
       const Responedata = response.data;
       console.log('visitor data is',Responedata)
-  
+      socket.emit('visitorAdded', Responedata);
       return Responedata;
       
     } catch (error) {

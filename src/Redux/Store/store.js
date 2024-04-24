@@ -19,6 +19,17 @@ import addChatHandlerSlice from "../Slice/addChatHandlerSlice/addChatHandlerSlic
 import getChatHandlerSlice from "../Slice/getChatHandlerSlice/getChatHandlerSlice"
 import updateUserSlice from "../Slice/updateUserSlice/updateUserSlice"
 import passDataSlice from "../Slice/passDataSlice/passDataSlice"
+import addCounterUserSlice from "../Slice/addCounterUserSlice/addCounterUserSlice"
+import getCounterUserSlice from "../Slice/getCounterUserSlice/getCounterUserSlice"
+import deleteCounterUserSlice from "../Slice/deleteCounterUserSlice/deleteCounterUserSlice"
+import passDataSliceObj from "../Slice/passDataSliceObj/passDataSliceObj"
+import addNotifySlice from "../Slice/addNotifySlice/addNotifySlice"
+import getNotifySlice from "../Slice/getNotifySlice/getNotifySlice"
+import addLikeNotifySlice from "../Slice/addLikeNotifySlice/addLikeNotifySlice"
+import getLikeNotifySlice from "../Slice/getLikeNotifySlice/getLikeNotifySlice"
+import addLikeCounterUserSlice from "../Slice/addLikeCounterUserSlice/addLikeCounterUserSlice"
+import getLikeCounterUserSlice from "../Slice/getLikeCounterUserSlice/getLikeCounterUserSlice"
+import deleteLikeCounterUserSlice from "../Slice/deleteLikeCounterUserSlice/deleteLikeCounterUserSlice"
 const store=configureStore({
     reducer:{
 
@@ -42,7 +53,18 @@ const store=configureStore({
     addChat:addChatHandlerSlice,
     // getChat:getChatHandlerSlice,
     updateUser:updateUserSlice,
-    passData:passDataSlice
+    passData:passDataSlice,
+    addCountUser:addCounterUserSlice,
+    getCountUser:getCounterUserSlice,
+    deleteCountUser:deleteCounterUserSlice,
+    passDataObj:passDataSliceObj,
+    addNotfyUser:addNotifySlice,
+    getNotifyUser:getNotifySlice,
+    addLikeNotifyUser:addLikeNotifySlice,
+    getLikeNotifyUser:getLikeNotifySlice,
+    addLikeCounterUser:addLikeCounterUserSlice,
+    getLikeCounterUser:getLikeCounterUserSlice,
+    deleteLikeCounterUser:deleteLikeCounterUserSlice
     }
 })
 export default store

@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 import { getVisitorData } from '../../Redux/Slice/getVisitorSlice/getVisitorSlice'
 import Matches from '../../Components/matches/matches'
 import { ExtraSmallCard } from '../../Components/common/extraSmallCard/extraSmallCard'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const VisitorPage = () => {
     const id=sessionStorage.getItem('userId')
     console.log('id is',id)
@@ -12,7 +14,22 @@ export const VisitorPage = () => {
     dispatch(getVisitorData(id))
     },[dispatch])
     const visitorSelector=useSelector((state)=>state.getVisitorData.getVisitorArray.getVisitors)
+    const visitorData=useSelector((state)=>state.getVisitorData.data)
+    const showData=useSelector((state)=>state.modal.modalToggle)
+    console.log('visitor data',visitorData)
     console.log('visitors is',visitorSelector)
+    console.log('modal',showData)
+    // if(visitorData){
+    //   toast.success('Visitor data updated!', {
+    //     position: 'top-right',
+    //     autoClose: 3000, // Close the toast after 3 seconds
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //   });
+    // }
   return (
 <>
 

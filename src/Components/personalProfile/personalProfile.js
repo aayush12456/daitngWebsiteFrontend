@@ -308,14 +308,16 @@ export const PersonalProfile = ({
                 onClick={handleRightArrowClick}
               />
             </div>
-            <div className="flex gap-0">
+            <div className="flex justify-between">
+              <div className="flex gap-0">
+
               <p className="pl-5 pt-4 text-lg font-semibold">
-                {personalProfile && personalProfile.firstName
-                  ? personalProfile.firstName
-                  : personalSignupProfile && personalSignupProfile.firstName
-                    ? personalSignupProfile.firstName
-                    : matchesMainContent && matchesMainContent.firstName
-                      ? matchesMainContent.firstName
+                {personalProfile && personalProfile?.firstName
+                  ? personalProfile?.firstName
+                  : personalSignupProfile && personalSignupProfile?.firstName
+                    ? personalSignupProfile?.firstName
+                    : matchesMainContent && matchesMainContent?.firstName
+                      ? matchesMainContent?.firstName
                       : null}
                 ,
               </p>
@@ -323,85 +325,86 @@ export const PersonalProfile = ({
                 {age},
               </p>
               <p className="text-lg pt-4 pl-3 text-[#333] font-semibold">
-                {updateProfile && updateProfile.city // Check if updateProfile.relationship exists
-                  ? updateProfile.city // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.city
-                    ? personalProfile.city
-                    : personalSignupProfile && personalSignupProfile.city
-                      ? personalSignupProfile.city
-                      : matchesMainContent && matchesMainContent.city
-                        ? matchesMainContent.city
+                {updateProfile && updateProfile?.city // Check if updateProfile.relationship exists
+                  ? updateProfile?.city // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.city
+                    ? personalProfile?.city
+                    : personalSignupProfile && personalSignupProfile?.city
+                      ? personalSignupProfile?.city
+                      : matchesMainContent && matchesMainContent?.city
+                        ? matchesMainContent?.city
                         : null}
               </p>
-              <p className="text-lg pt-4 pl-96 ml-36 text-[#5394e4] hover:text-[blue]  cursor-pointer" onClick={cityOpen}>
+              </div>
+             {!matchesMainContent? <p className="text-lg pt-4 pr-4  text-[#5394e4] hover:text-[blue]  cursor-pointer" onClick={cityOpen}>
                 Edit
-              </p>
+              </p>:null}
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex ">
+              <div className="flex justify-between ">
                 <p className="text-lg text-[#757575]">Relationship status</p>
-                <p
-                  className="text-lg  pl-96 ml-36  text-[#5394e4] hover:text-[blue] cursor-pointer"
+               {!matchesMainContent? <p
+                  className="text-lg pr-4 text-[#5394e4] hover:text-[blue] cursor-pointer"
                   onClick={handleOpens}
                 >
                   Edit
-                </p>
+                </p>:null}
               </div>
 
               <p className="text-lg pt-1 font-semibold">
-                {updateProfile && updateProfile.relationship // Check if updateProfile.relationship exists
-                  ? updateProfile.relationship // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.relationship
-                    ? personalProfile.relationship
-                    : personalSignupProfile && personalSignupProfile.relationship
-                      ? personalSignupProfile.relationship
-                      : matchesMainContent && matchesMainContent.relationship
-                        ? matchesMainContent.relationship
+                {updateProfile && updateProfile?.relationship // Check if updateProfile.relationship exists
+                  ? updateProfile?.relationship // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.relationship
+                    ? personalProfile?.relationship
+                    : personalSignupProfile && personalSignupProfile?.relationship
+                      ? personalSignupProfile?.relationship
+                      : matchesMainContent && matchesMainContent?.relationship
+                        ? matchesMainContent?.relationship
                         : null}
               </p>
             </div>
             <div className="pl-5 pt-6">
               <div className="flex gap-2">
                 <p className="text-lg text-[#757575]">I'm looking for</p>
-                <p
+                {!matchesMainContent?<p
                   className="text-lg  pl-96 ml-44 pt-[-1rem] text-[#5394e4] hover:text-[blue]  cursor-pointer"
                   onClick={lookingOpen}
                 >
                   Edit
-                </p>
+                </p>:null}
               </div>
 
               <p className="text-lg pt-1 font-semibold">
-                {updateProfile && updateProfile.looking // Check if updateProfile.relationship exists
-                  ? updateProfile.looking // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.looking
-                    ? personalProfile.looking
-                    : personalSignupProfile && personalSignupProfile.looking
-                      ? personalSignupProfile.looking
-                      : matchesMainContent && matchesMainContent.looking
-                        ? matchesMainContent.looking
+                {updateProfile && updateProfile?.looking // Check if updateProfile.relationship exists
+                  ? updateProfile?.looking // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.looking
+                    ? personalProfile?.looking
+                    : personalSignupProfile && personalSignupProfile?.looking
+                      ? personalSignupProfile?.looking
+                      : matchesMainContent && matchesMainContent?.looking
+                        ? matchesMainContent?.looking
                         : null}
               </p>
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex gap-14 ">
+              <div className="flex justify-between ">
                 <p className="text-lg text-[#757575]">Interests</p>
-                <p className="text-lg  pl-96 ml-44  text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={interestData}>
+                {!matchesMainContent?<p className="text-lg  pr-4  text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={interestData}>
                   Edit
-                </p>
+                </p>:null}
               </div>
 
               <div className="flex gap-4  ">
-                {updateProfile && updateProfile.interest
-                  ? updateProfile.interest.map((personalInterest) => (
+                {updateProfile && updateProfile?.interest
+                  ? updateProfile?.interest.map((personalInterest) => (
                     <div className="bg-slate-200 rounded mt-3" key={personalInterest}>
                       <p className="text-lg pt-3 text-center pl-4 pr-4 pb-3 text-[#757575]">
                         {personalInterest}
                       </p>
                     </div>
                   ))
-                  : personalProfile && personalProfile.interest
-                    ? personalProfile.interest.map((personalInterest) => (
+                  : personalProfile && personalProfile?.interest
+                    ? personalProfile?.interest.map((personalInterest) => (
                       <div className="bg-slate-200 rounded mt-3" key={personalInterest}>
                         <p className="text-lg pt-3 text-center pl-4 pr-4 pb-3 text-[#757575]">
                           {personalInterest}
@@ -410,7 +413,7 @@ export const PersonalProfile = ({
                     ))
                     : null}
                 {personalSignupProfile
-                  ? personalSignupProfile.interest.map((personalInterest) => {
+                  ? personalSignupProfile?.interest.map((personalInterest) => {
 
                     return (
                       <>
@@ -425,7 +428,7 @@ export const PersonalProfile = ({
                   : null}
 
                 {matchesMainContent
-                  ? matchesMainContent.interest.map((mainContentInterest) => {
+                  ? matchesMainContent?.interest.map((mainContentInterest) => {
 
                     return (
                       <>
@@ -443,158 +446,158 @@ export const PersonalProfile = ({
               </div>
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex gap-12 ">
+              <div className="flex justify-between ">
                 <p className="text-lg text-[#757575] ">About me</p>
-                <p className="text-lg  pl-96 ml-44  text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={aboutMe}>
+                {!matchesMainContent?<p className="text-lg  pr-4  text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={aboutMe}>
                   Edit
-                </p>
+                </p>:null}
               </div>
 
               <p className="text-lg pt-1 text-black font-semibold">
-                {updateProfile && updateProfile.aboutUser // Check if updateProfile.relationship exists
-                  ? updateProfile.aboutUser // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.aboutUser
-                    ? personalProfile.aboutUser
-                    : personalSignupProfile && personalSignupProfile.aboutUser
-                      ? personalSignupProfile.aboutUser
-                      : matchesMainContent && matchesMainContent.aboutUser
-                        ? matchesMainContent.aboutUser
+                {updateProfile && updateProfile?.aboutUser // Check if updateProfile.relationship exists
+                  ? updateProfile?.aboutUser // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.aboutUser
+                    ? personalProfile?.aboutUser
+                    : personalSignupProfile && personalSignupProfile?.aboutUser
+                      ? personalSignupProfile?.aboutUser
+                      : matchesMainContent && matchesMainContent?.aboutUser
+                        ? matchesMainContent?.aboutUser
                         : null}
               </p>
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex gap-12 ">
+              <div className="flex justify-between ">
                 <p className="text-lg text-[#757575]">Education</p>
-                <p className="text-lg  pl-96 ml-44 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={education}>
+               {!matchesMainContent? <p className="text-lg  pr-4 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={education}>
                   Edit
-                </p>
+                </p>:null}
               </div>
               <p className="text-lg pt-1 font-semibold">
-                {updateProfile && updateProfile.education // Check if updateProfile.relationship exists
-                  ? updateProfile.education // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.education
-                    ? personalProfile.education
-                    : personalSignupProfile && personalSignupProfile.education
-                      ? personalSignupProfile.education
-                      : matchesMainContent && matchesMainContent.education
-                        ? matchesMainContent.education
+                {updateProfile && updateProfile?.education // Check if updateProfile.relationship exists
+                  ? updateProfile?.education // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.education
+                    ? personalProfile?.education
+                    : personalSignupProfile && personalSignupProfile?.education
+                      ? personalSignupProfile?.education
+                      : matchesMainContent && matchesMainContent?.education
+                        ? matchesMainContent?.education
                         : null}
               </p>
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex gap-11 ">
+              <div className="flex justify-between ">
                 <p className="text-lg text-[#757575]">Profession</p>
-                <p className="text-lg  pl-96 ml-44 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={professionData}>
+                {!matchesMainContent?<p className="text-lg  pr-4 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={professionData}>
                   Edit
-                </p>
+                </p>:null}
               </div>
               <p className="text-lg pt-1 font-semibold">
-                {updateProfile && updateProfile.profession // Check if updateProfile.relationship exists
-                  ? updateProfile.profession // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.profession
-                    ? personalProfile.profession
-                    : personalSignupProfile && personalSignupProfile.profession
-                      ? personalSignupProfile.profession
-                      : matchesMainContent && matchesMainContent.profession
-                        ? matchesMainContent.profession
+                {updateProfile && updateProfile?.profession // Check if updateProfile.relationship exists
+                  ? updateProfile?.profession // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.profession
+                    ? personalProfile?.profession
+                    : personalSignupProfile && personalSignupProfile?.profession
+                      ? personalSignupProfile?.profession
+                      : matchesMainContent && matchesMainContent?.profession
+                        ? matchesMainContent?.profession
                         : null}
               </p>
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex gap-16 ">
+              <div className="flex justify-between ">
                 <p className="text-lg text-[#757575]">Drinking</p>
-                <p className="text-lg  pl-96 ml-44 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={drinkingData}>
+                {!matchesMainContent?<p className="text-lg  pr-4 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={drinkingData}>
                   Edit
-                </p>
+                </p>:null}
               </div>
               <p className="text-lg pt-1 font-semibold">
-                {updateProfile && updateProfile.drinking // Check if updateProfile.relationship exists
-                  ? updateProfile.drinking // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.drinking
-                    ? personalProfile.drinking
-                    : personalSignupProfile && personalSignupProfile.drinking
-                      ? personalSignupProfile.drinking
-                      : matchesMainContent && matchesMainContent.drinking
-                        ? matchesMainContent.drinking
+                {updateProfile && updateProfile?.drinking // Check if updateProfile.relationship exists
+                  ? updateProfile?.drinking // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.drinking
+                    ? personalProfile?.drinking
+                    : personalSignupProfile && personalSignupProfile?.drinking
+                      ? personalSignupProfile?.drinking
+                      : matchesMainContent && matchesMainContent?.drinking
+                        ? matchesMainContent?.drinking
                         : null}
               </p>
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex gap-16 ">
+              <div className="flex justify-between ">
                 <p className="text-lg text-[#757575]">Smoking</p>
-                <p className="text-lg  pl-96 ml-44 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={smokingData}>
+                {!matchesMainContent?<p className="text-lg  pr-4 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={smokingData}>
                   Edit
-                </p>
+                </p>:null}
               </div>
               <p className="text-lg pt-1 font-semibold">
-                {updateProfile && updateProfile.smoking // Check if updateProfile.relationship exists
-                  ? updateProfile.smoking // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.smoking
-                    ? personalProfile.smoking
-                    : personalSignupProfile && personalSignupProfile.smoking
-                      ? personalSignupProfile.smoking
-                      : matchesMainContent && matchesMainContent.smoking
-                        ? matchesMainContent.smoking
+                {updateProfile && updateProfile?.smoking // Check if updateProfile.relationship exists
+                  ? updateProfile?.smoking // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.smoking
+                    ? personalProfile?.smoking
+                    : personalSignupProfile && personalSignupProfile?.smoking
+                      ? personalSignupProfile?.smoking
+                      : matchesMainContent && matchesMainContent?.smoking
+                        ? matchesMainContent?.smoking
                         : null}
               </p>
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex gap-20 ">
+              <div className="flex justify-between ">
                 <p className="text-lg text-[#757575]">Eating</p>
-                <p className="text-lg  pl-96 ml-44 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={eatingData}>
+                {!matchesMainContent?<p className="text-lg  pr-4 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={eatingData}>
                   Edit
-                </p>
+                </p>:null}
               </div>
 
               <p className="text-lg pt-1 font-semibold">
-                {updateProfile && updateProfile.eating // Check if updateProfile.relationship exists
-                  ? updateProfile.eating // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.eating
-                    ? personalProfile.eating
-                    : personalSignupProfile && personalSignupProfile.eating
-                      ? personalSignupProfile.eating
-                      : matchesMainContent && matchesMainContent.eating
-                        ? matchesMainContent.eating
+                {updateProfile && updateProfile?.eating // Check if updateProfile.relationship exists
+                  ? updateProfile?.eating // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.eating
+                    ? personalProfile?.eating
+                    : personalSignupProfile && personalSignupProfile?.eating
+                      ? personalSignupProfile?.eating
+                      : matchesMainContent && matchesMainContent?.eating
+                        ? matchesMainContent?.eating
                         : null}
               </p>
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex  gap-10 ">
+              <div className="flex justify-between ">
                 <p className="text-lg text-[#757575] ">Zodiac sign</p>
-                <p className="text-lg  pl-96 ml-44 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={zodiacData}>
+                {!matchesMainContent?<p className="text-lg  pr-4 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={zodiacData}>
                   Edit
-                </p>
+                </p>:null}
               </div>
 
               <p className="text-lg pt-1 font-semibold">
-                {updateProfile && updateProfile.zodiac // Check if updateProfile.relationship exists
-                  ? updateProfile.zodiac // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.zodiac
-                    ? personalProfile.zodiac
-                    : personalSignupProfile && personalSignupProfile.zodiac
-                      ? personalSignupProfile.zodiac
-                      : matchesMainContent && matchesMainContent.zodiac
-                        ? matchesMainContent.zodiac
+                {updateProfile && updateProfile?.zodiac // Check if updateProfile.relationship exists
+                  ? updateProfile?.zodiac // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.zodiac
+                    ? personalProfile?.zodiac
+                    : personalSignupProfile && personalSignupProfile?.zodiac
+                      ? personalSignupProfile?.zodiac
+                      : matchesMainContent && matchesMainContent?.zodiac
+                        ? matchesMainContent?.zodiac
                         : null}
               </p>
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex gap-40  ">
+              <div className="flex justify-between  ">
                 <p className="text-lg text-[#757575]">languages I know</p>
-                <p className="text-lg  pl-96 ml-2 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={languageData}>
+                {!matchesMainContent?<p className="text-lg  pr-4 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={languageData}>
                   Edit
-                </p>
+                </p>:null}
               </div>
 
               <p className="text-lg pt-1 font-semibold">
-                {updateProfile && updateProfile.language // Check if updateProfile.relationship exists
-                  ? updateProfile.language // Show updateProfile.relationship if it exists
-                  : personalProfile && personalProfile.language
-                    ? personalProfile.language
-                    : personalSignupProfile && personalSignupProfile.language
-                      ? personalSignupProfile.language
-                      : matchesMainContent && matchesMainContent.language
-                        ? matchesMainContent.language
+                {updateProfile && updateProfile?.language // Check if updateProfile.relationship exists
+                  ? updateProfile?.language // Show updateProfile.relationship if it exists
+                  : personalProfile && personalProfile?.language
+                    ? personalProfile?.language
+                    : personalSignupProfile && personalSignupProfile?.language
+                      ? personalSignupProfile?.language
+                      : matchesMainContent && matchesMainContent?.language
+                        ? matchesMainContent?.language
                         : null}
               </p>
             </div>
@@ -629,12 +632,12 @@ export const PersonalProfile = ({
               <div className="flex justify-between  ">
 
                 <p
-                  className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile.relationship===relationItem.relation?'text-[#5595e4]':'text-[#333]'}`}
+                  className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile?.relationship===relationItem?.relation?'text-[#5595e4]':'text-[#333]'}`}
                   onClick={() => relationSubmitHandler(relationItem.relation)}
                 >
-                  {relationItem.relation}
+                  {relationItem?.relation}
                 </p>
-                {updateProfile.relationship===relationItem.relation?<img src={rigthtik} className="w-5 h-5 mt-3"/>:null}
+                {updateProfile?.relationship===relationItem?.relation?<img src={rigthtik} className="w-5 h-5 mt-3"/>:null}
               </div>
               </>
             );
@@ -656,12 +659,12 @@ export const PersonalProfile = ({
                 <div className="flex justify-between  ">
 
                 <p
-                className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile.looking===lookingItem.looking?'text-[#5595e4]':'text-[#333]'}`}
+                className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile?.looking===lookingItem?.looking?'text-[#5595e4]':'text-[#333]'}`}
                   onClick={() => lookingSubmitHandler(lookingItem.looking)}
                 >
                   {lookingItem.looking}
                 </p>
-                {updateProfile.looking===lookingItem.looking?<img src={rigthtik} className="w-5 h-5 mt-3"/>:null}
+                {updateProfile?.looking===lookingItem?.looking?<img src={rigthtik} className="w-5 h-5 mt-3"/>:null}
                 </div>
               </>
             );
@@ -678,7 +681,7 @@ export const PersonalProfile = ({
         <Box sx={style}>
           <p className="text-center text-lg">About Me</p>
 
-          <textarea class="resize rounded-md border-2 outline-none w-80 h-36 mt-4 pl-2  pt-4 " onChange={textChangeHandler}  >{updateProfile && updateProfile.aboutUser ? updateProfile.aboutUser:personalProfile.aboutUser}</textarea>
+          <textarea class="resize rounded-md border-2 outline-none w-80 h-36 mt-4 pl-2  pt-4 " onChange={textChangeHandler}  >{updateProfile && updateProfile?.aboutUser ? updateProfile?.aboutUser:personalProfile?.aboutUser}</textarea>
           <button className=" bg-orange-600   dark:bg-orange-300 dark:hover:bg-orange-300  text-white font-bold py-2 px-4 rounded w-80 mt- h-12" type="submit" onClick={aboutMeSubmitHandler}>
             SAVE
           </button>
@@ -700,12 +703,12 @@ export const PersonalProfile = ({
                    <div className="flex justify-between  ">
 
                   <p
-                    className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile.education===educationItem.education?'text-[#5595e4]':'text-[#333]'}`}
+                    className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile?.education===educationItem?.education?'text-[#5595e4]':'text-[#333]'}`}
                     onClick={() => educationSubmitHandler(educationItem.education)}
                   >
-                    {educationItem.education}
+                    {educationItem?.education}
                   </p>
-                  {updateProfile.education===educationItem.education?<img src={rigthtik} className="w-5 h-5 mt-3"/>:null}
+                  {updateProfile?.education===educationItem?.education?<img src={rigthtik} className="w-5 h-5 mt-3"/>:null}
                    </div>
                 </>
               )
@@ -730,12 +733,12 @@ export const PersonalProfile = ({
 
                   <p 
                 key={index}
-                className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile.profession===professionItem.profession?'text-[#5595e4]':'text-[#333]'}`}
+                className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile?.profession===professionItem?.profession?'text-[#5595e4]':'text-[#333]'}`}
                 onClick={() => professionSubmitHandler(professionItem.profession)}
               >
-                {professionItem.profession}
+                {professionItem?.profession}
               </p>
-              {updateProfile.profession===professionItem.profession?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+              {updateProfile?.profession===professionItem?.profession?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
                       </div>
                 </>
               )
@@ -759,12 +762,12 @@ export const PersonalProfile = ({
                  <div className="flex justify-between  ">
 
                   <p
-                   className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile.drinking===drinkingItem.profession?'text-[#5595e4]':'text-[#333]'}`}
+                   className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile?.drinking===drinkingItem?.profession?'text-[#5595e4]':'text-[#333]'}`}
                     onClick={() => drinkingSubmitHandler(drinkingItem.drinking)}
                   >
-                    {drinkingItem.drinking}
+                    {drinkingItem?.drinking}
                   </p>
-                  {updateProfile.drinking===drinkingItem.drinking?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+                  {updateProfile?.drinking===drinkingItem?.drinking?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
                  </div>
                 </>
               )
@@ -787,12 +790,12 @@ export const PersonalProfile = ({
                             <div className="flex justify-between  ">
 
                   <p
-                className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile.smoking===smokingItem.smoking?'text-[#5595e4]':'text-[#333]'}`}
+                className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile?.smoking===smokingItem?.smoking?'text-[#5595e4]':'text-[#333]'}`}
                     onClick={() => smokingSubmitHandler(smokingItem.smoking)}
                   >
-                    {smokingItem.smoking}
+                    {smokingItem?.smoking}
                   </p>
-                  {updateProfile.smoking===smokingItem.smoking?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+                  {updateProfile?.smoking===smokingItem?.smoking?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
                             </div>
 
                 </>
@@ -817,12 +820,12 @@ export const PersonalProfile = ({
                 <div className="flex justify-between  ">
 
                   <p
-             className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile.eating===EatingItem.eating?'text-[#5595e4]':'text-[#333]'}`}
+             className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile?.eating===EatingItem?.eating?'text-[#5595e4]':'text-[#333]'}`}
                     onClick={() => eatingSubmitHandler(EatingItem.eating)}
                   >
-                    {EatingItem.eating}
+                    {EatingItem?.eating}
                   </p>
-                  {updateProfile.eating===EatingItem.eating?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+                  {updateProfile?.eating===EatingItem?.eating?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
                 </div>
 
                 </>
@@ -847,12 +850,12 @@ export const PersonalProfile = ({
                      <div className="flex justify-between  ">
 
                   <p
-                       className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile.zodiac===zodiacItem.zodiac?'text-[#5595e4]':'text-[#333]'}`}
+                       className={`cursor-pointer pt-3 hover:text-[#5595e4] ${updateProfile?.zodiac===zodiacItem?.zodiac?'text-[#5595e4]':'text-[#333]'}`}
                     onClick={() => zodiacSubmitHandler(zodiacItem.zodiac)}
                   >
-                    {zodiacItem.zodiac}
+                    {zodiacItem?.zodiac}
                   </p>
-                  {updateProfile.zodiac===zodiacItem.zodiac?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+                  {updateProfile?.zodiac===zodiacItem?.zodiac?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
                      </div>
                 </>
               )
@@ -898,7 +901,7 @@ export const PersonalProfile = ({
                   <div className="flex justify-between gap-36">
 
                   <ListItemText primary={languageItem.language} />
-                  {updateProfile.language===languageItem.language?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+                  {updateProfile?.language===languageItem?.language?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
                   </div>
                 </MenuItem>
               ))}
@@ -927,7 +930,7 @@ export const PersonalProfile = ({
           <div className="border-2  h-14 mt-4 pl-4 pr-4 pt-4 ">
             <div className="flex justify-between">
               <p className="text-md text-[#8f929a]">First name:</p>
-              <p className="text-md text-[#8f929a]">{personalProfile.firstName}</p>
+              <p className="text-md text-[#8f929a]">{personalProfile?.firstName}</p>
               <p className="text-md text-[#8f929a]">Can't change</p>
             </div>
           </div>
@@ -940,7 +943,7 @@ export const PersonalProfile = ({
           </div>
           <div className="flex mt-4 h-14">
             <p className="text-[#8f929a] absolute pl-4 pt-4">My city:</p>
-            <input class=" appearance-none border-2  rounded w-full py-2 px-4 pl-32 text-gray-700 leading-tight focus:outline-none  focus:border-purple-500" id="inline-full-name" type="text" placeholder={personalProfile.city} onChange={cityChangeHandler} />
+            <input class=" appearance-none border-2  rounded w-full py-2 px-4 pl-32 text-gray-700 leading-tight focus:outline-none  focus:border-purple-500" id="inline-full-name" type="text" placeholder={personalProfile?.city} onChange={cityChangeHandler} />
           </div>
           <div className="mt-4">
             <button className="bg-[#5394e4] text-white font-bold py-2 px-4 rounded w-80   h-12" type="submit" onClick={citySubmitHandler}>
