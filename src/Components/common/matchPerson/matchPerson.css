@@ -1,0 +1,8 @@
+.image-container {
+    transition: transform 2.5s ease-in-out;
+    position: relative;
+}
+
+.slide {
+    transform: translateX(-50%);
+}

@@ -394,7 +394,7 @@ export const PersonalProfile = ({
                 </p>:null}
               </div>
 
-              <div className="flex gap-4  ">
+              <div className="grid grid-cols-5 gap-3  ">
                 {updateProfile && updateProfile?.interest
                   ? updateProfile?.interest.map((personalInterest) => (
                     <div className="bg-slate-200 rounded mt-3" key={personalInterest}>

@@ -7,7 +7,7 @@ export const getLikeNotifyUserAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getLikeNotifyUser/${userId}`); 
-      console.log('get like notify response',response.data)
+      // console.log('get like notify response',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

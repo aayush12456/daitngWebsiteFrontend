@@ -4,6 +4,19 @@ import leftArrow from "../../assets/personalProfileIcons/leftArrow.svg";
 import rightArrow from "../../assets/personalProfileIcons/rightArrow.svg";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import rightTik from '../../assets/personalProfileIcons/rightTiks.svg'
+import crossTik from '../../assets/personalProfileIcons/crossTik.svg'
+import likeTik from '../../assets/personalProfileIcons/rightTikss.svg'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from "react-redux";
+import { addVisitorPlusLikeUserAsync } from "../../Redux/Slice/addVisitorPlusLikeUserSlice/addVisitorPlusLikeUserSlice";
+import { addLikeUserAsync } from "../../Redux/Slice/addLikeUser/addLikeUser";
+import { addLikeNotifyAsync } from "../../Redux/Slice/addLikeNotifySlice/addLikeNotifySlice";
+import { addLikeCounterUserAsync } from "../../Redux/Slice/addLikeCounterUserSlice/addLikeCounterUserSlice";
+import { useNavigate } from "react-router-dom";
+import { addVisitorPlusSkipUserAsync } from "../../Redux/Slice/addVisitorPlusSkipUserSlice/addVisitorPlusSkipUserSlice";
+import { passDataObjSliceAcions } from "../../Redux/Slice/passDataSliceObj/passDataSliceObj";
 const style = {
   position: "absolute",
   top: "50%",
@@ -16,9 +29,19 @@ const style = {
 
   p: 4,
 };
-export const VisitorProfile = ({visitor,OnlineContent}) => {
+export const VisitorProfile = ({visitor,OnlineContent,likeVisitorUser,skipVisitorUser}) => {
+    console.log('visitor data',visitor)
+    console.log('like visitor data',likeVisitorUser)
+    console.log('skip visitor data',skipVisitorUser)
+    const dispatch=useDispatch()
+    const navigate=useNavigate()
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [open, setOpen] = React.useState(false);
+    const [likeUser,setLikeUser]=useState(false)
+    const [skipUser,setSkipUser]=useState(false)
+    const [text,setText]=useState('')
+    const [skipText,setSkipText]=useState('')
+    const id =sessionStorage.getItem('userId')
     const dob = visitor?.DOB || OnlineContent?.DOB;
     const dobBreak = dob?.split("/");
     const year = dobBreak?.[2];
@@ -52,12 +75,67 @@ export const VisitorProfile = ({visitor,OnlineContent}) => {
         setOpen(true);
        
       };
+      const likePersonHandler=()=>{
+setLikeUser(true)
+setTimeout(()=>{
+setLikeUser(false)
+const visitorLikeUser={
+  id:id,
+  visitorPlusLikeUserId:visitor._id
+}
+ const likeObjId = {
+      id: id,
+      likeUserId:visitor._id
+    };
+    const notifyobjId = {
+      id: id,
+      userId: visitor._id
+    };
+    console.log('like obj data',likeObjId)
+setText("You Like this profile")
+dispatch(addVisitorPlusLikeUserAsync(visitorLikeUser))
+dispatch(addLikeUserAsync(likeObjId));
+dispatch(addLikeNotifyAsync(notifyobjId));
+dispatch(addLikeCounterUserAsync(notifyobjId));
+// dispatch(passDataObjSliceAcions.passDataObj(visitor))
+},700)
+toast.success('Like sent successfully')
+// navigate('/mainContent/visitors',{state:likeVisitorUser})
+// navigate('/mainContent/likeMe')
+      }
+
+      const skipCancelHandler=()=>{
+      setSkipUser(true)
+      setTimeout(()=>{
+        setSkipUser(false)
+        setSkipText("You Like this profile")
+        const visitorLikeUser={
+          id:id,
+          visitorPlusSkipUserId:visitor._id
+        }
+        dispatch(addVisitorPlusSkipUserAsync(visitorLikeUser))
+        },700)
+      }
+  
   return (
    <>
     <div className="flex justify-center mt-10">
-        <div class=" w-[50rem] rounded overflow-hidden shadow-lg">
-          <div class="px-6 py-4  ">
-            <div className="flex justify-between bg-black">
+      <div className="relative">
+      {likeUser && (
+            <div className="absolute inset-0 bg-blue-500 opacity-80 rounded-2xl flex items-center justify-center z-50">
+              <img src={likeTik} alt="Right" className="w-12 h-14" />
+            </div>
+          )}
+ {skipUser && (
+            <div className="absolute inset-0 bg-gray-600 opacity-80 rounded-2xl flex items-center justify-center z-50">
+              {/* You can add any content here */}
+              <img src={crossTik} alt="Right" className="w-14 h-14 filter invert" />
+            </div>
+          )}
+<div className={`w-[50rem] rounded overflow-hidden shadow-lg ${likeUser ? 'bg-white' : ''|| skipUser ? 'bg-white' : '' }`} >
+          <div className="px-6 py-4  ">
+          <div style={{ maxHeight: '500px', overflowY: 'auto' }}>
+          <div className="flex justify-between bg-black">
               <img
                 src={leftArrow}
                 className="w-5 filter invert cursor-pointer "
@@ -81,13 +159,13 @@ export const VisitorProfile = ({visitor,OnlineContent}) => {
                 {age},
               </p>
               <p className="text-lg pt-4 pl-3 text-[#333] font-semibold">
-              {visitor &&visitor.city?visitor.city:OnlineContent.city}
+              {visitor &&visitor.city?visitor?.city:OnlineContent?.city}
               </p>
             </div>
             {OnlineContent?<div className="pl-5 pt-1">
-              <p className="text-md ">Working as {OnlineContent.profession}</p>
+              <p className="text-md ">Working as {OnlineContent?.profession}</p>
               <p className="text-md pt-1 ">
-                Studied {OnlineContent.education}
+                Studied {OnlineContent?.education}
               </p>
             </div>:null}
 
@@ -100,13 +178,13 @@ export const VisitorProfile = ({visitor,OnlineContent}) => {
             {visitor?<div className="pl-5 pt-6">
               <p className="text-lg text-[#757575]">Relationship status</p>
               <p className="text-lg pt-1 font-semibold">
-               {visitor.relationship}
+               {visitor?.relationship}
               </p>
             </div>:null}
            {visitor? <div className="pl-5 pt-6">
               <p className="text-lg text-[#757575]">I'm looking for</p>
               <p className="text-lg pt-1 font-semibold">
-               {visitor.looking}
+               {visitor?.looking}
               </p>
             </div>:null}
             <div className="pl-5 pt-6">
@@ -191,7 +269,33 @@ export const VisitorProfile = ({visitor,OnlineContent}) => {
               </p>
             </div>:null}
           </div>
-        </div>
+          <hr class="  w-full border-t-1 border-gray-400"/>
+          {!(text || likeVisitorUser?.firstName === visitor?.firstName || skipVisitorUser?.firstName === visitor?.firstName || skipText) && (
+  <div className="flex justify-between">
+    <div className="flex gap-4 mt-6 ml-20">
+      <div className="rounded-full bg-[#71706f] w-12 h-12 flex justify-center cursor-pointer" onClick={skipCancelHandler}>
+        <img src={crossTik} className="w-8 filter invert" />
+      </div>
+      <p className="text-[#71706f] font-semibold pt-1 text-xl cursor-pointer" onClick={skipCancelHandler}>SKIP</p>
+    </div>
+    <div className="flex gap-4 mt-6 mr-16">
+      <div className="rounded-full bg-blue-600 w-12 h-12 flex justify-center cursor-pointer" onClick={likePersonHandler}>
+        <img src={rightTik} className="w-8" />
+      </div>
+      <p className="text-[#0271fe] font-semibold pt-3 text-xl cursor-pointer" onClick={likePersonHandler}>LIKE</p>
+    </div>
+  </div>
+)}
+
+        { likeVisitorUser?.firstName===visitor?.firstName &&  <p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
+        {text &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
+
+        { skipVisitorUser?.firstName===visitor?.firstName &&  <p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>}
+        {skipText &&<p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>} 
+          </div>
+        </div> 
+      </div>
+        
       </div>
       <Modal
             open={open}
@@ -206,6 +310,15 @@ export const VisitorProfile = ({visitor,OnlineContent}) => {
   
               </Box>
           </Modal>
+         
    </>
   )
 }
+
+
+{/* <div className="flex gap-4">
+<div className="rounded-full bg-blue-600 w-12 h-12 flex justify-center">
+<img src={rightTik} className="w-8" />
+</div>
+<p className="text-[#0271fe] font-semibold pt-3 text-xl">LIKE</p>
+</div> */}

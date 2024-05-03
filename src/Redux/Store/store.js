@@ -30,6 +30,12 @@ import getLikeNotifySlice from "../Slice/getLikeNotifySlice/getLikeNotifySlice"
 import addLikeCounterUserSlice from "../Slice/addLikeCounterUserSlice/addLikeCounterUserSlice"
 import getLikeCounterUserSlice from "../Slice/getLikeCounterUserSlice/getLikeCounterUserSlice"
 import deleteLikeCounterUserSlice from "../Slice/deleteLikeCounterUserSlice/deleteLikeCounterUserSlice"
+import addVisitorPlusLikeUserSlice from "../Slice/addVisitorPlusLikeUserSlice/addVisitorPlusLikeUserSlice"
+import getVisitorPlusLikeUserSlice from "../Slice/getVisitorPlusLikeUserSlice/getVisitorPlusLikeUserSlice"
+import addVisitorPlusSkipUserSlice from "../Slice/addVisitorPlusSkipUserSlice/addVisitorPlusSkipUserSlice"
+import getVisitorPlusSkipUserSlice from "../Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice"
+import addMatchUserSlice from "../Slice/addMatchUserSlice/addMatchUserSlice"
+import getMatchUserSlice from "../Slice/getMatchUserSlice/getMatchUserSlice"
 const store=configureStore({
     reducer:{
 
@@ -64,7 +70,13 @@ const store=configureStore({
     getLikeNotifyUser:getLikeNotifySlice,
     addLikeCounterUser:addLikeCounterUserSlice,
     getLikeCounterUser:getLikeCounterUserSlice,
-    deleteLikeCounterUser:deleteLikeCounterUserSlice
+    deleteLikeCounterUser:deleteLikeCounterUserSlice,
+    addVisitorLikeUser:addVisitorPlusLikeUserSlice,
+    getVisitorPlusLikeUser:getVisitorPlusLikeUserSlice,
+    addVisitorSkipUser:addVisitorPlusSkipUserSlice,
+    getVisitorSkipUser:getVisitorPlusSkipUserSlice,
+    addMatchUser:addMatchUserSlice,
+    getMatchUser:getMatchUserSlice
     }
 })
 export default store

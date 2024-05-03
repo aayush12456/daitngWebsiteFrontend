@@ -7,7 +7,7 @@ export const getNotifyUserAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getNotifyUser/${userId}`); 
-      console.log('get notify response',response.data)
+      // console.log('get notify response',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);
