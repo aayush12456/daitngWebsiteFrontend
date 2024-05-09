@@ -21,18 +21,18 @@ export const LikePage = () => {
   const loginUser = JSON.parse(loginData);
 
   // Filter out items present in visitorSelector from likeSelector
-  const filteredLikeSelector = likeSelector?.filter((likeItem) => {
-    return !visitorSelector.some((visitorItem) => visitorItem.id === likeItem.id);
-  });
+  // const filteredLikeSelector = likeSelector?.filter((likeItem) => {
+  //   return !visitorSelector?.some((visitorItem) => visitorItem.id === likeItem.id);
+  // });
 
   return (
     <>
-      {filteredLikeSelector?.length > 0 ? (
+      {likeSelector?.length > 0 ? (
         <div className='grid grid-cols-6 ml-72 gap-20 mt-12'>
-          {filteredLikeSelector.map((likeItem) => {
+          {likeSelector.map((likeItem) => {
             return (
               <React.Fragment key={likeItem.id}>
-                <ExtraSmallCard visitor={likeItem} />
+                <ExtraSmallCard visitor={likeItem} likePerson={likeItem} />
               </React.Fragment>
             );
           })}

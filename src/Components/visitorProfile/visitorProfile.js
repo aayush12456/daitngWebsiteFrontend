@@ -17,6 +17,7 @@ import { addLikeCounterUserAsync } from "../../Redux/Slice/addLikeCounterUserSli
 import { useNavigate } from "react-router-dom";
 import { addVisitorPlusSkipUserAsync } from "../../Redux/Slice/addVisitorPlusSkipUserSlice/addVisitorPlusSkipUserSlice";
 import { passDataObjSliceAcions } from "../../Redux/Slice/passDataSliceObj/passDataSliceObj";
+import { addMatchUserAsync } from "../../Redux/Slice/addMatchUserSlice/addMatchUserSlice";
 const style = {
   position: "absolute",
   top: "50%",
@@ -29,10 +30,13 @@ const style = {
 
   p: 4,
 };
-export const VisitorProfile = ({visitor,OnlineContent,likeVisitorUser,skipVisitorUser}) => {
+export const VisitorProfile = ({visitor,OnlineContent,likeVisitorUser,skipVisitorUser,likeUserPerson,getMatchUser,anotherGetMatchUser,visitorUser}) => {
     console.log('visitor data',visitor)
     console.log('like visitor data',likeVisitorUser)
     console.log('skip visitor data',skipVisitorUser)
+    console.log('likeUserPerson',likeUserPerson)
+    console.log('get match user',getMatchUser)
+    console.log('another get match user',anotherGetMatchUser)
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -41,6 +45,7 @@ export const VisitorProfile = ({visitor,OnlineContent,likeVisitorUser,skipVisito
     const [skipUser,setSkipUser]=useState(false)
     const [text,setText]=useState('')
     const [skipText,setSkipText]=useState('')
+    const [matchUser,setMatchUser]=useState('')
     const id =sessionStorage.getItem('userId')
     const dob = visitor?.DOB || OnlineContent?.DOB;
     const dobBreak = dob?.split("/");
@@ -98,7 +103,16 @@ dispatch(addLikeUserAsync(likeObjId));
 dispatch(addLikeNotifyAsync(notifyobjId));
 dispatch(addLikeCounterUserAsync(notifyobjId));
 // dispatch(passDataObjSliceAcions.passDataObj(visitor))
+if(likeUserPerson){
+  const likeUserObj={
+    id:id,
+    matchLikeId:likeUserPerson._id
+  }
+  dispatch(addMatchUserAsync(likeUserObj))
+  setMatchUser('You ve both paired')
+}
 },700)
+
 toast.success('Like sent successfully')
 // navigate('/mainContent/visitors',{state:likeVisitorUser})
 // navigate('/mainContent/likeMe')
@@ -108,7 +122,7 @@ toast.success('Like sent successfully')
       setSkipUser(true)
       setTimeout(()=>{
         setSkipUser(false)
-        setSkipText("You Like this profile")
+        setSkipText("You Skipped this profile")
         const visitorLikeUser={
           id:id,
           visitorPlusSkipUserId:visitor._id
@@ -270,7 +284,7 @@ toast.success('Like sent successfully')
             </div>:null}
           </div>
           <hr class="  w-full border-t-1 border-gray-400"/>
-          {!(text || likeVisitorUser?.firstName === visitor?.firstName || skipVisitorUser?.firstName === visitor?.firstName || skipText) && (
+          {!( getMatchUser?.firstName===likeUserPerson?.firstName || anotherGetMatchUser?.firstName===likeUserPerson?.firstName||matchUser) && (
   <div className="flex justify-between">
     <div className="flex gap-4 mt-6 ml-20">
       <div className="rounded-full bg-[#71706f] w-12 h-12 flex justify-center cursor-pointer" onClick={skipCancelHandler}>
@@ -286,12 +300,32 @@ toast.success('Like sent successfully')
     </div>
   </div>
 )}
+{visitorUser && !(skipVisitorUser?.firstName === visitor?.firstName ||skipText)&&
+    <div className="flex justify-between">
+    <div className="flex gap-4 mt-6 ml-20">
+      <div className="rounded-full bg-[#71706f] w-12 h-12 flex justify-center cursor-pointer" onClick={skipCancelHandler}>
+        <img src={crossTik} className="w-8 filter invert" />
+      </div>
+      <p className="text-[#71706f] font-semibold pt-1 text-xl cursor-pointer" onClick={skipCancelHandler}>SKIP</p>
+    </div>
+    <div className="flex gap-4 mt-6 mr-16">
+      <div className="rounded-full bg-blue-600 w-12 h-12 flex justify-center cursor-pointer" onClick={likePersonHandler}>
+        <img src={rightTik} className="w-8" />
+      </div>
+      <p className="text-[#0271fe] font-semibold pt-3 text-xl cursor-pointer" onClick={likePersonHandler}>LIKE</p>
+    </div>
+  </div>
+}
 
-        { likeVisitorUser?.firstName===visitor?.firstName &&  <p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
+
+        { likeVisitorUser?.firstName===visitor?.firstName && <p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
         {text &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
 
-        { skipVisitorUser?.firstName===visitor?.firstName &&  <p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>}
+        { skipVisitorUser?.firstName===visitor?.firstName &&   <p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>}
         {skipText &&<p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>} 
+
+{ ((getMatchUser && getMatchUser?.firstName === likeUserPerson?.firstName || matchUser) || (anotherGetMatchUser && anotherGetMatchUser?.firstName === likeUserPerson?.firstName || matchUser)) && <p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p>}
+
           </div>
         </div> 
       </div>
@@ -322,3 +356,6 @@ toast.success('Like sent successfully')
 </div>
 <p className="text-[#0271fe] font-semibold pt-3 text-xl">LIKE</p>
 </div> */}
+
+
+// {!(text || likeVisitorUser?.firstName === visitor?.firstName || skipVisitorUser?.firstName === visitor?.firstName || skipText || getMatchUser?.firstName===likeUserPerson?.firstName || anotherGetMatchUser?.firstName===likeUserPerson?.firstName||matchUser)

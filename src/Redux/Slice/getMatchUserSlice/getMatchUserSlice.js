@@ -18,7 +18,7 @@ export const getMatchUserAsync = createAsyncThunk(
 const  getMatchUserSlice = createSlice({
   name: 'getMatchUser',
   initialState: {
-    getMatchUserArray:[],
+getMatchUserObj:{},
     isLoading: false,
     error: null,
   },
@@ -31,8 +31,8 @@ const  getMatchUserSlice = createSlice({
     builder.addCase( getMatchUserAsync.fulfilled, (state, action) => {
       
       state.isLoading = false;
-      state. getMatchUserArray = action.payload;
-      // console.log('matches data', state.getUserArray)
+      state.getMatchUserObj=action.payload
+      // console.log('matches data', state.getMatchUserArray)
     });
     builder.addCase( getMatchUserAsync.rejected, (state, action) => {
       state.isLoading = false;

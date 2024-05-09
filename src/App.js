@@ -49,6 +49,18 @@ function CustomLikeToast({image,name}) {
     </>
   );
 }
+
+function AnotherCustomLikeToast({image,name}) {
+  return (
+    <>
+    <div className='flex  text-center gap-4 '>
+      <img src={BACKEND_BASE_URL+image} className='w-12 h-12 ' />
+      <p className='text-semibold'>{name} also likes you</p>
+
+    </div>
+    </>
+  );
+}
 function App() {
   const dispatch = useDispatch();
   const id = sessionStorage.getItem('userId');
@@ -59,8 +71,13 @@ function App() {
 
   const getNotifyUserResponse = useSelector((state) => state.getNotifyUser.getNotifyUser.data);
   console.log('get notify response', getNotifyUserResponse);
+
  const getLikeNotifyUserResponse=useSelector((state)=>state.getLikeNotifyUser.getLikeNotifyUser.data)
  console.log('get like notify response', getLikeNotifyUserResponse);
+
+  const lastAnotherMatchObjUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.lastAnotherMatchUser)
+  console.log('last another match obj user',lastAnotherMatchObjUser)
+
   useEffect(() => {
     if (getNotifyUserResponse) {
       toast.error(<CustomToast image={getNotifyUserResponse?.images[0]}  name={getNotifyUserResponse?.firstName}/>,
@@ -72,17 +89,61 @@ function App() {
     }
   }, [getNotifyUserResponse]);
 
-  useEffect(() => {
-    if (getLikeNotifyUserResponse) {
-      toast.error(<CustomLikeToast image={getLikeNotifyUserResponse?.images[0]}  name={getLikeNotifyUserResponse?.firstName}/>,
+  // useEffect(() => {
+  //   if (lastAnotherMatchObjUser) {
+  //     toast.error(
+  //       <AnotherCustomLikeToast 
+  //         image={lastAnotherMatchObjUser?.images[0]}  
+  //         name={lastAnotherMatchObjUser?.firstName}
+  //       />,
+  //       {
+  //         autoClose: 5000, // Auto close the toast after 5 seconds,
+  //         icon: false
+  //       }
+  //     );
+  //   } else if (!lastAnotherMatchObjUser && getLikeNotifyUserResponse) {
+  //     toast.error(
+  //       <CustomLikeToast 
+  //         image={getLikeNotifyUserResponse?.images[0]}  
+  //         name={getLikeNotifyUserResponse?.firstName}
+  //       />,
+  //       {
+  //         autoClose: 5000, // Auto close the toast after 5 seconds,
+  //         icon: false
+  //       }
+  //     );
+  //   }
+  // }, [lastAnotherMatchObjUser, getLikeNotifyUserResponse]);
+  useEffect(()=>{
+   if(getLikeNotifyUserResponse){
+    toast.error(
+      <CustomLikeToast 
+        image={getLikeNotifyUserResponse?.images[0]}  
+        name={getLikeNotifyUserResponse?.firstName}
+      />,
       {
         autoClose: 5000, // Auto close the toast after 5 seconds,
-       icon:false
+        icon: false
       }
+    );
+   }
+  },[getLikeNotifyUserResponse])
+
+  useEffect(()=>{
+    if(lastAnotherMatchObjUser){
+      toast.error(
+        <AnotherCustomLikeToast 
+          image={lastAnotherMatchObjUser?.images[0]}  
+          name={lastAnotherMatchObjUser?.firstName}
+        />,
+        {
+          autoClose: 5000, // Auto close the toast after 5 seconds,
+          icon: false
+        }
       );
     }
-  }, [getLikeNotifyUserResponse]);
-
+   },[lastAnotherMatchObjUser])
+  
   const router = createBrowserRouter([
     {
       path: '/',
