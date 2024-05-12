@@ -21,7 +21,7 @@ export const VisitorProfilePage = () => {
   console.log('likeUserVisitor',visitorData)
   const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
   console.log('visitor like data user',visitorLikeUser)
-  const matchedVisitorData = visitorLikeUser?.find((likeUser) => likeUser.id === visitorData.id);
+  const matchedVisitorData = visitorLikeUser?.find((likeUser) => likeUser.id === visitorData. visitor.id);
   console.log('mathed vsitor data',matchedVisitorData)
 
   const visitorSkipUser=useSelector((state)=>state. getVisitorSkipUser.getVisitorPlusSkipUserArray.skipUserData)
@@ -39,12 +39,18 @@ export const VisitorProfilePage = () => {
   const anothergetMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
   console.log('another get match user',anothergetMatchUser)
 
-  const anothergetMatchPersonUser=anothergetMatchUser?.find((matchUser)=>matchUser?.id===visitorData?.likeUser.id)
+  const anothergetMatchPersonUser=anothergetMatchUser?.find((matchUser)=>matchUser?.id===visitorData?.likeUser?.id)
   console.log(' another get match person user',anothergetMatchPersonUser)
+
+  const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
+  console.log('another match data response',anotherMatchDataResponse)
+
+  const anotherMatchPersonResponse=anotherMatchDataResponse?.find((matchResponse)=>matchResponse?.id===visitor?.id)
+  console.log('another match person response',anotherMatchPersonResponse)
 
   return (
     <>
-    <VisitorProfile visitor={visitorData.visitor} likeVisitorUser={matchedVisitorData} skipVisitorUser={matchedSkipVisitorData} likeUserPerson={visitorData.likeUser} getMatchUser={getMatchPersonUser} anotherGetMatchUser={ anothergetMatchPersonUser} visitorUser={visitorData.visitorPart} />
+    <VisitorProfile visitor={visitorData.visitor} likeVisitorUser={matchedVisitorData} skipVisitorUser={matchedSkipVisitorData} likeUserPerson={visitorData.likeUser} getMatchUser={getMatchPersonUser} anotherGetMatchUser={ anothergetMatchPersonUser} visitorUser={visitorData.visitorPart} anotherMatchPerson={ anotherMatchPersonResponse}/>
     </>
   )
 }

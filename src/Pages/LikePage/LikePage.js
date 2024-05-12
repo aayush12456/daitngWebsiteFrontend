@@ -17,6 +17,7 @@ export const LikePage = () => {
   const matchSelector = useSelector((state) => state.passDataObj.passDataObj);
   console.log('like is', likeSelector);
   console.log('match selector', matchSelector);
+  console.log('visitor selector',visitorSelector)
   const loginData = sessionStorage.getItem('loginObject');
   const loginUser = JSON.parse(loginData);
 

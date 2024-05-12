@@ -16,8 +16,8 @@ export const VisitorPage = () => {
     },[dispatch])
     
     const visitorSelector=useSelector((state)=>state.getVisitorData.getVisitorArray.getVisitors)
-    const visitorData=useSelector((state)=>state.getVisitorData.data)
-    console.log('visitor data',visitorData)
+    // const visitorData=useSelector((state)=>state.getVisitorData.data)
+    // console.log('visitor data',visitorData)
     console.log('visitors is',visitorSelector)
   
   return (
@@ -28,7 +28,7 @@ export const VisitorPage = () => {
     visitorSelector?.map((visitorItem,index)=>{
         return (
             <>
-           <ExtraSmallCard visitor={visitorItem} visitorPart={visitorItem}/>
+           <ExtraSmallCard visitor={visitorItem} visitorPart={visitorItem} visitorPlusPart={visitorItem}/>
             </>
         )
     })

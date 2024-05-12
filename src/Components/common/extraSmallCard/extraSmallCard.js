@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { getVisitorPlusLikeUserAsync } from '../../../Redux/Slice/getVisitorPlusLikeUserSlice/getVisitorPlusLikeUserSlice';
 import { getMatchUserAsync } from '../../../Redux/Slice/getMatchUserSlice/getMatchUserSlice';
 import { getVisitorPlusSkipUserAsync } from '../../../Redux/Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice';
-export const ExtraSmallCard = ({visitor,likePerson,visitorPart}) => {
+export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart}) => {
   console.log('visitor card',visitor)
   const id=sessionStorage.getItem('userId')
   const navigate=useNavigate()
@@ -22,7 +22,8 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart}) => {
  const obj={
   visitor:visitor,
   likeUser:likePerson,
-  visitorPart:visitorPart
+  visitorPart:visitorPart,
+
  }
   const visitorHandler=()=>{
     sessionStorage.setItem('visitor',visitor)
@@ -61,10 +62,14 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart}) => {
   const anothergetMatchPersonUser=anothergetMatchUser?.find((matchUser)=>matchUser?.id===likePerson?.id)
   console.log(' another get match person user',anothergetMatchPersonUser)
 
+  const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
+  console.log('another match data response',anotherMatchDataResponse)
 
+  const anotherMatchPersonResponse=anotherMatchDataResponse?.find((matchResponse)=>matchResponse?.id===visitor?.id)
+  console.log('another match person response',anotherMatchPersonResponse)
   return (
     <>
-   <div class="w-52 h-80  rounded-2xl overflow-hidden shadow-lg ">
+   <div class="w-52 h-96  rounded-2xl overflow-hidden shadow-lg ">
   <div>
   <img src={BACKEND_BASE_URL +visitor?.images[0]} className='cursor-pointer h-80' onClick={visitorHandler}/>   
   </div>
@@ -79,9 +84,11 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart}) => {
   <div>
   {/* {matchedLikeVisitorData &&matchedLikeVisitorData?.firstName &&!getMatchPersonUser?.firstName && !anothergetMatchPersonUser?.firstName&& <p className='text-lg text-white font-semibold pl-6'>Liked!</p>} */}
        {/* {matchedSkipVisitorData?.firstName && !getMatchPersonUser?.firstName && !anothergetMatchPersonUser?.firstName &&<p className='text-lg text-black font-semibold pl-6'>Skipped</p>} */}
-      {getMatchPersonUser && getMatchPersonUser?.firstName  && !visitorPart &&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>} 
-      {anothergetMatchPersonUser && anothergetMatchPersonUser?.firstName  && !visitorPart && <p className='text-lg text-black font-semibold pl-6'>Paired</p>}   
-      {matchedSkipVisitorData?.firstName &&<p className='text-lg text-black font-semibold pl-6'>Skipped</p>}
+      {getMatchPersonUser && getMatchPersonUser?.firstName  && !visitorPart && !anothergetMatchPersonUser &&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>} 
+      {anothergetMatchPersonUser && anothergetMatchPersonUser?.firstName  && !visitorPart && !(matchedSkipVisitorData?.firstName===visitor?.firstName) && <p className='text-lg text-black font-semibold pl-6'>Paired</p>}   
+      {matchedSkipVisitorData?.firstName===visitor?.firstName &&<p className='text-lg text-black font-semibold pl-6'>Skipped</p>}
+      {matchedLikeVisitorData?.firstName &&! anotherMatchPersonResponse&&<p className='text-lg text-black font-semibold pl-6'>Liked!</p>}
+      {anotherMatchPersonResponse?.firstName===visitor.firstName&&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>}
    
   </div>
 

@@ -30,13 +30,14 @@ const style = {
 
   p: 4,
 };
-export const VisitorProfile = ({visitor,OnlineContent,likeVisitorUser,skipVisitorUser,likeUserPerson,getMatchUser,anotherGetMatchUser,visitorUser}) => {
+export const VisitorProfile = ({visitor,OnlineContent,likeVisitorUser,skipVisitorUser,likeUserPerson,getMatchUser,anotherGetMatchUser,visitorUser, anotherMatchPerson}) => {
     console.log('visitor data',visitor)
     console.log('like visitor data',likeVisitorUser)
     console.log('skip visitor data',skipVisitorUser)
     console.log('likeUserPerson',likeUserPerson)
     console.log('get match user',getMatchUser)
     console.log('another get match user',anotherGetMatchUser)
+    console.log('another match person user',anotherMatchPerson)
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -97,8 +98,10 @@ const visitorLikeUser={
       userId: visitor._id
     };
     console.log('like obj data',likeObjId)
-setText("You Like this profile")
-dispatch(addVisitorPlusLikeUserAsync(visitorLikeUser))
+if(visitorUser){
+  dispatch(addVisitorPlusLikeUserAsync(visitorLikeUser))
+  setText("You Like this profile")
+}
 dispatch(addLikeUserAsync(likeObjId));
 dispatch(addLikeNotifyAsync(notifyobjId));
 dispatch(addLikeCounterUserAsync(notifyobjId));
@@ -284,7 +287,7 @@ toast.success('Like sent successfully')
             </div>:null}
           </div>
           <hr class="  w-full border-t-1 border-gray-400"/>
-          {!( getMatchUser?.firstName===likeUserPerson?.firstName || anotherGetMatchUser?.firstName===likeUserPerson?.firstName||matchUser) && (
+          {!visitorUser &&!( getMatchUser?.firstName===likeUserPerson?.firstName || anotherGetMatchUser?.firstName===likeUserPerson?.firstName||matchUser || skipVisitorUser?.firstName === visitor?.firstName || skipText) && (
   <div className="flex justify-between">
     <div className="flex gap-4 mt-6 ml-20">
       <div className="rounded-full bg-[#71706f] w-12 h-12 flex justify-center cursor-pointer" onClick={skipCancelHandler}>
@@ -300,7 +303,7 @@ toast.success('Like sent successfully')
     </div>
   </div>
 )}
-{visitorUser && !(skipVisitorUser?.firstName === visitor?.firstName ||skipText)&&
+{visitorUser && !(skipVisitorUser?.firstName === visitor?.firstName ||skipText || likeVisitorUser||text )&&
     <div className="flex justify-between">
     <div className="flex gap-4 mt-6 ml-20">
       <div className="rounded-full bg-[#71706f] w-12 h-12 flex justify-center cursor-pointer" onClick={skipCancelHandler}>
@@ -318,14 +321,17 @@ toast.success('Like sent successfully')
 }
 
 
-        { likeVisitorUser?.firstName===visitor?.firstName && <p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
-        {text &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
+        {/* { likeVisitorUser  && <p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
+        {text &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>} */}
 
         { skipVisitorUser?.firstName===visitor?.firstName &&   <p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>}
         {skipText &&<p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>} 
 
-{ ((getMatchUser && getMatchUser?.firstName === likeUserPerson?.firstName || matchUser) || (anotherGetMatchUser && anotherGetMatchUser?.firstName === likeUserPerson?.firstName || matchUser)) && <p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p>}
+        { likeVisitorUser?.firstName===visitor?.firstName && !anotherMatchPerson && <p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
+        {text && !anotherMatchPerson &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>} 
 
+{ ((getMatchUser && getMatchUser?.firstName === likeUserPerson?.firstName || matchUser ) || (anotherGetMatchUser && anotherGetMatchUser?.firstName === likeUserPerson?.firstName || matchUser)) && <p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p>}
+{anotherMatchPerson?.firstName===visitor?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p>}
           </div>
         </div> 
       </div>
