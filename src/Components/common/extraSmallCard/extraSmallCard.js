@@ -41,14 +41,12 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart}
   const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
   console.log('visitor like data user',visitorLikeUser)
 
-  const matchedLikeVisitorData = visitorLikeUser?.find((likeUser) => likeUser.id === visitor.id);
-  console.log('mathes like visitor data',matchedLikeVisitorData)
+
   
   const visitorSkipUser=useSelector((state)=>state. getVisitorSkipUser.getVisitorPlusSkipUserArray.skipUserData)
   console.log('visitor skip data user',visitorSkipUser)
 
- const matchedSkipVisitorData = visitorSkipUser?.find((skipUser) => skipUser.id === visitor.id);
-  console.log('mathes skip visitor data',matchedSkipVisitorData)
+
  
   const getMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.matchUser)
   console.log('get match user array',getMatchUser)
@@ -56,17 +54,10 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart}
   const anothergetMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
   console.log('another get match user',anothergetMatchUser)
 
-  const getMatchPersonUser=getMatchUser?.find((matchUser)=>matchUser?.id===likePerson?.id)
-  console.log('get match person user',getMatchPersonUser)
-
-  const anothergetMatchPersonUser=anothergetMatchUser?.find((matchUser)=>matchUser?.id===likePerson?.id)
-  console.log(' another get match person user',anothergetMatchPersonUser)
 
   const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
   console.log('another match data response',anotherMatchDataResponse)
 
-  const anotherMatchPersonResponse=anotherMatchDataResponse?.find((matchResponse)=>matchResponse?.id===visitor?.id)
-  console.log('another match person response',anotherMatchPersonResponse)
   return (
     <>
    <div class="w-52 h-96  rounded-2xl overflow-hidden shadow-lg ">
@@ -82,14 +73,37 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart}
     <p className='text-lg text-white font-semibold'  onClick={visitorHandler}>{age}</p>
   </div>
   <div>
-  {/* {matchedLikeVisitorData &&matchedLikeVisitorData?.firstName &&!getMatchPersonUser?.firstName && !anothergetMatchPersonUser?.firstName&& <p className='text-lg text-white font-semibold pl-6'>Liked!</p>} */}
-       {/* {matchedSkipVisitorData?.firstName && !getMatchPersonUser?.firstName && !anothergetMatchPersonUser?.firstName &&<p className='text-lg text-black font-semibold pl-6'>Skipped</p>} */}
-      {getMatchPersonUser && getMatchPersonUser?.firstName  && !visitorPart && !anothergetMatchPersonUser &&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>} 
-      {anothergetMatchPersonUser && anothergetMatchPersonUser?.firstName  && !visitorPart && !(matchedSkipVisitorData?.firstName===visitor?.firstName) && <p className='text-lg text-black font-semibold pl-6'>Paired</p>}   
-      {matchedSkipVisitorData?.firstName===visitor?.firstName &&<p className='text-lg text-black font-semibold pl-6'>Skipped</p>}
-      {matchedLikeVisitorData?.firstName &&! anotherMatchPersonResponse&&<p className='text-lg text-black font-semibold pl-6'>Liked!</p>}
-      {anotherMatchPersonResponse?.firstName===visitor.firstName&&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>}
-   
+
+      {/* {anotherMatchPersonResponse?.firstName===visitor.firstName&&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>} */}
+      {
+  getMatchUser?.map(matchUser=>{
+   return (
+    <>
+    {matchUser?.firstName===likePerson?.firstName &&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>}
+    </>
+   )
+  })
+ }
+
+{
+anothergetMatchUser?.map(anotherMatchUser=>{
+   return (
+    <>
+    {anotherMatchUser?.firstName===likePerson?.firstName &&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>}
+    </>
+   )
+  })
+ }
+
+{
+    visitorSkipUser?.map(visitorSkip=>{
+      return(
+        <>
+        {visitorSkip?.firstName===visitorPart?.firstName &&<p className='text-lg text-black font-semibold pl-6'>Skipped</p>}
+        </>
+      )
+    })
+   }
   </div>
 
 </div>

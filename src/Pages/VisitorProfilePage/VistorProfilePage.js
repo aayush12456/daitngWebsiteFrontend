@@ -7,12 +7,12 @@ import { getVisitorPlusLikeUserAsync } from '../../Redux/Slice/getVisitorPlusLik
 import { passDataObjSliceAcions } from '../../Redux/Slice/passDataSliceObj/passDataSliceObj'
 import { getMatchUserAsync } from '../../Redux/Slice/getMatchUserSlice/getMatchUserSlice'
 import { getVisitorPlusSkipUserAsync } from '../../Redux/Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice'
+import CommonData from '../../Components/common/CommonData/CommonData'
 export const VisitorProfilePage = () => {
   const id=sessionStorage.getItem('userId')
   const dispatch=useDispatch()
   useEffect(()=>{
     dispatch(getVisitorPlusLikeUserAsync(id))
-    dispatch(passDataObjSliceAcions.passDataObj(matchedVisitorData))
     dispatch(getMatchUserAsync(id))
     dispatch(getVisitorPlusSkipUserAsync(id))
   },[dispatch])
@@ -21,36 +21,35 @@ export const VisitorProfilePage = () => {
   console.log('likeUserVisitor',visitorData)
   const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
   console.log('visitor like data user',visitorLikeUser)
-  const matchedVisitorData = visitorLikeUser?.find((likeUser) => likeUser.id === visitorData. visitor.id);
-  console.log('mathed vsitor data',matchedVisitorData)
+ 
 
   const visitorSkipUser=useSelector((state)=>state. getVisitorSkipUser.getVisitorPlusSkipUserArray.skipUserData)
   console.log('visitor skip data user',visitorSkipUser)
 
-  const matchedSkipVisitorData = visitorSkipUser?.find((skipUser) => skipUser.id === visitorData.visitor.id);
-  console.log('mathes skip visitor data',matchedSkipVisitorData)
+
 
   const getMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.matchUser)
   console.log('get match user array',getMatchUser)
 
-  const getMatchPersonUser=getMatchUser?.find((matchUser)=>matchUser?.id===visitorData?.likeUser?.id)
-  console.log('get match person user',getMatchPersonUser)
+  
+  const matchedUser = getMatchUser?.some(user => user?.id === visitorData?.likeUser?.id);
+  console.log('matched user is',matchedUser)
 
   const anothergetMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
   console.log('another get match user',anothergetMatchUser)
 
-  const anothergetMatchPersonUser=anothergetMatchUser?.find((matchUser)=>matchUser?.id===visitorData?.likeUser?.id)
-  console.log(' another get match person user',anothergetMatchPersonUser)
+
 
   const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
   console.log('another match data response',anotherMatchDataResponse)
 
-  const anotherMatchPersonResponse=anotherMatchDataResponse?.find((matchResponse)=>matchResponse?.id===visitor?.id)
-  console.log('another match person response',anotherMatchPersonResponse)
 
   return (
     <>
-    <VisitorProfile visitor={visitorData.visitor} likeVisitorUser={matchedVisitorData} skipVisitorUser={matchedSkipVisitorData} likeUserPerson={visitorData.likeUser} getMatchUser={getMatchPersonUser} anotherGetMatchUser={ anothergetMatchPersonUser} visitorUser={visitorData.visitorPart} anotherMatchPerson={ anotherMatchPersonResponse}/>
+     
+    <VisitorProfile visitor={visitorData.visitor} likeUserPerson={visitorData.likeUser} visitorUser={visitorData.visitorPart} matchedUser={matchedUser}/>
+
+    
     </>
   )
 }
