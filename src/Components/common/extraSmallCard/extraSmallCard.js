@@ -60,7 +60,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart}
 
   return (
     <>
-   <div class="w-52 h-96  rounded-2xl overflow-hidden shadow-lg ">
+   <div class="w-52 h-80  rounded-2xl overflow-hidden shadow-lg ">
   <div>
   <img src={BACKEND_BASE_URL +visitor?.images[0]} className='cursor-pointer h-80' onClick={visitorHandler}/>   
   </div>
@@ -104,6 +104,28 @@ anothergetMatchUser?.map(anotherMatchUser=>{
       )
     })
    }
+
+{
+visitorLikeUser?.map(visitorLike=>{
+  
+   return (
+    <>
+    
+   { visitorLike?.firstName===visitorPart?.firstName &&<p className='text-lg text-black font-semibold pl-6'>Liked!</p>}
+    </>
+   )
+  })
+ }
+
+{
+anothergetMatchUser?.map(anotherMatchUserData=>{
+   return (
+    <>
+    {anotherMatchUserData?.firstName===visitorPart?.firstName &&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>}
+    </>
+   )
+  })
+ }
   </div>
 
 </div>

@@ -149,6 +149,11 @@ toast.success('Like sent successfully')
       const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
       console.log('visitor like data user',visitorLikeUser)
 
+      // const anothergetMatchUserData=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
+      // console.log('another get match user data',anothergetMatchUserData)
+     
+    
+
       useEffect(() => {
         const matched = getMatchUser?.some(
           (matchUser) => matchUser?.firstName === likeUserPerson?.firstName
@@ -166,14 +171,21 @@ toast.success('Like sent successfully')
      if(visitorgetSkippedUser){
       setSkipPart(false)
      }
-      },[visitor,visitorSkipUser])
+      },[visitorUser,visitorSkipUser])
 
       useEffect(()=>{
         const visitorgetLikeUser=visitorLikeUser?.some((visitorLikeData)=>visitorLikeData?.firstName===visitorUser?.firstName)
         if(visitorgetLikeUser){
          setLikePart(false)
         }
-         },[visitor,visitorLikeUser])
+         },[visitorUser,visitorLikeUser])
+
+         useEffect(()=>{
+          const visitorgetanotherMatchLikeUser= anothergetMatchUser?.some((anothergetMatchData)=>anothergetMatchData?.firstName===visitorUser?.firstName)
+          if(visitorgetanotherMatchLikeUser){
+           setLikePart(false)
+          }
+           },[visitorUser,anothergetMatchUser])
   return (
    <>
     <div className="flex justify-center mt-10">
@@ -383,16 +395,35 @@ toast.success('Like sent successfully')
 
 {
 visitorLikeUser?.map(visitorLike=>{
+  
    return (
     <>
-    {visitorLike?.firstName===visitorUser?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p> }
+    {/* {user===true ?visitorLike?.firstName===visitorUser?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p>: visitorLike?.firstName===visitorUser?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p> } */}
+   { visitorLike?.firstName===visitorUser?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
     </>
    )
   })
  }
  {text &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
-
-
+{/* 
+ {
+  getMatchUserDataArray?.map(matchUserData=>{
+   return (
+    <>
+    {matchUserData?.firstName===visitorUser?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p> }
+    </>
+   )
+  })
+ } */}
+  {
+ anothergetMatchUser?.map(anothergetMatchUserData=>{
+   return (
+    <>
+    {anothergetMatchUserData?.firstName===visitorUser?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p> }
+    </>
+   )
+  })
+ }
           </div>
         </div> 
       </div>
