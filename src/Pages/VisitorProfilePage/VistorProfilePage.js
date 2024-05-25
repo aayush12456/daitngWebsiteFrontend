@@ -4,10 +4,11 @@ import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getVisitorPlusLikeUserAsync } from '../../Redux/Slice/getVisitorPlusLikeUserSlice/getVisitorPlusLikeUserSlice'
-import { passDataObjSliceAcions } from '../../Redux/Slice/passDataSliceObj/passDataSliceObj'
+// import { passDataObjSliceAcions } from '../../Redux/Slice/passDataSliceObj/passDataSliceObj'
 import { getMatchUserAsync } from '../../Redux/Slice/getMatchUserSlice/getMatchUserSlice'
 import { getVisitorPlusSkipUserAsync } from '../../Redux/Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice'
-import CommonData from '../../Components/common/CommonData/CommonData'
+// import MatchPerson from '../../Components/common/matchPerson/matchPerson'
+
 export const VisitorProfilePage = () => {
   const id=sessionStorage.getItem('userId')
   const dispatch=useDispatch()
@@ -49,7 +50,7 @@ export const VisitorProfilePage = () => {
      
     <VisitorProfile visitor={visitorData.visitor} likeUserPerson={visitorData.likeUser} visitorUser={visitorData.visitorPart} matchedUser={matchedUser}/>
 
-    
+    {/* <MatchPerson/> */}
     </>
   )
 }

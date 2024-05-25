@@ -49,6 +49,8 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     const [user,setUser]=useState(true)
     const [skipPart,setSkipPart]=useState(true)
     const [likePart,setLikePart]=useState(true)
+    const [likeUserPart,setLikeUserPart]=useState(true)
+    const [matchPartUser,setMatchPartUser]=useState(true)
     const id =sessionStorage.getItem('userId')
     const dob = visitor?.DOB || OnlineContent?.DOB;
     const dobBreak = dob?.split("/");
@@ -103,12 +105,13 @@ const visitorLikeUser={
 if(visitorUser){
   dispatch(addVisitorPlusLikeUserAsync(visitorLikeUser))
   setText("You Like this profile")
+  setLikeUserPart(false)
   
 }
 dispatch(addLikeUserAsync(likeObjId));
 dispatch(addLikeNotifyAsync(notifyobjId));
 dispatch(addLikeCounterUserAsync(notifyobjId));
-// dispatch(passDataObjSliceAcions.passDataObj(visitor))
+dispatch(passDataObjSliceAcions.passDataObj(visitor))
 if(likeUserPerson){
   const likeUserObj={
     id:id,
@@ -116,6 +119,7 @@ if(likeUserPerson){
   }
   dispatch(addMatchUserAsync(likeUserObj))
   setMatchUser('You ve both paired')
+  setMatchPartUser(false)
 }
 },700)
 
@@ -126,8 +130,10 @@ toast.success('Like sent successfully')
 
       const skipCancelHandler=()=>{
       setSkipPart(false)
+      setSkipUser(true)
       setTimeout(()=>{
         setSkipPart(false)
+        setSkipUser(false)
         setSkipText("You Skipped this profile")
         const visitorLikeUser={
           id:id,
@@ -191,12 +197,12 @@ toast.success('Like sent successfully')
     <div className="flex justify-center mt-10">
       <div className="relative">
       {likeUser && (
-            <div className="absolute inset-0 bg-blue-500 opacity-80 rounded-2xl flex items-center justify-center z-50">
+            <div className="absolute inset-0 bg-blue-500 opacity-80 rounded-2xl flex items-center justify-center z-10">
               <img src={likeTik} alt="Right" className="w-12 h-14" />
             </div>
           )}
  {skipUser && (
-            <div className="absolute inset-0 bg-gray-600 opacity-80 rounded-2xl flex items-center justify-center z-50">
+            <div className="absolute inset-0 bg-gray-600 opacity-80 rounded-2xl flex items-center justify-center z-10">
               {/* You can add any content here */}
               <img src={crossTik} alt="Right" className="w-14 h-14 filter invert" />
             </div>
@@ -340,7 +346,7 @@ toast.success('Like sent successfully')
           </div>
           <hr class="  w-full border-t-1 border-gray-400"/>
          
-{user && skipPart && likePart &&<div className="flex justify-between">
+{user && skipPart && likePart && likeUserPart && matchPartUser &&<div className="flex justify-between">
     <div className="flex gap-4 mt-6 ml-20">
       <div className="rounded-full bg-[#71706f] w-12 h-12 flex justify-center cursor-pointer" onClick={skipCancelHandler}>
         <img src={crossTik} className="w-8 filter invert" />
@@ -443,7 +449,7 @@ visitorLikeUser?.map(visitorLike=>{
   
               </Box>
           </Modal>
-         
+      
    </>
   )
 }

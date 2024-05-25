@@ -24,6 +24,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BACKEND_BASE_URL } from './Services/api';
 import { getLikeNotifyUserAsync } from './Redux/Slice/getLikeNotifySlice/getLikeNotifySlice';
+import MatchPerson from './Components/common/matchPerson/matchPerson';
+
 function CustomToast({image,name}) {
   return (
     <>
@@ -62,6 +64,7 @@ function AnotherCustomLikeToast({image,name}) {
   );
 }
 function App() {
+
   const dispatch = useDispatch();
   const id = sessionStorage.getItem('userId');
   useEffect(() => {
@@ -184,6 +187,28 @@ function App() {
       ]
     }
   ]);
+  // const MatchPerson = () => (
+  //   <motion.div
+  //     initial={{ opacity: 0, scale: 0 }}
+  //     animate={{ opacity: 1, scale: 1 }}
+  //     transition={{
+  //       duration: 1.5,
+  //       ease: "easeInOut",
+  //       repeat: Infinity,
+  //       repeatType: "reverse",
+  //     }}
+  //     style={{
+  //       position: "fixed",
+  //       top: "10%",
+  //       left: "10%",
+  //       width: 100,
+  //       height: 100,
+  //       borderRadius: "50%",
+  //       backgroundColor: "rgba(0, 150, 255, 0.5)",
+  //       zIndex: 10,
+  //     }}
+  //   />
+  // );
 
   return (
     <div>
@@ -195,7 +220,8 @@ function App() {
       autoClose="2000"
       icon={false}
       />
-    
+    <MatchPerson/>
+  
     </div>
   );
 }

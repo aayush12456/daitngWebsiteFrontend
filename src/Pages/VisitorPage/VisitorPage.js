@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux'
 import { getVisitorData } from '../../Redux/Slice/getVisitorSlice/getVisitorSlice'
 import { ExtraSmallCard } from '../../Components/common/extraSmallCard/extraSmallCard'
 import 'react-toastify/dist/ReactToastify.css';
-import { getVisitorPlusLikeUserAsync } from '../../Redux/Slice/getVisitorPlusLikeUserSlice/getVisitorPlusLikeUserSlice'
-import { getVisitorPlusSkipUserAsync } from '../../Redux/Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice'
+// import { getVisitorPlusLikeUserAsync } from '../../Redux/Slice/getVisitorPlusLikeUserSlice/getVisitorPlusLikeUserSlice'
+// import { getVisitorPlusSkipUserAsync } from '../../Redux/Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice'
 export const VisitorPage = () => {
     const id=sessionStorage.getItem('userId')
     const dispatch=useDispatch()
