@@ -17,7 +17,7 @@ export const NewAndOnlinePage = () => {
     const id=sessionStorage.getItem('userId')
     console.log('id is',id)
     useEffect(()=>{
-    dispatch(getUserData())
+    dispatch(getUserData(id))
     },[])
     useEffect(() => {
         if (getAllUserSelector && getAllUserSelector.length > 0) {

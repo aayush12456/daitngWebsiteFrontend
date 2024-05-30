@@ -3,14 +3,14 @@ import axios from '../../axios/axios'
 
 export const getUserData = createAsyncThunk(
   'user/getUser',
-  async (_, { rejectWithValue }) => {
+  async (userId, { rejectWithValue }) => {
 
     try {
-      const response = await axios.get('/allUsers'); 
-      console.log('response',response.data)
+      const response = await axios.get(`/allUsers/${userId}`); 
+      console.log('response of all user',response.data)
       return response.data
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.response.data)
     }
   }
 );
