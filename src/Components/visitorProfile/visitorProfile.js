@@ -217,7 +217,7 @@ toast.success('Like sent successfully')
                 onClick={handleLeftArrowClick}
               />
               <div className=" flex justify-center ">
-                <img src={getImageUrl()} className="w-48 cursor-pointer"  onClick={handleOpen} />
+                <img src={getImageUrl()} className="w-48 h-48 cursor-pointer object-cover"  onClick={handleOpen} />
               </div>
               <img
                 src={rightArrow}

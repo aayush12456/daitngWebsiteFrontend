@@ -18,6 +18,7 @@ import { addLikeCounterUserAsync } from "../../Redux/Slice/addLikeCounterUserSli
 import right from '../../assets/personalProfileIcons/right.svg'
 import rightTik from '../../assets/personalProfileIcons/rightTikss.svg'
 import crossTik from '../../assets/personalProfileIcons/crossTik.svg'
+import MatchesModal from "../matchesModal/matchesModal"
 const Matches = ({ matches }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -32,7 +33,8 @@ const Matches = ({ matches }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [liked, setLiked] = useState(false);
   const [crosses, setCrosses] = useState(false);
-
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalObj,setModalObj]=useState({})
   const handleLeftArrowClick = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? getProfile().images?.length - 1 : prevIndex - 1
@@ -85,15 +87,19 @@ const Matches = ({ matches }) => {
 
   const mainContentMatchesHandler = (visitorId) => {
     sessionStorage.setItem('visitorId', visitorId)
+    setModalObj(matches)
+    setModalOpen(true)
     console.log('matches data is',matches)
-    navigate('/mainContent/matchesMainContent', { state: matches })
+    // navigate('/mainContent/matchesMainContent', { state: matches })
     const visitorObjId = {
       id: id,
       userId: visitorId
     }
-    dispatch(addVisitorAsync(visitorObjId))
+    // dispatch(addVisitorAsync(visitorObjId))
   }
-
+  const handleClose = () => {
+       setModalOpen(false)
+  };
   return (
     <>
       <div className="flex justify-center mt-14 ml-14">
@@ -119,17 +125,23 @@ const Matches = ({ matches }) => {
                   className="w-5 cursor-pointer relative left-6 filter invert"
                   onClick={handleLeftArrowClick}
                 />
-                <img src={getImageUrl()} className="cursor-pointer" onClick={() => mainContentMatchesHandler(matches._id)} />
+                <img src={getImageUrl()} className="object-cover w-96 h-96  cursor-pointer" onClick={() => mainContentMatchesHandler(matches._id)} />
                 <img
                   src={rightArrow}
                   className="w-5 cursor-pointer relative right-7 filter invert"
                   onClick={handleRightArrowClick}
                 />
               </div>
+              <div className="flext justify-center -mt-20">
               <div className="flex gap-7 -mt-14 ml-4 text-white justify-center">
                 <p className="text-3xl font-bold">{matches.firstName}</p>
                 <p className="text-xl font-bold pt-1">{age}</p>
               </div>
+              <div className="flex justify-center text-white ">
+              <p className="text-1xl font-bold tracking-wider pt-0">{matches.city}</p>
+              </div>
+              </div>
+             
               <div className="mt-7 flex gap-8 justify-center mb-3">
                 <img src={cross} className="w-14 cursor-pointer" onClick={() => addCrossHandler(matches._id)} />
                 <img src={like} className="w-14 h-13 cursor-pointer" onClick={() => addLikeHandler(matches._id)} />
@@ -138,6 +150,7 @@ const Matches = ({ matches }) => {
           </div>
         </div>
       </div>
+      <MatchesModal modalData={modalObj} match={modalOpen} handleCloses={handleClose}/>
     </>
   )
 }
