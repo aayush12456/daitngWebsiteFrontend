@@ -13,7 +13,7 @@ export const LikePage = () => {
     dispatch(getLikeUserAsync(id));
   }, [dispatch]);
   const likeSelector = useSelector((state) => state.getlikeUser.getLikeUserArray.likeUser);
-  const visitorSelector = useSelector((state) => state.getVisitorData.getVisitorArray.getVisitors);
+  const visitorSelector=useSelector((state)=>state.getVisitorData.getVisitorArray?.visitors)
   const matchSelector = useSelector((state) => state.passDataObj.passDataObj);
   console.log('like is', likeSelector);
   console.log('match selector', matchSelector);

@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import { BACKEND_BASE_URL } from '../../../Services/api'
 import { useNavigate } from 'react-router-dom';
 import {  useDispatch } from 'react-redux';
@@ -7,8 +7,12 @@ import { useSelector } from 'react-redux';
 import { getVisitorPlusLikeUserAsync } from '../../../Redux/Slice/getVisitorPlusLikeUserSlice/getVisitorPlusLikeUserSlice';
 import { getMatchUserAsync } from '../../../Redux/Slice/getMatchUserSlice/getMatchUserSlice';
 import { getVisitorPlusSkipUserAsync } from '../../../Redux/Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice';
-export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart}) => {
+export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,visitedTime}) => {
   console.log('visitor card',visitor)
+  console.log('like data',likePerson)
+  const [user,setUser]=useState('true')
+  const [likeUser,setLikeUser]=useState('false')
+  const [skipUser,setSkipUser]=useState('false')
   const id=sessionStorage.getItem('userId')
   const navigate=useNavigate()
   const dispatch=useDispatch()
@@ -58,6 +62,35 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart}
   const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
   console.log('another match data response',anotherMatchDataResponse)
 
+  useEffect(() => {
+  
+    const anothermatched = anothergetMatchUser?.some(
+      (anothermatchUser) => anothermatchUser?.firstName === visitor?.firstName
+    );
+    if ( anothermatched) {
+      setUser(false);
+    }
+  }, [visitor,anothergetMatchUser]);
+
+  useEffect(() => {
+  
+    const Liked = visitorLikeUser?.some(
+      (like) => like?.firstName === visitor?.firstName
+    );
+    if (Liked) {
+      setLikeUser(true);
+    }
+  }, [visitor,visitorLikeUser]);
+  useEffect(() => {
+  
+    const Skipped = visitorSkipUser?.some(
+      (skip) => skip?.firstName === visitor?.firstName
+    );
+    const likeSkipUser=visitorSkipUser?.some((likeSkipData)=>likeSkipData?.firstName===likePerson?.firstName)
+    if (Skipped || likeSkipUser) {
+      setSkipUser(true);
+    }
+  }, [visitor,visitorSkipUser,likePerson]);
   return (
     <>
    <div class="w-52 h-80  rounded-2xl overflow-hidden shadow-lg ">
@@ -68,10 +101,15 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart}
     <p className='text-lg text-white absolute top-80 pt-28 font-semibold'  onClick={visitorHandler}>{visitor.firstName} ,</p>
     <p className='text-lg text-white absolute top-80 pt-28 pl-20 font-semibold'  onClick={visitorHandler}>{age}</p>
   </div> */}
-   <div className='flex gap-2 pl-6 -mt-16 cursor-pointer '>
+   <div  className={`flex gap-2 pl-4 ${
+    (likeUser && likeUser === 'false') && (skipUser && skipUser === 'false')
+      ? '-mt-16'
+      : '-mt-20'
+  }  cursor-pointer`}>
     <p className='text-lg text-white font-semibold'  onClick={visitorHandler}>{visitor?.firstName} ,</p>
     <p className='text-lg text-white font-semibold'  onClick={visitorHandler}>{age}</p>
   </div>
+   {visitedTime && user==='true' ?<p className='text-md text-white font-semibold pl-4'>Visited {visitedTime.visitedAt}</p>:null}
   <div>
 
       {/* {anotherMatchPersonResponse?.firstName===visitor.firstName&&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>} */}
@@ -79,7 +117,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart}
   getMatchUser?.map(matchUser=>{
    return (
     <>
-    {matchUser?.firstName===likePerson?.firstName &&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>}
+    {matchUser?.firstName===likePerson?.firstName &&  <p className='text-md text-white font-semibold pl-6'>Paired</p>}
     </>
    )
   })
@@ -89,7 +127,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart}
 anothergetMatchUser?.map(anotherMatchUser=>{
    return (
     <>
-    {anotherMatchUser?.firstName===likePerson?.firstName &&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>}
+    {anotherMatchUser?.firstName===likePerson?.firstName &&  <p className='text-md text-white font-semibold pl-6'>Paired</p>}
     </>
    )
   })
@@ -99,7 +137,16 @@ anothergetMatchUser?.map(anotherMatchUser=>{
     visitorSkipUser?.map(visitorSkip=>{
       return(
         <>
-        {visitorSkip?.firstName===visitorPart?.firstName &&<p className='text-lg text-black font-semibold pl-6'>Skipped</p>}
+        {visitorSkip?.firstName===visitorPart?.firstName  &&<p className='text-md text-white font-semibold pl-6'>Skipped</p>}
+        </>
+      )
+    })
+   }
+{
+    visitorSkipUser?.map(visitorSkipData=>{
+      return(
+        <>
+        {visitorSkipData?.firstName===likePerson?.firstName  &&<p className='text-md text-white font-semibold pl-6'>Skipped</p>}
         </>
       )
     })
@@ -111,7 +158,7 @@ visitorLikeUser?.map(visitorLike=>{
    return (
     <>
     
-   { visitorLike?.firstName===visitorPart?.firstName &&<p className='text-lg text-black font-semibold pl-6'>Liked!</p>}
+   { visitorLike?.firstName===visitorPart?.firstName &&<p className='text-md text-white font-semibold pl-4 '>Liked!</p>}
     </>
    )
   })
@@ -121,15 +168,15 @@ visitorLikeUser?.map(visitorLike=>{
 anothergetMatchUser?.map(anotherMatchUserData=>{
    return (
     <>
-    {anotherMatchUserData?.firstName===visitorPart?.firstName &&  <p className='text-lg text-black font-semibold pl-6'>Paired</p>}
+    {anotherMatchUserData?.firstName===visitorPart?.firstName &&  <p className='text-md text-white font-semibold pl-6'>Paired</p>}
     </>
    )
   })
  }
+
   </div>
 
 </div>
-
     </>
   )
 }

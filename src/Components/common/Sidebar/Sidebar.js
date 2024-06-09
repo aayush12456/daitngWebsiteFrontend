@@ -17,7 +17,7 @@ export const Sidebar = () => {
   const personalData = JSON.parse(sessionStorage.getItem('loginObject'));
   const personalSignupData = JSON.parse(sessionStorage.getItem('signupObject'));
 
-  const visitorData = useSelector((state) => state.getVisitorData.getVisitorArray.data);
+  // const visitorData = useSelector((state) => state.getVisitorData.getVisitorArray.data);
   const getCountUser = useSelector((state) => state.getCountUser.getCounterUser.getCount);
   const modalData = useSelector((state) => state.modal.visibleToggle);
   const deleteResponse = useSelector((state) => state.deleteCountUser.deleteCounterUser.message);

@@ -18,7 +18,7 @@ export const getVisitorData = createAsyncThunk(
 const getVisitorSlice = createSlice({
   name: 'getMatches',
   initialState: {
-    getVisitorArray:[],
+    getVisitorArrayObj:{},
     isLoading: false,
     error: null,
   },

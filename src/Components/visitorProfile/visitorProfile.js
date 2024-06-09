@@ -137,9 +137,18 @@ toast.success('Like sent successfully')
         setSkipText("You Skipped this profile")
         const visitorLikeUser={
           id:id,
-          visitorPlusSkipUserId:visitor._id
+          visitorPlusSkipUserId:visitor?._id
         }
-        dispatch(addVisitorPlusSkipUserAsync(visitorLikeUser))
+        const likeUser={
+          id:id,
+          visitorPlusSkipUserId:likeUserPerson?._id
+        }
+   if(visitor){
+    dispatch(addVisitorPlusSkipUserAsync(visitorLikeUser))
+   }
+        if(likeUserPerson){
+          dispatch(addVisitorPlusSkipUserAsync(likeUser))
+        }
         },700)
       }
   
@@ -174,10 +183,11 @@ toast.success('Like sent successfully')
     
       useEffect(()=>{
      const visitorgetSkippedUser=visitorSkipUser?.some((visitorSkipData)=>visitorSkipData?.firstName===visitorUser?.firstName)
-     if(visitorgetSkippedUser){
+     const likeSkipUser=visitorSkipUser?.some((likeSkipData)=>likeSkipData?.firstName===likeUserPerson?.firstName)
+     if(visitorgetSkippedUser || likeSkipUser ){
       setSkipPart(false)
      }
-      },[visitorUser,visitorSkipUser])
+      },[visitorUser,visitorSkipUser,likeUserPerson])
 
       useEffect(()=>{
         const visitorgetLikeUser=visitorLikeUser?.some((visitorLikeData)=>visitorLikeData?.firstName===visitorUser?.firstName)
@@ -392,13 +402,21 @@ toast.success('Like sent successfully')
     visitorSkipUser?.map(visitorSkip=>{
       return(
         <>
-        {visitorSkip?.firstName===visitorUser?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>}
+        {visitorSkip?.firstName===visitorUser?.firstName  &&<p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>}
         </>
       )
     })
    }
 {skipText && <p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>}
-
+{
+    visitorSkipUser?.map(visitorSkipData=>{
+      return(
+        <>
+        {visitorSkipData?.firstName===likeUserPerson?.firstName  &&<p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>}
+        </>
+      )
+    })
+   }
 {
 visitorLikeUser?.map(visitorLike=>{
   

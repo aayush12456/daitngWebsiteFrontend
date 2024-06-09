@@ -36,6 +36,9 @@ import addVisitorPlusSkipUserSlice from "../Slice/addVisitorPlusSkipUserSlice/ad
 import getVisitorPlusSkipUserSlice from "../Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice"
 import addMatchUserSlice from "../Slice/addMatchUserSlice/addMatchUserSlice"
 import getMatchUserSlice from "../Slice/getMatchUserSlice/getMatchUserSlice"
+import onlineLikeUserSlice from "../Slice/onlineLikeUserSlice/onlineLikeUserSlice"
+import getOnlineLikeUserSlice from "../Slice/getOnlineLikeUserSlice/getOnlineLikeUserSlice"
+import onlineMatchSlice, { onlineAddLikeMatchSliceAction } from "../Slice/onllineMatchSlice/onlineMatchSlice"
 const store=configureStore({
     reducer:{
 
@@ -76,7 +79,10 @@ const store=configureStore({
     addVisitorSkipUser:addVisitorPlusSkipUserSlice,
     getVisitorSkipUser:getVisitorPlusSkipUserSlice,
     addMatchUser:addMatchUserSlice,
-    getMatchUser:getMatchUserSlice
+    getMatchUser:getMatchUserSlice,
+    addOnlineUser:onlineLikeUserSlice,
+    getOnlineLikeUser:getOnlineLikeUserSlice,
+    addOnlineMatchUser: onlineMatchSlice
     }
 })
 export default store
