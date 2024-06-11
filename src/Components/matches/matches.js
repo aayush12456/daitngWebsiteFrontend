@@ -19,6 +19,7 @@ import right from '../../assets/personalProfileIcons/right.svg'
 import rightTik from '../../assets/personalProfileIcons/rightTikss.svg'
 import crossTik from '../../assets/personalProfileIcons/crossTik.svg'
 import MatchesModal from "../matchesModal/matchesModal"
+import { addSmsSenderAsync } from "../../Redux/Slice/addSmsSlice/addSmsSlice"
 const Matches = ({ matches }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -73,9 +74,11 @@ const Matches = ({ matches }) => {
       id: id,
       userId: likeId
     };
-
+   const smsId={
+   id:id,
+   recieverUserId:likeId
+   }
     setLiked(true);
-
     setTimeout(() => {
       dispatch(addLikeMatchAsync(likeObjId));
       dispatch(addLikeUserAsync(likeObjId));
@@ -83,6 +86,7 @@ const Matches = ({ matches }) => {
       dispatch(addLikeCounterUserAsync(notifyobjId));
       window.location.reload();
     }, 700); // Adjust the delay time as needed
+    dispatch(addSmsSenderAsync(smsId))
   };
 
   const mainContentMatchesHandler = (visitorId) => {

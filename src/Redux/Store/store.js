@@ -38,7 +38,10 @@ import addMatchUserSlice from "../Slice/addMatchUserSlice/addMatchUserSlice"
 import getMatchUserSlice from "../Slice/getMatchUserSlice/getMatchUserSlice"
 import onlineLikeUserSlice from "../Slice/onlineLikeUserSlice/onlineLikeUserSlice"
 import getOnlineLikeUserSlice from "../Slice/getOnlineLikeUserSlice/getOnlineLikeUserSlice"
-import onlineMatchSlice, { onlineAddLikeMatchSliceAction } from "../Slice/onllineMatchSlice/onlineMatchSlice"
+import onlineMatchSlice from "../Slice/onllineMatchSlice/onlineMatchSlice"
+import addSmsSlice from "../Slice/addSmsSlice/addSmsSlice"
+
+
 const store=configureStore({
     reducer:{
 
@@ -82,7 +85,8 @@ const store=configureStore({
     getMatchUser:getMatchUserSlice,
     addOnlineUser:onlineLikeUserSlice,
     getOnlineLikeUser:getOnlineLikeUserSlice,
-    addOnlineMatchUser: onlineMatchSlice
+    addOnlineMatchUser: onlineMatchSlice,
+    addSmsUser:addSmsSlice
     }
 })
 export default store
