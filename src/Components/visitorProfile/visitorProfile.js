@@ -19,6 +19,7 @@ import { addVisitorPlusSkipUserAsync } from "../../Redux/Slice/addVisitorPlusSki
 import { passDataObjSliceAcions } from "../../Redux/Slice/passDataSliceObj/passDataSliceObj";
 import { addMatchUserAsync } from "../../Redux/Slice/addMatchUserSlice/addMatchUserSlice";
 import { useSelector } from "react-redux";
+import { addMatchEmailAsync } from "../../Redux/Slice/addMatchEmailSlice/addMatchEmailSlice";
 
 const style = {
   position: "absolute",
@@ -117,7 +118,12 @@ if(likeUserPerson){
     id:id,
     matchLikeId:likeUserPerson._id
   }
+  const likeEmailObj={
+    id:id,
+    emailMatchLikeId:likeUserPerson._id
+  }
   dispatch(addMatchUserAsync(likeUserObj))
+  dispatch(addMatchEmailAsync(likeEmailObj))
   setMatchUser('You ve both paired')
   setMatchPartUser(false)
 }

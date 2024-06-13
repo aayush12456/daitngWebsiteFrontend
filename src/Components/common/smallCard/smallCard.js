@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { BACKEND_BASE_URL } from "../../../Services/api";
+import emailjs from '@emailjs/browser'
 import axios from "axios";
 // import Typography from "@mui/material/Typography";
 // import Modal from "@mui/material/Modal";
@@ -17,6 +18,7 @@ import { addCounterUserAsync } from "../../../Redux/Slice/addCounterUserSlice/ad
 import io from "socket.io-client";
 import { modalActions } from "../../../Redux/Slice/modalSlice";
 import { addNotifyAsync } from "../../../Redux/Slice/addNotifySlice/addNotifySlice";
+import { addVisitorEmailSenderAsync } from "../../../Redux/Slice/addVisitorEmailSlice/addVisitorEmailSlice";
 const style = {
   position: "absolute",
   top: "50%",
@@ -37,6 +39,9 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail }) => {
   const id=sessionStorage.getItem('userId')
   const dispatch=useDispatch()
   const navigate=useNavigate()
+
+  const loginData=JSON.parse(sessionStorage.getItem('loginObject'))
+  console.log('login details data',loginData)
   // const handleClose = () => setOpen(false);
   // const handleOpen = (item) => {
   //   console.log('item is',item)
@@ -82,15 +87,37 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail }) => {
 }, [id, socket]);
   const mainContentHandler=async(item)=>{
   console.log('main content',item)
+  // const serviceId="service_amqtgj4"
+  // const templateId="template_jlr3jns"
+  // const publicKey="3bvV0zSUyDmusoTIX"
   navigate('/mainContent/newMainContent',{state:item})
   const visitorObjId={
     id:id,
     userId:item._id
   }
+  // const emailObj={
+  //   service_id:serviceId,
+  //   template_id:templateId,
+  //   user_id:publicKey,
+  //   emailData:{
+  //     from_name:loginData.firstName,
+  //     from_email:loginData.email,
+  //     to_name:item.firstName,
+  //     message:`${loginData.firstName} visited you / browse through your profile.Go check it out`
+  //   }
+  // }
+  // emailjs.send(serviceId,templateId,emailObj.emailData,publicKey).then((response)=>{
+  //   console.log('email sent successfully',response)
+  // })
+  const visitorEmailObj={
+    id:id,
+    recieverEmailId:item._id
+  }
   dispatch(addVisitorAsync(visitorObjId))
   // dispatch(modalActions.visibleToggle())
   dispatch(addCounterUserAsync(visitorObjId))
   dispatch(addNotifyAsync(visitorObjId))
+  dispatch(addVisitorEmailSenderAsync(visitorEmailObj))
   // window.location.reload()
 //  try{
 //   const response = await axios.post(`http://localhost:4000/user/addCountUser/${visitorObjId.id}`, visitorObjId);

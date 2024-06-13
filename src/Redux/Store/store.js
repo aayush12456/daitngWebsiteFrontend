@@ -40,6 +40,8 @@ import onlineLikeUserSlice from "../Slice/onlineLikeUserSlice/onlineLikeUserSlic
 import getOnlineLikeUserSlice from "../Slice/getOnlineLikeUserSlice/getOnlineLikeUserSlice"
 import onlineMatchSlice from "../Slice/onllineMatchSlice/onlineMatchSlice"
 import addSmsSlice from "../Slice/addSmsSlice/addSmsSlice"
+import addVisitorEmailSlice from "../Slice/addVisitorEmailSlice/addVisitorEmailSlice"
+import addMatchEmailSlice from "../Slice/addMatchEmailSlice/addMatchEmailSlice"
 
 
 const store=configureStore({
@@ -86,7 +88,9 @@ const store=configureStore({
     addOnlineUser:onlineLikeUserSlice,
     getOnlineLikeUser:getOnlineLikeUserSlice,
     addOnlineMatchUser: onlineMatchSlice,
-    addSmsUser:addSmsSlice
+    addSmsUser:addSmsSlice,
+    addvisitorEmailUser:addVisitorEmailSlice,
+    addMatchEmailUser:addMatchEmailSlice
     }
 })
 export default store
