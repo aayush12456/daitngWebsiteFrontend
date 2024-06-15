@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { modalActions } from "../../../Redux/Slice/modalSlice";
 import { BACKEND_BASE_URL } from "../../../Services/api";
 import { Outlet } from "react-router-dom";
+import { headerModalActions } from "../../../Redux/Slice/headerModalSlice";
 export const Header = ({ add, photo, aboutMe, personalData, loginName }) => {
   const profileImage = sessionStorage.getItem("loginImage");
   console.log("profile", profileImage);
@@ -12,7 +13,7 @@ export const Header = ({ add, photo, aboutMe, personalData, loginName }) => {
     dispatch(modalActions.visibleToggle());
   };
   const profileClicHandler = () => {
-    dispatch(modalActions.visibleToggle());
+    dispatch(headerModalActions.headerVisibleToggle())
   };
   return (
     <>

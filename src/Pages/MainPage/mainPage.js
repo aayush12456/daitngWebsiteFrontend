@@ -9,15 +9,18 @@ export const MainPage = () => {
   const profileImage = sessionStorage.getItem("profileImage");
   const loginToken = sessionStorage.getItem("loginToken");
   const registerToken = sessionStorage.getItem("registerToken");
-  const loginemail = sessionStorage.getItem("email");
-  const loginName = loginemail?.split("@")[0];
+  // const loginemail = sessionStorage.getItem("email");
+  // const loginNameWithNumbers = loginemail?.split("@")[0];
+  // const loginName=loginNameWithNumbers.replace(/\d+/g, '')
   console.log("login token", loginToken);
   console.log("register token", registerToken);
+  const loginObj=JSON.parse(sessionStorage.getItem('loginObject'))
+  const loginName=loginObj.firstName
   const personalProfile = {
     name: Name,
     profile: profileImage,
   };
-  const profileSelector = useSelector((state) => state.modal.visibleToggle);
+  const profileSelector=useSelector((state)=>state.headerModal. headerModalToggle)
   const navigate = useNavigate();
   //  useEffect(() => { // token is not available then navigate to('/')
   //   if (!loginToken) {

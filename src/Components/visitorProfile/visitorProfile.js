@@ -20,6 +20,7 @@ import { passDataObjSliceAcions } from "../../Redux/Slice/passDataSliceObj/passD
 import { addMatchUserAsync } from "../../Redux/Slice/addMatchUserSlice/addMatchUserSlice";
 import { useSelector } from "react-redux";
 import { addMatchEmailAsync } from "../../Redux/Slice/addMatchEmailSlice/addMatchEmailSlice";
+import { addSmsSenderAsync } from "../../Redux/Slice/addSmsSlice/addSmsSlice";
 
 const style = {
   position: "absolute",
@@ -102,9 +103,14 @@ const visitorLikeUser={
       id: id,
       userId: visitor._id
     };
+    const likeSmsObj={
+      id:id,
+      recieverUserId:visitor._id
+    }
     console.log('like obj data',likeObjId)
 if(visitorUser){
   dispatch(addVisitorPlusLikeUserAsync(visitorLikeUser))
+  dispatch(addSmsSenderAsync(likeSmsObj))
   setText("You Like this profile")
   setLikeUserPart(false)
   

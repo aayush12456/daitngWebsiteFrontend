@@ -1,8 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { modalData } from '../../utils/modalData'
+import { useDispatch } from 'react-redux'
 export const ProfileModal = () => {
     const navigate=useNavigate()
+    const dispatch=useDispatch()
     // const logoutHandler=()=>{
     // navigate('/')
     // localStorage.clear()
@@ -11,6 +13,8 @@ export const ProfileModal = () => {
     if( modalItem &&modalItem.title==='logout'){
       navigate('/')
       sessionStorage.clear()
+      window.location.reload()
+      
     }
     else if(modalItem && modalItem.title==='Profile'){
     navigate('/mainContent/personalProfile')

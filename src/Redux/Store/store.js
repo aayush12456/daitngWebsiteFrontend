@@ -42,6 +42,7 @@ import onlineMatchSlice from "../Slice/onllineMatchSlice/onlineMatchSlice"
 import addSmsSlice from "../Slice/addSmsSlice/addSmsSlice"
 import addVisitorEmailSlice from "../Slice/addVisitorEmailSlice/addVisitorEmailSlice"
 import addMatchEmailSlice from "../Slice/addMatchEmailSlice/addMatchEmailSlice"
+import headerModalSlice from "../Slice/headerModalSlice"
 
 
 const store=configureStore({
@@ -90,7 +91,8 @@ const store=configureStore({
     addOnlineMatchUser: onlineMatchSlice,
     addSmsUser:addSmsSlice,
     addvisitorEmailUser:addVisitorEmailSlice,
-    addMatchEmailUser:addMatchEmailSlice
+    addMatchEmailUser:addMatchEmailSlice,
+    headerModal:headerModalSlice
     }
 })
 export default store
