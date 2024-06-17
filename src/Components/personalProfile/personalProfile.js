@@ -95,7 +95,8 @@ export const PersonalProfile = ({
   };
 
   const getImageUrl = () => {
-    return BACKEND_BASE_URL + (getProfile().images?.[currentImageIndex] || "");
+    // return BACKEND_BASE_URL + (getProfile().images?.[currentImageIndex] || "");
+    return  (getProfile().images?.[currentImageIndex] || "");
   };
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -298,7 +299,7 @@ export const PersonalProfile = ({
               <div className=" flex justify-center ">
                 <img
                   src={getImageUrl()}
-                  className="w-48 cursor-pointer"
+                  className="w-48 h-48 cursor-pointer object-cover"
                   onClick={handleOpen}
                 />
               </div>

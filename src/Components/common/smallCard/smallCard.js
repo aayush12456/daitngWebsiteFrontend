@@ -171,7 +171,8 @@ dispatch(addToChatAsync(addToChat))
                       <div className="px-6 py-4 w-full ">
                         <div className="flex gap-4">
                           <img
-                            src={BACKEND_BASE_URL + item.images[0]}
+                            // src={BACKEND_BASE_URL + item.images[0]}
+                            src={item.images[0]}
                             className="w-16   rounded-full"
                           />
                           <div>
@@ -244,7 +245,8 @@ dispatch(addToChatAsync(addToChat))
                       <div class="px-6 py-4 w-full ">
                         <div className="flex gap-4">
                           <img
-                            src={BACKEND_BASE_URL + item.images[0]}
+                            // src={BACKEND_BASE_URL + item.images[0]}
+                            src={ item.images[0]}
                             className="w-16   rounded-full"
                           />
                           <div>

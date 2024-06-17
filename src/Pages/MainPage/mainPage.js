@@ -15,7 +15,7 @@ export const MainPage = () => {
   console.log("login token", loginToken);
   console.log("register token", registerToken);
   const loginObj=JSON.parse(sessionStorage.getItem('loginObject'))
-  const loginName=loginObj.firstName
+  const loginName=loginObj?.firstName
   const personalProfile = {
     name: Name,
     profile: profileImage,

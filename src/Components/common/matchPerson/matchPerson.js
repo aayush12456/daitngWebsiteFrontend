@@ -54,7 +54,8 @@ setShow(false)
             }}
           >
             <img
-              src={BACKEND_BASE_URL + matchUser?.images[0]}
+              // src={BACKEND_BASE_URL + matchUser?.images[0]}
+              src={matchUser?.images[0]}
               alt="Animated Circle"
               style={{
                 width: "100%",
@@ -88,7 +89,8 @@ setShow(false)
             }}
           >
             <img
-              src={BACKEND_BASE_URL + matchLikesData?.images[0]}
+              // src={BACKEND_BASE_URL + matchLikesData?.images[0]}
+              src={ matchLikesData?.images[0]}
               alt="Animated Circle"
               style={{
                 width: "100%",

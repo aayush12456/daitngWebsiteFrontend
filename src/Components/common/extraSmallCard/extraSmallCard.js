@@ -95,7 +95,8 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
     <>
    <div class="w-52 h-80  rounded-2xl overflow-hidden shadow-lg ">
   <div>
-  <img src={BACKEND_BASE_URL +visitor?.images[0]} className='cursor-pointer h-80' onClick={visitorHandler}/>   
+  {/* <img src={BACKEND_BASE_URL +visitor?.images[0]} className='cursor-pointer h-80' onClick={visitorHandler}/>   */}
+  <img src={visitor?.images[0]} className='cursor-pointer h-80' onClick={visitorHandler}/>  
   </div>
   {/* <div className='flex gap-2 pl-6 -mt-7 cursor-pointer'>
     <p className='text-lg text-white absolute top-80 pt-28 font-semibold'  onClick={visitorHandler}>{visitor.firstName} ,</p>

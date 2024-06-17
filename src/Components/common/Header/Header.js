@@ -25,8 +25,8 @@ export const Header = ({ add, photo, aboutMe, personalData, loginName }) => {
               <div className="flex">
                 <img
                   src={
-                    BACKEND_BASE_URL + (personalData.profile || profileImage) ||
-                    BACKEND_BASE_URL + profileImage
+                     (personalData.profile || profileImage) ||
+                   profileImage
                   }
                   className="w-20 rounded-full cursor-pointer h-16"
                   onClick={profileClicHandler}

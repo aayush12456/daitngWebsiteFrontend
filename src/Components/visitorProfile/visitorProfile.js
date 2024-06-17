@@ -80,7 +80,8 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     OnlineContent
       {};
       const getImageUrl = () => {
-        return BACKEND_BASE_URL + (getProfile().images?.[currentImageIndex] || "");
+        // return BACKEND_BASE_URL + (getProfile().images?.[currentImageIndex] || "");
+        return (getProfile().images?.[currentImageIndex] || "");
       };
       const handleClose = () => setOpen(false);
       const handleOpen = () => {

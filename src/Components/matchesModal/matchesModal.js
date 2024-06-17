@@ -37,7 +37,8 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
   };
 
   const getImageUrl = () => {
-    return BACKEND_BASE_URL + (getProfile().images?.[currentImageIndex] || "");
+    // return BACKEND_BASE_URL + (getProfile().images?.[currentImageIndex] || "");
+    return (getProfile().images?.[currentImageIndex] || "");
   };
 
   const ITEM_HEIGHT = 48;
