@@ -9,7 +9,7 @@ import eye from '../assets/sidebarIcons/interest.png'
 
 export const sidebarData=[
     {id:'1',image:matches,title:'Matches' ,link:'/mainContent/matches',image1:matches},
-    {id:'2',image:girl,title:'New and Online',image1:boy},
+    {id:'2',image:girl,title:'New and Online',link:'/mainContent',image1:boy},
     {id:'3',image:search,title:'Search',image1:search,link:'/mainContent/search'},
     // {id:'4',image:rocket,title:'Interest Booster',image1:rocket},
     {id:'4',image:heart,title:'Likes You',image1:heart,link:'/mainContent/likeMe'},

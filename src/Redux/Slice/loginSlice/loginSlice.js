@@ -16,6 +16,7 @@ export const userLoginAsync = createAsyncThunk(
       sessionStorage.setItem('userId',userId)
     console.log('response login',response.data)
     const personalData={
+
       firstName:response.data.completeData.firstName,
       DOB:response.data.completeData.DOB,
       aboutUser:response.data.completeData.aboutUser,
@@ -33,6 +34,7 @@ export const userLoginAsync = createAsyncThunk(
       relationship:response.data.completeData.relationship,
       zodiac:response.data.completeData.zodiac,
       language:response.data.completeData.language,
+      videoUrl:response.data.completeData.videoUrl
     }
     sessionStorage.setItem('loginObject',JSON.stringify(personalData))
     const loginImage=response.data.completeData.images[0]

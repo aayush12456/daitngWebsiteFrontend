@@ -18,6 +18,8 @@ import { Drinking } from "../../utils/peronalInfo";
 import { Smoking } from "../../utils/peronalInfo";
 import { Interest } from "../../utils/peronalInfo";
 import rigthtik from '../../assets/personalProfileIcons/rightTik.png'
+import playVideo from '../../assets/personalProfileIcons/playVideo.png'
+import WatchVideo from "../common/watchVideo/watchVideo";
 const style = {
   position: "absolute",
   top: "50%",
@@ -81,6 +83,17 @@ export const PersonalProfile = ({
   const [cityName, setCityName] = useState('')
   const [values, setValues] = useState({})
   const [selectedInterests, setSelectedInterests] = useState([]);
+  const [watchModalOpen, setWatchModalOpen] = useState(false)
+  const [personalProfileObj,setPersonalProfileObj]=useState({})
+const watchVideoButton=()=>{
+  setWatchModalOpen(true)
+  setPersonalProfileObj(personalProfile)
+
+}
+
+  const handleWatchClose = () => {
+    setWatchModalOpen(false)
+};
 
   const handleLeftArrowClick = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -296,13 +309,22 @@ export const PersonalProfile = ({
                 className="w-5 filter invert cursor-pointer "
                 onClick={handleLeftArrowClick}
               />
-              <div className=" flex justify-center ">
+              <div className={`flex justify-center ${personalProfile?.videoUrl?'ml-24':''} `}>
+                <div>
+
                 <img
                   src={getImageUrl()}
                   className="w-48 h-48 cursor-pointer object-cover"
                   onClick={handleOpen}
                 />
+                </div>
+               {personalProfile?.videoUrl? <div className="mt-4 relative left-32  ">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
+
+</button>
+                </div>:null}
               </div>
+              
               <img
                 src={rightArrow}
                 className="w-5 filter invert cursor-pointer"
@@ -993,6 +1015,7 @@ export const PersonalProfile = ({
         </div>
       </Box>
     </Modal>
+    <WatchVideo modalOpen={watchModalOpen} handleClose={ handleWatchClose} personalVideoData={personalProfileObj}/>
     </>
   );
 };

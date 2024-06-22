@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 const AdditionalInfoWithPhoto = ({ photoData }) => {
     console.log('photo',photoData)
     const [selectedImages, setSelectedImages] = useState([]);
+    const [photoError, setPhotoError] = useState('');
     const [file,setFile]=useState([])
    const dispatch=useDispatch()
    const navigate=useNavigate()
@@ -33,10 +34,15 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
         }
         files.push(file)
         setFile(files)
+        setPhotoError('')
     };
     console.log('file is',file)
     const imageSubmitHandler=(e)=>{
     e.preventDefault()
+    if (file.length === 0) {
+        setPhotoError('Please upload pictures');
+        return;
+    }
     const formData=new FormData()
     // const personalnformation={
     //     firstName:photoData.firstName,
@@ -72,7 +78,9 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
     formData.append('looking',photoData.looking)
     formData.append('relationship',photoData.relationship)
     formData.append('zodiac',photoData.zodiac)
+    formData.append('videoUrl',photoData.videoUrl)
     formData.append('language',photoData.language)
+   
     console.log('selected',selectedImages)
     // formData.append('images',file)
     file.map(file=>{
@@ -112,10 +120,17 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
                                             alt={`Image ${index + 1}`}
                                         />
                                     </label>
+                                    
                                 )}
                             </div>
                         ))}
+                           
                     </div>
+                    {photoError && (
+                        <div className="flex justify-center mt-2 text-red-500">
+                            {photoError}
+                        </div>
+                    )}
                     <div className="flex justify-center">
                         <div className="flex justify-center gap-3 bg-amber-500 h-10 rounded w-96 mt-4">
                             <img src={bulb} className="w-7 h-5 mt-2" />

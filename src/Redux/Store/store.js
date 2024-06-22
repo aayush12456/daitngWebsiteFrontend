@@ -43,6 +43,8 @@ import addSmsSlice from "../Slice/addSmsSlice/addSmsSlice"
 import addVisitorEmailSlice from "../Slice/addVisitorEmailSlice/addVisitorEmailSlice"
 import addMatchEmailSlice from "../Slice/addMatchEmailSlice/addMatchEmailSlice"
 import headerModalSlice from "../Slice/headerModalSlice"
+import addSidebarTitleColorSlice from "../Slice/addSidebarTitleColorSlice/addSidebarTitleColorSlice"
+import getSidebarTitleColorSlice from "../Slice/getSidebarTitleColorSlice/getSidebarTitleColorSlice"
 
 
 const store=configureStore({
@@ -92,7 +94,9 @@ const store=configureStore({
     addSmsUser:addSmsSlice,
     addvisitorEmailUser:addVisitorEmailSlice,
     addMatchEmailUser:addMatchEmailSlice,
-    headerModal:headerModalSlice
+    headerModal:headerModalSlice,
+    addSidebarTitleColor:addSidebarTitleColorSlice,
+    getSidebarTitleColor:getSidebarTitleColorSlice
     }
 })
 export default store

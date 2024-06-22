@@ -13,6 +13,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
   const [user,setUser]=useState('true')
   const [likeUser,setLikeUser]=useState('false')
   const [skipUser,setSkipUser]=useState('false')
+  const [watchVideo,setWatchVideo]=useState(true)
   const id=sessionStorage.getItem('userId')
   const navigate=useNavigate()
   const dispatch=useDispatch()
@@ -71,6 +72,17 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
       setUser(false);
     }
   }, [visitor,anothergetMatchUser]);
+
+  useEffect(() => {
+       
+    const anothermatchedWatch = anothergetMatchUser?.some(
+      (anothermatchUser) => anothermatchUser?.firstName === visitor?.firstName
+    );
+    if (anothermatchedWatch) {
+    setWatchVideo(false)
+    }
+
+  }, [anothergetMatchUser,visitor]);
 
   useEffect(() => {
   
@@ -159,7 +171,7 @@ visitorLikeUser?.map(visitorLike=>{
    return (
     <>
     
-   { visitorLike?.firstName===visitorPart?.firstName &&<p className='text-md text-white font-semibold pl-4 '>Liked!</p>}
+   { visitorLike?.firstName===visitorPart?.firstName && watchVideo &&<p className='text-md text-white font-semibold pl-4 '>Liked!</p>}
     </>
    )
   })

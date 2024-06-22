@@ -25,6 +25,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BACKEND_BASE_URL } from './Services/api';
 import { getLikeNotifyUserAsync } from './Redux/Slice/getLikeNotifySlice/getLikeNotifySlice';
 import MatchPerson from './Components/common/matchPerson/matchPerson';
+import VideoPage from './Pages/VideoPage/VideoPage';
+import VideoUploadPage from './Pages/videoUploadPage/videoUploadPage';
 
 function CustomToast({image,name}) {
   return (
@@ -83,6 +85,7 @@ function App() {
 
   const lastAnotherMatchObjUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.lastAnotherMatchUser)
   console.log('last another match obj user',lastAnotherMatchObjUser)
+
 
   useEffect(() => {
     if (getNotifyUserResponse) {
@@ -149,6 +152,7 @@ function App() {
       );
     }
    },[lastAnotherMatchObjUser])
+
   
   const router = createBrowserRouter([
     {
@@ -170,8 +174,18 @@ function App() {
     },
     {
       path: '/step3',
+      element: <VideoPage />
+    },
+    {
+      path: '/step4',
+      element:<VideoUploadPage/>
+    },
+    {
+      path: '/step5',
       element: <PhotoInfoPage />
     },
+   
+    
     {
       path: '/mainContent',
       element: <MainPage />,

@@ -21,6 +21,8 @@ import { addMatchUserAsync } from "../../Redux/Slice/addMatchUserSlice/addMatchU
 import { useSelector } from "react-redux";
 import { addMatchEmailAsync } from "../../Redux/Slice/addMatchEmailSlice/addMatchEmailSlice";
 import { addSmsSenderAsync } from "../../Redux/Slice/addSmsSlice/addSmsSlice";
+import playVideo from '../../assets/personalProfileIcons/playVideo.png'
+import WatchVideo from "../common/watchVideo/watchVideo";
 
 const style = {
   position: "absolute",
@@ -36,7 +38,7 @@ const style = {
 };
 export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser,matchedUser}) => {
     console.log('visitor data',visitor)
-  
+  // console.log('online content data',OnlineContent)
     console.log('likeUserPerson',likeUserPerson)
     const dispatch=useDispatch()
     const navigate=useNavigate()
@@ -49,10 +51,15 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     const [matchUser,setMatchUser]=useState('')
     // const [visitorLike,setVisitorLike]=useState('')
     const [user,setUser]=useState(true)
+    const [watchVideo,setWatchVideo]=useState(true)
     const [skipPart,setSkipPart]=useState(true)
     const [likePart,setLikePart]=useState(true)
     const [likeUserPart,setLikeUserPart]=useState(true)
     const [matchPartUser,setMatchPartUser]=useState(true)
+    const [watchModalOpen, setWatchModalOpen] = useState(false)
+    const [personalProfileObj,setPersonalProfileObj]=useState({})
+    const [onlinePersonalProfileObj,setOnlinePersonalProfileObj]=useState({})
+    const [visitorPersonalProfileObj,setVisitorPersonalProfileObj]=useState({})
     const id =sessionStorage.getItem('userId')
     const dob = visitor?.DOB || OnlineContent?.DOB;
     const dobBreak = dob?.split("/");
@@ -63,6 +70,17 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     const number=OnlineContent?.phone||visitor?.phone
     const mainNumber = number.substring(0, 4) + 'X'.repeat(number.length - 4);
     console.log(mainNumber); 
+
+    const watchVideoButton=()=>{
+      setWatchModalOpen(true)
+      setPersonalProfileObj(likeUserPerson)
+      setOnlinePersonalProfileObj(OnlineContent)
+      setVisitorPersonalProfileObj(visitor)
+    }
+    
+      const handleWatchClose = () => {
+        setWatchModalOpen(false)
+    };
     const handleLeftArrowClick = () => {
         setCurrentImageIndex((prevIndex) =>
           prevIndex === 0 ? getProfile().images?.length - 1 : prevIndex - 1
@@ -192,7 +210,18 @@ toast.success('Like sent successfully')
         if (matched || anothermatched) {
           setUser(false);
         }
+    
       }, [likeUserPerson, getMatchUser]);
+      useEffect(() => {
+       
+        const anothermatchedWatch = anothergetMatchUser?.some(
+          (anothermatchUser) => anothermatchUser?.firstName === visitorUser?.firstName
+        );
+        if (anothermatchedWatch) {
+        setWatchVideo(false)
+        }
+    
+      }, [anothergetMatchUser,visitorUser]);
     
       useEffect(()=>{
      const visitorgetSkippedUser=visitorSkipUser?.some((visitorSkipData)=>visitorSkipData?.firstName===visitorUser?.firstName)
@@ -239,9 +268,26 @@ toast.success('Like sent successfully')
                 className="w-5 filter invert cursor-pointer "
                 onClick={handleLeftArrowClick}
               />
-              <div className=" flex justify-center ">
+              <div className={`flex justify-center ${likeUserPerson?.videoUrl && user && matchPartUser || OnlineContent?.videoUrl || visitorUser?.videoUrl && watchVideo  ?'ml-24':''} `}>
                 <img src={getImageUrl()} className="w-48 h-48 cursor-pointer object-cover"  onClick={handleOpen} />
+                {likeUserPerson?.videoUrl && user && matchPartUser ? <div className="mt-4 relative left-32  ">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
+
+</button>
+                </div>:null}
+                {OnlineContent?.videoUrl? <div className="mt-4 relative left-32  ">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
+
+</button>
+                </div>:null}
+                {visitorUser?.videoUrl && watchVideo ? <div className="mt-4 relative left-32  ">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
+
+</button>
+                </div>:null}
+               
               </div>
+              
               <img
                 src={rightArrow}
                 className="w-5 filter invert cursor-pointer"
@@ -259,6 +305,7 @@ toast.success('Like sent successfully')
               <p className="text-lg pt-4 pl-3 text-[#333] font-semibold">
               {visitor &&visitor.city?visitor?.city:OnlineContent?.city}
               </p>
+              
             </div>
             {OnlineContent?<div className="pl-5 pt-1">
               <p className="text-md ">Working as {OnlineContent?.profession}</p>
@@ -436,12 +483,12 @@ visitorLikeUser?.map(visitorLike=>{
    return (
     <>
     {/* {user===true ?visitorLike?.firstName===visitorUser?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p>: visitorLike?.firstName===visitorUser?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p> } */}
-   { visitorLike?.firstName===visitorUser?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
+   { visitorLike?.firstName===visitorUser?.firstName && watchVideo &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
     </>
    )
   })
  }
- {text &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
+ {text &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>} 
 {/* 
  {
   getMatchUserDataArray?.map(matchUserData=>{
@@ -480,7 +527,7 @@ visitorLikeUser?.map(visitorLike=>{
   
               </Box>
           </Modal>
-      
+          <WatchVideo modalOpen={watchModalOpen} handleClose={ handleWatchClose} personalVideoData={personalProfileObj} onlinePersonalVideoData={onlinePersonalProfileObj} visitorPersonalVideoData={visitorPersonalProfileObj}/>
    </>
   )
 }
