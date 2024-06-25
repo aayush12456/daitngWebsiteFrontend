@@ -45,6 +45,8 @@ import addMatchEmailSlice from "../Slice/addMatchEmailSlice/addMatchEmailSlice"
 import headerModalSlice from "../Slice/headerModalSlice"
 import addSidebarTitleColorSlice from "../Slice/addSidebarTitleColorSlice/addSidebarTitleColorSlice"
 import getSidebarTitleColorSlice from "../Slice/getSidebarTitleColorSlice/getSidebarTitleColorSlice"
+import addPersonalProfileModalHeadingSlice from "../Slice/addPersonalProfileModalHeadingSlice/addPersonalProfileModalHeadingSlice"
+import getPersonalProfileModalHeadingSlice from "../Slice/getPersonalProfileModalHeadingSlice/getPersonalProfileModalHeadingSlice"
 
 
 const store=configureStore({
@@ -96,7 +98,9 @@ const store=configureStore({
     addMatchEmailUser:addMatchEmailSlice,
     headerModal:headerModalSlice,
     addSidebarTitleColor:addSidebarTitleColorSlice,
-    getSidebarTitleColor:getSidebarTitleColorSlice
+    getSidebarTitleColor:getSidebarTitleColorSlice,
+    addPersonalProfileModalHeading:addPersonalProfileModalHeadingSlice,
+    getPersonalProfileModalHeading:getPersonalProfileModalHeadingSlice
     }
 })
 export default store

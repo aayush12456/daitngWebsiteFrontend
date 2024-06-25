@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -53,15 +53,23 @@ export const AnotherContent = () => {
         date:date
        }
        console.log('date is',obj)
+       sessionStorage.setItem('formData', JSON.stringify(obj));
         navigate('/step1',{state:obj})
         action.resetForm();
       }
     });
     console.log(errors)
    
-
+    useEffect(() => {
+      const forms = JSON.parse(sessionStorage.getItem('formData'));
+      if (forms) {
+        setValues(forms);
+        
+      }
+    }, [setValues]);
     const handleDateChange = (date) => {
       setFieldValue('date', date); // Update Formik values with selected date
+  
   };
 
   return (

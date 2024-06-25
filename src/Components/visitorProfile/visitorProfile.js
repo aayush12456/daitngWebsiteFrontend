@@ -70,7 +70,8 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     const number=OnlineContent?.phone||visitor?.phone
     const mainNumber = number.substring(0, 4) + 'X'.repeat(number.length - 4);
     console.log(mainNumber); 
-
+   const loginObj=JSON.parse(sessionStorage.getItem('loginObject'))
+   const updateLoginObj=JSON.parse(sessionStorage.getItem('updateUser'))
     const watchVideoButton=()=>{
       setWatchModalOpen(true)
       setPersonalProfileObj(likeUserPerson)
@@ -244,6 +245,12 @@ toast.success('Like sent successfully')
            setLikePart(false)
           }
            },[visitorUser,anothergetMatchUser])
+
+         const visitorCommonInterest=visitorUser?.interest?.filter((visitorItem)=>loginObj?.interest?.includes(visitorItem))
+         const updateVisitorCommonInterest=visitorUser?.interst?.filter((visitorItem)=>updateLoginObj?.interest?.includes(visitorItem))
+         const likeCommonInterest=likeUserPerson?.interest?.filter((likeItem)=>loginObj?.interest?.includes(likeItem))
+         const updateLikeCommonInterest=likeUserPerson?.interest?.filter((likeItem)=>updateLoginObj?.interest?.includes(likeItem))
+
   return (
    <>
     <div className="flex justify-center mt-10">
@@ -262,12 +269,12 @@ toast.success('Like sent successfully')
 <div className={`w-[50rem] rounded overflow-hidden shadow-lg ${likeUser ? 'bg-white' : ''|| skipUser ? 'bg-white' : '' }`} >
           <div className="px-6 py-4  ">
           <div style={{ maxHeight: '500px', overflowY: 'auto' }}>
-          <div className="flex justify-between bg-black">
-              <img
+          <div className={`flex ${likeUserPerson?.images?.length==1 || visitorUser?.images?.length==1?'justify-center':"justify-between"} bg-black`}>
+            { likeUserPerson?.images?.length==1 || visitorUser?.images?.length==1?null: <img
                 src={leftArrow}
                 className="w-5 filter invert cursor-pointer "
                 onClick={handleLeftArrowClick}
-              />
+              />}
               <div className={`flex justify-center ${likeUserPerson?.videoUrl && user && matchPartUser || OnlineContent?.videoUrl || visitorUser?.videoUrl && watchVideo  ?'ml-24':''} `}>
                 <img src={getImageUrl()} className="w-48 h-48 cursor-pointer object-cover"  onClick={handleOpen} />
                 {likeUserPerson?.videoUrl && user && matchPartUser ? <div className="mt-4 relative left-32  ">
@@ -288,11 +295,11 @@ toast.success('Like sent successfully')
                
               </div>
               
-              <img
+             {likeUserPerson?.images?.length==1 || visitorUser?.images?.length==1?null: <img
                 src={rightArrow}
                 className="w-5 filter invert cursor-pointer"
                 onClick={handleRightArrowClick}
-              />
+              />}
             </div>
             <div className="flex gap-0">
               <p className="pl-5 pt-4 text-lg font-semibold">
@@ -332,39 +339,46 @@ toast.success('Like sent successfully')
                {visitor?.looking}
               </p>
             </div>:null}
-            <div className="pl-5 pt-6">
+            {/* // interest */}
+            <div>
+            <div className="pl-5 pt-6 flex gap-1">
               <p className="text-lg text-[#757575]">Interests</p>
-              <div className="flex gap-4  ">
+             {OnlineContent?null: <p className="text-sm text-[#5394e4] pt-1 ">( {visitorCommonInterest?.length || updateVisitorCommonInterest?.length || likeCommonInterest?.length || updateLikeCommonInterest?.length} common )</p>}
+            </div>
+            <div className="flex gap-4 ml-4  ">
                
                 
-                {visitor
-                  ? visitor.interest.map((visitorInterest) => {
-                      return (
-                        <>
+               {visitor
+                 ? visitor.interest.map((visitorInterest) => {
+                   const commonInterest=loginObj?.interest?.includes(visitorInterest) || updateLoginObj?.interest?.includes(visitorInterest)
+                   console.log('common interst',commonInterest)
+                     return (
+                       <>
+                         <div className={` rounded mt-3 ${commonInterest?'bg-black':'bg-slate-200'}`}>
+                           <p className={`text-lg pt-3 text-center pl-4 pr-4 pb-3 ${commonInterest?'text-white':'text-[#757575]'}`}>
+                             {visitorInterest}
+                           </p>
+                         </div>
+                       </>
+                     );
+                   })
+                 : null}
+                 {
+                   OnlineContent?OnlineContent.interest.map(onlineItem=>{
+                       return (
+                         <>
                           <div className="bg-slate-200 rounded mt-3">
-                            <p className="text-lg pt-3 text-center pl-4 pr-4 pb-3 text-[#757575] ">
-                              {visitorInterest}
-                            </p>
-                          </div>
-                        </>
-                      );
-                    })
-                  : null}
-                  {
-                    OnlineContent?OnlineContent.interest.map(onlineItem=>{
-                        return (
-                          <>
-                           <div className="bg-slate-200 rounded mt-3">
-                            <p className="text-lg pt-3 text-center pl-4 pr-4 pb-3 text-[#757575] ">
-                              {onlineItem}
-                            </p>
-                          </div>
-                          </>
-                        )
-                    }):null
-                  }
-              </div>
+                           <p className="text-lg pt-3 text-center pl-4 pr-4 pb-3 text-[#757575] ">
+                             {onlineItem}
+                           </p>
+                         </div>
+                         </>
+                       )
+                   }):null
+                 }
+               </div>
             </div>
+           
            {visitor ? <div className="pl-5 pt-6">
               <p className="text-lg text-[#757575] ">About me</p>
               <p className="text-lg pt-1 text-black font-semibold">
@@ -542,3 +556,38 @@ visitorLikeUser?.map(visitorLike=>{
 
 
 // {!(text || likeVisitorUser?.firstName === visitor?.firstName || skipVisitorUser?.firstName === visitor?.firstName || skipText || getMatchUser?.firstName===likeUserPerson?.firstName || anotherGetMatchUser?.firstName===likeUserPerson?.firstName||matchUser)
+
+
+
+{/* <div className="flex gap-4  ">
+               
+                
+{visitor
+  ? visitor.interest.map((visitorInterest) => {
+    const commonInterest=loginObj?.interest?.includes(visitorInterest) || updateLoginObj?.interest?.includes(visitorInterest)
+    console.log('common interst',commonInterest)
+      return (
+        <>
+          <div className={` rounded mt-3 ${commonInterest?'bg-black':'bg-slate-200'}`}>
+            <p className={`text-lg pt-3 text-center pl-4 pr-4 pb-3 ${commonInterest?'text-white':'text-[#757575]'}`}>
+              {visitorInterest}
+            </p>
+          </div>
+        </>
+      );
+    })
+  : null}
+  {
+    OnlineContent?OnlineContent.interest.map(onlineItem=>{
+        return (
+          <>
+           <div className="bg-slate-200 rounded mt-3">
+            <p className="text-lg pt-3 text-center pl-4 pr-4 pb-3 text-[#757575] ">
+              {onlineItem}
+            </p>
+          </div>
+          </>
+        )
+    }):null
+  }
+</div> */}

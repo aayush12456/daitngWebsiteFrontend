@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import uploadImg from '../../../../assets/formIcons/uploadImg.png';
 import videoPlayer from '../../../../assets/formIcons/videoPlayer.png';
 import { useNavigate } from 'react-router-dom';
-
+import cross from '../../../../assets/personalProfileIcons/crossTik.svg';
 
 const VideoUpload = ({ VideoUploadDatas }) => {
     const navigate = useNavigate();
@@ -15,13 +15,21 @@ const VideoUpload = ({ VideoUploadDatas }) => {
         const file = event.target.files[0];
         setVideoFile(file);
         if (file) {
-            setSelectedFile(URL.createObjectURL(file));
-            setErrorMessage('');  // Clear the error message if a file is selected
+            const fileURL = URL.createObjectURL(file);
+            setSelectedFile(fileURL);
+            sessionStorage.setItem('videoUpload', fileURL);
+            setErrorMessage(''); // Clear the error message if a file is selected
         }
     };
 
     const handleImageClick = () => {
         fileInputRef.current.click();
+    };
+
+    const crossDataHandler = () => {
+        setSelectedFile("");
+        setVideoFile(null);
+        sessionStorage.removeItem('videoUpload');
     };
 
     const VideoSubmitFileUploadHandler = (e) => {
@@ -53,33 +61,47 @@ const VideoUpload = ({ VideoUploadDatas }) => {
             aboutUser: VideoUploadDatas.aboutUser,
             videoUrl: videoFile
         };
-
         navigate('/step5', { state: videoUploadData });
     };
+
+    useEffect(() => {
+        const videoUploadForms = sessionStorage.getItem('videoUpload');
+        if (videoUploadForms) {
+            setSelectedFile(videoUploadForms);
+        }
+    }, []);
 
     return (
         <div className='flex justify-center'>
             <div className='rounded overflow-hidden w-96 shadow-lg mt-6'>
                 <form onSubmit={VideoSubmitFileUploadHandler}>
-                    <div className='flex justify-center mt-3 mb-4'>
+                    <div className='flex justify-center mt-3 mb-4 relative group'>
                         {selectedFile ? (
-                            <video className="w-44 cursor-pointer" onClick={handleImageClick} controls>
-                                <source src={selectedFile} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
+                            <>
+                                <video className="w-44 cursor-pointer" onClick={handleImageClick} controls>
+                                    <source src={selectedFile} type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                                <img 
+                                    src={cross} 
+                                    className='w-4 cursor-pointer absolute -top-3   ml-48 hidden group-hover:block' 
+                                    onClick={crossDataHandler}
+                                    alt="Remove"
+                                />
+                            </>
                         ) : (
-                            <img 
-                                src={uploadImg} 
-                                className="w-44 cursor-pointer" 
-                                onClick={handleImageClick} 
+                            <img
+                                src={uploadImg}
+                                className="w-44 cursor-pointer"
+                                onClick={handleImageClick}
                                 alt="Upload"
                             />
                         )}
-                        <input 
-                            type="file" 
-                            ref={fileInputRef} 
-                            style={{ display: 'none' }} 
-                            accept="video/*" 
+                        <input
+                            type="file"
+                            ref={fileInputRef}
+                            style={{ display: 'none' }}
+                            accept="video/*"
                             onChange={videoChangeHandler}
                         />
                     </div>
@@ -90,7 +112,7 @@ const VideoUpload = ({ VideoUploadDatas }) => {
                     )}
                     <div className="flex justify-center">
                         <div className="flex justify-center gap-3 bg-blue-500 h-10 rounded w-96 mt-4 ml-4 mr-4 mb-3">
-                            <img src={videoPlayer} className="w-7 h-5 mt-2" alt="Video Player"/>
+                            <img src={videoPlayer} className="w-7 h-5 mt-2" alt="Video Player" />
                             <p className="pt-1 text-white">Upload video to show up in matches</p>
                         </div>
                     </div>

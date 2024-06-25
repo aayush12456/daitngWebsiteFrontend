@@ -20,7 +20,11 @@ import rightTik from '../../assets/personalProfileIcons/rightTikss.svg'
 import crossTik from '../../assets/personalProfileIcons/crossTik.svg'
 import MatchesModal from "../matchesModal/matchesModal"
 import { addSmsSenderAsync } from "../../Redux/Slice/addSmsSlice/addSmsSlice"
-const Matches = ({ matches }) => {
+import playVideo from '../../assets/personalProfileIcons/playVideo.png'
+import WatchVideo from "../common/watchVideo/watchVideo"
+const Matches = ({ matches }) => 
+{
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const getProfile = () => matches || {};
@@ -34,6 +38,8 @@ const Matches = ({ matches }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [liked, setLiked] = useState(false);
   const [crosses, setCrosses] = useState(false);
+  const [watchModalOpen, setWatchModalOpen] = useState(false)
+  const [matchesProfileObj,setMatchesProfileObj]=useState({})
   const [modalOpen, setModalOpen] = useState(false)
   const [modalObj,setModalObj]=useState({})
   const handleLeftArrowClick = () => {
@@ -105,6 +111,14 @@ const Matches = ({ matches }) => {
   const handleClose = () => {
        setModalOpen(false)
   };
+  const watchVideoButton=()=>{
+    setWatchModalOpen(true)
+ setMatchesProfileObj(matches)
+  
+  }
+  const handleWatchClose = () => {
+    setWatchModalOpen(false)
+};
   return (
     <>
       <div className="flex justify-center mt-14 ml-14">
@@ -124,19 +138,24 @@ const Matches = ({ matches }) => {
 
           <div className={`w-80 rounded-2xl shadow-lg ${liked ? 'bg-white' : '' || crosses ? 'bg-white' : ''}`}>
             <div className="">
+            <div className="flex absolute justify-center ml-7 mt-3 gap-1 cursor-pointer"  onClick={watchVideoButton}>
+                <img src={playVideo} className="w-6 invert "/>
+                <p className="text-sm font-bold text-white">Watch Video</p>
+              </div>
               <div className="flex justify-center">
-                <img
+               {matches.images.length===1?null: <img
                   src={leftArrow}
                   className="w-5 cursor-pointer relative left-6 filter invert"
                   onClick={handleLeftArrowClick}
-                />
+                />}
                 <img src={getImageUrl()} className="object-cover w-96 h-96  cursor-pointer" onClick={() => mainContentMatchesHandler(matches._id)} />
-                <img
+               {matches.images.length===1?null: <img
                   src={rightArrow}
                   className="w-5 cursor-pointer relative right-7 filter invert"
                   onClick={handleRightArrowClick}
-                />
+                />}
               </div>
+             
               <div className="flext justify-center -mt-20">
               <div className="flex gap-7 -mt-14 ml-4 text-white justify-center">
                 <p className="text-3xl font-bold">{matches.firstName}</p>
@@ -156,6 +175,7 @@ const Matches = ({ matches }) => {
         </div>
       </div>
       <MatchesModal modalData={modalObj} match={modalOpen} handleCloses={handleClose}/>
+      <WatchVideo modalOpen={watchModalOpen} handleClose={ handleWatchClose}  matchesVideoData={matchesProfileObj}/>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { InputLabel, Select, MenuItem, FormControl } from "@mui/material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import ListItemText from "@mui/material/ListItemText";
@@ -39,7 +39,7 @@ export const AdditonalInformation = ({ additionalData }) => {
     drinking: "",
     smoking: "",
     eating: "",
-    interest: "",
+    interest: [],
     looking:"",
     relation:"",
     zodiac:"",
@@ -97,16 +97,25 @@ export const AdditonalInformation = ({ additionalData }) => {
         smoking: values.smoking,
         eating: values.eating,
         interest: values.interest,
-        relationship:values.relation,
+        relation:values.relation,
         looking:values.looking,
         zodiac:values.zodiac,
         language:values.language
       };
       console.log("information is", additionalInformation);
+      sessionStorage.setItem('additionalInformation', JSON.stringify(additionalInformation));
       navigate("/step2", { state: additionalInformation });
     },
   });
-  console.log(errors);
+  useEffect(() => {
+    const additionalforms = JSON.parse(sessionStorage.getItem('additionalInformation'));
+    if (additionalforms) {
+      setValues(additionalforms);
+      setPersonName(additionalforms.interest || []);
+      setLanguage(additionalforms.language.split(", ").map((lang) => lang.trim()));
+    }
+  }, [setValues]);
+console.log('values data',values)
   return (
     <>
       <p className="text-center text-2xl font-bold pt-8 text-[#000]">

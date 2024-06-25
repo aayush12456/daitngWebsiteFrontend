@@ -43,6 +43,7 @@ export const userRegisterAsync = createAsyncThunk(
           relationship:response.data.user.relationship,
           zodiac:response.data.user.zodiac,
           language:response.data.user.language,
+          videoUrl:response.data.user.videoUrl
         }
         sessionStorage.setItem('signupObject',JSON.stringify(personalSignUpData))
       return Responedata;

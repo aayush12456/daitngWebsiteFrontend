@@ -13,6 +13,7 @@ export const sidebarData=[
     {id:'3',image:search,title:'Search',image1:search,link:'/mainContent/search'},
     // {id:'4',image:rocket,title:'Interest Booster',image1:rocket},
     {id:'4',image:heart,title:'Likes You',image1:heart,link:'/mainContent/likeMe'},
-    {id:'5',image:messages,title:'Messages',image1:messages,link:'/mainContent/allMessages'},
+    // {id:'5',image:messages,title:'Messages',image1:messages,link:'/mainContent/allMessages'},
+    {id:'5',image:messages,title:'Messages',image1:messages,link:''},
     {id:'6',image:eye,title:'Visitors',image1:eye,link:'/mainContent/visitors'},    
 ]

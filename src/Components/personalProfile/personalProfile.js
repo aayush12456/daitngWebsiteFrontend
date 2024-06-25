@@ -87,7 +87,7 @@ export const PersonalProfile = ({
   const [personalProfileObj,setPersonalProfileObj]=useState({})
 const watchVideoButton=()=>{
   setWatchModalOpen(true)
-  setPersonalProfileObj(personalProfile)
+  setPersonalProfileObj(personalProfile || personalSignupProfile)
 
 }
 
@@ -298,18 +298,19 @@ const watchVideoButton=()=>{
   const cancelLanguage=()=>{
     setLanguages(false)
   }
+  // personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?null
   return (
     <>
       <div className="flex justify-center mt-10">
         <div class=" w-[50rem] rounded overflow-hidden shadow-lg">
           <div class="px-6 py-4  ">
-            <div className="flex justify-between bg-black">
-              <img
+            <div className={`flex  ${ personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?'justify-center':'justify-between'} bg-black`}>
+             {personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?null: <img
                 src={leftArrow}
                 className="w-5 filter invert cursor-pointer "
                 onClick={handleLeftArrowClick}
-              />
-              <div className={`flex justify-center ${personalProfile?.videoUrl?'ml-24':''} `}>
+              />}
+              <div className={`flex justify-center ${personalProfile?.videoUrl ||  personalSignupProfile?.videoUrl?'ml-24':''} `}>
                 <div>
 
                 <img
@@ -318,18 +319,18 @@ const watchVideoButton=()=>{
                   onClick={handleOpen}
                 />
                 </div>
-               {personalProfile?.videoUrl? <div className="mt-4 relative left-32  ">
+               {personalProfile?.videoUrl || personalSignupProfile?.videoUrl? <div className="mt-4 relative left-32  ">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
 
 </button>
                 </div>:null}
               </div>
               
-              <img
+             { personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?null:<img
                 src={rightArrow}
                 className="w-5 filter invert cursor-pointer"
                 onClick={handleRightArrowClick}
-              />
+              />}
             </div>
             <div className="flex justify-between">
               <div className="flex gap-0">

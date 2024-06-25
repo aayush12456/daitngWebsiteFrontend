@@ -68,23 +68,23 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="flex justify-between bg-black">
-            <img
+          <div className={`flex  ${modalData?.images?.length==1?'justify-center':'justify-between'} bg-black`}>
+            {modalData?.images?.length==1?null:<img
               src={leftArrow}
               className="w-5 filter invert cursor-pointer"
               onClick={handleLeftArrowClick}
-            />
-            <div className="flex justify-center">
+            />}
+            <div  className={`flex justify-center `}>
               <img
                 src={getImageUrl()}
                 className="w-48 h-48 object-cover cursor-pointer"
               />
             </div>
-            <img
+            {modalData?.images?.length==1?null:<img
               src={rightArrow}
               className="w-5 filter invert cursor-pointer"
               onClick={handleRightArrowClick}
-            />
+            />}
           </div>
           <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
             <div className="flex justify-between">

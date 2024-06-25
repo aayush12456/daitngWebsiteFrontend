@@ -138,7 +138,7 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import React, { useRef, useEffect } from 'react';
 
-const WatchVideo = ({ modalOpen, handleClose, personalVideoData,onlinePersonalVideoData, visitorPersonalVideoData }) => {
+const WatchVideo = ({ modalOpen, handleClose, personalVideoData,onlinePersonalVideoData, visitorPersonalVideoData, matchesVideoData }) => {
     console.log('watch video is', personalVideoData);
     const videoRef = useRef(null);
 
@@ -185,7 +185,7 @@ const WatchVideo = ({ modalOpen, handleClose, personalVideoData,onlinePersonalVi
                 <Box sx={style}>
                     <video 
                         ref={videoRef}
-                        src={personalVideoData?.videoUrl || onlinePersonalVideoData?.videoUrl ||  visitorPersonalVideoData?.videoUrl} 
+                        src={personalVideoData?.videoUrl || onlinePersonalVideoData?.videoUrl ||  visitorPersonalVideoData?.videoUrl ||  matchesVideoData?.videoUrl} 
                         controls  
                         autoPlay 
                         style={{ 

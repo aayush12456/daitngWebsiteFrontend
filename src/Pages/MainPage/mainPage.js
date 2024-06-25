@@ -4,8 +4,11 @@ import { Sidebar } from "../../Components/common/Sidebar/Sidebar";
 import { ProfileModal } from "../../Components/modal/profileModal";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getPersonalProfileModalHeadingAsync } from "../../Redux/Slice/getPersonalProfileModalHeadingSlice/getPersonalProfileModalHeadingSlice";
 export const MainPage = () => {
   const Name = sessionStorage.getItem("name");
+  const id=sessionStorage.getItem('userId')
   const profileImage = sessionStorage.getItem("profileImage");
   const loginToken = sessionStorage.getItem("loginToken");
   const registerToken = sessionStorage.getItem("registerToken");
@@ -21,7 +24,12 @@ export const MainPage = () => {
     profile: profileImage,
   };
   const profileSelector=useSelector((state)=>state.headerModal. headerModalToggle)
+  const addColorModalHeadingSelector=useSelector((state)=>state. addPersonalProfileModalHeading.addPersonalProfileModalHeadingData.user)
+  const getColorModalHeadingSelector=useSelector((state)=>state.getPersonalProfileModalHeading.getPersonalProfileModalHeadingData.user)
+  console.log('add color modal',addColorModalHeadingSelector)
+  console.log('get color modal',getColorModalHeadingSelector)
   const navigate = useNavigate();
+  const dispatch=useDispatch()
   //  useEffect(() => { // token is not available then navigate to('/')
   //   if (!loginToken) {
   //     navigate('/');
@@ -42,6 +50,9 @@ export const MainPage = () => {
   // const matchesData = useSelector(
   //   (state) => state.matchData.getMatchesArray.interestUsers
   // );
+  useEffect(()=>{
+  dispatch(getPersonalProfileModalHeadingAsync(id))
+  },[dispatch])
   return (
     <>
       <div className="flex  ">
@@ -55,7 +66,7 @@ export const MainPage = () => {
  
     className="fixed top-20 right-0 z-50"
 >
-  {profileSelector && <ProfileModal />}
+  {profileSelector && <ProfileModal addColor={addColorModalHeadingSelector||getColorModalHeadingSelector}/>}
 </div>
           </div>
         </div>
