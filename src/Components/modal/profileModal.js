@@ -52,6 +52,7 @@ export const ProfileModal = ({addColor}) => {
     })
   }
   </div>
+  <hr className='w-full mt-4'/>
   </div>
   
 </div>

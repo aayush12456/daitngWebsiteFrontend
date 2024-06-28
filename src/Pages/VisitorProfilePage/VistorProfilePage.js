@@ -49,7 +49,7 @@ export const VisitorProfilePage = () => {
   return (
     <>
      
-    <VisitorProfile visitor={visitorData.visitor} likeUserPerson={visitorData.likeUser} visitorUser={visitorData.visitorPart} matchedUser={matchedUser}/>
+    <VisitorProfile visitor={visitorData.visitor} likeUserPerson={visitorData.likeUser} onlineLikeUserPerson={visitorData.onlineLikeUser} visitorUser={visitorData.visitorPart} matchedUser={matchedUser}/>
 
     {/* <MatchPerson/> */}
     </>

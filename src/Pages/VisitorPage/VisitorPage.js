@@ -11,6 +11,7 @@ export const VisitorPage = () => {
     const dispatch=useDispatch()
     useEffect(()=>{
     dispatch(getVisitorData(id))
+
     // dispatch(getVisitorPlusLikeUserAsync(id))
     // dispatch(getVisitorPlusSkipUserAsync(id))
     },[dispatch])
@@ -19,6 +20,10 @@ export const VisitorPage = () => {
     // const visitorData=useSelector((state)=>state.getVisitorData.data)
     // console.log('visitor data',visitorData)
     console.log('visitors is',visitorSelector)
+
+    // const visitorSelectorData = visitorSelector?.filter((visitorData) => // array of obj  return hoga or ye obj common hoga jo ki selfOnlineLikeUserData and  userData dono present hoga
+    // onlineLikeUserSelector?.some(( onlineLikeUser) =>  onlineLikeUser.firstName === visitorData.visitor.firstName))
+    // console.log('visitor selector data is',visitorSelectorData)
   
   return (
 <>

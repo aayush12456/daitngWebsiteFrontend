@@ -28,6 +28,7 @@ export const Sidebar = () => {
 //  const addCounterResponse=useSelector((state)=>state.addCountUser.addCounterUserData)
 //  console.log('add count response',addCounterResponse)
 const getLikeCountUser=useSelector((state)=>state.getLikeCounterUser. getLikeCounterUser.getLikeCount)
+console.log('get like count response',getLikeCountUser)
 const deleteLikeResponse=useSelector((state)=>state.deleteLikeCounterUser.deleteLikeCounterUser.message)
 console.log('delete like response',deleteLikeResponse)
 const addSidebarColorResponse=useSelector((state)=>state.addSidebarTitleColor.addSidebarTitleColorData?.user)

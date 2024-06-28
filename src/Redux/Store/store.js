@@ -47,6 +47,8 @@ import addSidebarTitleColorSlice from "../Slice/addSidebarTitleColorSlice/addSid
 import getSidebarTitleColorSlice from "../Slice/getSidebarTitleColorSlice/getSidebarTitleColorSlice"
 import addPersonalProfileModalHeadingSlice from "../Slice/addPersonalProfileModalHeadingSlice/addPersonalProfileModalHeadingSlice"
 import getPersonalProfileModalHeadingSlice from "../Slice/getPersonalProfileModalHeadingSlice/getPersonalProfileModalHeadingSlice"
+import addOnlineSkipUserSlice from "../Slice/addOnlineSkipUserSlice/addOnlineSkipUserSlice"
+import addOnlineLikeUserSlice from "../Slice/addOnlineLikeUserSlice/addOnlineLikeUserSlice"
 
 
 const store=configureStore({
@@ -100,7 +102,10 @@ const store=configureStore({
     addSidebarTitleColor:addSidebarTitleColorSlice,
     getSidebarTitleColor:getSidebarTitleColorSlice,
     addPersonalProfileModalHeading:addPersonalProfileModalHeadingSlice,
-    getPersonalProfileModalHeading:getPersonalProfileModalHeadingSlice
+    getPersonalProfileModalHeading:getPersonalProfileModalHeadingSlice,
+    addOnlineSkipUser:addOnlineSkipUserSlice,
+    addOnlineLikeUser:addOnlineLikeUserSlice,
+    getOnlineLikeUser:getOnlineLikeUserSlice
     }
 })
 export default store

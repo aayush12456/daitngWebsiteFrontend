@@ -30,10 +30,12 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-export const SmallCard = ({ userData, signupUserData, email, signupEmail }) => {
+export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOnlineLikeUserData}) => {
+  console.log('self online ',selfOnlineLikeUserData)
   const socket = io.connect("http://localhost:4000");
   const [open, setOpen] = React.useState(false);
   const [name, setName] = useState("");
+  const [selfOnlineLike,setSelfOnlineLike]=useState(true)
   const [messages,setMessage]=useState('')
   const [obj,setObj]=useState({})
   const id=sessionStorage.getItem('userId')
@@ -154,21 +156,31 @@ const addToChat={
       chatId:item._id
     }
 // dispatch(addChatHandlerAsync(addChatId))
-dispatch(addToChatAsync(addToChat))
-
-
+// dispatch(addToChatAsync(addToChat))
 }
+
+const selfOnlineLikeUser = selfOnlineLikeUserData?.filter((selfOnlineLikeData) => // array of obj  return hoga or ye obj common hoga jo ki selfOnlineLikeUserData and  userData dono present hoga
+  userData?.some((user) => user?.firstName === selfOnlineLikeData?.firstName)
+);
+
+console.log('self online like', selfOnlineLikeUser);
+const commonUsers = selfOnlineLikeUserData?.filter((selfOnlineLikeData) =>
+userData?.some((user) => user?.firstName === selfOnlineLikeData?.firstName)
+);
+
+console.log('Common Users:', commonUsers);
   return (
     <>
       <div className="flex justify-center">
         <div className=" mt-12 ">
           {email
-            ? userData.map((item) => {
+            ? userData?.map((item) => {
                 return (
                   <>
                   <div className="flex ">
                   <div className="  overflow-hidden shadow-lg w-96 bg-white mt-8 cursor-pointer" onClick={()=>mainContentHandler(item)}>
                       <div className="px-6 py-4 w-full ">
+                        <div className="flex justify-between">
                         <div className="flex gap-4">
                           <img
                             // src={BACKEND_BASE_URL + item.images[0]}
@@ -181,17 +193,32 @@ dispatch(addToChatAsync(addToChat))
                           </div>
                     
                         </div>
+                        {
+  selfOnlineLikeUser?.map(selfOnlineLikeItem=>{
+    return (
+      <>
+      {selfOnlineLikeItem.firstName===item.firstName?<p className='text-md text-end pt-4  font-semibold '>Liked!</p>:null}
+ 
+      </>
+    )
+  })
+  }
+   <div className="mt-3">
+    <button
+      class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      // onClick={() => handleOpen(item)}
+      onClick={()=>addChatHandler(item)}
+    >
+    Add chat
+    </button>
+  </div>
+                        </div>
+                       
                       </div>
                     </div>
-                    <div className="mt-16 -ml-36">
-                            <button
-                              class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                              // onClick={() => handleOpen(item)}
-                              onClick={()=>addChatHandler(item)}
-                            >
-                            Add chat
-                            </button>
-                          </div>
+    
+                 
+                         
                   </div>
                     
                   </>
@@ -240,27 +267,46 @@ dispatch(addToChatAsync(addToChat))
             ? signupUserData.map((item) => {
                 return (
                   <>
-                  <div className="flex">
-                    <div class="  overflow-hidden shadow-lg w-96 bg-white mt-8" onClick={()=>mainContentHandler(item)}>
-                      <div class="px-6 py-4 w-full ">
+                <div className="flex ">
+                  <div className="  overflow-hidden shadow-lg w-96 bg-white mt-8 cursor-pointer" onClick={()=>mainContentHandler(item)}>
+                      <div className="px-6 py-4 w-full ">
+                        <div className="flex justify-between">
                         <div className="flex gap-4">
                           <img
                             // src={BACKEND_BASE_URL + item.images[0]}
-                            src={ item.images[0]}
+                            src={item.images[0]}
                             className="w-16   rounded-full"
                           />
                           <div>
                             <p className="pt-3">{item.firstName}</p>
                             <p className="pt-1">{item.city}</p>
                           </div>
+                    
                         </div>
+                        {
+  selfOnlineLikeUser.map(selfOnlineLikeItem=>{
+    return (
+      <>
+      {selfOnlineLikeItem.firstName===item.firstName?<p className='text-md text-end pt-4  font-semibold '>Liked!</p>:<div className="mt-3">
+    <button
+      class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      // onClick={() => handleOpen(item)}
+      onClick={()=>addChatHandler(item)}
+    >
+    Add chat
+    </button>
+  </div>}
+      </>
+    )
+  })
+  }
+                        </div>
+                       
                       </div>
                     </div>
-                    <div className="mt-16 -ml-36">
-                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"  >
-                            Add chat
-                            </button>
-                          </div>
+    
+                 
+                         
                   </div>
                   </>
                 );

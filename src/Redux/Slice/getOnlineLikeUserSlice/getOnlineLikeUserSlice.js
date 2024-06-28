@@ -6,8 +6,8 @@ export const getOnlineLikeUserData = createAsyncThunk(
   async (userId, { rejectWithValue }) => {
 
     try {
-      const response = await axios.get(`/getOnlineUser/${userId}`); 
-      console.log('response of get online user',response.data)
+      const response = await axios.get(`/getOnlineLikeUser/${userId}`); 
+      console.log('response of get online like user',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

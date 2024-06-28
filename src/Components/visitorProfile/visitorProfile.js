@@ -23,6 +23,9 @@ import { addMatchEmailAsync } from "../../Redux/Slice/addMatchEmailSlice/addMatc
 import { addSmsSenderAsync } from "../../Redux/Slice/addSmsSlice/addSmsSlice";
 import playVideo from '../../assets/personalProfileIcons/playVideo.png'
 import WatchVideo from "../common/watchVideo/watchVideo";
+import { addOnlineSkipUserAsync } from "../../Redux/Slice/addOnlineSkipUserSlice/addOnlineSkipUserSlice";
+import { addOnlineLikeUserAsync } from "../../Redux/Slice/addOnlineLikeUserSlice/addOnlineLikeUserSlice";
+
 
 const style = {
   position: "absolute",
@@ -36,16 +39,18 @@ const style = {
 
   p: 4,
 };
-export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser,matchedUser}) => {
+export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser,matchedUser,onlineLikeUserPerson}) => {
     console.log('visitor data',visitor)
   // console.log('online content data',OnlineContent)
     console.log('likeUserPerson',likeUserPerson)
+    console.log('onlineLikeUserPerson',onlineLikeUserPerson)
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [open, setOpen] = React.useState(false);
     const [likeUser,setLikeUser]=useState(false)
     const [skipUser,setSkipUser]=useState(false)
+    const [selfOnlineLike,setSelfOnlineLike]=useState(true)
     const [text,setText]=useState('')
     const [skipText,setSkipText]=useState('')
     const [matchUser,setMatchUser]=useState('')
@@ -72,6 +77,8 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     console.log(mainNumber); 
    const loginObj=JSON.parse(sessionStorage.getItem('loginObject'))
    const updateLoginObj=JSON.parse(sessionStorage.getItem('updateUser'))
+
+
     const watchVideoButton=()=>{
       setWatchModalOpen(true)
       setPersonalProfileObj(likeUserPerson)
@@ -113,20 +120,33 @@ setTimeout(()=>{
 setLikeUser(false)
 const visitorLikeUser={
   id:id,
-  visitorPlusLikeUserId:visitor._id
+  visitorPlusLikeUserId:visitor?._id
 }
  const likeObjId = {
       id: id,
-      likeUserId:visitor._id
+      likeUserId:visitor?._id
     };
     const notifyobjId = {
       id: id,
-      userId: visitor._id
+      userId: visitor?._id
     };
+    const onlineNotifyObjId={
+      id:id,
+      userId:OnlineContent?._id
+    }
     const likeSmsObj={
       id:id,
-      recieverUserId:visitor._id
+      recieverUserId:visitor?._id
     }
+    const onlinePersonLikeObj={
+      id:id,
+      onlinePersonLikeUserId:OnlineContent?._id
+
+    }
+    const onlineSmsId={
+      id:id,
+      recieverUserId:OnlineContent?._id
+      }
     console.log('like obj data',likeObjId)
 if(visitorUser){
   dispatch(addVisitorPlusLikeUserAsync(visitorLikeUser))
@@ -134,6 +154,14 @@ if(visitorUser){
   setText("You Like this profile")
   setLikeUserPart(false)
   
+}
+if(OnlineContent){
+  dispatch(addOnlineLikeUserAsync(onlinePersonLikeObj))
+  dispatch(addLikeNotifyAsync(onlineNotifyObjId))
+  dispatch(addLikeCounterUserAsync(onlineNotifyObjId));
+  dispatch(addSmsSenderAsync(onlineSmsId))
+  setText("You Like this profile")
+  setSelfOnlineLike(false)
 }
 dispatch(addLikeUserAsync(likeObjId));
 dispatch(addLikeNotifyAsync(notifyobjId));
@@ -150,6 +178,20 @@ if(likeUserPerson){
   }
   dispatch(addMatchUserAsync(likeUserObj))
   dispatch(addMatchEmailAsync(likeEmailObj))
+  setMatchUser('You ve both paired')
+  setMatchPartUser(false)
+}
+if(onlineLikeUserPerson){
+  const onlineLikeUserObj={
+    id:id,
+    matchLikeId:onlineLikeUserPerson._id
+  }
+  const onlineLikeEmailObj={
+    id:id,
+    emailMatchLikeId:onlineLikeUserPerson._id
+  }
+  dispatch(addMatchUserAsync(onlineLikeUserObj))
+  dispatch(addMatchEmailAsync(onlineLikeEmailObj))
   setMatchUser('You ve both paired')
   setMatchPartUser(false)
 }
@@ -175,6 +217,13 @@ toast.success('Like sent successfully')
           id:id,
           visitorPlusSkipUserId:likeUserPerson?._id
         }
+        const onlineSkipUser={
+          id:id,
+          onlinePersonSkipUserId:OnlineContent?._id
+        }
+        if(OnlineContent){
+        dispatch(addOnlineSkipUserAsync(onlineSkipUser))
+        }
    if(visitor){
     dispatch(addVisitorPlusSkipUserAsync(visitorLikeUser))
    }
@@ -195,6 +244,7 @@ toast.success('Like sent successfully')
 
       const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
       console.log('visitor like data user',visitorLikeUser)
+      const selfOnlineLikeUser=useSelector((state)=>state.getOnlineLikeUser.getOnlineLikeUserObj.selfOnlineLikeUser)
 
       // const anothergetMatchUserData=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
       // console.log('another get match user data',anothergetMatchUserData)
@@ -205,10 +255,13 @@ toast.success('Like sent successfully')
         const matched = getMatchUser?.some(
           (matchUser) => matchUser?.firstName === likeUserPerson?.firstName
         );
+        const onlineMatched = getMatchUser?.some(
+          (matchUser) => matchUser?.firstName === onlineLikeUserPerson?.firstName
+        );
         const anothermatched = anothergetMatchUser?.some(
           (anothermatchUser) => anothermatchUser?.firstName === likeUserPerson?.firstName
         );
-        if (matched || anothermatched) {
+        if (matched || anothermatched || onlineMatched) {
           setUser(false);
         }
     
@@ -227,7 +280,8 @@ toast.success('Like sent successfully')
       useEffect(()=>{
      const visitorgetSkippedUser=visitorSkipUser?.some((visitorSkipData)=>visitorSkipData?.firstName===visitorUser?.firstName)
      const likeSkipUser=visitorSkipUser?.some((likeSkipData)=>likeSkipData?.firstName===likeUserPerson?.firstName)
-     if(visitorgetSkippedUser || likeSkipUser ){
+     const onlineLikeSkipUser=visitorSkipUser?.some((onlineLikeSkipData)=>onlineLikeSkipData?.firstName===onlineLikeUserPerson?.firstName)
+     if(visitorgetSkippedUser || likeSkipUser ||onlineLikeSkipUser ){
       setSkipPart(false)
      }
       },[visitorUser,visitorSkipUser,likeUserPerson])
@@ -245,12 +299,18 @@ toast.success('Like sent successfully')
            setLikePart(false)
           }
            },[visitorUser,anothergetMatchUser])
-
+       
+           useEffect(()=>{
+            const selfOnlineLikePerson= selfOnlineLikeUser?.some((selfOnlineLikeData)=>selfOnlineLikeData?.firstName===OnlineContent?.firstName)
+            if(selfOnlineLikePerson){
+             setSelfOnlineLike(false)
+            }
+             },[selfOnlineLikeUser,OnlineContent])
          const visitorCommonInterest=visitorUser?.interest?.filter((visitorItem)=>loginObj?.interest?.includes(visitorItem))
          const updateVisitorCommonInterest=visitorUser?.interst?.filter((visitorItem)=>updateLoginObj?.interest?.includes(visitorItem))
          const likeCommonInterest=likeUserPerson?.interest?.filter((likeItem)=>loginObj?.interest?.includes(likeItem))
          const updateLikeCommonInterest=likeUserPerson?.interest?.filter((likeItem)=>updateLoginObj?.interest?.includes(likeItem))
-
+        
   return (
    <>
     <div className="flex justify-center mt-10">
@@ -430,7 +490,7 @@ toast.success('Like sent successfully')
           </div>
           <hr class="  w-full border-t-1 border-gray-400"/>
          
-{user && skipPart && likePart && likeUserPart && matchPartUser &&<div className="flex justify-between">
+{user && skipPart && likePart && likeUserPart && matchPartUser && selfOnlineLike &&<div className="flex justify-between">
     <div className="flex gap-4 mt-6 ml-20">
       <div className="rounded-full bg-[#71706f] w-12 h-12 flex justify-center cursor-pointer" onClick={skipCancelHandler}>
         <img src={crossTik} className="w-8 filter invert" />
@@ -452,7 +512,7 @@ toast.success('Like sent successfully')
 {/* { ((getMatchUser && getMatchUser?.firstName === likeUserPerson?.firstName || matchUser ) || (anotherGetMatchUser && anotherGetMatchUser?.firstName === likeUserPerson?.firstName || matchUser)) && <p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p>}
 {anotherMatchPerson?.firstName===visitor?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p>}
  */}
- {
+ {/* {
   getMatchUser?.map(matchUser=>{
    return (
     <>
@@ -460,8 +520,17 @@ toast.success('Like sent successfully')
     </>
    )
   })
- }
+ } */}
  {matchUser &&<p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p>}
+ {
+  getMatchUser?.map(matchUser=>{
+   return (
+    <>
+    {matchUser?.firstName===onlineLikeUserPerson?.firstName &&<p className="text-center pt-4 text-lg text-[#757575]">You've both paired</p> }
+    </>
+   )
+  })
+ }
 
   {
  anothergetMatchUser?.map(anotherMatchUser=>{
@@ -491,6 +560,15 @@ toast.success('Like sent successfully')
       )
     })
    }
+   {/* {
+    visitorSkipUser?.map(visitorSkipData=>{
+      return(
+        <>
+        {visitorSkipData?.firstName===onlineLikeUserPerson?.firstName  &&<p className="text-center pt-4 text-lg text-[#757575]">You skipped this profile</p>}
+        </>
+      )
+    })
+   } */}
 {
 visitorLikeUser?.map(visitorLike=>{
   
@@ -503,6 +581,18 @@ visitorLikeUser?.map(visitorLike=>{
   })
  }
  {text &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>} 
+ {
+selfOnlineLikeUser?.map(selfOnlineLike=>{
+  
+   return (
+    <>
+   
+   { selfOnlineLike?.firstName===OnlineContent?.firstName && watchVideo &&<p className="text-center pt-4 text-lg text-[#757575]">You Like this profile</p>}
+    </>
+   )
+  })
+ }
+
 {/* 
  {
   getMatchUserDataArray?.map(matchUserData=>{

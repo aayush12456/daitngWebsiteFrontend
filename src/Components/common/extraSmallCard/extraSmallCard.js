@@ -7,9 +7,10 @@ import { useSelector } from 'react-redux';
 import { getVisitorPlusLikeUserAsync } from '../../../Redux/Slice/getVisitorPlusLikeUserSlice/getVisitorPlusLikeUserSlice';
 import { getMatchUserAsync } from '../../../Redux/Slice/getMatchUserSlice/getMatchUserSlice';
 import { getVisitorPlusSkipUserAsync } from '../../../Redux/Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice';
-export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,visitedTime}) => {
+export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,visitedTime,likeUserPerson}) => {
   console.log('visitor card',visitor)
   console.log('like data',likePerson)
+  console.log('online like data',likeUserPerson)
   const [user,setUser]=useState('true')
   const [likeUser,setLikeUser]=useState('false')
   const [skipUser,setSkipUser]=useState('false')
@@ -28,6 +29,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
   visitor:visitor,
   likeUser:likePerson,
   visitorPart:visitorPart,
+  onlineLikeUser:likeUserPerson
 
  }
   const visitorHandler=()=>{
@@ -99,10 +101,21 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
       (skip) => skip?.firstName === visitor?.firstName
     );
     const likeSkipUser=visitorSkipUser?.some((likeSkipData)=>likeSkipData?.firstName===likePerson?.firstName)
-    if (Skipped || likeSkipUser) {
+    // const onlineLikeSkipUser=visitorSkipUser?.some((onlineLikeSkipData)=>onlineLikeSkipData?.firstName===likeUserPerson?.firstName)
+    if (Skipped || likeSkipUser ) {
       setSkipUser(true);
     }
   }, [visitor,visitorSkipUser,likePerson]);
+
+  // useEffect(() => {
+  
+  //   const matchedUser = getMatchUser?.some(
+  //     (matchUser) => matchUser?.firstName === likeUserPerson?.firstName
+  //   );
+  //   if ( matchedUser) {
+  //     setUser(false);
+  //   }
+  // }, [getMatchUser,likeUserPerson]);
   return (
     <>
    <div class="w-52 h-80  rounded-2xl overflow-hidden shadow-lg ">
@@ -135,7 +148,15 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
    )
   })
  }
-
+{/* {
+  getMatchUser?.map(matchUser=>{
+   return (
+    <>
+    {matchUser?.firstName===likeUserPerson?.firstName &&  <p className='text-md text-white font-semibold pl-6'>Paired</p>}
+    </>
+   )
+  })
+ } */}
 {
 anothergetMatchUser?.map(anotherMatchUser=>{
    return (
@@ -155,7 +176,7 @@ anothergetMatchUser?.map(anotherMatchUser=>{
       )
     })
    }
-{
+{/* {
     visitorSkipUser?.map(visitorSkipData=>{
       return(
         <>
@@ -163,8 +184,16 @@ anothergetMatchUser?.map(anotherMatchUser=>{
         </>
       )
     })
+   } */}
+{
+    visitorSkipUser?.map(visitorSkipData=>{
+      return(
+        <>
+        {visitorSkipData?.firstName===likeUserPerson?.firstName  &&<p className='text-md text-white font-semibold pl-6'>Skipped</p>}
+        </>
+      )
+    })
    }
-
 {
 visitorLikeUser?.map(visitorLike=>{
   

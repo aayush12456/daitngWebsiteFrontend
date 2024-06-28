@@ -3,45 +3,52 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getLikeUserAsync } from '../../Redux/Slice/getLikeUser/getLikeUser';
 import { ExtraSmallCard } from '../../Components/common/extraSmallCard/extraSmallCard';
-import MatchPerson from '../../Components/common/matchPerson/matchPerson';
+import { getOnlineLikeUserData } from '../../Redux/Slice/getOnlineLikeUserSlice/getOnlineLikeUserSlice';
 
 export const LikePage = () => {
   const id = sessionStorage.getItem('userId');
   console.log('id is', id);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getLikeUserAsync(id));
-  }, [dispatch]);
-  const likeSelector = useSelector((state) => state.getlikeUser.getLikeUserArray.likeUser);
-  const visitorSelector=useSelector((state)=>state.getVisitorData.getVisitorArray?.visitors)
-  const matchSelector = useSelector((state) => state.passDataObj.passDataObj);
+  }, [dispatch, id]);
+
+  useEffect(() => {
+    dispatch(getOnlineLikeUserData(id));
+  }, [dispatch, id]);
+
+  const likeSelector = useSelector((state) => state.getlikeUser.getLikeUserArray.likeUser) || [];
+  const visitorSelector = useSelector((state) => state.getVisitorData.getVisitorArray?.visitors) || [];
+  const matchSelector = useSelector((state) => state.passDataObj.passDataObj) || {};
+  const onlineLikeUserSelector = useSelector((state) => state.getOnlineLikeUser.getOnlineLikeUserObj.onlineLikeUser) || [];
+
+  console.log('online like user', onlineLikeUserSelector);
   console.log('like is', likeSelector);
   console.log('match selector', matchSelector);
-  console.log('visitor selector',visitorSelector)
+  console.log('visitor selector', visitorSelector);
+
   const loginData = sessionStorage.getItem('loginObject');
   const loginUser = JSON.parse(loginData);
 
-  // Filter out items present in visitorSelector from likeSelector
-  // const filteredLikeSelector = likeSelector?.filter((likeItem) => {
-  //   return !visitorSelector?.some((visitorItem) => visitorItem.id === likeItem.id);
-  // });
+  // Combine likeSelector and onlineLikeUserSelector into a single array
+  const combinedArray = [...likeSelector, ...onlineLikeUserSelector];
 
   return (
     <>
-      {likeSelector?.length > 0 ? (
-        <div className='grid grid-cols-6 ml-72 gap-20 mt-12'>
-          {likeSelector.map((likeItem) => {
-            return (
-              <React.Fragment key={likeItem.id}>
-                <ExtraSmallCard visitor={likeItem} likePerson={likeItem} />
+      <div className='grid grid-cols-1'>
+        {combinedArray.length > 0 ? (
+          <div className='grid grid-cols-6 ml-72 gap-20 mt-12'>
+            {combinedArray.map((item) => (
+              <React.Fragment key={item.id}>
+                <ExtraSmallCard visitor={item} likePerson={item} likeUserPerson={item} />
               </React.Fragment>
-            );
-          })}
-        </div>
-      ) : (
-        <p className='text-center pt-60 text-2xl font-semibold'>No Likes are there</p>
-      )}
-      {/* <MatchPerson loginUser={loginUser} matchUser={matchSelector} /> */}
+            ))}
+          </div>
+        ) : (
+          <p className='text-center pt-60 text-2xl font-semibold'>No Likes are there</p>
+        )}
+      </div>
     </>
   );
 };
