@@ -49,6 +49,17 @@ import addPersonalProfileModalHeadingSlice from "../Slice/addPersonalProfileModa
 import getPersonalProfileModalHeadingSlice from "../Slice/getPersonalProfileModalHeadingSlice/getPersonalProfileModalHeadingSlice"
 import addOnlineSkipUserSlice from "../Slice/addOnlineSkipUserSlice/addOnlineSkipUserSlice"
 import addOnlineLikeUserSlice from "../Slice/addOnlineLikeUserSlice/addOnlineLikeUserSlice"
+import  getSkipProfileUserSlice  from "../Slice/getSkipProfileUser/getSkipProfileUser"
+import deleteSkipProfileUserSlice  from "../Slice/deleteSkipProfileUser/deleteSkipProfileUser"
+import accountSettingModalSlice from "../Slice/accountModalSlice.js"
+import accountModalSlice from "../Slice/accountModalSlice.js"
+import passwordUpdateSlice from "../Slice/passwordUpdateSlice/passwordUpdateSlice"
+import deleteAccountSliceObj from "../Slice/deleteAccountSliceObj/deleteAccountSliceObj"
+import  deleteProfileUserSlice  from "../Slice/deleteProfileUser/deleteProfileUser"
+import deactivateAccountSlice from "../Slice/deactivateAccountSlice/deactivateAccountSlice"
+import getDeactivateUserSlice from "../Slice/getDeactivateUser/getDeactivateUser"
+import activateUserSlice from "../Slice/activateUserSlice/activateUserSlice"
+
 
 
 const store=configureStore({
@@ -105,7 +116,16 @@ const store=configureStore({
     getPersonalProfileModalHeading:getPersonalProfileModalHeadingSlice,
     addOnlineSkipUser:addOnlineSkipUserSlice,
     addOnlineLikeUser:addOnlineLikeUserSlice,
-    getOnlineLikeUser:getOnlineLikeUserSlice
+    getOnlineLikeUser:getOnlineLikeUserSlice,
+    getSkipProfile:getSkipProfileUserSlice,
+    deleteSkipProfile:deleteSkipProfileUserSlice,
+    accountSettingModal:accountModalSlice,
+    updatePassword:passwordUpdateSlice,
+    deleteAccountObj:deleteAccountSliceObj,
+    deleteProfileUser:deleteProfileUserSlice,
+    deactivateAccount:deactivateAccountSlice,
+    getDeactivateUser:getDeactivateUserSlice,
+    activateUser:activateUserSlice
     }
 })
 export default store

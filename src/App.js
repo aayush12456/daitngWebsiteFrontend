@@ -27,6 +27,8 @@ import { getLikeNotifyUserAsync } from './Redux/Slice/getLikeNotifySlice/getLike
 import MatchPerson from './Components/common/matchPerson/matchPerson';
 import VideoPage from './Pages/VideoPage/VideoPage';
 import VideoUploadPage from './Pages/videoUploadPage/videoUploadPage';
+import { SettingsPage } from './Pages/settingsPage/settingsPage';
+
 
 function CustomToast({image,name}) {
   return (
@@ -200,7 +202,9 @@ function App() {
         { path: 'search', element: <SearchPage /> },
         { path: 'newMainContent', element: <NewAndOnlinePageContent /> },
         { path: 'allMessages', element: <MessagePage /> },
-        { path: 'messageDetail', element: <MessageDetailPage /> }
+        { path: 'messageDetail', element: <MessageDetailPage /> },
+        { path: 'settings', element:<SettingsPage/> },
+        { path: 'accountSettings', element:<SettingsPage/> }
       ]
     }
   ]);

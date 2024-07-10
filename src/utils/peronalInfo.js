@@ -192,3 +192,22 @@ export const Language = [
 
 
 ]
+export const manageAccount=[
+    {id:'1',accountTitle:"Change Mobile or Email"},
+    {id:'2',accountTitle:"Change Name"},
+    {id:'1',accountTitle:"Change Date Of Birth"},
+    {id:'1',accountTitle:"Deactivate Account"},
+    {id:'1',accountTitle:"Delete Account"},
+]
+export const deactivateAccount=[
+    
+    {id:'1',reasonTitle:"Found Someone on Date app"},
+    {id:'2',reasonTitle:"was spending too much time/ recieving too many emails"},
+    {id:'3',reasonTitle:"Found Someone away"},
+    {id:'3',reasonTitle:"Your portal is expensive"},
+    {id:'4',reasonTitle:"Didn't get any response"},
+    {id:'5',reasonTitle:"Got many response "},
+    {id:'6',reasonTitle:"Don't have right time now "},
+    {id:'7',reasonTitle:"Other "},
+
+]

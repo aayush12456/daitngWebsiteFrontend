@@ -4,6 +4,7 @@ import { modalData } from '../../utils/modalData'
 import { useDispatch } from 'react-redux'
 import { addPersonalProfileModalHeadingAsync } from '../../Redux/Slice/addPersonalProfileModalHeadingSlice/addPersonalProfileModalHeadingSlice'
 import { headerModalActions } from '../../Redux/Slice/headerModalSlice'
+import safety from "../../assets/modalIcons/safety_icon.webp"
 export const ProfileModal = ({addColor}) => {
     const navigate=useNavigate()
     const dispatch=useDispatch()
@@ -30,10 +31,15 @@ export const ProfileModal = ({addColor}) => {
     dispatch(headerModalActions.headerVisibleToggle())
     window.location.reload()
     }
+    else if(modalItem && modalItem.title==='Settings'){
+      navigate('/mainContent/settings')
+      dispatch(addPersonalProfileModalHeadingAsync(personalProfileModalHeadingObj))
+      window.location.reload()
+    }
     }
   return (
  <>
- <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white   ">
+ <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white mr-3  ">
   <div class="px-6 py-4">
     
   {/* <p className='cursor-pointer' onClick={logoutHandler} >Logout</p> */}
@@ -53,6 +59,15 @@ export const ProfileModal = ({addColor}) => {
   }
   </div>
   <hr className='w-full mt-4'/>
+  <div className='flex gap-4'>
+<div>
+  <img src={safety} className='w-10 mt-10 '/>
+</div>
+<div className='pt-2'>
+  <p className='text-black font-semibold '>Date App Safety</p>
+  <p className='w-44  text-sm pt-0 ' >No bots. 100% moderated. Zero tolerance for fake profiles. Immediate suspension of fake and spammy profiles</p>
+</div>
+  </div>
   </div>
   
 </div>

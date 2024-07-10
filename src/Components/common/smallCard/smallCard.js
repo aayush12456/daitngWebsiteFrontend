@@ -19,6 +19,8 @@ import io from "socket.io-client";
 import { modalActions } from "../../../Redux/Slice/modalSlice";
 import { addNotifyAsync } from "../../../Redux/Slice/addNotifySlice/addNotifySlice";
 import { addVisitorEmailSenderAsync } from "../../../Redux/Slice/addVisitorEmailSlice/addVisitorEmailSlice";
+
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -31,6 +33,7 @@ const style = {
   p: 4,
 };
 export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOnlineLikeUserData}) => {
+
   console.log('self online ',selfOnlineLikeUserData)
   const socket = io.connect("http://localhost:4000");
   const [open, setOpen] = React.useState(false);
@@ -87,6 +90,7 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOn
         socket.disconnect();
     };
 }, [id, socket]);
+
   const mainContentHandler=async(item)=>{
   console.log('main content',item)
   // const serviceId="service_amqtgj4"
@@ -264,7 +268,7 @@ console.log('Common Users:', commonUsers);
             </Box>
           </Modal> */}
           {signupEmail
-            ? signupUserData.map((item) => {
+            ? signupUserData?.map((item) => {
                 return (
                   <>
                 <div className="flex ">
@@ -284,7 +288,7 @@ console.log('Common Users:', commonUsers);
                     
                         </div>
                         {
-  selfOnlineLikeUser.map(selfOnlineLikeItem=>{
+  selfOnlineLikeUser?.map(selfOnlineLikeItem=>{
     return (
       <>
       {selfOnlineLikeItem.firstName===item.firstName?<p className='text-md text-end pt-4  font-semibold '>Liked!</p>:<div className="mt-3">

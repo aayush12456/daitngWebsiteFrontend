@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Matches from "../../Components/matches/matches";
 import { useDispatch, useSelector } from "react-redux";
 import { getMatchesData } from "../../Redux/Slice/getMatchesSlice/getMatchesSlice";
+import { getDeactivateUserAsync } from "../../Redux/Slice/getDeactivateUser/getDeactivateUser";
 
 const MatchPage = () => {
     const dispatch = useDispatch();
@@ -11,8 +12,9 @@ const MatchPage = () => {
 
     useEffect(() => {
         dispatch(getMatchesData(id));
+        dispatch(getDeactivateUserAsync(id))
     }, [dispatch, id]);
-
+  
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % matchesData.length);

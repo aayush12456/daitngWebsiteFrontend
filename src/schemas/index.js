@@ -25,3 +25,10 @@ export const additonalInformationSchema=Yup.object({
     zodiac:Yup.string().min(2).required("Please enter zodiac sign"),
     language:Yup.string().min(2).required("Please enter language"),
 })
+
+export const updatePasswordSchema=Yup.object({
+    currentPassword:Yup.string().min(6).required("Password is mandatory"),
+    newPassword:Yup.string().min(6).required("Password is mandatory"),
+    confirmNewPassword:Yup.string().min(6).required("Password is mandatory"),
+    
+})

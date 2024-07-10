@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { getVisitorPlusLikeUserAsync } from '../../../Redux/Slice/getVisitorPlusLikeUserSlice/getVisitorPlusLikeUserSlice';
 import { getMatchUserAsync } from '../../../Redux/Slice/getMatchUserSlice/getMatchUserSlice';
 import { getVisitorPlusSkipUserAsync } from '../../../Redux/Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice';
+import { getDeactivateUserAsync } from '../../../Redux/Slice/getDeactivateUser/getDeactivateUser';
 export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,visitedTime,likeUserPerson}) => {
   console.log('visitor card',visitor)
   console.log('like data',likePerson)
@@ -42,6 +43,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
   dispatch(getVisitorPlusLikeUserAsync(id))
   dispatch(getMatchUserAsync(id))
   dispatch(getVisitorPlusSkipUserAsync(id))
+  dispatch(getDeactivateUserAsync(id))
   },[dispatch])
 
   
@@ -118,7 +120,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
   // }, [getMatchUser,likeUserPerson]);
   return (
     <>
-   <div class="w-52 h-80  rounded-2xl overflow-hidden shadow-lg ">
+  { <div class="w-52 h-80  rounded-2xl overflow-hidden shadow-lg ">
   <div>
   {/* <img src={BACKEND_BASE_URL +visitor?.images[0]} className='cursor-pointer h-80' onClick={visitorHandler}/>   */}
   <img src={visitor?.images[0]} className='cursor-pointer h-80' onClick={visitorHandler}/>  
@@ -218,7 +220,7 @@ anothergetMatchUser?.map(anotherMatchUserData=>{
 
   </div>
 
-</div>
+</div>}
     </>
   )
 }

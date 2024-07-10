@@ -25,7 +25,9 @@ import playVideo from '../../assets/personalProfileIcons/playVideo.png'
 import WatchVideo from "../common/watchVideo/watchVideo";
 import { addOnlineSkipUserAsync } from "../../Redux/Slice/addOnlineSkipUserSlice/addOnlineSkipUserSlice";
 import { addOnlineLikeUserAsync } from "../../Redux/Slice/addOnlineLikeUserSlice/addOnlineLikeUserSlice";
-
+import SweetAlert2 from 'react-sweetalert2';
+import sorryImage from "../../assets/personalProfileIcons/sorryEmoji.png"
+import { getDeactivateUserAsync } from "../../Redux/Slice/getDeactivateUser/getDeactivateUser";
 
 const style = {
   position: "absolute",
@@ -65,6 +67,7 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     const [personalProfileObj,setPersonalProfileObj]=useState({})
     const [onlinePersonalProfileObj,setOnlinePersonalProfileObj]=useState({})
     const [visitorPersonalProfileObj,setVisitorPersonalProfileObj]=useState({})
+    const [swalProps, setSwalProps] = useState({});
     const id =sessionStorage.getItem('userId')
     const dob = visitor?.DOB || OnlineContent?.DOB;
     const dobBreak = dob?.split("/");
@@ -77,8 +80,11 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     console.log(mainNumber); 
    const loginObj=JSON.parse(sessionStorage.getItem('loginObject'))
    const updateLoginObj=JSON.parse(sessionStorage.getItem('updateUser'))
-
-
+   const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.  getDeactivateUser.deactivateHeading)
+   console.log('get deactivate user',getDeactivateAccountSelector)
+   useEffect(()=>{
+    dispatch(getDeactivateUserAsync(id))
+  },[dispatch])
     const watchVideoButton=()=>{
       setWatchModalOpen(true)
       setPersonalProfileObj(likeUserPerson)
@@ -149,6 +155,25 @@ const visitorLikeUser={
       }
     console.log('like obj data',likeObjId)
 if(visitorUser){
+  if( getDeactivateAccountSelector === 'deactivated') {
+    setSwalProps({
+      show: true,
+      text: 'please activate your account goes on Settings < Account Settings < Manage Account < Deactivate Account',
+      imageUrl: sorryImage,
+      style: {
+        textAlign: 'center',
+        display: 'block',
+        width: '200px', // Set the width and height of the image
+        height: '150px'
+      },
+      didClose: () => {
+        setSwalProps({});
+      }
+  });
+//  setSkipText('')
+//  setSkipPart(true)
+    return;
+  }
   dispatch(addVisitorPlusLikeUserAsync(visitorLikeUser))
   dispatch(addSmsSenderAsync(likeSmsObj))
   setText("You Like this profile")
@@ -156,10 +181,29 @@ if(visitorUser){
   
 }
 if(OnlineContent){
+  if( getDeactivateAccountSelector === 'deactivated') {
+    setSwalProps({
+      show: true,
+      text: 'please activate your account goes on Settings < Account Settings < Manage Account < Deactivate Account',
+      imageUrl: sorryImage,
+      style: {
+        textAlign: 'center',
+        display: 'block',
+        width: '200px', // Set the width and height of the image
+        height: '150px'
+      },
+      didClose: () => {
+        setSwalProps({});
+      }
+  });
+ 
+    return;
+  }
   dispatch(addOnlineLikeUserAsync(onlinePersonLikeObj))
   dispatch(addLikeNotifyAsync(onlineNotifyObjId))
   dispatch(addLikeCounterUserAsync(onlineNotifyObjId));
   dispatch(addSmsSenderAsync(onlineSmsId))
+  
   setText("You Like this profile")
   setSelfOnlineLike(false)
 }
@@ -168,6 +212,25 @@ dispatch(addLikeNotifyAsync(notifyobjId));
 dispatch(addLikeCounterUserAsync(notifyobjId));
 dispatch(passDataObjSliceAcions.passDataObj(visitor))
 if(likeUserPerson){
+  if( getDeactivateAccountSelector === 'deactivated') {
+    setSwalProps({
+      show: true,
+      text: 'please activate your account goes on Settings < Account Settings < Manage Account < Deactivate Account',
+      imageUrl: sorryImage,
+      style: {
+        textAlign: 'center',
+        display: 'block',
+        width: '200px', // Set the width and height of the image
+        height: '150px'
+      },
+      didClose: () => {
+        setSwalProps({});
+      }
+  });
+//  setSkipText('')
+//  setSkipPart(true)
+    return;
+  }
   const likeUserObj={
     id:id,
     matchLikeId:likeUserPerson._id
@@ -182,6 +245,25 @@ if(likeUserPerson){
   setMatchPartUser(false)
 }
 if(onlineLikeUserPerson){
+  if( getDeactivateAccountSelector === 'deactivated') {
+    setSwalProps({
+      show: true,
+      text: 'please activate your account goes on Settings < Account Settings < Manage Account < Deactivate Account',
+      imageUrl: sorryImage,
+      style: {
+        textAlign: 'center',
+        display: 'block',
+        width: '200px', // Set the width and height of the image
+        height: '150px'
+      },
+      didClose: () => {
+        setSwalProps({});
+      }
+  });
+//  setSkipText('')
+//  setSkipPart(true)
+    return;
+  }
   const onlineLikeUserObj={
     id:id,
     matchLikeId:onlineLikeUserPerson._id
@@ -222,12 +304,69 @@ toast.success('Like sent successfully')
           onlinePersonSkipUserId:OnlineContent?._id
         }
         if(OnlineContent){
+          if( getDeactivateAccountSelector === 'deactivated') {
+            setSwalProps({
+              show: true,
+              text: 'please activate your account goes on Settings < Account Settings < Manage Account < Deactivate Account',
+              imageUrl: sorryImage,
+              style: {
+                textAlign: 'center',
+                display: 'block',
+                width: '200px', // Set the width and height of the image
+                height: '150px'
+              },
+              didClose: () => {
+                setSwalProps({});
+              }
+          });
+         setSkipText('')
+         setSkipPart(true)
+            return;
+          }
         dispatch(addOnlineSkipUserAsync(onlineSkipUser))
         }
    if(visitor){
+    if( getDeactivateAccountSelector === 'deactivated') {
+      setSwalProps({
+        show: true,
+        text: 'please activate your account goes on Settings < Account Settings < Manage Account < Deactivate Account',
+        imageUrl: sorryImage,
+        style: {
+          textAlign: 'center',
+          display: 'block',
+          width: '200px', // Set the width and height of the image
+          height: '150px'
+        },
+        didClose: () => {
+          setSwalProps({});
+        }
+    });
+   setSkipText('')
+   setSkipPart(true)
+      return;
+    }
     dispatch(addVisitorPlusSkipUserAsync(visitorLikeUser))
    }
         if(likeUserPerson){
+          if( getDeactivateAccountSelector === 'deactivated') {
+            setSwalProps({
+              show: true,
+              text: 'please activate your account goes on Settings < Account Settings < Manage Account < Deactivate Account',
+              imageUrl: sorryImage,
+              style: {
+                textAlign: 'center',
+                display: 'block',
+                width: '200px', // Set the width and height of the image
+                height: '150px'
+              },
+              didClose: () => {
+                setSwalProps({});
+              }
+          });
+        //  setSkipText('')
+        //  setSkipPart(true)
+            return;
+          }
           dispatch(addVisitorPlusSkipUserAsync(likeUser))
         }
         },700)
@@ -617,7 +756,7 @@ selfOnlineLikeUser?.map(selfOnlineLike=>{
       </div>
         
       </div>
-
+      <SweetAlert2 {...swalProps} />
       <Modal
             open={open}
             onClose={handleClose}

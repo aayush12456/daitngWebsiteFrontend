@@ -22,6 +22,8 @@ import MatchesModal from "../matchesModal/matchesModal"
 import { addSmsSenderAsync } from "../../Redux/Slice/addSmsSlice/addSmsSlice"
 import playVideo from '../../assets/personalProfileIcons/playVideo.png'
 import WatchVideo from "../common/watchVideo/watchVideo"
+import SweetAlert2 from 'react-sweetalert2';
+import sorryImage from "../../assets/personalProfileIcons/sorryEmoji.png"
 const Matches = ({ matches }) => 
 {
 
@@ -42,6 +44,9 @@ const Matches = ({ matches }) =>
   const [matchesProfileObj,setMatchesProfileObj]=useState({})
   const [modalOpen, setModalOpen] = useState(false)
   const [modalObj,setModalObj]=useState({})
+  const [swalProps, setSwalProps] = useState({});
+  const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.  getDeactivateUser.deactivateHeading)
+  console.log('get deactivate user',getDeactivateAccountSelector)
   const handleLeftArrowClick = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? getProfile().images?.length - 1 : prevIndex - 1
@@ -60,6 +65,24 @@ const Matches = ({ matches }) =>
   };
 
   const addCrossHandler = (crossId) => {
+    if( getDeactivateAccountSelector === 'deactivated') {
+      setSwalProps({
+        show: true,
+        text: 'please activate your account goes on Settings < Account Settings < Manage Account < Deactivate Account',
+        imageUrl: sorryImage,
+        style: {
+          textAlign: 'center',
+          display: 'block',
+          width: '200px', // Set the width and height of the image
+          height: '150px'
+        },
+        didClose: () => {
+          setSwalProps({});
+        }
+    });
+   
+      return;
+    }
     const crossObjId = {
       id: id,
       userId: crossId
@@ -73,6 +96,24 @@ const Matches = ({ matches }) =>
   };
 
   const addLikeHandler = (likeId) => {
+    if( getDeactivateAccountSelector === 'deactivated') {
+      setSwalProps({
+        show: true,
+        text: 'please activate your account goes on Settings < Account Settings < Manage Account < Deactivate Account',
+        imageUrl: sorryImage,
+        style: {
+          textAlign: 'center',
+          display: 'block',
+          width: '200px', // Set the width and height of the image
+          height: '150px'
+        },
+        didClose: () => {
+          setSwalProps({});
+        }
+    });
+   
+      return;
+    }
     const likeObjId = {
       id: id,
       likeUserId: likeId
@@ -174,6 +215,7 @@ const Matches = ({ matches }) =>
           </div>
         </div>
       </div>
+      <SweetAlert2 {...swalProps} />
       <MatchesModal modalData={modalObj} match={modalOpen} handleCloses={handleClose}/>
       <WatchVideo modalOpen={watchModalOpen} handleClose={ handleWatchClose}  matchesVideoData={matchesProfileObj}/>
     </>
