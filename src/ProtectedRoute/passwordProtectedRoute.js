@@ -1,11 +1,12 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 const PasswordProtectedRoute = ({ element }) => {
-const forgotPhone=sessionStorage.getItem('forgotPhone')
 
+const phoneSelector=useSelector((state)=>state.passData.passData)
+console.log('phonr number selector',phoneSelector)
 
-  if (!forgotPhone) {
+  if (!phoneSelector) {
     return <Navigate to="/forgotPassword" />;
   }
 

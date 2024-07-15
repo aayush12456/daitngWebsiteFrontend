@@ -32,8 +32,9 @@ import ForgotPasswordPage from './Pages/forgotPasswordPage/forgotPasswordPage';
 import NewPasswordPage from './Pages/newPasswordPage/newPasswordPage';
 import ForgotUpdatePasswordResult from './Components/forgotUpdatePasswordResult/forgotUpdatePasswordResult';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
-import RegisterProtectedRoute from './ProtectedRoute/registerProtectedRoute';
+
 import PasswordProtectedRoute from './ProtectedRoute/passwordProtectedRoute';
+
 
 
 function CustomToast({image,name}) {
@@ -178,23 +179,23 @@ function App() {
     },
     {
       path: '/step1',
-      element: <RegisterProtectedRoute element={<AddiotionalPage />} />
+      element: <AddiotionalPage resetObj={resetObj} />
     },
     {
       path: '/step2',
-      element: <RegisterProtectedRoute  element={<AboutMePage />} />
+      element: <AboutMePage resetObj={resetObj} />
     },
     {
       path: '/step3',
-      element:  <RegisterProtectedRoute  element={<VideoPage />} />
+      element: <VideoPage resetObj={resetObj} />
     },
     {
       path: '/step4',
-      element:<RegisterProtectedRoute  element={<VideoUploadPage />} />
+      element:<VideoUploadPage  resetObj={resetObj} />
     },
     {
       path: '/step5',
-      element: <RegisterProtectedRoute  element={<PhotoInfoPage />} />
+      element: <PhotoInfoPage  resetObj={resetObj} />
     },
     { path: '/forgotPassword',
     element:<ForgotPasswordPage resetObj={resetObj}/>},

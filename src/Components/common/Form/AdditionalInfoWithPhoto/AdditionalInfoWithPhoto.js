@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userRegisterAsync } from '../../../../Redux/Slice/registerSlice/registerSlice';
 import { useNavigate } from 'react-router-dom';
 import cross from '../../../../assets/personalProfileIcons/crossTik.svg';
+import SweetAlert2 from 'react-sweetalert2';
 
 const AdditionalInfoWithPhoto = ({ photoData }) => {
     console.log('photo', photoData);
     const [selectedImages, setSelectedImages] = useState([]);
     const [photoError, setPhotoError] = useState('');
     const [file, setFile] = useState([]);
+    const [swalProps, setSwalProps] = useState({});
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const registerResponse = useSelector((state) => state.registerData.registerData);
@@ -36,36 +38,82 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
 
     const imageSubmitHandler = (e) => {
         e.preventDefault();
+
+        if (!photoData) {
+            setSwalProps({
+                show: true,
+                text: 'Please fill all the previous necessary fields of information',
+                style: {
+                  textAlign: 'center',
+                  display: 'block',
+                  width: '200px', // Set the width and height of the image
+                  height: '150px'
+                },
+                didClose: () => {
+                  setSwalProps({});
+                }
+            });
+            return;
+        }
+
+        const requiredFields = [
+            'firstName', 'phone', 'email', 'password', 'gender', 'city', 'date', 
+            'profession', 'education', 'drinking', 'smoking', 'eating', 'interest', 
+            'aboutUser', 'looking', 'relationship', 'zodiac', 'videoUrl', 'language'
+        ];
+
+        const isEmptyField = requiredFields.some(field => !photoData[field] || photoData[field] === '');
+
+        // if (isEmptyField) {
+        //     // alert('Please fill all the previous necessary fields of information');
+        //     setSwalProps({
+        //         show: true,
+        //         text: 'Please fill all the previous necessary fields of information',
+        //         style: {
+        //           textAlign: 'center',
+        //           display: 'block',
+        //           width: '200px', // Set the width and height of the image
+        //           height: '150px'
+        //         },
+        //         didClose: () => {
+        //           setSwalProps({});
+        //         }
+        //     });
+        //     return;
+        // }
+
         if (file.length === 0) {
             setPhotoError('Please upload pictures');
             return;
         }
+
         const formData = new FormData();
-        formData.append('firstName', photoData.firstName);
-        formData.append('phone', photoData.phone);
-        formData.append('email', photoData.email);
-        formData.append('password', photoData.password);
-        formData.append('gender', photoData.gender);
-        formData.append('city', photoData.city);
-        formData.append('DOB', photoData.date);
-        formData.append('profession', photoData.profession);
-        formData.append('education', photoData.education);
-        formData.append('drinking', photoData.drinking);
-        formData.append('smoking', photoData.smoking);
-        formData.append('eating', photoData.eating);
-        formData.append('interest', photoData.interest);
-        formData.append('aboutUser', photoData.aboutUser);
-        formData.append('looking', photoData.looking);
-        formData.append('relationship', photoData.relationship);
-        formData.append('zodiac', photoData.zodiac);
-        formData.append('videoUrl', photoData.videoUrl);
-        formData.append('language', photoData.language);
+        formData.append('firstName', photoData?.firstName);
+        formData.append('phone', photoData?.phone);
+        formData.append('email', photoData?.email);
+        formData.append('password', photoData?.password);
+        formData.append('gender', photoData?.gender);
+        formData.append('city', photoData?.city);
+        formData.append('DOB', photoData?.date);
+        formData.append('profession', photoData?.profession);
+        formData.append('education', photoData?.education);
+        formData.append('drinking', photoData?.drinking);
+        formData.append('smoking', photoData?.smoking);
+        formData.append('eating', photoData?.eating);
+        formData.append('interest', photoData?.interest);
+        formData.append('aboutUser', photoData?.aboutUser);
+        formData.append('looking', photoData?.looking);
+        formData.append('relationship', photoData?.relationship);
+        formData.append('zodiac', photoData?.zodiac);
+        formData.append('videoUrl', photoData?.videoUrl);
+        formData.append('language', photoData?.language);
 
         file.forEach((file) => {
             formData.append('images', file);
         });
 
         console.log('personal information', formData);
+
         dispatch(userRegisterAsync(formData));
         setSelectedImages([]);
     };
@@ -137,6 +185,7 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
                     </form>
                 </div>
             </div>
+            <SweetAlert2 {...swalProps} />
         </>
     );
 };

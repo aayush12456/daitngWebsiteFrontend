@@ -14,6 +14,7 @@ import looking from "../../../../assets/formIcons/looking.png";
 import zodiac from "../../../../assets/formIcons/zodiac.png";
 import languageLogo from "../../../../assets/formIcons/language.png";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
 import {
   LookingFor,
   Smoking,
@@ -28,7 +29,9 @@ import { Interest } from "../../../../utils/peronalInfo";
 import { Language } from "../../../../utils/peronalInfo";
 import { additonalInformationSchema } from "../../../../schemas";
 import { useNavigate } from "react-router-dom";
+import { passDataObjSliceAcions } from "../../../../Redux/Slice/passDataSliceObj/passDataSliceObj";
 export const AdditonalInformation = ({ additionalData }) => {
+  const dispatch=useDispatch()
   console.log("data is", additionalData);
   const [personName, setPersonName] = React.useState([]);
   const [language,setLanguage]=useState([])
@@ -103,6 +106,7 @@ export const AdditonalInformation = ({ additionalData }) => {
         language:values.language
       };
       console.log("information is", additionalInformation);
+      dispatch(passDataObjSliceAcions.passDataObj(additionalInformation))
       sessionStorage.setItem('additionalInformation', JSON.stringify(additionalInformation));
       navigate("/step2", { state: additionalInformation });
     },

@@ -104,13 +104,13 @@ export const AnotherContent = ({checkDataArray}) => {
         for (let i = 0; i < checkDataArray.length; i++) {
           const checkObj = checkDataArray[i];
           if (obj.firstName === checkObj.firstName) {
-            errors.firstName = 'first name already exists';
+            errors.firstName = 'First name already exists';
           }
           if (obj.email === checkObj.email) {
-            errors.email = 'email already exists';
+            errors.email = 'Email already exists please use different email';
           }
           if (obj.phone === checkObj.phone) {
-            errors.phone = 'phone already exists';
+            errors.phone = 'Mobile number already exists use different number';
           }
         }
     

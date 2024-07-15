@@ -4,11 +4,13 @@ import { resetPasswordSchema } from '../../schemas';
 import { useFormik } from 'formik';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { auth } from '../../firebase/setup';
-
+import { useDispatch } from 'react-redux';
 import OTPEnterData from '../otpEnterData/otpEnterData';
+import { passDataSliceAcions } from '../../Redux/Slice/passDataSlice/passDataSlice';
 
 const ForgotPassword = ({forgot}) => {
   const forgots=forgot
+  const dispatch=useDispatch()
   const [captcha, setCaptcha] = useState('');
   const [phones, setPhones] = useState(null);
   const [phoneNumber,setPhoneNumber]=useState('')
@@ -54,6 +56,7 @@ const [user,setUser]=useState(null)
         return;
       }
       setPhoneNumber(values.phone)
+      dispatch(passDataSliceAcions. passDatas(values.phone))
       const phone = `+91${values.phone}`;
       sendOtp(phone);
   

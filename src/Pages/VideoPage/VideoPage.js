@@ -1,12 +1,13 @@
 import { Header } from "../../Components/common/Header/Header"
 import Video from "../../Components/video/video"
 import { useLocation } from "react-router-dom"
-const VideoPage=()=>{
+const VideoPage=({resetObj})=>{
+    const resetData=resetObj
     let video = useLocation();
     let videoRecordData=video.state
 return (
     <>
-    <Header videoRecord={videoRecordData}/>
+    <Header videoRecord={videoRecordData} reset={resetData}/>
     <p className="text-center text-2xl text-[#000] font-bold pt-8">Video Recording</p>
     <Video videoRecord={videoRecordData}/>
     </>

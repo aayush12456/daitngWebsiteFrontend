@@ -3,7 +3,8 @@ import { useLocation } from "react-router-dom"
 import { Header } from "../../Components/common/Header/Header";
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-const PhotoInfoPage=()=>{
+const PhotoInfoPage=({resetObj})=>{
+    const resetData=resetObj
     let Photo = useLocation();
     let photoData=Photo.state
     const registerResponse=useSelector((state)=>state.registerData.registerData)
@@ -11,7 +12,7 @@ const PhotoInfoPage=()=>{
     const navigate=useNavigate()
     return (
         <>
-        <Header photo={photoData}/>
+        <Header photo={photoData} reset={resetData}/>
         <p className="text-center text-2xl text-[#000] font-bold pt-8">Upload Your Photos</p>
         <AdditionalInfoWithPhoto photoData={photoData}/>
         {
