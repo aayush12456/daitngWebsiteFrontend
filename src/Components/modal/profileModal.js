@@ -15,6 +15,7 @@ export const ProfileModal = ({addColor}) => {
     // localStorage.clear()
     // }ddf
     const modalProfile=(modalItem)=>{
+      console.log('modal item is',modalItem)
       const personalProfileModalHeadingObj={
         id:id,
         PersonalProfileModalHeading:modalItem.title

@@ -59,6 +59,9 @@ import  deleteProfileUserSlice  from "../Slice/deleteProfileUser/deleteProfileUs
 import deactivateAccountSlice from "../Slice/deactivateAccountSlice/deactivateAccountSlice"
 import getDeactivateUserSlice from "../Slice/getDeactivateUser/getDeactivateUser"
 import activateUserSlice from "../Slice/activateUserSlice/activateUserSlice"
+import passMatchArraySlice from "../Slice/passMatchArraySlice/passMatchArraySlice"
+import  ForgotPasswordUpdateUserSlice  from "../Slice/forgotUpdatePasswordUserSlice/forgotUpdatePasswordUserSlice"
+import comparePhoneNumberSlice from "../Slice/comparePhoneNumberSlice/comparePhoneNumberSlice"
 
 
 
@@ -125,7 +128,11 @@ const store=configureStore({
     deleteProfileUser:deleteProfileUserSlice,
     deactivateAccount:deactivateAccountSlice,
     getDeactivateUser:getDeactivateUserSlice,
-    activateUser:activateUserSlice
+    activateUser:activateUserSlice,
+    passMatchArray:passMatchArraySlice,
+    passDataObj:passDataSliceObj,
+    forgotPasswordUpdateUser:ForgotPasswordUpdateUserSlice,
+    comparePhoneNumber:comparePhoneNumberSlice
     }
 })
 export default store

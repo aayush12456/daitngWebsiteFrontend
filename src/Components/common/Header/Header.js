@@ -4,7 +4,7 @@ import { modalActions } from "../../../Redux/Slice/modalSlice";
 import { Outlet } from "react-router-dom";
 import { headerModalActions } from "../../../Redux/Slice/headerModalSlice";
 
-export const Header = ({ add, photo, aboutMe, personalData, loginName ,VideoUploadDatas,videoRecord }) => {
+export const Header = ({ add, photo, aboutMe, personalData, loginName ,VideoUploadDatas,videoRecord,forgot,reset }) => {
   const profileImage = sessionStorage.getItem("loginImage");
   console.log("profile", profileImage);
   console.log('personal data', personalData);
@@ -36,7 +36,7 @@ export const Header = ({ add, photo, aboutMe, personalData, loginName ,VideoUplo
                   {personalData.name || loginName}
                 </p>
               </div>
-            ) : (add || photo || aboutMe || VideoUploadDatas || videoRecord) ? null : (
+            ) : (add || photo || aboutMe || VideoUploadDatas || videoRecord || forgot || reset) ? null : (
               <button
                 className="bg-black hover:bg-slate-900 text-white font-bold py-2 px-4 rounded"
                 onClick={modalOpen}

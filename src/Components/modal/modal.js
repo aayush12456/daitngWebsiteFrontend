@@ -10,9 +10,10 @@ import { useNavigate } from 'react-router-dom';
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { modalActions } from '../../Redux/Slice/modalSlice';
-
 export const Modals = ({ match }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const wrongCredentials=useSelector((state)=>state.loginData.LoginresponseData.mssg)
+  console.log('wrong credentials',wrongCredentials)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const togglePasswordVisibility = () => {
@@ -36,10 +37,12 @@ export const Modals = ({ match }) => {
 
   const loginResponse = useSelector((state) => state.loginData.LoginresponseData);
   console.log('login response', loginResponse);
-
+  const forgotObj={
+    name:'forgotPassword'
+  }
   const style = {
     position: "absolute",
-    top: "50%",
+    top: "50%",  
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 400,
@@ -52,6 +55,10 @@ export const Modals = ({ match }) => {
   const handleCloses = () => {
     dispatch(modalActions.visibleToggle());
   };
+
+  const forgotPasswordHandler=()=>{
+    navigate('/forgotPassword',{state:forgotObj})
+  }
 
   useEffect(() => {
     if (loginResponse.token) {
@@ -102,6 +109,7 @@ export const Modals = ({ match }) => {
                   error={Boolean(errors.email && touched.email)}
                 />
                 {errors.email && touched.email ? <p className='text-red-500 pl-4'>{errors.email}</p> : null}
+      
               </div>
             </div>
             <div className="flex justify-center">
@@ -119,10 +127,11 @@ export const Modals = ({ match }) => {
                   error={Boolean(errors.password && touched.password)}
                 />
                 {errors.password && touched.password ? <p className='text-red-500 pl-4'>{errors.password}</p> : null}
+                {wrongCredentials? <p className='text-red-500 text-right '>{wrongCredentials}</p> : null}
                 {!showPassword ? (
                   <img
                     src={closeEye}
-                    className={`${touched.password && errors.password ? 'w-7 ml-72 relative top-[-4.2rem]' : 'w-7 ml-72 relative top-[-2.5rem]'} cursor-pointer`}
+                    className={`${touched.password && errors.password || wrongCredentials ? 'w-7 ml-72 relative top-[-4.2rem]' : 'w-7 ml-72 relative top-[-2.5rem]'} cursor-pointer`}
                     onClick={togglePasswordVisibility}
                   />
                 ) : (
@@ -135,7 +144,7 @@ export const Modals = ({ match }) => {
               </div>
             </div>
             <div className=''>
-              <p className='text-end text-black pr-7 relative -top-4'>Forgot your password?</p>
+              <p className='text-end text-black pr-7 relative -top-4 cursor-pointer' onClick={forgotPasswordHandler}>Forgot your password?</p>
             </div>
             <div className="flex justify-center mt-4 mb-9">
               <button

@@ -32,3 +32,14 @@ export const updatePasswordSchema=Yup.object({
     confirmNewPassword:Yup.string().min(6).required("Password is mandatory"),
     
 })
+
+export const resetPasswordSchema=Yup.object({
+    phone:Yup.string().min(6).required("Phone number is mandatory"),
+    captcha:Yup.string().min(6).required("Captcha is mandatory"),
+    
+})
+export const newPasswordSchema=Yup.object({
+    newPassword:Yup.string().min(6).required("Password is mandatory"),
+    confirmNewPassword:Yup.string().min(6).required("Password is mandatory"),
+    
+})

@@ -10,6 +10,8 @@ import { useFormik } from 'formik'
 import { signUpSchema } from "../../schemas";
 import { useNavigate } from "react-router-dom";
 import { format } from 'date-fns';
+import {  useDispatch } from 'react-redux'
+
 import {
   TextField,
   InputLabel,
@@ -18,11 +20,15 @@ import {
   FormControl,
 } from "@mui/material";
 
-export const AnotherContent = () => {
-    const [value, setValue] = React.useState();
+export const AnotherContent = ({checkDataArray}) => {
+  console.log('check data array ',checkDataArray)
+    const [firstNameError, setFirstNameError] = React.useState('');
+    const [phoneError, setPhoneError] = React.useState('');
+    const [emailError, setEmailError] = React.useState('');
     const [showPassword, setShowPassword] = useState(false)
     const [selectedDate, setSelectedDate] = useState(null)
     const navigate=useNavigate()
+    const dispatch=useDispatch()
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -35,30 +41,93 @@ export const AnotherContent = () => {
       date:'',
       city:''
     }
-    const {values, errors, touched, handleBlur, handleChange, handleSubmit,setValues,setFieldValue} = useFormik({
+    // const {values, errors, touched, handleBlur, handleChange, handleSubmit,setValues,setFieldValue} = useFormik({
+    //   initialValues: initialValues,
+    //   validationSchema: signUpSchema,
+    //   onSubmit: (values, action) => {
+    //     let day=values.date.$D
+    //     let month=values.date.$M
+    //     let year=values.date.$y
+    //    let date=day.toString()+ '/'+ month.toString()+ '/'+ year.toString()
+    //    const obj={
+    //     firstName:values.firstName,
+    //     phone:values.phone,
+    //     email:values.email,
+    //     password:values.password,
+    //     gender:values.gender,
+    //     city:values.city,
+    //     date:date
+    //    }
+    //    console.log('date is',obj)
+    //    for(let i=0;i<checkDataArray.length;i++){
+    //     const checkObj=checkDataArray[i]
+    //     if(obj.firstName===checkObj.firstName){
+    //       setFirstNameError('first name already exist')
+    //       return
+    //     }
+    //      if(obj.email===checkObj.email){
+    //       setEmailError('email already exist')
+    //       return
+    //     }
+    //     if(obj.phone===checkObj.phone){
+    //       setPhoneError('phone already exist')
+    //       return
+    //     }
+    //    }
+    //    sessionStorage.setItem('formData', JSON.stringify(obj));
+    //     navigate('/step1',{state:obj})
+    //     action.resetForm();
+    //   }
+    // });
+    // console.log(errors)
+    const {values, errors, touched, handleBlur, handleChange, handleSubmit, setValues, setFieldValue} = useFormik({
       initialValues: initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values, action) => {
-        let day=values.date.$D
-        let month=values.date.$M
-        let year=values.date.$y
-       let date=day.toString()+ '/'+ month.toString()+ '/'+ year.toString()
-       const obj={
-        firstName:values.firstName,
-        phone:values.phone,
-        email:values.email,
-        password:values.password,
-        gender:values.gender,
-        city:values.city,
-        date:date
-       }
-       console.log('date is',obj)
-       sessionStorage.setItem('formData', JSON.stringify(obj));
-        navigate('/step1',{state:obj})
+        let day = values.date.$D;
+        let month = values.date.$M;
+        let year = values.date.$y;
+        let date = day.toString() + '/' + month.toString() + '/' + year.toString();
+        const obj = {
+          firstName: values.firstName,
+          phone: values.phone,
+          email: values.email,
+          password: values.password,
+          gender: values.gender,
+          city: values.city,
+          date: date
+        };
+        console.log('date is', obj);
+    
+        let errors = {};
+    
+        for (let i = 0; i < checkDataArray.length; i++) {
+          const checkObj = checkDataArray[i];
+          if (obj.firstName === checkObj.firstName) {
+            errors.firstName = 'first name already exists';
+          }
+          if (obj.email === checkObj.email) {
+            errors.email = 'email already exists';
+          }
+          if (obj.phone === checkObj.phone) {
+            errors.phone = 'phone already exists';
+          }
+        }
+    
+        if (Object.keys(errors).length > 0) {
+          setFirstNameError(errors.firstName || '');
+          setEmailError(errors.email || '');
+          setPhoneError(errors.phone || '');
+          return;
+        }
+    
+        sessionStorage.setItem('formData', JSON.stringify(obj));
+        navigate('/step1', {state: obj});
         action.resetForm();
       }
     });
-    console.log(errors)
+    console.log(errors);
+    
    
     useEffect(() => {
       const forms = JSON.parse(sessionStorage.getItem('formData'));
@@ -100,7 +169,7 @@ export const AnotherContent = () => {
                     error={Boolean(errors.email && touched.email)}
                   />
                    {errors.email && touched.email? <p className='text-red-500 pl-4'>{errors.email}</p>:null}
-        
+                   {emailError? <p className='text-red-500 pl-4'>{emailError}</p>:null}
                 </div>
                 <div className="flex ">
                   <div className="mt-5 ml-4 mr-4">
@@ -173,6 +242,7 @@ export const AnotherContent = () => {
                     
                   />
                     {errors.firstName && touched.firstName? <p className='text-red-500 pl-4'>{errors.firstName}</p>:null}
+                    {firstNameError? <p className='text-red-500 pl-4'>{firstNameError}</p>:null}
                 </div>
                 <div className=" ml-4 mr-4 mt-5">
                   <TextField
@@ -213,6 +283,7 @@ export const AnotherContent = () => {
                   />
                   </div>
     {errors.phone && touched.phone? <p className='text-red-500 pl-4'>{errors.phone}</p>:null}
+    {phoneError? <p className='text-red-500 pl-4'>{phoneError}</p>:null}
                 </div>
                 </div>}
                 <div className="ml-4 mt-5 mb-5">

@@ -24,6 +24,8 @@ import playVideo from '../../assets/personalProfileIcons/playVideo.png'
 import WatchVideo from "../common/watchVideo/watchVideo"
 import SweetAlert2 from 'react-sweetalert2';
 import sorryImage from "../../assets/personalProfileIcons/sorryEmoji.png"
+import { passMatchArraySliceActions } from "../../Redux/Slice/passMatchArraySlice/passMatchArraySlice"
+import { passDataSliceAcions } from "../../Redux/Slice/passDataSlice/passDataSlice"
 const Matches = ({ matches }) => 
 {
 
@@ -47,6 +49,8 @@ const Matches = ({ matches }) =>
   const [swalProps, setSwalProps] = useState({});
   const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.  getDeactivateUser.deactivateHeading)
   console.log('get deactivate user',getDeactivateAccountSelector)
+  const matchesData = useSelector((state) => state.matchData.getMatchesArray.interestUsers);
+  console.log('matches data array',matchesData)
   const handleLeftArrowClick = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? getProfile().images?.length - 1 : prevIndex - 1
@@ -87,10 +91,11 @@ const Matches = ({ matches }) =>
       id: id,
       userId: crossId
     };
-    setCrosses(true); // Set crosses to true to change background color
+    setCrosses(true);
+    dispatch(passDataSliceAcions.passDatas(crossId))
     setTimeout(() => {
       dispatch(addCrossMatchAsync(crossObjId));
-      window.location.reload();
+      // window.location.reload();
       setCrosses(false); // Set crosses back to false after a delay
     }, 700);
   };
@@ -127,12 +132,14 @@ const Matches = ({ matches }) =>
    recieverUserId:likeId
    }
     setLiked(true);
+    dispatch(passDataSliceAcions.passDatas(likeId))
     setTimeout(() => {
       dispatch(addLikeMatchAsync(likeObjId));
       dispatch(addLikeUserAsync(likeObjId));
       dispatch(addLikeNotifyAsync(notifyobjId));
       dispatch(addLikeCounterUserAsync(notifyobjId));
-      window.location.reload();
+      // window.location.reload();
+      setLiked(false)
     }, 700); // Adjust the delay time as needed
     dispatch(addSmsSenderAsync(smsId))
   };
@@ -184,13 +191,13 @@ const Matches = ({ matches }) =>
                 <p className="text-sm font-bold text-white">Watch Video</p>
               </div>
               <div className="flex justify-center">
-               {matches.images.length===1?null: <img
+               {matches?.images?.length===1?null: <img
                   src={leftArrow}
                   className="w-5 cursor-pointer relative left-6 filter invert"
                   onClick={handleLeftArrowClick}
                 />}
                 <img src={getImageUrl()} className="object-cover w-96 h-96  cursor-pointer" onClick={() => mainContentMatchesHandler(matches._id)} />
-               {matches.images.length===1?null: <img
+               {matches?.images?.length===1?null: <img
                   src={rightArrow}
                   className="w-5 cursor-pointer relative right-7 filter invert"
                   onClick={handleRightArrowClick}

@@ -1,8 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import {  useDispatch } from 'react-redux'
+import { comparePhoneNumberAsync } from '../../Redux/Slice/comparePhoneNumberSlice/comparePhoneNumberSlice'
 export const Content = () => {
     const navigate=useNavigate()
+    const dispatch=useDispatch()
     const registerNow=()=>{
+      
+      dispatch(comparePhoneNumberAsync('joinNow'))
     navigate('/anotherContent')
     }
   return (

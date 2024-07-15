@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter} from 'react-router-dom';
 import { NavbarPage } from './Pages/NavbarPage/NavbarPage';
 import { AnotherPage } from './Pages/AnotherPage/AnotherPage';
 import { AddiotionalPage } from './Pages/AdditionalPage/AddiotionalPage';
@@ -28,6 +28,12 @@ import MatchPerson from './Components/common/matchPerson/matchPerson';
 import VideoPage from './Pages/VideoPage/VideoPage';
 import VideoUploadPage from './Pages/videoUploadPage/videoUploadPage';
 import { SettingsPage } from './Pages/settingsPage/settingsPage';
+import ForgotPasswordPage from './Pages/forgotPasswordPage/forgotPasswordPage';
+import NewPasswordPage from './Pages/newPasswordPage/newPasswordPage';
+import ForgotUpdatePasswordResult from './Components/forgotUpdatePasswordResult/forgotUpdatePasswordResult';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
+import RegisterProtectedRoute from './ProtectedRoute/registerProtectedRoute';
+import PasswordProtectedRoute from './ProtectedRoute/passwordProtectedRoute';
 
 
 function CustomToast({image,name}) {
@@ -74,6 +80,8 @@ function App() {
 
   const dispatch = useDispatch();
   const id = sessionStorage.getItem('userId');
+  const token =sessionStorage.getItem('loginToken')
+  console.log('token is in app',token)
   useEffect(() => {
     dispatch(getNotifyUserAsync(id))
     dispatch(getLikeNotifyUserAsync(id))
@@ -87,7 +95,9 @@ function App() {
 
   const lastAnotherMatchObjUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.lastAnotherMatchUser)
   console.log('last another match obj user',lastAnotherMatchObjUser)
-
+ const resetObj={
+  resetName:'Reset Password'
+ }
 
   useEffect(() => {
     if (getNotifyUserResponse) {
@@ -168,45 +178,48 @@ function App() {
     },
     {
       path: '/step1',
-      element: <AddiotionalPage />
+      element: <RegisterProtectedRoute element={<AddiotionalPage />} />
     },
     {
       path: '/step2',
-      element: <AboutMePage />
+      element: <RegisterProtectedRoute  element={<AboutMePage />} />
     },
     {
       path: '/step3',
-      element: <VideoPage />
+      element:  <RegisterProtectedRoute  element={<VideoPage />} />
     },
     {
       path: '/step4',
-      element:<VideoUploadPage/>
+      element:<RegisterProtectedRoute  element={<VideoUploadPage />} />
     },
     {
       path: '/step5',
-      element: <PhotoInfoPage />
+      element: <RegisterProtectedRoute  element={<PhotoInfoPage />} />
     },
-   
-    
+    { path: '/forgotPassword',
+    element:<ForgotPasswordPage resetObj={resetObj}/>},
+    { path: '/newPassword',
+    element:<PasswordProtectedRoute element={<NewPasswordPage />} />},
+ 
     {
       path: '/mainContent',
-      element: <MainPage />,
+      element: <ProtectedRoute element={<MainPage />} />,
       children: [
-        { path: '', element: <NewAndOnlinePage /> },
-        { path: 'personalProfile', element: <PersonalProfilePage /> },
-        { path: 'matches', element: <MatchPage /> },
+        { path: '', element:<NewAndOnlinePage /> },
+        { path: 'personalProfile', element: <ProtectedRoute element={<PersonalProfilePage />} /> },
+        { path: 'matches', element: <ProtectedRoute element={<MatchPage />} /> },
         { path: 'matchesMainContent', element: <MatchesMainContentPage /> },
-        { path: 'visitors', element: <VisitorPage /> },
-        { path: 'visitorProfile', element: <VisitorProfilePage /> },
-        { path: 'likeMe', element: <LikePage /> },
-        { path: 'search', element: <SearchPage /> },
-        { path: 'newMainContent', element: <NewAndOnlinePageContent /> },
+        { path: 'visitors', element:<ProtectedRoute element={<VisitorPage />} />  },
+        { path: 'visitorProfile', element: <ProtectedRoute element={<VisitorProfilePage />} />},
+        { path: 'likeMe', element:<ProtectedRoute element={<LikePage />} />},
+        { path: 'search', element:  <ProtectedRoute element={<SearchPage />} /> },
+        { path: 'newMainContent', element: <ProtectedRoute element={<NewAndOnlinePageContent />} /> },
         { path: 'allMessages', element: <MessagePage /> },
         { path: 'messageDetail', element: <MessageDetailPage /> },
-        { path: 'settings', element:<SettingsPage/> },
+        { path: 'settings', element:<ProtectedRoute element={<SettingsPage />} /> },
         { path: 'accountSettings', element:<SettingsPage/> }
       ]
-    }
+    },
   ]);
   // const MatchPerson = () => (
   //   <motion.div
