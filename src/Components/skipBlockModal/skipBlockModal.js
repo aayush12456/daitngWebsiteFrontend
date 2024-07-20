@@ -3,6 +3,7 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useDispatch } from "react-redux";
 import { deleteSkipProfileUserAsync } from "../../Redux/Slice/deleteSkipProfileUser/deleteSkipProfileUser";
+import '../../../src/styles.css'
 
 const SkipBlockModal = ({ skipModal, skipCloseModal, skipProfile }) => {
     const dispatch = useDispatch();
@@ -23,7 +24,33 @@ const SkipBlockModal = ({ skipModal, skipCloseModal, skipProfile }) => {
         border: "none",
         boxShadow: 24,
         p: 4,
-        animation: 'dropDown 1s ease-out'
+        animation: 'dropDown 1s ease-out',
+        '@media (min-width: 300px) and (max-width: 350px)': {
+            width: 300,
+            left:"50%",
+            top:"50%",
+       
+          },
+          '@media (min-width: 350px) and (max-width: 400px)': {
+            width: 350,
+            left:"50%",
+            top:"50%"
+          },
+          '@media (min-width: 400px) and (max-width: 500px)': {
+            width: 400,
+            left:"50%",
+            top:"50%"
+          },
+          '@media (min-width: 500px) and (max-width: 600px)': {
+            width: 450,
+            left:"50%",
+            top:"50%"
+          },
+          '@media (min-width: 600px) and (max-width: 700px)': {
+            width: 500,
+            left:"50%",
+            top:"50%"
+          },
     };
 
     const skipProfileData = (skipId) => {
@@ -63,8 +90,8 @@ const SkipBlockModal = ({ skipModal, skipCloseModal, skipProfile }) => {
                                                     <p><span className="text-md  text-[#333]">{skipItem.city}</span> <span className="text-sm text-[#333]">{skipItem.profession}</span></p>
                                                 </div>
                                             </div>
-                                            <div className="mr-5 mt-5 mb-3">
-                                                <button className="bg-[#30b21e] hover:bg-[#30b21e] text-[#fff] py-2 px-4 rounded w-28" onClick={() => skipProfileData(skipItem._id)}>
+                                            <div className="sm:mr-5 mt-5 mb-3">
+                                                <button className="bg-[#30b21e] hover:bg-[#30b21e] text-[#fff] py-2 px-4 rounded sm:w-28" onClick={() => skipProfileData(skipItem._id)}>
                                                     Reset
                                                 </button>
                                             </div>

@@ -6,6 +6,7 @@ import { getUserData } from '../../Redux/Slice/getUserSlice/getUserSlice'
 import { useSelector } from 'react-redux'
 import { passDataArraySliceAcions } from '../../Redux/Slice/passDataArraySlice/passDataArraySliice'
 import { getOnlineLikeUserData } from '../../Redux/Slice/getOnlineLikeUserSlice/getOnlineLikeUserSlice'
+import '../../../src/styles.css'
 export const NewAndOnlinePage = () => {
     const dispatch=useDispatch()
     const [userArray,setUserArray]=useState([])
@@ -39,7 +40,7 @@ export const NewAndOnlinePage = () => {
  
   return (
  <>
- <p className='text-center font-bold text-2xl pt-6 absolute  '>New and Online</p>
+ <p className='text-center font-bold text-2xl pt-6 absolute new-Text  '>New and Online</p>
  <SmallCard userData={userArray} signupUserData={signupuserArray} email={email} signupEmail={signupEmail} selfOnlineLikeUserData={selfOnlineLikeUserSelector} />
  </>
   )

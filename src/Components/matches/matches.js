@@ -26,6 +26,7 @@ import SweetAlert2 from 'react-sweetalert2';
 import sorryImage from "../../assets/personalProfileIcons/sorryEmoji.png"
 import { passMatchArraySliceActions } from "../../Redux/Slice/passMatchArraySlice/passMatchArraySlice"
 import { passDataSliceAcions } from "../../Redux/Slice/passDataSlice/passDataSlice"
+import '../../../src/styles.css'
 const Matches = ({ matches }) => 
 {
 
@@ -169,7 +170,7 @@ const Matches = ({ matches }) =>
 };
   return (
     <>
-      <div className="flex justify-center mt-14 ml-14">
+      <div className="flex justify-center md:mt-14 md:ml-14 mt-12 custom-margin ">
         <div className="relative">
           {liked && (
             <div className="absolute inset-0 bg-blue-500 opacity-80 rounded-2xl flex items-center justify-center">
@@ -184,7 +185,7 @@ const Matches = ({ matches }) =>
             </div>
           )}
 
-          <div className={`w-80 rounded-2xl shadow-lg ${liked ? 'bg-white' : '' || crosses ? 'bg-white' : ''}`}>
+          <div className={`md:w-80 w-72 match-Card rounded-2xl shadow-lg ${liked ? 'bg-white' : '' || crosses ? 'bg-white' : ''}`}>
             <div className="">
             <div className="flex absolute justify-center ml-7 mt-3 gap-1 cursor-pointer"  onClick={watchVideoButton}>
                 <img src={playVideo} className="w-6 invert "/>

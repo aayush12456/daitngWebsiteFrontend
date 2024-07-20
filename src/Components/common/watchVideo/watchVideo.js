@@ -147,7 +147,7 @@ const WatchVideo = ({ modalOpen, handleClose, personalVideoData,onlinePersonalVi
         if (videoElement) {
             // Automatically play the video
             videoElement.play();
-            // Loop the video
+            // Loop the videods
             videoElement.loop = true;
         }
     }, []);
@@ -171,7 +171,23 @@ const WatchVideo = ({ modalOpen, handleClose, personalVideoData,onlinePersonalVi
         border: "none",
         boxShadow: 24,
         p: 4,
-        animation: 'dropDown 1s ease-out'
+        animation: 'dropDown 1s ease-out',
+        '@media (max-width: 300px)': {
+            width: 300,
+            left:"50%"
+          },
+          '@media (min-width: 300px) and (max-width: 350px)': {
+            width: 300,
+            left:"50%"
+          },
+          '@media (min-width: 350px) and (max-width: 400px)': {
+            width: 340,
+            left:"50%"
+          },
+          '@media (min-width: 400px) and (max-width: 500px)': {
+            width: 370,
+            left:"50%"
+          },
     };
 
     return (

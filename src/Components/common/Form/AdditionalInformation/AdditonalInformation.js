@@ -30,6 +30,7 @@ import { Language } from "../../../../utils/peronalInfo";
 import { additonalInformationSchema } from "../../../../schemas";
 import { useNavigate } from "react-router-dom";
 import { passDataObjSliceAcions } from "../../../../Redux/Slice/passDataSliceObj/passDataSliceObj";
+import ProgressBarData from "../../progressBar/progressBar";
 export const AdditonalInformation = ({ additionalData }) => {
   const dispatch=useDispatch()
   console.log("data is", additionalData);
@@ -122,9 +123,11 @@ export const AdditonalInformation = ({ additionalData }) => {
 console.log('values data',values)
   return (
     <>
-      <p className="text-center text-2xl font-bold pt-8 text-[#000]">
-        Tell us about Yourself
-      </p>
+ 
+     
+
+   
+    
       <div className="flex justify-center mt-4">
         <div class=" rounded overflow-hidden shadow-lg h-full w-96">
           <div class="px-6 py-4  ">

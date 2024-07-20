@@ -37,7 +37,23 @@ const DeactivatePlusDeleteModal=({deletePlusDeactivateAccountModal,closeDeletePl
         border: "none",
         boxShadow: 24,
         p: 4,
-        animation: 'dropDown 1s ease-out'
+        animation: 'dropDown 1s ease-out',
+        '@media (min-width: 300px) and (max-width: 350px)': {
+          width: 300,
+          left:"50%",
+          top:"45%",
+     
+        },
+        '@media (min-width: 350px) and (max-width: 400px)': {
+          width: 350,
+          left:"50%",
+          top:"45%"
+        },
+        '@media (min-width: 400px) and (max-width: 500px)': {
+          width: 400,
+          left:"50%",
+          top:"45%"
+        },
       }
       const matchesHandler=()=>{
      navigate('/mainContent/matches')
@@ -111,7 +127,7 @@ return (
           
          {deactivateAccountSelector!=='deactivated' &&  getDeactivateAccountSelector!=='deactivated' || activates ?<button class="bg-[#bbc5d1] hover:bg-[#bbc5d1] text-white  py-2 px-4 rounded w-52 mt-6 h-14" onClick={deactivateAccountHandler}>
 Deactivate Account
-</button>:<button class="bg-[#bbc5d1] hover:bg-[#bbc5d1] text-white  py-2 px-4 rounded w-52 mt-6 h-14 ml-20" onClick={activateAccountHandler}>
+</button>:<button class="bg-[#bbc5d1] activateButton hover:bg-[#bbc5d1] text-white  py-2 px-4 rounded w-52 mt-6 h-14 ml-20" onClick={activateAccountHandler}>
 Activate Account
 </button>}
 {deactivateAccountSelector=='deactivated' ||  getDeactivateAccountSelector=='deactivated'   ?null:<button class="bg-[#5394e4] hover:bg-blue-700 text-white  py-2 px-4 rounded  w-52 mt-6 h-14" onClick={matchesHandler}>

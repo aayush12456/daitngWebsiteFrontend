@@ -24,6 +24,8 @@ export const MainPage = () => {
     profile: profileImage,
   };
   const profileSelector=useSelector((state)=>state.headerModal. headerModalToggle)
+  const sidebarOpenSelector=useSelector((state)=>state.  sidebarOpen.sidebarModalToggle)
+  console.log('sidebar open select',sidebarOpenSelector)
   const addColorModalHeadingSelector=useSelector((state)=>state. addPersonalProfileModalHeading.addPersonalProfileModalHeadingData.user)
   const getColorModalHeadingSelector=useSelector((state)=>state.getPersonalProfileModalHeading.getPersonalProfileModalHeadingData.user)
   console.log('add color modal',addColorModalHeadingSelector)
@@ -58,6 +60,9 @@ export const MainPage = () => {
       <div className="flex  ">
         <div className='h-full'>
           <Sidebar />
+        </div>
+        <div className='h-full'>
+         {sidebarOpenSelector==true? <Sidebar sidebarOpen={sidebarOpenSelector}  personalDataProfile={personalProfile}  loginName={loginName} />:null}
         </div>
         <div className="w-full">
           <Header personalData={personalProfile} loginName={loginName} />

@@ -400,6 +400,38 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
     border: "none",
     boxShadow: 24,
     p: 4,
+    '@media (max-width: 300px)': {
+      width: 300,
+      left:"8%"
+    },
+    '@media (min-width: 300px) and (max-width: 350px)': {
+      width: 300,
+      left:"4%"
+    },
+    '@media (min-width: 350px) and (max-width: 400px)': {
+      width: 300,
+      left:"6%"
+    },
+    '@media (min-width: 400px) and (max-width: 500px)': {
+      width: 370,
+      left:"8%"
+    },
+    '@media (min-width: 500px) and (max-width: 600px)': {
+      width: 450,
+      left:"8%"
+    },
+    '@media (min-width: 600px) and (max-width: 700px)': {
+      width: 550,
+      left:"8%"
+    },
+    '@media (min-width: 700px) and (max-width: 850px)': {
+      width: 650,
+      left:"8%"
+    },
+    '@media (min-width: 850px) and (max-width: 1000px)': {
+      width: 750,
+      left:"12%"
+    }
   };
 
   const getProfile = () => modalData || {};
@@ -480,36 +512,36 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
             <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
               <div className="flex justify-between">
                 <div className="flex gap-0">
-                  <p className="pl-5 pt-4 text-lg font-semibold">
+                  <p className="pl-5 pt-4 md:text-lg font-semibold">
                     {modalData?.firstName},
                   </p>
-                  <p className="pl-3 pt-4 text-lg text-[#333] font-semibold">
+                  <p className="pl-3 pt-4 md:text-lg text-[#333] font-semibold">
                     {age},
                   </p>
-                  <p className="text-lg pt-4 pl-3 text-[#333] font-semibold">
+                  <p className="md:text-lg pt-4 pl-3 text-[#333] font-semibold">
                     {modalData?.city}
                   </p>
                 </div>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">Relationship status</p>
-                <p className="text-lg pt-1 font-semibold">
+                <p className="md:text-lg text-[#757575]">Relationship status</p>
+                <p className="md:text-lg pt-1 font-semibold">
                   {modalData?.relationship}
                 </p>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">I'm looking for</p>
-                <p className="text-lg pt-1 font-semibold">
+                <p className="md:text-lg text-[#757575]">I'm looking for</p>
+                <p className="md:text-lg pt-1 font-semibold">
                   {modalData?.looking}
                 </p>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">Interests</p>
-                <div className="grid grid-cols-5 gap-3">
+                <p className="md:text-lg text-[#757575]">Interests</p>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                   {modalData.interest?.map(modalInterest => {
                     return (
                       <div className="bg-slate-200 rounded mt-3" key={modalInterest}>
-                        <p className="text-lg pt-3 text-center pl-4 pr-4 pb-3 text-[#757575]">
+                        <p className="md:text-lg pt-3 text-center pl-4 pr-4 pb-3 text-[#757575]">
                           {modalInterest}
                         </p>
                       </div>
@@ -518,50 +550,50 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
                 </div>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">About me</p>
-                <p className="text-lg pt-1 font-semibold">
+                <p className="md:text-lg text-[#757575]">About me</p>
+                <p className="md:text-lg pt-1 font-semibold">
                   {modalData?.aboutUser}
                 </p>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">Education</p>
-                <p className="text-lg pt-1 font-semibold">
+                <p className="md:text-lg text-[#757575]">Education</p>
+                <p className="md:text-lg pt-1 font-semibold">
                   {modalData?.education}
                 </p>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">Profession</p>
-                <p className="text-lg pt-1 font-semibold">
+                <p className="md:text-lg text-[#757575]">Profession</p>
+                <p className="md:text-lg pt-1 font-semibold">
                   {modalData?.profession}
                 </p>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">Drinking</p>
-                <p className="text-lg pt-1 font-semibold">
+                <p className="md:text-lg text-[#757575]">Drinking</p>
+                <p className="md:text-lg pt-1 font-semibold">
                   {modalData?.drinking}
                 </p>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">Smoking</p>
-                <p className="text-lg pt-1 font-semibold">
+                <p className="md:text-lg text-[#757575]">Smoking</p>
+                <p className="md:text-lg pt-1 font-semibold">
                   {modalData?.smoking}
                 </p>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">Eating</p>
-                <p className="text-lg pt-1 font-semibold">
+                <p className="md:text-lg text-[#757575]">Eating</p>
+                <p className="md:text-lg pt-1 font-semibold">
                   {modalData?.eating}
                 </p>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">Zodiac sign</p>
-                <p className="text-lg pt-1 font-semibold">
+                <p className="md:text-lg text-[#757575]">Zodiac sign</p>
+                <p className="md:text-lg pt-1 font-semibold">
                   {modalData?.zodiac}
                 </p>
               </div>
               <div className="pl-5 pt-3">
-                <p className="text-lg text-[#757575]">Languages I know</p>
-                <p className="text-lg pt-1 font-semibold">
+                <p className="md:text-lg text-[#757575]">Languages I know</p>
+                <p className="md:text-lg pt-1 font-semibold">
                   {modalData?.language}
                 </p>
               </div>

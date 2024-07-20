@@ -46,7 +46,7 @@ const Video = ({videoRecord}) => {
   return (
     <>
       <div>
-        <div className='flex justify-center mt-4 ml-9'>
+        <div className='flex justify-center mt-8 ml-2 sm:mt-7 sm:ml-9'>
         <ReactMediaRecorder
           video
           render={({

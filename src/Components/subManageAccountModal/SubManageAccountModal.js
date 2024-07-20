@@ -14,7 +14,23 @@ const SubManageAccountModal=({subManageAccountModal, closeSubManageAccountModal}
         border: "none",
         boxShadow: 24,
         p: 4,
-        animation: 'dropDown 1s ease-out'
+        animation: 'dropDown 1s ease-out',
+        '@media (min-width: 300px) and (max-width: 350px)': {
+          width: 300,
+          left:"50%",
+          top:"45%",
+     
+        },
+        '@media (min-width: 350px) and (max-width: 400px)': {
+          width: 350,
+          left:"50%",
+          top:"45%"
+        },
+        '@media (min-width: 400px) and (max-width: 500px)': {
+          width: 400,
+          left:"50%",
+          top:"45%"
+        },
       };
       const closeSubManageAccount=()=>{
         closeSubManageAccountModal()

@@ -29,7 +29,13 @@ const ChangePasswordModal = ({ changePasswordModal, closeChangePasswordModal }) 
     border: "none",
     boxShadow: 24,
     p: 4,
-    animation: 'dropDown 1s ease-out'
+    animation: 'dropDown 1s ease-out',
+    '@media (min-width: 300px) and (max-width: 350px)': {
+      width: 300,
+      left:"50%",
+      top:"45%",
+ 
+    },
   };
   const initialValues={
     currentPassword:'',

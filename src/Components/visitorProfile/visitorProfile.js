@@ -28,7 +28,7 @@ import { addOnlineLikeUserAsync } from "../../Redux/Slice/addOnlineLikeUserSlice
 import SweetAlert2 from 'react-sweetalert2';
 import sorryImage from "../../assets/personalProfileIcons/sorryEmoji.png"
 import { getDeactivateUserAsync } from "../../Redux/Slice/getDeactivateUser/getDeactivateUser";
-
+import '../../../src/styles.css'
 const style = {
   position: "absolute",
   top: "50%",
@@ -453,7 +453,7 @@ toast.success('Like sent successfully')
   return (
    <>
     <div className="flex justify-center mt-10">
-      <div className="relative">
+      <div className="relative w-full">
       {likeUser && (
             <div className="absolute inset-0 bg-blue-500 opacity-80 rounded-2xl flex items-center justify-center z-10">
               <img src={likeTik} alt="Right" className="w-12 h-14" />
@@ -465,7 +465,7 @@ toast.success('Like sent successfully')
               <img src={crossTik} alt="Right" className="w-14 h-14 filter invert" />
             </div>
           )}
-<div className={`w-[50rem] rounded overflow-hidden shadow-lg ${likeUser ? 'bg-white' : ''|| skipUser ? 'bg-white' : '' }`} >
+<div className={`w-screen md:w-[50rem] cardWidth rounded overflow-hidden shadow-lg ${likeUser ? 'bg-white' : ''|| skipUser ? 'bg-white' : '' }`} >
           <div className="px-6 py-4  ">
           <div style={{ maxHeight: '500px', overflowY: 'auto' }}>
           <div className={`flex ${likeUserPerson?.images?.length==1 || visitorUser?.images?.length==1?'justify-center':"justify-between"} bg-black`}>
@@ -474,19 +474,19 @@ toast.success('Like sent successfully')
                 className="w-5 filter invert cursor-pointer "
                 onClick={handleLeftArrowClick}
               />}
-              <div className={`flex justify-center ${likeUserPerson?.videoUrl && user && matchPartUser || OnlineContent?.videoUrl || visitorUser?.videoUrl && watchVideo  ?'ml-24':''} `}>
-                <img src={getImageUrl()} className="w-48 h-48 cursor-pointer object-cover"  onClick={handleOpen} />
-                {likeUserPerson?.videoUrl && user && matchPartUser ? <div className="mt-4 relative left-32  ">
+              <div className={`flex justify-center  ${likeUserPerson?.videoUrl && user && matchPartUser || OnlineContent?.videoUrl || visitorUser?.videoUrl && watchVideo  ?'ml-24':''} `}>
+                <img src={getImageUrl()} className={`w-48 h-48 cursor-pointer object-cover  ${likeUserPerson?'imgData':'img'}`}  onClick={handleOpen} />
+                {likeUserPerson?.videoUrl && user && matchPartUser ? <div className="mt-4 relative md:left-32 left-2 play   ">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
 
 </button>
                 </div>:null}
-                {OnlineContent?.videoUrl? <div className="mt-4 relative left-32  ">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
+                {OnlineContent?.videoUrl? <div className="mt-4 relative md:left-32 left-2 play  ">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center md:w-28 play  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
 
 </button>
                 </div>:null}
-                {visitorUser?.videoUrl && watchVideo ? <div className="mt-4 relative left-32  ">
+                {visitorUser?.videoUrl && watchVideo ? <div className="mt-4 relative md:left-32 left-2 play ">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
 
 </button>
@@ -511,7 +511,9 @@ toast.success('Like sent successfully')
               <p className="text-lg pt-4 pl-3 text-[#333] font-semibold">
               {visitor &&visitor.city?visitor?.city:OnlineContent?.city}
               </p>
-              
+             {likeUserPerson?.videoUrl && user && matchPartUser ?<button class="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center  relative top-4 hidden playBtn  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div></button>:null}
+              {OnlineContent?.videoUrl?<button class="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center  relative top-4 hidden playBtn  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div></button>:null}
+             { visitorUser?.videoUrl && watchVideo ?<button class="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center  relative top-4 hidden playBtn  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div></button>:null}
             </div>
             {OnlineContent?<div className="pl-5 pt-1">
               <p className="text-md ">Working as {OnlineContent?.profession}</p>
@@ -544,7 +546,7 @@ toast.success('Like sent successfully')
               <p className="text-lg text-[#757575]">Interests</p>
              {OnlineContent?null: <p className="text-sm text-[#5394e4] pt-1 ">( {visitorCommonInterest?.length || updateVisitorCommonInterest?.length || likeCommonInterest?.length || updateLikeCommonInterest?.length} common )</p>}
             </div>
-            <div className="flex gap-4 ml-4  ">
+            <div className="grid grid-cols-2 md:flex gap-4 ml-4 interest  ">
                
                 
                {visitor
@@ -630,13 +632,13 @@ toast.success('Like sent successfully')
           <hr class="  w-full border-t-1 border-gray-400"/>
          
 {user && skipPart && likePart && likeUserPart && matchPartUser && selfOnlineLike &&<div className="flex justify-between">
-    <div className="flex gap-4 mt-6 ml-20">
+    <div className="flex gap-4 mt-6 ml-20 crossButton ">
       <div className="rounded-full bg-[#71706f] w-12 h-12 flex justify-center cursor-pointer" onClick={skipCancelHandler}>
         <img src={crossTik} className="w-8 filter invert" />
       </div>
       <p className="text-[#71706f] font-semibold pt-1 text-xl cursor-pointer" onClick={skipCancelHandler}>SKIP</p>
     </div>
-    <div className="flex gap-4 mt-6 mr-16">
+    <div className="flex gap-4 mt-6 mr-16 likeButton">
       <div className="rounded-full bg-blue-600 w-12 h-12 flex justify-center cursor-pointer" onClick={likePersonHandler}>
         <img src={rightTik} className="w-8" />
       </div>

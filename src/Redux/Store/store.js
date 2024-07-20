@@ -62,6 +62,7 @@ import activateUserSlice from "../Slice/activateUserSlice/activateUserSlice"
 import passMatchArraySlice from "../Slice/passMatchArraySlice/passMatchArraySlice"
 import  ForgotPasswordUpdateUserSlice  from "../Slice/forgotUpdatePasswordUserSlice/forgotUpdatePasswordUserSlice"
 import comparePhoneNumberSlice from "../Slice/comparePhoneNumberSlice/comparePhoneNumberSlice"
+import sidebarOpenSlice from "../Slice/sidebarOpenSlice"
 
 
 
@@ -132,7 +133,8 @@ const store=configureStore({
     passMatchArray:passMatchArraySlice,
     passDataObj:passDataSliceObj,
     forgotPasswordUpdateUser:ForgotPasswordUpdateUserSlice,
-    comparePhoneNumber:comparePhoneNumberSlice
+    comparePhoneNumber:comparePhoneNumberSlice,
+    sidebarOpen:sidebarOpenSlice
     }
 })
 export default store

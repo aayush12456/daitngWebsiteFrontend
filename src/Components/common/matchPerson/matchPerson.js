@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { motion } from 'framer-motion';
 import './matchPerson.css';
 import rightTik from '../../../assets/personalProfileIcons/rightTiks.svg';
+import '../../../../src/styles.css'
 import { useState } from "react";
 const MatchPerson = () => {
   const [show,setShow]=useState(true)
@@ -32,6 +33,7 @@ setShow(false)
           ></div>
 
           <motion.div
+          className="animatedImg"
             initial={{ opacity: 0, scale: 0, x: "-50vw" }}
             animate={{ opacity: 1, scale: 1, x: "0vw" }}
             transition={{
@@ -50,7 +52,7 @@ setShow(false)
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              transform: "translateX(-50%)", // Center the circle horizontally
+              transform: "translateX(-50%)", // Center the circle horizontally,
             }}
           >
             <img
@@ -120,7 +122,8 @@ setShow(false)
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              transform: "translate(-50%, -50%)", // Center the circle horizontally and vertically
+              transform: "translate(-50%, -50%)", // Center the circle horizontally and vertically,
+              
             }}
           >
             <img

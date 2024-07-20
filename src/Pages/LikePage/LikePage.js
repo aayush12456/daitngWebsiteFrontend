@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getLikeUserAsync } from '../../Redux/Slice/getLikeUser/getLikeUser';
 import { ExtraSmallCard } from '../../Components/common/extraSmallCard/extraSmallCard';
 import { getOnlineLikeUserData } from '../../Redux/Slice/getOnlineLikeUserSlice/getOnlineLikeUserSlice';
+import '../../../src/styles.css'
 
 export const LikePage = () => {
   const id = sessionStorage.getItem('userId');
@@ -38,7 +39,7 @@ export const LikePage = () => {
     <>
       <div className='grid grid-cols-1'>
         {combinedArray.length > 0 ? (
-          <div className='grid grid-cols-6 ml-72 gap-20 mt-12'>
+          <div className='grid likeCard sm:grid-cols-3 gap-4 ml-2 mr-2 md:grid-cols-5 md:ml-72 md:gap-5 mt-12'>
             {combinedArray.map((item) => (
               <React.Fragment key={item.id}>
                 <ExtraSmallCard visitor={item} likePerson={item} likeUserPerson={item} />

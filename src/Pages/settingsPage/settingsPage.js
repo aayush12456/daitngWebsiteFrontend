@@ -11,7 +11,7 @@ export const SettingsPage=()=>{
     },[dispatch])
 return (
     <>
- <p className='text-center font-bold text-2xl pt-6 absolute    '>Settings</p>
+ <p className='text-center font-bold text-2xl pt-6 absolute  new-Text   '>Settings</p>
 <Settings/>
     </>
 )

@@ -19,7 +19,7 @@ import io from "socket.io-client";
 import { modalActions } from "../../../Redux/Slice/modalSlice";
 import { addNotifyAsync } from "../../../Redux/Slice/addNotifySlice/addNotifySlice";
 import { addVisitorEmailSenderAsync } from "../../../Redux/Slice/addVisitorEmailSlice/addVisitorEmailSlice";
-
+import '../../../../src/styles.css'
 
 const style = {
   position: "absolute",
@@ -177,12 +177,32 @@ console.log('Common Users:', commonUsers);
     <>
       <div className="flex justify-center">
         <div className=" mt-12 ">
+        {/* <div className="flex w-full ">
+                  <div className="  overflow-hidden shadow-lg w-screen sm:w-96 new-Card bg-white mt-8 cursor-pointer" onClick={()=>mainContentHandler(item)}>
+                      <div className="px-6 py-4 w-full ">
+                        <div  className="flex justify-between">
+                        <div className="flex gap-4">
+                          <img
+                            // src={BACKEND_BASE_URL + item.images[0]}
+                            src={item.images[0]}
+                            className="w-16   rounded-full"
+                          />
+                          <div>
+                            <p className="pt-3">{item.firstName}</p>
+                            <p className="pt-1">{item.city}</p>
+                          </div>
+                    
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div> */}
           {email
             ? userData?.map((item) => {
                 return (
                   <>
-                  <div className="flex ">
-                  <div className="  overflow-hidden shadow-lg w-96 bg-white mt-8 cursor-pointer" onClick={()=>mainContentHandler(item)}>
+                  <div className="flex w-full ">
+                  <div className="  overflow-hidden shadow-lg w-screen sm:w-96 new-Card bg-white mt-8 cursor-pointer" onClick={()=>mainContentHandler(item)}>
                       <div className="px-6 py-4 w-full ">
                         <div className="flex justify-between">
                         <div className="flex gap-4">
@@ -207,6 +227,7 @@ console.log('Common Users:', commonUsers);
     )
   })
   }
+  
    <div className="mt-3">
     <button
       class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"

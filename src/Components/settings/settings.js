@@ -7,7 +7,7 @@ import ChangePasswordModal from '../changePasswordModal/changePasswordModal';
 import ManageAccountModal from '../manageAccountModal/maangeAccountModal';
 import SubManageAccountModal from '../subManageAccountModal/SubManageAccountModal';
 import DeactivatePlusDeleteModal from '../deactivatePlusDeleteModal/deactivatePlusDeleteModal';
-
+import '../../../src/styles.css'
 export const Settings = () => {
   const [skipModalData, setSkipModalData] = useState(false);
   const [accountSettingsModalData, setAccountSettingsModalData] = useState(false);
@@ -68,29 +68,29 @@ export const Settings = () => {
   return (
     <>
       <div className="absolute pt-16 ">
-        <div className="flex gap-8 text-lg text-[#838ca8] cursor-pointer">
+        <div className="flex gap-8 text-lg text-[#838ca8] cursor-pointer  new-Text ">
           <p>Account</p>
           <p>My orders</p>
         </div>
       </div>
-      <div className="flex justify-center mt-32">
-        <div className="w-[45rem] h-[18rem] rounded overflow-hidden shadow-lg">
+      <div className=" flex justify-center mt-32">
+        <div className="w-screen setting h-[18em] sm:w-[45rem] rounded overflow-hidden shadow-lg">
           <p className="text-lg text-[#757575] pl-4 pt-7 font-semibold">Skip / Blocked Profiles</p>
-          <div className='w-[42rem] bg-[#f3f4f9] ml-4 mt-2 h-20 '>
+          <div className='w-screen  sm:w-[42rem] bg-[#f3f4f9] ml-4 mt-2 h-20  '>
             <div className="flex justify-between ">
               <p className='pl-3 pt-2 border-slate-300 cursor-pointer' onClick={skipProfile}>Skipped Profiles</p>
-              <img src={rightArrow} className='w-3 mr-4 mt-2' />
+              <img src={rightArrow} className='w-3  mr-12 sm:mr-4 mt-2 arrow' />
             </div>
             <div className="flex justify-between ">
               <p className='pl-3 pt-2 border-slate-300 cursor-pointer'>Blocked Users</p>
-              <img src={rightArrow} className='w-3 mr-4 mt-2' />
+              <img src={rightArrow} className='w-3  mr-12  sm:mr-4 mt-2 arrow' />
             </div>
           </div>
           <p className="text-lg text-[#757575] pl-4 pt-7 font-semibold cursor-pointer">Account</p>
-          <div className='w-[42rem] bg-[#f3f4f9] ml-4 mt-2 h-10 '>
+          <div className='w-screen sm:w-[42rem] bg-[#f3f4f9] ml-4 mt-2 h-10 '>
             <div className="flex justify-between ">
               <p className='pl-3 pt-2 border-slate-300 cursor-pointer' onClick={accountSettings}>Account Settings</p>
-              <img src={rightArrow} className='w-3 mr-4 mt-2' />
+              <img src={rightArrow} className='w-3 mr-12 sm:mr-4 mt-2 arrow' />
             </div>
           </div>
         </div>

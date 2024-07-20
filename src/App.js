@@ -34,6 +34,7 @@ import ForgotUpdatePasswordResult from './Components/forgotUpdatePasswordResult/
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 import PasswordProtectedRoute from './ProtectedRoute/passwordProtectedRoute';
+import { sidebarModalActions } from './Redux/Slice/sidebarOpenSlice';
 
 
 
@@ -96,10 +97,14 @@ function App() {
 
   const lastAnotherMatchObjUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.lastAnotherMatchUser)
   console.log('last another match obj user',lastAnotherMatchObjUser)
+
+  // const sidebarOpenSelector=useSelector((state)=>state.  sidebarOpen.sidebarModalToggle)
  const resetObj={
   resetName:'Reset Password'
  }
-
+//  const overlayClickHandler = () => {
+//   dispatch(sidebarModalActions.   sidebarVisibleToggle());
+// };
   useEffect(() => {
     if (getNotifyUserResponse) {
       toast.error(<CustomToast image={getNotifyUserResponse?.images[0]}  name={getNotifyUserResponse?.firstName}/>,
@@ -202,22 +207,42 @@ function App() {
     { path: '/newPassword',
     element:<PasswordProtectedRoute element={<NewPasswordPage />} />},
  
+    // {
+    //   path: '/mainContent',
+    //   element: <ProtectedRoute element={<MainPage />} />,
+    //   children: [
+    //     { path: '', element:<NewAndOnlinePage /> },
+    //     { path: 'personalProfile', element: <ProtectedRoute element={<PersonalProfilePage />} /> },
+    //     { path: 'matches', element: <ProtectedRoute element={<MatchPage />} /> },
+    //     { path: 'matchesMainContent', element: <MatchesMainContentPage /> },
+    //     { path: 'visitors', element:<ProtectedRoute element={<VisitorPage />} />  },
+    //     { path: 'visitorProfile', element: <ProtectedRoute element={<VisitorProfilePage />} />},
+    //     { path: 'likeMe', element:<ProtectedRoute element={<LikePage />} />},
+    //     { path: 'search', element:  <ProtectedRoute element={<SearchPage />} /> },
+    //     { path: 'newMainContent', element: <ProtectedRoute element={<NewAndOnlinePageContent />} /> },
+    //     { path: 'allMessages', element: <MessagePage /> },
+    //     { path: 'messageDetail', element: <MessageDetailPage /> },
+    //     { path: 'settings', element:<ProtectedRoute element={<SettingsPage />} /> },
+    //     { path: 'accountSettings', element:<SettingsPage/> }
+    //   ]
+    // },
+
     {
       path: '/mainContent',
-      element: <ProtectedRoute element={<MainPage />} />,
+      element: <MainPage />,
       children: [
         { path: '', element:<NewAndOnlinePage /> },
-        { path: 'personalProfile', element: <ProtectedRoute element={<PersonalProfilePage />} /> },
-        { path: 'matches', element: <ProtectedRoute element={<MatchPage />} /> },
+        { path: 'personalProfile', element:<PersonalProfilePage /> },
+        { path: 'matches', element: <MatchPage /> },
         { path: 'matchesMainContent', element: <MatchesMainContentPage /> },
-        { path: 'visitors', element:<ProtectedRoute element={<VisitorPage />} />  },
-        { path: 'visitorProfile', element: <ProtectedRoute element={<VisitorProfilePage />} />},
-        { path: 'likeMe', element:<ProtectedRoute element={<LikePage />} />},
-        { path: 'search', element:  <ProtectedRoute element={<SearchPage />} /> },
-        { path: 'newMainContent', element: <ProtectedRoute element={<NewAndOnlinePageContent />} /> },
+        { path: 'visitors', element:<VisitorPage />  },
+        { path: 'visitorProfile', element:<VisitorProfilePage />},
+        { path: 'likeMe', element:<LikePage />},
+        { path: 'search', element: <SearchPage /> },
+        { path: 'newMainContent', element:<NewAndOnlinePageContent /> },
         { path: 'allMessages', element: <MessagePage /> },
         { path: 'messageDetail', element: <MessageDetailPage /> },
-        { path: 'settings', element:<ProtectedRoute element={<SettingsPage />} /> },
+        { path: 'settings', element:<SettingsPage /> },
         { path: 'accountSettings', element:<SettingsPage/> }
       ]
     },
@@ -256,7 +281,9 @@ function App() {
       icon={false}
       />
     <MatchPerson/>
-  
+    {/* { sidebarOpenSelector && (
+        <div className="fixed inset-0 bg-transparent z-40" onClick={overlayClickHandler}></div>
+      )} */}
     </div>
   );
 }

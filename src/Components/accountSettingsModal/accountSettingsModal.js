@@ -22,7 +22,23 @@ const AccountSettingsModal = ({ accountSettingModal, accountCloseSettingModal, o
     border: "none",
     boxShadow: 24,
     p: 4,
-    animation: 'dropDown 1s ease-out'
+    animation: 'dropDown 1s ease-out',
+    '@media (min-width: 300px) and (max-width: 350px)': {
+      width: 300,
+      left:"50%",
+      top:"45%",
+ 
+    },
+    '@media (min-width: 350px) and (max-width: 400px)': {
+      width: 350,
+      left:"50%",
+      top:"45%"
+    },
+    '@media (min-width: 400px) and (max-width: 500px)': {
+      width: 400,
+      left:"50%",
+      top:"45%"
+    },
   };
 
   const changePassword = () => {
@@ -47,7 +63,7 @@ const manageAccount=()=>{
           <p className="pt-3 text-[#757575] text-md">My Account details</p>
           <div className="w-full rounded overflow-hidden shadow-lg mt-4">
             <div>
-              <p className="pt-5 pl-5 text-md"><span className="text-[#000000]">Email:</span> <span className="pl-5">{email||signupEmail}</span></p>
+              <p className="pt-5 pl-2 sm:pl-5 text-md"><span className="text-[#000000]">Email:</span> <span className="pl-0 sm:pl-5">{email||signupEmail}</span></p>
               <p className="pt-5 pl-5 text-md pb-4"><span className="text-[#000000]">Mobile:</span> <span className="pl-5">{loginData?.phone|| signupData?.phone}</span></p>
             </div>
           </div>

@@ -15,23 +15,23 @@ const AboutMe=({aboutMe})=>{
         return 
     }
     const aboutMeData={
-        firstName:aboutMe.firstName,
-        phone:aboutMe.phone,
-        email:aboutMe.email,
-        password:aboutMe.password,
-        gender:aboutMe.gender,
-        city:aboutMe.city,
-        date:aboutMe.date,
-        profession:aboutMe.profession,
-        education:aboutMe.education,
-        drinking:aboutMe.drinking,
-        smoking:aboutMe.smoking,
-        eating:aboutMe.eating,
-        interest:aboutMe.interest,
-        relationship:aboutMe.relation,
-        looking:aboutMe.looking,
-        zodiac:aboutMe.zodiac,
-        language:aboutMe.language,
+        firstName:aboutMe?.firstName,
+        phone:aboutMe?.phone,
+        email:aboutMe?.email,
+        password:aboutMe?.password,
+        gender:aboutMe?.gender,
+        city:aboutMe?.city,
+        date:aboutMe?.date,
+        profession:aboutMe?.profession,
+        education:aboutMe?.education,
+        drinking:aboutMe?.drinking,
+        smoking:aboutMe?.smoking,
+        eating:aboutMe?.eating,
+        interest:aboutMe?.interest,
+        relationship:aboutMe?.relation,
+        looking:aboutMe?.looking,
+        zodiac:aboutMe?.zodiac,
+        language:aboutMe?.language,
         aboutUser:text
     }
     console.log('about me',aboutMeData)
@@ -50,15 +50,15 @@ return (
     <>
     <div className="flex justify-center  ">
         <form onSubmit={textSubmit}>
-        <div className="mt-5 ">
- <textarea class="resize rounded-md border-2 outline-none w-96 h-36 pl-4 pt-4 " onChange={textChangeHandler} style={{width:'40rem'}} value={text} placeholder="Describe yourself. What you currently do? What is quirky abiut you? What makes you smile?..." ></textarea>
+        <div className="mt-10 w-full ">
+ <textarea class="resize rounded-md border-2 outline-none w-screen sm:w-[40rem]  h-36 pl-4 pt-4 " onChange={textChangeHandler}  value={text} placeholder="Describe yourself. What you currently do? What is quirky abiut you? What makes you smile?..." ></textarea>
  {about && (
                         <div className="flex justify-start mt-2 text-red-500">
                             {about}
                         </div>
                     )}
-<div className="mt-4 " >
-<button className=" bg-orange-600   dark:bg-orange-300 dark:hover:bg-orange-300  text-white font-bold py-2 px-4 rounded w-96 h-12" style={{width:'40rem'}} type="submit">
+<div className="mt-4 w-full" >
+<button className=" bg-orange-600 w-screen   dark:bg-orange-300 dark:hover:bg-orange-300  sm:w-[40rem]  text-white font-bold py-2 px-4 rounded h-12"  type="submit">
 SAVE
 </button>
 </div>

@@ -20,6 +20,7 @@ import { Interest } from "../../utils/peronalInfo";
 import rigthtik from '../../assets/personalProfileIcons/rightTik.png'
 import playVideo from '../../assets/personalProfileIcons/playVideo.png'
 import WatchVideo from "../common/watchVideo/watchVideo";
+import '../../styles.css'
 const style = {
   position: "absolute",
   top: "50%",
@@ -29,8 +30,46 @@ const style = {
   bgcolor: "background.paper",
   border: "none",
   boxShadow: 24,
-
   p: 4,
+  '@media (max-width: 300px)': {
+    width: 300,
+    left:"8%"
+  },
+  '@media (min-width: 300px) and (max-width: 350px)': {
+    width: 200,
+    left:"50%",
+    top:"30%"
+  },
+  '@media (min-width: 350px) and (max-width: 400px)': {
+    width: 300,
+    left:"50%",
+    top:"30%"
+  },
+  '@media (min-width: 400px) and (max-width: 500px)': {
+    width: 370,
+    left:"50%",
+    top:"40%"
+  },
+  '@media (min-width: 500px) and (max-width: 600px)': {
+    width: 450,
+    left:"50%",
+    top:"42%"
+  },
+  '@media (min-width: 600px) and (max-width: 700px)': {
+    width: 450,
+    left:"50%",
+    top:"42%"
+  },
+  '@media (min-width: 700px) and (max-width: 850px)': {
+    width: 460,
+    left:"50%",
+    top:"44%"
+  },
+  '@media (min-width: 850px) and (max-width: 1000px)': {
+    width: 460,
+    left:"50%",
+    top:"49%"
+  }
 };
 
 const style1 = {
@@ -44,6 +83,76 @@ const style1 = {
   boxShadow: 24,
   height: 400,
   p: 4,
+};
+
+const style2 = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "none",
+  boxShadow: 24,
+  height: 400,
+  p: 4,
+  '@media (min-width: 300px) and (max-width: 350px)': {
+    width: 300,
+    left:"50%",
+    top:"50%",
+    height: 800,
+  },
+  '@media (min-width: 350px) and (max-width: 400px)': {
+    width: 400,
+    left:"50%",
+    height: 800,
+  },
+  '@media (min-width: 400px) and (max-width: 500px)': {
+    width: 400,
+    left:"50%",
+    height: 800,
+  },
+  '@media (min-width: 500px) and (max-width: 600px)': {
+    width: 500,
+    left:"50%",
+    height: 800,
+  },
+  '@media (min-width: 600px) and (max-width: 642px)': {
+    width: 500,
+    left:"50%",
+    height: 800,
+    
+  },
+  '@media (min-width: 642px) and (max-width: 800px)': {
+    width: 600,
+    left:"50%",
+    height: 560,
+    
+  },
+  '@media (min-width: 800px) and (max-width: 1000px)': {
+    width: 800,
+    left:"50%",
+    height: 560,
+    
+  },
+  '@media (min-width: 1000px) and (max-width: 1200px)': {
+    width: 700,
+    left:"50%",
+    height: 560,
+    
+  },
+  '@media (min-width: 1200px) and (max-width: 1400px)': {
+    width: 700,
+    left:"50%",
+    height: 560,
+    
+  },
+  '@media (min-width: 1400px) and (max-width: 1820px)': {
+    width: 700,
+    left:"50%",
+    height: 560,
+    
+  },
 };
 export const PersonalProfile = ({
   personalProfile,
@@ -302,7 +411,7 @@ const watchVideoButton=()=>{
   return (
     <>
       <div className="flex justify-center mt-10">
-        <div class=" w-[50rem] rounded overflow-hidden shadow-lg">
+        <div class="w-screen md:w-[50rem] cardWidth rounded overflow-hidden shadow-lg">
           <div class="px-6 py-4  ">
             <div className={`flex  ${ personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?'justify-center':'justify-between'} bg-black`}>
              {personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?null: <img
@@ -315,11 +424,11 @@ const watchVideoButton=()=>{
 
                 <img
                   src={getImageUrl()}
-                  className="w-48 h-48 cursor-pointer object-cover"
+                  className="w-48 h-48 cursor-pointer object-cover personImgData img"
                   onClick={handleOpen}
                 />
                 </div>
-               {personalProfile?.videoUrl || personalSignupProfile?.videoUrl? <div className="mt-4 relative left-32  ">
+               {personalProfile?.videoUrl || personalSignupProfile?.videoUrl? <div className="mt-4 relative md:left-32 play  ">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
 
 </button>
@@ -359,6 +468,7 @@ const watchVideoButton=()=>{
                         ? matchesMainContent?.city
                         : null}
               </p>
+ <div className="hidden personalDataBtn"><div className="  flex gap-1 mt-4 ml-5  " onClick={watchVideoButton}><img src={playVideo} className="w-6 "/>Play</div></div>
               </div>
              {!matchesMainContent? <p className="text-lg pt-4 pr-4  text-[#5394e4] hover:text-[blue]  cursor-pointer" onClick={cityOpen}>
                 Edit
@@ -388,10 +498,10 @@ const watchVideoButton=()=>{
               </p>
             </div>
             <div className="pl-5 pt-6">
-              <div className="flex gap-2">
+              <div className="flex gap-2 editText ">
                 <p className="text-lg text-[#757575]">I'm looking for</p>
                 {!matchesMainContent?<p
-                  className="text-lg  pl-96 ml-44 pt-[-1rem] text-[#5394e4] hover:text-[blue]  cursor-pointer"
+                  className="text-lg  lg:pl-96 lg:ml-44 pt-[-1rem] text-[#5394e4] hover:text-[blue]  cursor-pointer"
                   onClick={lookingOpen}
                 >
                   Edit
@@ -418,7 +528,7 @@ const watchVideoButton=()=>{
                 </p>:null}
               </div>
 
-              <div className="grid grid-cols-5 gap-3  ">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3  ">
                 {updateProfile && updateProfile?.interest
                   ? updateProfile?.interest.map((personalInterest) => (
                     <div className="bg-slate-200 rounded mt-3" key={personalInterest}>
@@ -983,14 +1093,14 @@ const watchVideoButton=()=>{
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style} style={{ width: '45rem' }}>
+      <Box sx={style2} >
         <p className="text-center text-lg">
           Select Interests{' '}
           <span className="text-[#5394e4]">
             ({selectedInterests.length} selected)
           </span>{' '}
         </p>
-        <div className="grid grid-cols-4 gap-4 mt-4">
+        <div className="grid  grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
           {Interest.map((item) => (
             <div
               key={item.interest}
@@ -998,10 +1108,10 @@ const watchVideoButton=()=>{
                 isInterestSelected(item.interest)
                   ? 'bg-green-500'
                   : 'bg-slate-300'
-              } h-10 cursor-pointer rounded-lg`}
+              }  cursor-pointer rounded-lg w-full h-full `}
               onClick={() => interestDatas(item.interest)}
             >
-              <p className="text-center pt-2">{item.interest}</p>
+              <p className="text-center pt-2 pb-2">{item.interest}</p>
             </div>
           ))}
         </div>
