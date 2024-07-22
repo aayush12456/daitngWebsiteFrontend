@@ -24,11 +24,13 @@ export const VisitorPage = () => {
     // const visitorSelectorData = visitorSelector?.filter((visitorData) => // array of obj  return hoga or ye obj common hoga jo ki selfOnlineLikeUserData and  userData dono present hoga
     // onlineLikeUserSelector?.some(( onlineLikeUser) =>  onlineLikeUser.firstName === visitorData.visitor.firstName))
     // console.log('visitor selector data is',visitorSelectorData)
+
+    //className='grid grid-cols-6 ml-72 gap-20 mt-12'
   
   return (
 <>
 
-{visitorSelector?.length>0 ?<div className='grid grid-cols-6 ml-72 gap-20 mt-12'>
+{visitorSelector?.length>0 ?<div className='grid likeCard sm:grid-cols-3 gap-4 ml-2 mr-2 md:grid-cols-5 md:ml-72 md:gap-5 mt-12'>
 {
     visitorSelector?.map((visitorItem,index)=>{
         return (

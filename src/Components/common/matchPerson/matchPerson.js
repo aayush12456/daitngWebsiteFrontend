@@ -33,27 +33,27 @@ setShow(false)
           ></div>
 
           <motion.div
-          className="animatedImg"
+          className="animatedImg leftImg"
             initial={{ opacity: 0, scale: 0, x: "-50vw" }}
             animate={{ opacity: 1, scale: 1, x: "0vw" }}
             transition={{
               duration: 1.5,
             }}
-            style={{
-              position: "fixed",
-              top: "30%",
-              left: "48%",
-              width: 120,
-              height: 120,
-              borderRadius: "50%",
-              overflow: "hidden",
-              backgroundColor: "rgba(0, 150, 255, 0.5)",
-              zIndex: 10,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              transform: "translateX(-50%)", // Center the circle horizontally,
-            }}
+            // style={{
+            //   position: "fixed",
+            //   top: "30%",
+            //   left: "48%",
+            //   width: 120,
+            //   height: 120,
+            //   borderRadius: "50%",
+            //   overflow: "hidden",
+            //   backgroundColor: "rgba(0, 150, 255, 0.5)",
+            //   zIndex: 10,
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   alignItems: "center",
+            //   transform: "translateX(-50%)", // Center the circle horizontally,
+            // }}
           >
             <img
               // src={BACKEND_BASE_URL + matchUser?.images[0]}
@@ -69,26 +69,27 @@ setShow(false)
 
           {/* second circle */}
           <motion.div
+          className="rightImg"
             initial={{ opacity: 0, scale: 0, x: "50vw" }} // Start from right side
             animate={{ opacity: 1, scale: 1, x: "6vw" }} // Move to center
             transition={{
               duration: 1.5,
             }}
-            style={{
-              position: "fixed",
-              top: "30%",
-              left: "49%",
-              width: 120,
-              height: 120,
-              borderRadius: "50%",
-              overflow: "hidden",
-              backgroundColor: "rgba(0, 150, 255, 0.5)",
-              zIndex: 10,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              transform: "translateX(-50%)", // Center the circle horizontally
-            }}
+            // style={{
+            //   position: "fixed",
+            //   top: "30%",
+            //   left: "49%",
+            //   width: 120,
+            //   height: 120,
+            //   borderRadius: "50%",
+            //   overflow: "hidden",
+            //   backgroundColor: "rgba(0, 150, 255, 0.5)",
+            //   zIndex: 10,
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   alignItems: "center",
+            //   transform: "translateX(-50%)", // Center the circle horizontally
+            // }}
           >
             <img
               // src={BACKEND_BASE_URL + matchLikesData?.images[0]}
@@ -104,27 +105,28 @@ setShow(false)
 
           {/* third circle */}
           <motion.div
+          className="centerImg"
             initial={{ opacity: 0, scale: 0, y: "50vh" }} // Start from bottom
             animate={{ opacity: 1, scale: 1, y: "0vh" }} // Move to center
             transition={{
               duration: 1.5,
             }}
-            style={{
-              position: "fixed",
-              top: "43.2%", // Changed to center vertically
-              left: "53.6%",
-              width: 60,
-              height: 60,
-              borderRadius: "50%",
-              overflow: "hidden",
-              backgroundColor: "rgba(0, 150, 255, 0.5)",
-              zIndex: 10,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              transform: "translate(-50%, -50%)", // Center the circle horizontally and vertically,
+            // style={{
+            //   position: "fixed",
+            //   top: "43.2%", // Changed to center vertically
+            //   left: "53.6%",
+            //   width: 60,
+            //   height: 60,
+            //   borderRadius: "50%",
+            //   overflow: "hidden",
+            //   backgroundColor: "rgba(0, 150, 255, 0.5)",
+            //   zIndex: 10,
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   alignItems: "center",
+            //   transform: "translate(-50%, -50%)", // Center the circle horizontally and vertically,
               
-            }}
+            // }}
           >
             <img
               src={rightTik}
