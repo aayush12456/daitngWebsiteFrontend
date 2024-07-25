@@ -1189,3 +1189,12 @@ right: 2rem;
       transform: translateX(-50%,-50%)
      }
   }
+
+  @media (min-width: 300px) and (max-width: 530px) {
+    .move-button {
+      left: auto; 
+      right: 20px; 
+    }
+  }
+
+  

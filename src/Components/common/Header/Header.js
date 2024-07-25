@@ -8,6 +8,8 @@ import { sidebarModalActions } from "../../../Redux/Slice/sidebarOpenSlice";
 
 export const Header = ({ add, photo, aboutMe, personalData, loginName ,VideoUploadDatas,videoRecord,forgot,reset }) => {
   const profileImage = sessionStorage.getItem("loginImage");
+  const token =sessionStorage.getItem('loginToken')
+  const registerToken =sessionStorage.getItem('registerToken')
   console.log("profile", profileImage);
   console.log('personal data', personalData);
   
@@ -29,7 +31,7 @@ dispatch(sidebarModalActions.sidebarVisibleToggle())
       <div className="rounded overflow-hidden shadow-lg sticky top-0 z-50 bg-black text-white">
         <div className="px-6 py-4">
           <div className="flex justify-between">
-            <img src={hamburger} className="w-5 invert md:hidden" onClick={hamburgerClickHandler}/>
+           {token || registerToken? <img src={hamburger} className="w-5 invert md:hidden" onClick={hamburgerClickHandler}/>:null}
             <p className="text-white">Date App</p>
             {personalData ? (
               <div className="flex">

@@ -6,6 +6,8 @@ import { Content } from '../../Components/content/content'
 import { mainContentImages } from '../../utils/mainContentData'
 import SubContent from '../../Components/subContent/subContent'
 import SubContentMatch from '../../Components/subContentMatch/subContentMatch'
+import DatingTips from '../../Components/datingTips/datingTips'
+import Footer from '../../Components/footer/footer'
 export const NavbarPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
     const modalSelector=useSelector((state)=>state.modal.visibleToggle)
@@ -26,7 +28,7 @@ export const NavbarPage = () => {
    <Header />
    <div className=" ">
    {mainContentImages && mainContentImages.length > 0 ? (
-                     <Content mainContentImages={mainContentImages[currentIndex]}/>
+                     <Content mainContentImages={mainContentImages[currentIndex]} index={currentIndex}/>
                 ) : (
                     <p className="text-center pt-60 text-2xl font-semibold">No matches is there</p>
                 )}
@@ -34,6 +36,8 @@ export const NavbarPage = () => {
    </div>
   <SubContent/>
   <SubContentMatch/>
+  <DatingTips/>
+  <Footer/>
    <div>
   {modalSelector && !profileSelector && <Modals match={modalSelector}/>}
   
