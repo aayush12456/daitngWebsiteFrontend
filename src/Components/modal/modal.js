@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { modalActions } from '../../Redux/Slice/modalSlice';
+import { loginWithOtpModalSliceActions } from '../../Redux/Slice/loginWIthOtpModalSlice';
 export const Modals = ({ match }) => {
   const [showPassword, setShowPassword] = useState(false);
   const wrongCredentials=useSelector((state)=>state.loginData.LoginresponseData.mssg)
@@ -59,7 +60,9 @@ export const Modals = ({ match }) => {
   const forgotPasswordHandler=()=>{
     navigate('/forgotPassword',{state:forgotObj})
   }
-
+const openOtpModal=()=>{
+  dispatch(loginWithOtpModalSliceActions.OtpModalToggle())
+}
   useEffect(() => {
     if (loginResponse.token) {
       switch (loginResponse.completeData.sidebarTitle) {
@@ -155,6 +158,17 @@ export const Modals = ({ match }) => {
                 Login
               </button>
             </div>
+            <div className="flex justify-center  mb-9">
+              <button
+                type="button"
+                className="text-white bg-gray-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-400 dark:hover:bg-gray-300 focus:outline-none dark:focus:ring-blue-800 w-64 h-12"
+                style={{ width: "20rem" }}
+                onClick={openOtpModal}
+              >
+                Login With OTP
+              </button>
+            </div>
+            
           </form>
         </Box>
       </Modal>

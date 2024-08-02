@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import OtpInput from 'react-otp-input';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { verifyPasswordOtpAsync } from '../../Redux/Slice/verifyPasswordOtpSlice/verifyPasswordOtpSlice';
+import { useSelector } from 'react-redux';
 const OTPEnterData = ({ user,forgot,phoneNumber }) => {
   const phone=phoneNumber
     const forgotData={
@@ -11,29 +14,26 @@ const OTPEnterData = ({ user,forgot,phoneNumber }) => {
   const navigate=useNavigate()
   const [otp, setOtp] = useState('');
   const [errorOtp,setErrorOtp]=useState('')
+ const dispatch=useDispatch()
+ const verifyOtpSelector=useSelector((state)=>state?.verifyPasswordOtp?.verifyPasswordOtpData)
+ console.log('verify password otp selector',verifyOtpSelector)
 
-  const verifyOtp = async () => {
-    if (otp === '' || otp === null){
-setErrorOtp('please enter  OTP')
-return 
-    } 
-    try {
-      const data = await user.confirm(otp);
-      console.log('data of otp is', data);
-      navigate('/newPassword',{state:forgotData})
-      
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
+const verifyOtp=()=>{
+  const otpObj={
+    otp:otp
+  }
+ dispatch(verifyPasswordOtpAsync(otpObj)) 
+ setOtp('')
+}
   return (
     <>
+ 
       <div className='flex justify-center'>
         <OtpInput
           value={otp}
           onChange={(otp) => setOtp(otp)}
-          numInputs={6}
+          numInputs={5}
           separator={<span style={{ width: "8px" }}></span>}
           isInputNum={true}
           shouldAutoFocus={true}
@@ -58,7 +58,7 @@ return
           )}
         />
       </div>
-      <p className='text-red-500 pl-4 text-center'>{errorOtp}</p>
+      <p className='text-red-500 pl-4 text-center pt-2'>{verifyOtpSelector?.mssg}</p>
       <div className="flex justify-center mt-7 mb-9">
         <button
           className="text-white bg-[#ff6000] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-orange-300 dark:hover:bg-orange-300 focus:outline-none dark:focus:ring-blue-800 w-64"
@@ -71,6 +71,7 @@ return
           SUBMIT
         </button>
       </div>
+      {verifyOtpSelector?.mssg=='Login Successfully'?    navigate('/newPassword',{state:forgotData}):null}
     </>
   );
 };

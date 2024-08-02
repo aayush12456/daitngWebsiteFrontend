@@ -64,6 +64,11 @@ import  ForgotPasswordUpdateUserSlice  from "../Slice/forgotUpdatePasswordUserSl
 import comparePhoneNumberSlice from "../Slice/comparePhoneNumberSlice/comparePhoneNumberSlice"
 import sidebarOpenSlice from "../Slice/sidebarOpenSlice"
 import getAllLocalUserSlice from "../Slice/getAllLocalUserSlice/getAllLocalUserSlice"
+import loginWIthOtpModalSlice from "../Slice/loginWIthOtpModalSlice"
+import compareLoginWithOtpSlice from "../Slice/compareLoginWithOtpSlice/compareLoginWithOtpSlice"
+import loginWithOtpSlice from "../Slice/loginWithOtpSlice/loginWithOtpSlice"
+import updatePasswordOtpSlice from "../Slice/updatePasswordOtpSlice/updatePasswordOtpSlice"
+import verifyPasswordOtpSlice from "../Slice/verifyPasswordOtpSlice/verifyPasswordOtpSlice"
 
 
 
@@ -136,7 +141,12 @@ const store=configureStore({
     forgotPasswordUpdateUser:ForgotPasswordUpdateUserSlice,
     comparePhoneNumber:comparePhoneNumberSlice,
     sidebarOpen:sidebarOpenSlice,
-    getLocalUser:getAllLocalUserSlice
+    getLocalUser:getAllLocalUserSlice,
+    loginWithOtpModal:loginWIthOtpModalSlice,
+    compareLogin:compareLoginWithOtpSlice,
+    loginWithOtp:loginWithOtpSlice,
+    updatePasswordOtp:updatePasswordOtpSlice,
+    verifyPasswordOtp:verifyPasswordOtpSlice
     }
 })
 export default store

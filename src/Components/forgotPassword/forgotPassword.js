@@ -2,20 +2,21 @@ import { useState, useEffect } from 'react';
 import { TextField } from '@mui/material';
 import { resetPasswordSchema } from '../../schemas';
 import { useFormik } from 'formik';
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
-import { auth } from '../../firebase/setup';
 import { useDispatch } from 'react-redux';
 import OTPEnterData from '../otpEnterData/otpEnterData';
 import { passDataSliceAcions } from '../../Redux/Slice/passDataSlice/passDataSlice';
+import { updatePasswordOtpAsync } from '../../Redux/Slice/updatePasswordOtpSlice/updatePasswordOtpSlice';
+import { useSelector } from 'react-redux';
 
 const ForgotPassword = ({forgot}) => {
   const forgots=forgot
   const dispatch=useDispatch()
   const [captcha, setCaptcha] = useState('');
-  const [phones, setPhones] = useState(null);
   const [phoneNumber,setPhoneNumber]=useState('')
-const [user,setUser]=useState(null)
 
+const updateOtpSelector=useSelector((state)=>state.updatePasswordOtp.updatePasswordOtpData.mssg)
+const phoneNumbers=useSelector((state)=>state.updatePasswordOtp.updatePasswordOtpData.phoneNumber)
+console.log('update passowrd otp',updateOtpSelector)
   const generateCaptcha = () => {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -25,17 +26,6 @@ const [user,setUser]=useState(null)
     return result;
   };
 
-  const sendOtp = async (phone) => {
-    try {
-      const recaptcha = new RecaptchaVerifier(auth, 'recaptcha', {});
-      const confirmation = await signInWithPhoneNumber(auth, phone, recaptcha);
-      console.log('confirmation is', confirmation);
-      setPhones(confirmation);
-      setUser(confirmation)
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
 
   useEffect(() => {
@@ -55,11 +45,14 @@ const [user,setUser]=useState(null)
         alert('Captcha does not match');
         return;
       }
+      const phoneObj={
+        phone:values.phone,
+        reset:'Reset Password'
+      }
       setPhoneNumber(values.phone)
       dispatch(passDataSliceAcions. passDatas(values.phone))
-      const phone = `+91${values.phone}`;
-      sendOtp(phone);
-  
+      dispatch(updatePasswordOtpAsync(phoneObj))
+
       console.log('reset data is', values);
       action.resetForm();
       setCaptcha(generateCaptcha());
@@ -68,7 +61,7 @@ const [user,setUser]=useState(null)
 
   return (
     <>
-      {phones?null:<div className="flex justify-center">
+      {updateOtpSelector=='Login Successfully'?null:<div className="flex justify-center">
         <div className="w-96 rounded overflow-hidden shadow-lg mt-8">
           <form onSubmit={handleSubmit}>
             <div className='flex justify-center'>
@@ -108,6 +101,7 @@ const [user,setUser]=useState(null)
                 <p>{captcha}</p>
               </div>
             </div>
+            <p className='text-red-500 pl-4 pt-2 text-center'>{updateOtpSelector}</p>
             <div className="flex justify-center mt-7 mb-9">
               <button
                 type="submit"
@@ -118,11 +112,10 @@ const [user,setUser]=useState(null)
               </button>
             </div>
           </form>
-          <div id="recaptcha" className="flex justify-center mt-7 mb-9"></div>
         </div>
       </div>}
-      {phones?<p className='text-center pt-2 pb-4'>Your password reset OTP has been sent to your mobile number {phoneNumber}</p>:null}
-      {phones ? <OTPEnterData user={user} forgot={forgots} phoneNumber={phoneNumber} /> : null}
+      {updateOtpSelector=='Login Successfully'?<p className='text-center pt-2 pb-4'>Your password reset OTP has been sent to your mobile number {phoneNumbers}</p>:null}
+      {updateOtpSelector=='Login Successfully' ? <OTPEnterData forgot={forgots} phoneNumber={phoneNumbers} /> : null}
     </>
   );
 };

@@ -207,45 +207,45 @@ function App() {
     { path: '/newPassword',
     element:<PasswordProtectedRoute element={<NewPasswordPage />} />},
  
-    // {
-    //   path: '/mainContent',
-    //   element: <ProtectedRoute element={<MainPage />} />,
-    //   children: [
-    //     { path: '', element:<NewAndOnlinePage /> },
-    //     { path: 'personalProfile', element: <ProtectedRoute element={<PersonalProfilePage />} /> },
-    //     { path: 'matches', element: <ProtectedRoute element={<MatchPage />} /> },
-    //     { path: 'matchesMainContent', element: <MatchesMainContentPage /> },
-    //     { path: 'visitors', element:<ProtectedRoute element={<VisitorPage />} />  },
-    //     { path: 'visitorProfile', element: <ProtectedRoute element={<VisitorProfilePage />} />},
-    //     { path: 'likeMe', element:<ProtectedRoute element={<LikePage />} />},
-    //     { path: 'search', element:  <ProtectedRoute element={<SearchPage />} /> },
-    //     { path: 'newMainContent', element: <ProtectedRoute element={<NewAndOnlinePageContent />} /> },
-    //     { path: 'allMessages', element: <MessagePage /> },
-    //     { path: 'messageDetail', element: <MessageDetailPage /> },
-    //     { path: 'settings', element:<ProtectedRoute element={<SettingsPage />} /> },
-    //     { path: 'accountSettings', element:<SettingsPage/> }
-    //   ]
-    // },
-
     {
       path: '/mainContent',
-      element: <MainPage />,
+      element: <ProtectedRoute element={<MainPage />} />,
       children: [
         { path: '', element:<NewAndOnlinePage /> },
-        { path: 'personalProfile', element:<PersonalProfilePage /> },
-        { path: 'matches', element: <MatchPage /> },
+        { path: 'personalProfile', element: <ProtectedRoute element={<PersonalProfilePage />} /> },
+        { path: 'matches', element: <ProtectedRoute element={<MatchPage />} /> },
         { path: 'matchesMainContent', element: <MatchesMainContentPage /> },
-        { path: 'visitors', element:<VisitorPage />  },
-        { path: 'visitorProfile', element:<VisitorProfilePage />},
-        { path: 'likeMe', element:<LikePage />},
-        { path: 'search', element: <SearchPage /> },
-        { path: 'newMainContent', element:<NewAndOnlinePageContent /> },
+        { path: 'visitors', element:<ProtectedRoute element={<VisitorPage />} />  },
+        { path: 'visitorProfile', element: <ProtectedRoute element={<VisitorProfilePage />} />},
+        { path: 'likeMe', element:<ProtectedRoute element={<LikePage />} />},
+        { path: 'search', element:  <ProtectedRoute element={<SearchPage />} /> },
+        { path: 'newMainContent', element: <ProtectedRoute element={<NewAndOnlinePageContent />} /> },
         { path: 'allMessages', element: <MessagePage /> },
         { path: 'messageDetail', element: <MessageDetailPage /> },
-        { path: 'settings', element:<SettingsPage /> },
+        { path: 'settings', element:<ProtectedRoute element={<SettingsPage />} /> },
         { path: 'accountSettings', element:<SettingsPage/> }
       ]
     },
+
+    // {
+    //   path: '/mainContent',
+    //   element: <MainPage />,
+    //   children: [
+    //     { path: '', element:<NewAndOnlinePage /> },
+    //     { path: 'personalProfile', element:<PersonalProfilePage /> },
+    //     { path: 'matches', element: <MatchPage /> },
+    //     { path: 'matchesMainContent', element: <MatchesMainContentPage /> },
+    //     { path: 'visitors', element:<VisitorPage />  },
+    //     { path: 'visitorProfile', element:<VisitorProfilePage />},
+    //     { path: 'likeMe', element:<LikePage />},
+    //     { path: 'search', element: <SearchPage /> },
+    //     { path: 'newMainContent', element:<NewAndOnlinePageContent /> },
+    //     { path: 'allMessages', element: <MessagePage /> },
+    //     { path: 'messageDetail', element: <MessageDetailPage /> },
+    //     { path: 'settings', element:<SettingsPage /> },
+    //     { path: 'accountSettings', element:<SettingsPage/> }
+    //   ]
+    // },
   ]);
   // const MatchPerson = () => (
   //   <motion.div

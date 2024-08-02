@@ -8,11 +8,14 @@ import SubContent from '../../Components/subContent/subContent'
 import SubContentMatch from '../../Components/subContentMatch/subContentMatch'
 import DatingTips from '../../Components/datingTips/datingTips'
 import Footer from '../../Components/footer/footer'
+import LoginWithOtpModal from '../../Components/loginWithOtpModal/loginWithOtpModal'
 export const NavbarPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
     const modalSelector=useSelector((state)=>state.modal.visibleToggle)
     const profileSelector=useSelector((state)=>state.headerModal. headerModalToggle)
+    const loginWithOtpSelector=useSelector((state)=>state. loginWithOtpModal.otpModalToggle)
     console.log('modal selector',modalSelector)
+    console.log('login with otp',loginWithOtpSelector)
     const profileImage=sessionStorage.getItem('loginImage')
    console.log('profile',profileImage)
    useEffect(() => {
@@ -39,10 +42,10 @@ export const NavbarPage = () => {
   <DatingTips/>
   <Footer/>
    <div>
-  {modalSelector && !profileSelector && <Modals match={modalSelector}/>}
+  {modalSelector && !profileSelector && !loginWithOtpSelector&&<Modals match={modalSelector}/>}
   
    </div>
- 
+ { loginWithOtpSelector&&<LoginWithOtpModal otpOpen={loginWithOtpSelector} />}
    </>
   )
 }
