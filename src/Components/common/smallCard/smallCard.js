@@ -20,6 +20,7 @@ import { modalActions } from "../../../Redux/Slice/modalSlice";
 import { addNotifyAsync } from "../../../Redux/Slice/addNotifySlice/addNotifySlice";
 import { addVisitorEmailSenderAsync } from "../../../Redux/Slice/addVisitorEmailSlice/addVisitorEmailSlice";
 import '../../../../src/styles.css'
+import FooterBlockModal from "../../footerBlockModal/footerBlockModal";
 
 const style = {
   position: "absolute",
@@ -39,7 +40,8 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOn
   const [open, setOpen] = React.useState(false);
   const [name, setName] = useState("");
   const [selfOnlineLike,setSelfOnlineLike]=useState(true)
-  const [messages,setMessage]=useState('')
+  const [message,setMessage]=useState('')
+  const [chatOpenData, setChatOpenData] = useState(false);
   const [obj,setObj]=useState({})
   const id=sessionStorage.getItem('userId')
   const dispatch=useDispatch()
@@ -150,7 +152,8 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOn
 // setMessage('')
 // }
 
-const addChatHandler=(item)=>{
+const addChatHandler=(item,event)=>{
+  event.stopPropagation();
 const addChatId={
   id:id,
   addToChatId:item._id
@@ -159,9 +162,15 @@ const addToChat={
       id:id,
       chatId:item._id
     }
+    setChatOpenData(true);
+    setMessage('chat')
 // dispatch(addChatHandlerAsync(addChatId))
 // dispatch(addToChatAsync(addToChat))
 }
+
+const chatCloseModalData = () => {
+  setChatOpenData(false);
+};
 
 const selfOnlineLikeUser = selfOnlineLikeUserData?.filter((selfOnlineLikeData) => // array of obj  return hoga or ye obj common hoga jo ki selfOnlineLikeUserData and  userData dono present hoga
   userData?.some((user) => user?.firstName === selfOnlineLikeData?.firstName)
@@ -228,11 +237,11 @@ console.log('Common Users:', commonUsers);
   })
   }
   
-   <div className="mt-3">
+   <div className="mt-3 ">
     <button
       class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
       // onClick={() => handleOpen(item)}
-      onClick={()=>addChatHandler(item)}
+      onClick={(event)=>addChatHandler(item,event)}
     >
     Add chat
     </button>
@@ -312,19 +321,20 @@ console.log('Common Users:', commonUsers);
   selfOnlineLikeUser?.map(selfOnlineLikeItem=>{
     return (
       <>
-      {selfOnlineLikeItem.firstName===item.firstName?<p className='text-md text-end pt-4  font-semibold '>Liked!</p>:<div className="mt-3">
-    <button
-      class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-      // onClick={() => handleOpen(item)}
-      onClick={()=>addChatHandler(item)}
-    >
-    Add chat
-    </button>
-  </div>}
+      {selfOnlineLikeItem.firstName===item.firstName?<p className='text-md text-end pt-4  font-semibold '>Liked!</p>:null}
       </>
     )
   })
   }
+  <div className="mt-3">
+    <button
+      class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      // onClick={() => handleOpen(item)}
+      onClick={(event)=>addChatHandler(item,event)}
+    >
+    Add chat
+    </button>
+  </div>
                         </div>
                        
                       </div>
@@ -339,6 +349,7 @@ console.log('Common Users:', commonUsers);
             : null}
         </div>
       </div>
+      <FooterBlockModal  footerOpenData={chatOpenData}  footerSubName={message} footerCloseModal={chatCloseModalData}/>
     </>
   );
 };

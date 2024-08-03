@@ -4,6 +4,7 @@ import { Header } from "../../Components/common/Header/Header";
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ProgressBarData from "../../Components/common/progressBar/progressBar";
+import {Helmet} from 'react-helmet'
 const PhotoInfoPage=({resetObj})=>{
     const resetData=resetObj
     let Photo = useLocation();
@@ -14,6 +15,9 @@ const PhotoInfoPage=({resetObj})=>{
     const navigate=useNavigate()
     return (
         <>
+          <Helmet>
+            <title>Register for Free - Step 5 - ApnaPan </title>
+        </Helmet>
         <Header photo={photoData} reset={resetData}/>
         <p className="text-center text-2xl text-[#000] font-bold pt-8">Upload Your Photos</p>
         <ProgressBarData  photoData={photoData}/>

@@ -37,10 +37,12 @@ export const NavbarPage = () => {
                 )}
 
    </div>
+   <div className='bg-white  '>
   <SubContent/>
   <SubContentMatch/>
   <DatingTips/>
   <Footer/>
+   </div>
    <div>
   {modalSelector && !profileSelector && !loginWithOtpSelector&&<Modals match={modalSelector}/>}
   

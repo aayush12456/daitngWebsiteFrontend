@@ -21,7 +21,7 @@ export const Sidebar = ({ sidebarOpen, personalDataProfile, loginName }) => {
   const navigate = useNavigate()
   const id = sessionStorage.getItem('userId');
   const profileImage = sessionStorage.getItem("loginImage");
-
+  const signUpProfileImage=sessionStorage.getItem("profileImage")
   const personalData = JSON.parse(sessionStorage.getItem('loginObject'));
   const personalSignupData = JSON.parse(sessionStorage.getItem('signupObject'));
 
@@ -91,13 +91,13 @@ export const Sidebar = ({ sidebarOpen, personalDataProfile, loginName }) => {
         <div className="flex justify-between">
           <div className='flex ml-3'>
             <img
-              src={(personalData?.profile || profileImage) || profileImage}
+              src={(personalData?.profile || profileImage) || profileImage || signUpProfileImage}
               // src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHDRlp-KGr_M94k_oor4Odjn2UzbAS7n1YoA&s'
               className=" md:hidden w-16 rounded-full cursor-pointer h-16 mt-2"
               onClick={personalProfileHandler}
             />
             <p className="md:hidden  pt-4 cursor-pointer pl-4"   onClick={personalProfileHandler} >
-              {personalData?.name || loginName}
+              {personalData?.name || loginName || personalSignupData?.firstName}
             </p>
           </div>
           <div>

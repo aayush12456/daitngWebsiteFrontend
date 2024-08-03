@@ -7,10 +7,13 @@ import { useSelector } from 'react-redux'
 import { passDataArraySliceAcions } from '../../Redux/Slice/passDataArraySlice/passDataArraySliice'
 import { getOnlineLikeUserData } from '../../Redux/Slice/getOnlineLikeUserSlice/getOnlineLikeUserSlice'
 import '../../../src/styles.css'
+import animateImg from '../../assets/animateSpinner/colorSpinner.svg'
+import {Helmet} from 'react-helmet'
 export const NewAndOnlinePage = () => {
     const dispatch=useDispatch()
     const [userArray,setUserArray]=useState([])
     const [signupuserArray,setSignupUserArray]=useState([])
+    const [isLoading, setIsLoading] = useState(true);
     // const [selfOnlineLike,setSelfOnlineLike]=useState('')
     const getAllUserSelector=useSelector((state)=>state.userData.getUserArray.users)
     console.log('getUser',getAllUserSelector)
@@ -37,11 +40,27 @@ export const NewAndOnlinePage = () => {
     console.log('signup user Array is',signupuserArray)
      dispatch(passDataArraySliceAcions.passData(userArray))
 
- 
+     useEffect(() => {
+        // Set timeout to hide loading image after 3 seconds
+        const loadingTimeout = setTimeout(() => {
+            setIsLoading(false);
+        }, 500); // Adjust the duration as needed (e.g., 3000 ms = 3 seconds)
+
+        return () => clearTimeout(loadingTimeout); // Cleanup timeout on component unmount
+    }, []);
   return (
  <>
- <p className='text-center font-bold text-2xl pt-6 absolute new-Text  '>New and Online</p>
- <SmallCard userData={userArray} signupUserData={signupuserArray} email={email} signupEmail={signupEmail} selfOnlineLikeUserData={selfOnlineLikeUserSelector} />
+   <Helmet>
+            <title>ApnaPan - New and Online</title>
+        </Helmet>
+   {isLoading ? (
+                <div className="flex justify-center items-center h-screen -mt-28 ">
+                    <img src={animateImg} className="w-28" alt="Loading..." />
+                </div>
+            ) :
+
+ (<div className='flex justify-center'><p className='text-center font-bold text-2xl pt-6 absolute new-Text  '>New and Online</p>
+ <SmallCard userData={userArray} signupUserData={signupuserArray} email={email} signupEmail={signupEmail} selfOnlineLikeUserData={selfOnlineLikeUserSelector} /></div>)}
  </>
   )
 }

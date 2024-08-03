@@ -3,6 +3,7 @@ import Message from "../../Components/message/message"
 import { useDispatch, useSelector } from "react-redux"
 import { getChatData } from "../../Redux/Slice/getChatDataSlice/getChatDataSlice"
 import { getChatAsyncData } from "../../Redux/Slice/getChatHandlerSlice/getChatHandlerSlice"
+import {Helmet} from 'react-helmet'
 const MessagePage=()=>{
     const dispatch=useDispatch()
     const [messageArray,setMessageArray]=useState([])
@@ -32,7 +33,9 @@ const MessagePage=()=>{
 console.log('chat is',chatId)
     return (
         <>
-     
+         <Helmet>
+            <title>ApnaPan - All Messages</title>
+        </Helmet>
        <Message chatArray={messageArray} chatId={chatId}  />
         </>
     )

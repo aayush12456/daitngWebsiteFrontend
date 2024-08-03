@@ -40,7 +40,7 @@ export const ProfileModal = ({addColor}) => {
     }
   return (
  <>
- <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white mr-3  ">
+ <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white mr-3 hidden md:block ">
   <div class="px-6 py-4">
     
   {/* <p className='cursor-pointer' onClick={logoutHandler} >Logout</p> */}
@@ -59,13 +59,13 @@ export const ProfileModal = ({addColor}) => {
     })
   }
   </div>
-  <hr className='w-full mt-4'/>
+  <hr className='w-full mt-4 '/>
   <div className='flex gap-4'>
 <div>
   <img src={safety} className='w-10 mt-10 '/>
 </div>
 <div className='pt-2'>
-  <p className='text-black font-semibold '>Date App Safety</p>
+  <p className='text-black font-semibold '>ApnaPan Safety</p>
   <p className='w-44  text-sm pt-0 ' >No bots. 100% moderated. Zero tolerance for fake profiles. Immediate suspension of fake and spammy profiles</p>
 </div>
   </div>

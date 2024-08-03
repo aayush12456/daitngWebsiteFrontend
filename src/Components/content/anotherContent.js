@@ -138,7 +138,7 @@ export const AnotherContent = ({checkDataArray}) => {
           </div>
           
         <div className=" mt-7 lg:hidden ">
-          <div class="w-screen lg:w-full rounded overflow-hidden shadow-lg  ">
+          <div class="w-screen lg:w-full rounded overflow-hidden shadow-lg bg-white ">
             <div>
               <div class="font-bold text-xl mb-2 text-center bg-green-500 text-white h-12 ">
                 <p className="pt-2">Sign up Now Meet Singles!</p>
@@ -314,7 +314,7 @@ SUBMIT
         </div>
      
         <div className=" hidden lg:block mr-28">
-          <div class="w-screen lg:w-full rounded overflow-hidden shadow-lg  ">
+          <div class="w-screen lg:w-full rounded overflow-hidden shadow-lg bg-white ">
             <div>
               <div class="font-bold text-xl mb-2 text-center bg-green-500 text-white h-12 ">
                 <p className="pt-2">Sign up Now Meet Singles!</p>
@@ -488,7 +488,7 @@ SUBMIT
           }):<p className="text-center ml-10">No local singles are available</p>
         }
       </div>
-     <p className="text-lg font-semibold text-center pt-5">How does Date App work?</p>
+     <p className="text-lg font-semibold text-center pt-5">How does ApnaPan work?</p>
      <div className="rounded-full border-2 dateWork  border-gray-400  mt-4 mb-8 lg:w-[68rem] lg:ml-40">
       <div className=" flex justify-center  lg:gap-12 ">
       <div className="mt-6 mb-6">

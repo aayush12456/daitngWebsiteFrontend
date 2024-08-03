@@ -55,7 +55,7 @@ const Footer = () => {
                         <p className="text-white pt-3 pb-3">Copyright ©2024. All rights reserved.</p>
                     </div>
                     <div>
-                        <p className="text-white pt-3 pb-3">Date App is best to start your love journey</p>
+                        <p className="text-white pt-3 pb-3">ApnaPan is best to start your love journey</p>
                     </div>
                 </div>
             </div>

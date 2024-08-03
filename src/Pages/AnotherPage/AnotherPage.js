@@ -6,6 +6,7 @@ import {  useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { comparePhoneNumberAsync } from '../../Redux/Slice/comparePhoneNumberSlice/comparePhoneNumberSlice'
 import { getAllLocalUserAsync } from '../../Redux/Slice/getAllLocalUserSlice/getAllLocalUserSlice'
+import {Helmet} from 'react-helmet'
 export const AnotherPage = () => {
   const dispatch=useDispatch()
   const obj={
@@ -18,7 +19,9 @@ dispatch(comparePhoneNumberAsync(obj))
     },[dispatch])
   return (
  <>
-
+<Helmet>
+            <title>ApnaPan - Another Content</title>
+        </Helmet>
  <AnotherContent checkDataArray={checkDataSelector}/>
  </>
   )

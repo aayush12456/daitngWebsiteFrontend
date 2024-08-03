@@ -411,7 +411,7 @@ const watchVideoButton=()=>{
   return (
     <>
       <div className="flex justify-center mt-10">
-        <div class="w-screen md:w-[50rem] cardWidth rounded overflow-hidden shadow-lg">
+        <div class="w-screen bg-white md:w-[50rem] cardWidth rounded overflow-hidden shadow-lg">
           <div class="px-6 py-4  ">
             <div className={`flex  ${ personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?'justify-center':'justify-between'} bg-black`}>
              {personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?null: <img

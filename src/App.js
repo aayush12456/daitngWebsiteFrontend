@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter} from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter} from 'react-router-dom';
 import { NavbarPage } from './Pages/NavbarPage/NavbarPage';
 import { AnotherPage } from './Pages/AnotherPage/AnotherPage';
 import { AddiotionalPage } from './Pages/AdditionalPage/AddiotionalPage';
@@ -35,7 +35,7 @@ import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 import PasswordProtectedRoute from './ProtectedRoute/passwordProtectedRoute';
 import { sidebarModalActions } from './Redux/Slice/sidebarOpenSlice';
-
+import PageNotFoundPage from './Pages/pageNotFoundPage/pageNotFoundPage';
 
 
 function CustomToast({image,name}) {
@@ -206,6 +206,11 @@ function App() {
     element:<ForgotPasswordPage resetObj={resetObj}/>},
     { path: '/newPassword',
     element:<PasswordProtectedRoute element={<NewPasswordPage />} />},
+    {path:'/data',element:<PageNotFoundPage/>},
+    {
+      path: '*',
+      element: <Navigate to="/data" /> // Redirect to ErrorPage for unmatched paths
+    },
  
     {
       path: '/mainContent',
@@ -271,7 +276,7 @@ function App() {
   // );
 
   return (
-    <div>
+    <div >
       <RouterProvider router={router} />
       <ToastContainer 
        position='top-center'

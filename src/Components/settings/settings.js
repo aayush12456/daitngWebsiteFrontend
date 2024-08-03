@@ -74,7 +74,7 @@ export const Settings = () => {
         </div>
       </div>
       <div className=" flex justify-center mt-32">
-        <div className="w-screen setting h-[18em] sm:w-[45rem] rounded overflow-hidden shadow-lg">
+        <div className="w-screen bg-white setting h-[18em] sm:w-[45rem] rounded overflow-hidden shadow-lg">
           <p className="text-lg text-[#757575] pl-4 pt-7 font-semibold">Skip / Blocked Profiles</p>
           <div className='w-screen  sm:w-[42rem] bg-[#f3f4f9] ml-4 mt-2 h-20  '>
             <div className="flex justify-between ">

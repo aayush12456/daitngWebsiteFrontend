@@ -11,7 +11,7 @@ export const aboutApp=[
     {id:'2',name:'Careers'},
     {id:'3',name:'Media'},
     {id:'4',name:'Success Stories '},
-    {id:'5',name:'Date App Reviews '},
+    {id:'5',name:'ApnaPan Reviews '},
     {id:'6',name:'Blog '},
 
 ]

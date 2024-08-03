@@ -201,7 +201,7 @@ export const manageAccount=[
 ]
 export const deactivateAccount=[
     
-    {id:'1',reasonTitle:"Found Someone on Date app"},
+    {id:'1',reasonTitle:"Found Someone on ApnaPan"},
     {id:'2',reasonTitle:"was spending too much time/ recieving too many emails"},
     {id:'3',reasonTitle:"Found Someone away"},
     {id:'3',reasonTitle:"Your portal is expensive"},

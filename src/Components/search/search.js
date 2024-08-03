@@ -28,7 +28,7 @@ setSearch(search)
 <>
 <Sliders slider={sliderArray} />
 {search.length===0?<div className='flex justify-center mt-24'>
-<div class="w-[40rem] rounded overflow-hidden shadow-lg">
+<div class="bg-white w-[40rem] rounded overflow-hidden shadow-lg ">
   <div class="px-6 py-4">
     <div className='flex gap-96'>
     <p>Age Range</p>
