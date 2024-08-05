@@ -13,7 +13,7 @@ export const addLikeCounterUserAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('add like response  Count data is',Responedata)
+      // console.log('add like response  Count data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addLikeCounterUserSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addLikeCounterUserAsync.fulfilled, (state, action) => {
       state.addLikeCounterUserData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addLikeCounterUserAsync.rejected, (state, action) => {

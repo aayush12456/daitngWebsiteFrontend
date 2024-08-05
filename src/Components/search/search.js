@@ -16,7 +16,7 @@ export const Search = () => {
   const sliderData={
     slider:ageRange
   }
-  console.log('slider data is',sliderData)
+  // console.log('slider data is',sliderData)
   sessionStorage.setItem('sliderData',sliderData.slider)
   setAgeRange(30)
   window.location.reload()

@@ -13,7 +13,7 @@ export const addCrossMatchAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('addCross data is',Responedata)
+      // console.log('addCross data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addCrossMatchSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addCrossMatchAsync.fulfilled, (state, action) => {
       state.addCrossData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addCrossMatchAsync.rejected, (state, action) => {

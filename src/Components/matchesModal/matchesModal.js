@@ -387,7 +387,7 @@ import leftArrow from "../../assets/personalProfileIcons/leftArrow.svg";
 import rightArrow from "../../assets/personalProfileIcons/rightArrow.svg";
 
 const MatchesModal = ({ modalData, match, handleCloses }) => {
-  console.log('modal data', modalData)
+  // console.log('modal data', modalData)
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const style = {

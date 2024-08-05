@@ -14,7 +14,7 @@ export const userLoginAsync = createAsyncThunk(
       sessionStorage.setItem('email',email)
       const userId=response.data.userId
       sessionStorage.setItem('userId',userId)
-    console.log('response login',response.data)
+    // console.log('response login',response.data)
     const personalData={
 
       firstName:response.data.completeData.firstName,

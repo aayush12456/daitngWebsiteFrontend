@@ -15,7 +15,7 @@ export const sendMessageAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('message data is',Responedata)
+      // console.log('message data is',Responedata)
       socket.emit("new message", Responedata.message);
       return Responedata;
       
@@ -36,7 +36,7 @@ const sendMessageSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( sendMessageAsync.fulfilled, (state, action) => {
       state.sendMessageData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( sendMessageAsync.rejected, (state, action) => {

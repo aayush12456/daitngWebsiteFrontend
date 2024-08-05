@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { ReactMediaRecorder } from 'react-media-recorder';
 import { useNavigate } from 'react-router-dom';
 const Video = ({videoRecord}) => {
-  console.log('video record is',videoRecord)
+  // console.log('video record is',videoRecord)
   const videoRecordData={...videoRecord}
   const [isRecording, setIsRecording] = useState(false);
   const [stream, setStream] = useState(null);

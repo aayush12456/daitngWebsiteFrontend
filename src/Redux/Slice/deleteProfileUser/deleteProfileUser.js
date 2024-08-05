@@ -7,7 +7,7 @@ export const deleteProfileUserAsync = createAsyncThunk(
 
     try {
       const response = await axios.delete(`/deleteProfileUser/${userId}`); 
-      console.log('delete profile response count',response.data)
+      // console.log('delete profile response count',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

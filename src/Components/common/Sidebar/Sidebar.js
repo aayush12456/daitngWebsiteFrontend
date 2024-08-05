@@ -32,13 +32,13 @@ export const Sidebar = ({ sidebarOpen, personalDataProfile, loginName }) => {
   //  const addCounterResponse=useSelector((state)=>state.addCountUser.addCounterUserData)
   //  console.log('add count response',addCounterResponse)
   const getLikeCountUser = useSelector((state) => state.getLikeCounterUser.getLikeCounterUser.getLikeCount)
-  console.log('get like count response', getLikeCountUser)
+  // console.log('get like count response', getLikeCountUser)
   const deleteLikeResponse = useSelector((state) => state.deleteLikeCounterUser.deleteLikeCounterUser.message)
-  console.log('delete like response', deleteLikeResponse)
+  // console.log('delete like response', deleteLikeResponse)
   const addSidebarColorResponse = useSelector((state) => state.addSidebarTitleColor.addSidebarTitleColorData?.user)
-  console.log('add sidebar color response', addSidebarColorResponse)
+  // console.log('add sidebar color response', addSidebarColorResponse)
   const getSidebarColorResponse = useSelector((state) => state.getSidebarTitleColor.getSidebarTitleColorObj.user)
-  console.log('get sidebar color response', getSidebarColorResponse)
+  // console.log('get sidebar color response', getSidebarColorResponse)
   useEffect(() => {
     dispatch(getVisitorData(id));
     dispatch(getCounterUserAsync(id));

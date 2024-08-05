@@ -7,7 +7,7 @@ export const getMatchesData = createAsyncThunk(
 
     try {
       const response = await axios.get(`/filterUsers/${userId}`); 
-      console.log('response',response.data)
+      // console.log('response',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

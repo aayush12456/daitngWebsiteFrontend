@@ -13,7 +13,7 @@ export const addMatchUserAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('match user data is',Responedata)
+      // console.log('match user data is',Responedata)
       return Responedata;
       
     } catch (error) {
@@ -33,7 +33,7 @@ const addMatchUserSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addMatchUserAsync.fulfilled, (state, action) => {
       state.addMatchUserData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addMatchUserAsync.rejected, (state, action) => {

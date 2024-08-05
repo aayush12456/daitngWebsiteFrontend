@@ -7,7 +7,7 @@ const deleteAccountSlice=createSlice({
     reducers:{
         deleteAccount(state,action){
         state.  deleteAccountObj=action.payload
-        console.log('delete data obj',state.passDataObj)
+        // console.log('delete data obj',state.passDataObj)
         }
     }
 })

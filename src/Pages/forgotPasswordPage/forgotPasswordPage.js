@@ -8,9 +8,9 @@ const ForgotPasswordPage=({resetObj})=>{
     const resetData=resetObj
     const forgotData=useLocation()
     const forgot=forgotData.state
-    console.log('forgot is',forgot)
+    // console.log('forgot is',forgot)
     const confirmSelector=useSelector((state)=>state.passDataObj.  passDataObj)
-    console.log('confirm selector',confirmSelector)
+    // console.log('confirm selector',confirmSelector)
 return (
     <>
          <Helmet>

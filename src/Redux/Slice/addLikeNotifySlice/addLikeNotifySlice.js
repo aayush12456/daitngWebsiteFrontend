@@ -13,7 +13,7 @@ export const addLikeNotifyAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('add like notify data is',Responedata)
+      // console.log('add like notify data is',Responedata)
       return Responedata;
       
     } catch (error) {
@@ -33,7 +33,7 @@ const addLikeNotifySlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addLikeNotifyAsync.fulfilled, (state, action) => {
       state.addLikeNotifyData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addLikeNotifyAsync.rejected, (state, action) => {

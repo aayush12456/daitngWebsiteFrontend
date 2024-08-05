@@ -9,14 +9,14 @@ export const compareLoginWithOtpAsync = createAsyncThunk(
       });
 
       const Responedata = response.data;
-      console.log('compare response otp is',Responedata)
+      // console.log('compare response otp is',Responedata)
       const token = response.data.token;
       sessionStorage.setItem("loginToken", token);
           const email=response.data.loginData.email
       sessionStorage.setItem('email',email)
       const userId=response.data.userId
       sessionStorage.setItem('userId',userId)
-    console.log('response login',response.data)
+    // console.log('response login',response.data)
     const personalData={
 
       firstName:response.data.completeData.firstName,
@@ -59,7 +59,7 @@ const compareloginWithOtpSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(compareLoginWithOtpAsync.fulfilled, (state, action) => {
       state.compareloginWithOtpData = action.payload; // Update responseData in the state after successful login
-      console.log('compare login with otp ',state.compareloginWithOtpData)
+      // console.log('compare login with otp ',state.compareloginWithOtpData)
     });
     // Additional extra reducers if needed
     builder.addCase(compareLoginWithOtpAsync.rejected, (state, action) => {

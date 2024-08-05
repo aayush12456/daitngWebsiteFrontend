@@ -23,7 +23,7 @@ export const Settings = () => {
   const [deleteAccountModalData, setDeleteAccountModalData] = useState(false);
   // console.log('open change password modal', openChangePasswordModal);
   const skipProfileUser = [...skipFilterUser, ...onlineSkipUser, ...skipUser];
-  console.log('skip profile user', skipProfileUser);
+  // console.log('skip profile user', skipProfileUser);
   const skipData = { title: 'Skipped Profiles', skipProfile: skipProfileUser };
 
   const skipProfile = () => {

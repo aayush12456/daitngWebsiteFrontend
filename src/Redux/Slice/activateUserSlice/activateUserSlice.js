@@ -9,7 +9,7 @@ export const activateUserAsync = createAsyncThunk(
       const response = await axios.delete(`/getActivateUser/${id}`, { 
         params: { deleteUserId }
       });
-      console.log('activate profile response ',response.data)
+      // console.log('activate profile response ',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

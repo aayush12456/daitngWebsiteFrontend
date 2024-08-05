@@ -9,7 +9,7 @@ export const updatePasswordOtpAsync = createAsyncThunk(
       });
 
       const Responedata = response.data;
-      console.log('update password otp data',Responedata)
+      // console.log('update password otp data',Responedata)
       
       return Responedata;
     } catch (error) {

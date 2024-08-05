@@ -7,7 +7,7 @@ const Footer = () => {
     const [footerItemName, setFooterItemName] = useState('');
 
     const footerOpenModal = (name) => {
-        console.log('footer name is', name);
+        // console.log('footer name is', name);
         setFooterOpenData(true);
         setFooterItemName(name);
     };
@@ -16,7 +16,7 @@ const Footer = () => {
         setFooterOpenData(false);
     };
 
-    console.log('footer open name', footerOpenData);
+    // console.log('footer open name', footerOpenData);
 
     return (
         <>

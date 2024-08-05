@@ -7,7 +7,7 @@ export const getPersonalProfileModalHeadingAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getPersonalProfileModalHeading/${userId}`); 
-      console.log('response get personal profile heading',response.data)
+      // console.log('response get personal profile heading',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

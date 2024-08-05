@@ -139,7 +139,7 @@ import Box from "@mui/material/Box";
 import React, { useRef, useEffect } from 'react';
 
 const WatchVideo = ({ modalOpen, handleClose, personalVideoData,onlinePersonalVideoData, visitorPersonalVideoData, matchesVideoData }) => {
-    console.log('watch video is', personalVideoData);
+    // console.log('watch video is', personalVideoData);
     const videoRef = useRef(null);
 
     useEffect(() => {

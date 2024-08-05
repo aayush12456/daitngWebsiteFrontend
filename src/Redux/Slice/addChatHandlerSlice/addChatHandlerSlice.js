@@ -13,7 +13,7 @@ export const addChatHandlerAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('visitor data is',Responedata)
+      // console.log('visitor data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addChatHandlerSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addChatHandlerAsync.fulfilled, (state, action) => {
       state.addChatAsyncData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addChatHandlerAsync.rejected, (state, action) => {

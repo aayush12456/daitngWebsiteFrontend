@@ -9,7 +9,7 @@ export const NewAndOnlinePageContent = () => {
     const dispatch =useDispatch()
     const id=sessionStorage.getItem('userId')
     let newAndOnlineContentData=newData.state
-    console.log('new data is',newAndOnlineContentData)
+    // console.log('new data is',newAndOnlineContentData)
     useEffect(()=>{
     dispatch(getOnlineLikeUserData(id))
     },[dispatch])

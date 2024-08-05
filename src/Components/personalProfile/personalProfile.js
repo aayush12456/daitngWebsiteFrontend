@@ -171,7 +171,7 @@ export const PersonalProfile = ({
   const id = sessionStorage.getItem("userId");
   const updateData = sessionStorage.getItem("updateUser");
   const updateProfile = JSON.parse(updateData);
-  console.log("update profile", updateProfile);
+  // console.log("update profile", updateProfile);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [open, setOpen] = React.useState(false);
   const [openRelationship, setOpenRelationship] = React.useState(false);
@@ -294,7 +294,7 @@ const watchVideoButton=()=>{
     const { value } = event.target;
     setLanguage(value); // Update selected languages in local state
     const languageString = value.join(", "); // Convert array of selected languages to comma-separated string
-    console.log('lang is', languageString)
+    // console.log('lang is', languageString)
     setValues({ ...values, language: languageString }); // Update Formik values with selected languages
   };
   const relationSubmitHandler = (relation) => {
@@ -302,7 +302,7 @@ const watchVideoButton=()=>{
       id: id,
       relationship: relation,
     };
-    console.log("relation is", relationObj);
+    // console.log("relation is", relationObj);
     dipsatch(updateUserAsync(relationObj));
   };
 
@@ -321,7 +321,7 @@ const watchVideoButton=()=>{
       id: id,
       aboutUser: aboutText
     }
-    console.log('about me', aboutMeObj)
+    // console.log('about me', aboutMeObj)
     dipsatch(updateUserAsync(aboutMeObj))
   }
   const educationSubmitHandler = (education) => {
@@ -372,7 +372,7 @@ const watchVideoButton=()=>{
       id: id,
       language: values.language
     }
-    console.log('values', languageObj)
+    // console.log('values', languageObj)
     dipsatch(updateUserAsync(languageObj));
   };
   const citySubmitHandler = () => {

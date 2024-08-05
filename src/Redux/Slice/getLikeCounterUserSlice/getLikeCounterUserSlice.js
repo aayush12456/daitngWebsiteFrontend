@@ -8,7 +8,7 @@ export const getLikeCounterUserAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getLikeCountUser/${userId}`); 
-      console.log('get like response count',response.data)
+      // console.log('get like response count',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

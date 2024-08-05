@@ -33,7 +33,7 @@ import { passDataObjSliceAcions } from "../../../../Redux/Slice/passDataSliceObj
 import ProgressBarData from "../../progressBar/progressBar";
 export const AdditonalInformation = ({ additionalData }) => {
   const dispatch=useDispatch()
-  console.log("data is", additionalData);
+  // console.log("data is", additionalData);
   const [personName, setPersonName] = React.useState([]);
   const [language,setLanguage]=useState([])
   const navigate = useNavigate();
@@ -106,7 +106,7 @@ export const AdditonalInformation = ({ additionalData }) => {
         zodiac:values.zodiac,
         language:values.language
       };
-      console.log("information is", additionalInformation);
+      // console.log("information is", additionalInformation);
       dispatch(passDataObjSliceAcions.passDataObj(additionalInformation))
       sessionStorage.setItem('additionalInformation', JSON.stringify(additionalInformation));
       navigate("/step2", { state: additionalInformation });
@@ -120,7 +120,7 @@ export const AdditonalInformation = ({ additionalData }) => {
       setLanguage(additionalforms.language.split(", ").map((lang) => lang.trim()));
     }
   }, [setValues]);
-console.log('values data',values)
+// console.log('values data',values)
   return (
     <>
  

@@ -13,7 +13,7 @@ const ChangePasswordModal = ({ changePasswordModal, closeChangePasswordModal }) 
     const id=sessionStorage.getItem('userId')
     const dispatch=useDispatch()
     const updatePasswordSelector=useSelector((state)=>state. updatePassword.addPasswordUpdateData.msg)
-    console.log('update password selector',updatePasswordSelector)
+    // console.log('update password selector',updatePasswordSelector)
     useEffect(() => {
         if (updatePasswordSelector) {
             toast.success(`${updatePasswordSelector}`);
@@ -56,7 +56,7 @@ const ChangePasswordModal = ({ changePasswordModal, closeChangePasswordModal }) 
          setNotMatch('Both the passwords you typed do not match. Please use identical passwords in both the form fields.')
         return
      }
-     console.log('date is',obj)
+    //  console.log('date is',obj)
      dispatch(PasswordUpdateAsync(obj))
      action.resetForm()
      closeChangePasswordModal()

@@ -14,9 +14,9 @@ const ForgotPassword = ({forgot}) => {
   const [captcha, setCaptcha] = useState('');
   const [phoneNumber,setPhoneNumber]=useState('')
 
-const updateOtpSelector=useSelector((state)=>state.updatePasswordOtp.updatePasswordOtpData.mssg)
+const updateOtpSelector=useSelector((state)=>state?.updatePasswordOtp?.updatePasswordOtpData?.mssg)
 const phoneNumbers=useSelector((state)=>state.updatePasswordOtp.updatePasswordOtpData.phoneNumber)
-console.log('update passowrd otp',updateOtpSelector)
+// console.log('update passowrd otp',updateOtpSelector)
   const generateCaptcha = () => {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -53,7 +53,7 @@ console.log('update passowrd otp',updateOtpSelector)
       dispatch(passDataSliceAcions. passDatas(values.phone))
       dispatch(updatePasswordOtpAsync(phoneObj))
 
-      console.log('reset data is', values);
+      // console.log('reset data is', values);
       action.resetForm();
       setCaptcha(generateCaptcha());
     }

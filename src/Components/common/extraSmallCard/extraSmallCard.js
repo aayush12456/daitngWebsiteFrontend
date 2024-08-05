@@ -9,9 +9,9 @@ import { getMatchUserAsync } from '../../../Redux/Slice/getMatchUserSlice/getMat
 import { getVisitorPlusSkipUserAsync } from '../../../Redux/Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice';
 import { getDeactivateUserAsync } from '../../../Redux/Slice/getDeactivateUser/getDeactivateUser';
 export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,visitedTime,likeUserPerson}) => {
-  console.log('visitor card',visitor)
-  console.log('like data',likePerson)
-  console.log('online like data',likeUserPerson)
+  // console.log('visitor card',visitor)
+  // console.log('like data',likePerson)
+  // console.log('online like data',likeUserPerson)
   const [user,setUser]=useState('true')
   const [likeUser,setLikeUser]=useState('false')
   const [skipUser,setSkipUser]=useState('false')
@@ -48,24 +48,24 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
 
   
   const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
-  console.log('visitor like data user',visitorLikeUser)
+  // console.log('visitor like data user',visitorLikeUser)
 
 
   
   const visitorSkipUser=useSelector((state)=>state. getVisitorSkipUser.getVisitorPlusSkipUserArray.skipUserData)
-  console.log('visitor skip data user',visitorSkipUser)
+  // console.log('visitor skip data user',visitorSkipUser)
 
 
  
   const getMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.matchUser)
-  console.log('get match user array',getMatchUser)
+  // console.log('get match user array',getMatchUser)
 
   const anothergetMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
   console.log('another get match user',anothergetMatchUser)
 
 
   const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
-  console.log('another match data response',anotherMatchDataResponse)
+  // console.log('another match data response',anotherMatchDataResponse)
 
   useEffect(() => {
   

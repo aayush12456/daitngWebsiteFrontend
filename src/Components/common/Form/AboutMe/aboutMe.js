@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 const AboutMe=({aboutMe})=>{
     const [text,setText]=useState('')
     const [about,setAbout]=useState('')
-    console.log('about me',aboutMe)
+    // console.log('about me',aboutMe)
     const navigate=useNavigate()
     const textChangeHandler=(event)=>{
    setText(event.target.value)
@@ -34,7 +34,7 @@ const AboutMe=({aboutMe})=>{
         language:aboutMe?.language,
         aboutUser:text
     }
-    console.log('about me',aboutMeData)
+    // console.log('about me',aboutMeData)
     sessionStorage.setItem('aboutMeInformation', JSON.stringify(aboutMeData));
     navigate('/step3',{state:aboutMeData})
     setText('')

@@ -8,7 +8,7 @@ import cross from '../../../../assets/personalProfileIcons/crossTik.svg';
 import SweetAlert2 from 'react-sweetalert2';
 
 const AdditionalInfoWithPhoto = ({ photoData }) => {
-    console.log('photo', photoData);
+    // console.log('photo', photoData);
     const [selectedImages, setSelectedImages] = useState([]);
     const [photoError, setPhotoError] = useState('');
     const [file, setFile] = useState([]);
@@ -16,7 +16,7 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const registerResponse = useSelector((state) => state.registerData.registerData);
-    console.log('register response', registerResponse);
+    // console.log('register response', registerResponse);
 
     const handleImageChange = (event, id) => {
         const file = event.target.files[0];
@@ -28,7 +28,7 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
                     src: reader.result,
                 };
                 setSelectedImages(prevState => [...prevState, newImage]);
-                console.log("Selected Images:", selectedImages);
+                // console.log("Selected Images:", selectedImages);
             };
             reader.readAsDataURL(file);
         }
@@ -112,14 +112,14 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
             formData.append('images', file);
         });
 
-        console.log('personal information', formData);
+        // console.log('personal information', formData);
 
         dispatch(userRegisterAsync(formData));
         setSelectedImages([]);
     };
 
     const crossDataHandler = (id) => {
-        console.log('id is', id);
+        // console.log('id is', id);
         setSelectedImages(prevImages => prevImages.filter(item => item.id !== id));
         setFile(prevFiles => prevFiles.filter((_, index) => index !== id - 1));
     };

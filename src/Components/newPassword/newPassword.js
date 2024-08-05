@@ -10,7 +10,7 @@ const NewPassword=({phoneNumber})=>{
     const dispatch=useDispatch()
     const [notMatch,setNotMatch]=useState('')
     const forgotUpdatePasswordSelector=useSelector((state)=>state.forgotPasswordUpdateUser.addForgotPasswordUpdateData.msg)
-    console.log('forgot update password selector',forgotUpdatePasswordSelector)
+    // console.log('forgot update password selector',forgotUpdatePasswordSelector)
     const initialValues = {
         newPassword:'',
         confirmNewPassword:''
@@ -29,7 +29,7 @@ const NewPassword=({phoneNumber})=>{
                  setNotMatch('Both the passwords you typed do not match. Please use identical passwords in both the form fields.')
                 return
              }
-             console.log('date is',obj)
+            //  console.log('date is',obj)
          dispatch(forgotUpdatePasswordUserAsync(obj))
              action.resetForm()
         

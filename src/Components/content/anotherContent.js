@@ -31,7 +31,7 @@ import { anotherContentImages } from "../../utils/anotherContentData";
 import SecondFooter from "../secondFooter/secondFooter";
 
 export const AnotherContent = ({checkDataArray}) => {
-  console.log('check data array ',checkDataArray)
+  // console.log('check data array ',checkDataArray)
     const [firstNameError, setFirstNameError] = React.useState('');
     const [phoneError, setPhoneError] = React.useState('');
     const [emailError, setEmailError] = React.useState('');
@@ -69,7 +69,7 @@ export const AnotherContent = ({checkDataArray}) => {
           city: values.city,
           date: date
         };
-        console.log('date is', obj);
+        // console.log('date is', obj);
     
         let errors = {};
     
@@ -98,7 +98,7 @@ export const AnotherContent = ({checkDataArray}) => {
         action.resetForm();
       }
     });
-    console.log(errors);
+    // console.log(errors);
     
    
     useEffect(() => {

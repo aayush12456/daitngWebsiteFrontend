@@ -8,7 +8,7 @@ import { useState } from "react";
 const MatchPerson = () => {
   const [show,setShow]=useState(true)
   const matchPersonSelector = useSelector((state) => state.addMatchUser.addMatchUserData);
-  console.log('match person selector', matchPersonSelector);
+  // console.log('match person selector', matchPersonSelector);
 
   const matchUser = matchPersonSelector.matchUserData;
   const matchLikesData = matchPersonSelector.matchLikes;

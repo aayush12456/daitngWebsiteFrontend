@@ -9,13 +9,13 @@ export const ProfileModal = ({addColor}) => {
     const navigate=useNavigate()
     const dispatch=useDispatch()
     const id=sessionStorage.getItem('userId')
-    console.log('id is ',id)
+    // console.log('id is ',id)
     // const logoutHandler=()=>{
     // navigate('/')
     // localStorage.clear()
     // }ddf
     const modalProfile=(modalItem)=>{
-      console.log('modal item is',modalItem)
+      // console.log('modal item is',modalItem)
       const personalProfileModalHeadingObj={
         id:id,
         PersonalProfileModalHeading:modalItem.title

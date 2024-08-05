@@ -5,7 +5,7 @@ import { getSkipProfileUserAsync } from "../../Redux/Slice/getSkipProfileUser/ge
 import {Helmet} from 'react-helmet'
 export const SettingsPage=()=>{
     const id=sessionStorage.getItem('userId')
-    console.log('id skip is',id)
+    // console.log('id skip is',id)
     const dispatch=useDispatch()
     useEffect(()=>{
     dispatch(getSkipProfileUserAsync(id))

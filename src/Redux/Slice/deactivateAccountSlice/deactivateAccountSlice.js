@@ -13,7 +13,7 @@ export const deactivateAccountAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('deactivate account  data is',Responedata)
+      // console.log('deactivate account  data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const deactivateAccountSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( deactivateAccountAsync.fulfilled, (state, action) => {
       state. deactivateAccountDataObj = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase(  deactivateAccountAsync.rejected, (state, action) => {

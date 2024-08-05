@@ -12,13 +12,13 @@ export const Header = ({ add, photo, aboutMe, personalData, loginName ,VideoUplo
   const profileImage = sessionStorage.getItem("loginImage");
   const token =sessionStorage.getItem('loginToken')
   const registerToken =sessionStorage.getItem('registerToken')
-  console.log("profile", profileImage);
-  console.log('personal data', personalData);
+  // console.log("profile", profileImage);
+  // console.log('personal data', personalData);
   
   const dispatch = useDispatch();
 
   const modalOpen = () => {
-    console.log("open ");
+    // console.log("open ");
     dispatch(modalActions.visibleToggle());
   };
 

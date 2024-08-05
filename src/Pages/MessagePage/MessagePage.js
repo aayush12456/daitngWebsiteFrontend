@@ -15,7 +15,7 @@ const MessagePage=()=>{
     },[])
     const messageSelector=useSelector((state)=>state.getChat.getChatArray)
     // sessionStorage.setItem('chatId',messageSelector._id)
-    console.log('message is',messageSelector)
+    // console.log('message is',messageSelector)
     useEffect(()=>{
     const Id=messageSelector?.map((item)=>item._id)
    Id.map(item=>{
@@ -25,12 +25,12 @@ const MessagePage=()=>{
     const messageData=message?.map(item=>item[0])
     setMessageArray(messageData)
     },[messageSelector])
-    console.log('message array',messageArray)
+    // console.log('message array',messageArray)
   
 //     useEffect(()=>{
 // dispatch(getChatAsyncData(id))
 //     },[])
-console.log('chat is',chatId)
+// console.log('chat is',chatId)
     return (
         <>
          <Helmet>

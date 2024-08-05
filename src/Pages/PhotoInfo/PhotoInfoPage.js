@@ -10,7 +10,7 @@ const PhotoInfoPage=({resetObj})=>{
     let Photo = useLocation();
     let photoData=Photo.state
     const registerResponse=useSelector((state)=>state.registerData.registerData)
-    console.log('register response',registerResponse)
+    // console.log('register response',registerResponse)
     
     const navigate=useNavigate()
     return (

@@ -7,7 +7,7 @@ import { BACKEND_BASE_URL } from "../../Services/api";
 import send from '../../assets/modalIcons/sendIcon.png';
 
 const MessageDetail = ({ messageDetail }) => {
-    console.log('message detail is',messageDetail)
+    // console.log('message detail is',messageDetail)
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const MessageDetail = ({ messageDetail }) => {
 
         // Listen for "connected" event from the server
         socket.on("connected", (message) => {
-            console.log('Socket is connected:', message);
+            // console.log('Socket is connected:', message);
         });
 
         // Clean up function to disconnect the socket on component unmount
@@ -31,7 +31,7 @@ const MessageDetail = ({ messageDetail }) => {
 
     useEffect(() => {
         socket.on("message received", (newMessage) => {
-            console.log('New message received:', newMessage);
+            // console.log('New message received:', newMessage);
             setMessages((prev) => [...prev, newMessage]);
         });
 
@@ -52,14 +52,14 @@ const MessageDetail = ({ messageDetail }) => {
             message: message,
             chat: messageDetail.chatId
         };
-        console.log('messageData',messageData)
+        // console.log('messageData',messageData)
         try {
             // Dispatch action to send message to Redux store (if needed)
             // dispatch(sendMessageAsync(messageData));
 
             // Send message data to the server
             const response = await axios.post("http://localhost:4000/message/send", messageData);
-            console.log('message of data is',response.data.message)
+            // console.log('message of data is',response.data.message)
             // Emit "new message" event to the server
             socket.emit("new message", response.data.message);
 
@@ -85,7 +85,7 @@ const MessageDetail = ({ messageDetail }) => {
    useEffect(()=>{
 fetchMessage()
    },[])
- console.log('messages is',messages)
+//  console.log('messages is',messages)
     return (
         <div className="w-[40rem] rounded-2xl overflow-hidden shadow-lg mt-8 h-96 flex flex-col justify-between">
             <div className="w-screen">

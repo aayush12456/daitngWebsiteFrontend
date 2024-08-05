@@ -7,7 +7,7 @@ export const getUserData = createAsyncThunk(
 
     try {
       const response = await axios.get(`/allUsers/${userId}`); 
-      console.log('response of all user',response.data)
+      // console.log('response of all user',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data)
@@ -32,7 +32,7 @@ const getUserSlice = createSlice({
       
       state.isLoading = false;
       state.getUserArray = action.payload;
-      console.log('toy data is', state.getUserArray)
+      // console.log('toy data is', state.getUserArray)
     });
     builder.addCase(getUserData.rejected, (state, action) => {
       state.isLoading = false;

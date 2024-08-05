@@ -13,8 +13,8 @@ import { modalActions } from '../../Redux/Slice/modalSlice';
 import { loginWithOtpModalSliceActions } from '../../Redux/Slice/loginWIthOtpModalSlice';
 export const Modals = ({ match }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const wrongCredentials=useSelector((state)=>state.loginData.LoginresponseData.mssg)
-  console.log('wrong credentials',wrongCredentials)
+  const wrongCredentials=useSelector((state)=>state?.loginData?.LoginresponseData?.mssg)
+  // console.log('wrong credentials',wrongCredentials)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const togglePasswordVisibility = () => {
@@ -30,14 +30,14 @@ export const Modals = ({ match }) => {
     initialValues: initialValues,
     validationSchema: loginSchema,
     onSubmit: (values, action) => {
-      console.log('login data is', values);
+      // console.log('login data is', values);
       dispatch(userLoginAsync(values));
       action.resetForm();
     }
   });
 
   const loginResponse = useSelector((state) => state.loginData.LoginresponseData);
-  console.log('login response', loginResponse);
+  // console.log('login response', loginResponse);
   const forgotObj={
     name:'forgotPassword'
   }

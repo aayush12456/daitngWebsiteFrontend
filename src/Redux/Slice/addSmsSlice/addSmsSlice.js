@@ -13,7 +13,7 @@ export const addSmsSenderAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('add sms data is',Responedata)
+      // console.log('add sms data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addSmsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(addSmsSenderAsync.fulfilled, (state, action) => {
       state.addSmsData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addSmsSenderAsync.rejected, (state, action) => {

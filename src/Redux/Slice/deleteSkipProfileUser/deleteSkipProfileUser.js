@@ -54,7 +54,7 @@ export const deleteSkipProfileUserAsync = createAsyncThunk(
       const response = await axios.delete(`/deleteSkippedProfile/${id}`, { 
         params: { deleteUserId }
       });
-      console.log('delete skip profile response ',response.data)
+      // console.log('delete skip profile response ',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

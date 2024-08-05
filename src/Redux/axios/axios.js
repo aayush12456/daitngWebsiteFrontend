@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:4000/user",
+  // node js local server url
+  // baseURL: "http://localhost:4000/user",
+  baseURL: "https://apnapanbackend.onrender.com/user",
 });
 
 

@@ -7,7 +7,7 @@ export const  getSidebarTitleColorAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getSidebarAvailability/${userId}`,); 
-      console.log('response of get sidebar user',response.data)
+      // console.log('response of get sidebar user',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

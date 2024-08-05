@@ -12,9 +12,9 @@ const MatchPage = () => {
     // const matchesData = useSelector((state) => state.matchData.getMatchesArray.interestUsers);
     const matchArray=useSelector((state)=>state.  passMatchArray.passMatchArrayData)
     const crossId=useSelector((state)=>state.  passData. passData)
-    console.log('cross id is',crossId)
-    console.log('match array in main',matchArray)
-    console.log('matches data is',matchesData)
+    // console.log('cross id is',crossId)
+    // console.log('match array in main',matchArray)
+    // console.log('matches data is',matchesData)
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const id = sessionStorage.getItem('userId');

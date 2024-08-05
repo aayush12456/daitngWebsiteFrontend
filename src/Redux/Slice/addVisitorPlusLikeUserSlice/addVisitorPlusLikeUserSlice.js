@@ -13,7 +13,7 @@ export const addVisitorPlusLikeUserAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('add visitor like user data is',Responedata)
+      // console.log('add visitor like user data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addVisitorPlusLikeUserSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addVisitorPlusLikeUserAsync.fulfilled, (state, action) => {
       state.addLikeData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addVisitorPlusLikeUserAsync.rejected, (state, action) => {

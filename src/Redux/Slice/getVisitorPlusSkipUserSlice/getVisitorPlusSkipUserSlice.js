@@ -7,7 +7,7 @@ export const getVisitorPlusSkipUserAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getVisitorPlusSkipUser/${userId}`); 
-      console.log('response of getVisitor like user',response.data)
+      // console.log('response of getVisitor like user',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -7,7 +7,7 @@ export const getLikeUserAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getLikeUser/${userId}`); 
-      console.log('response',response.data)
+      // console.log('response',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

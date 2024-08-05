@@ -6,7 +6,7 @@ export const getDeactivateUserAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getDeactivateUser/${userId}`); 
-      console.log('response get deactivate',response.data)
+      // console.log('response get deactivate',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

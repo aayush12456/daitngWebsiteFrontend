@@ -13,7 +13,7 @@ export const addCounterUserAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('addCount data is',Responedata)
+      // console.log('addCount data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addCounterUserSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addCounterUserAsync.fulfilled, (state, action) => {
       state.addCounterUserData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addCounterUserAsync.rejected, (state, action) => {

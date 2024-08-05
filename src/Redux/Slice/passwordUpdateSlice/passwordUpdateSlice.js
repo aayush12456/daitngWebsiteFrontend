@@ -15,7 +15,7 @@ export const PasswordUpdateAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('password update data is',Responedata)
+      // console.log('password update data is',Responedata)
       return Responedata;
       
     } catch (error) {
@@ -35,7 +35,7 @@ const PasswordUpdateSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(  PasswordUpdateAsync.fulfilled, (state, action) => {
       state. addPasswordUpdateData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase(  PasswordUpdateAsync.rejected, (state, action) => {

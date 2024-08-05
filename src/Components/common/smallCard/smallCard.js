@@ -35,7 +35,7 @@ const style = {
 };
 export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOnlineLikeUserData}) => {
 
-  console.log('self online ',selfOnlineLikeUserData)
+  // console.log('self online ',selfOnlineLikeUserData)
   const socket = io.connect("http://localhost:4000");
   const [open, setOpen] = React.useState(false);
   const [name, setName] = useState("");
@@ -48,7 +48,7 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOn
   const navigate=useNavigate()
 
   const loginData=JSON.parse(sessionStorage.getItem('loginObject'))
-  console.log('login details data',loginData)
+  // console.log('login details data',loginData)
   // const handleClose = () => setOpen(false);
   // const handleOpen = (item) => {
   //   console.log('item is',item)
@@ -84,7 +84,7 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOn
 
     // Listen for "connected" event from the server
     socket.on("connected", (message) => {
-        console.log('Socket is connected:', message);
+        // console.log('Socket is connected:', message);
     });
 
     // Clean up function to disconnect the socket on component unmount
@@ -94,7 +94,7 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOn
 }, [id, socket]);
 
   const mainContentHandler=async(item)=>{
-  console.log('main content',item)
+  // console.log('main content',item)
   // const serviceId="service_amqtgj4"
   // const templateId="template_jlr3jns"
   // const publicKey="3bvV0zSUyDmusoTIX"
@@ -176,12 +176,12 @@ const selfOnlineLikeUser = selfOnlineLikeUserData?.filter((selfOnlineLikeData) =
   userData?.some((user) => user?.firstName === selfOnlineLikeData?.firstName)
 );
 
-console.log('self online like', selfOnlineLikeUser);
+// console.log('self online like', selfOnlineLikeUser);
 const commonUsers = selfOnlineLikeUserData?.filter((selfOnlineLikeData) =>
 userData?.some((user) => user?.firstName === selfOnlineLikeData?.firstName)
 );
 
-console.log('Common Users:', commonUsers);
+// console.log('Common Users:', commonUsers);
   return (
     <>
       <div className="flex justify-center">

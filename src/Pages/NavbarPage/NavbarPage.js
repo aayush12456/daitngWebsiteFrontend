@@ -14,10 +14,10 @@ export const NavbarPage = () => {
     const modalSelector=useSelector((state)=>state.modal.visibleToggle)
     const profileSelector=useSelector((state)=>state.headerModal. headerModalToggle)
     const loginWithOtpSelector=useSelector((state)=>state. loginWithOtpModal.otpModalToggle)
-    console.log('modal selector',modalSelector)
-    console.log('login with otp',loginWithOtpSelector)
+    // console.log('modal selector',modalSelector)
+    // console.log('login with otp',loginWithOtpSelector)
     const profileImage=sessionStorage.getItem('loginImage')
-   console.log('profile',profileImage)
+  //  console.log('profile',profileImage)
    useEffect(() => {
     const interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % mainContentImages?.length);

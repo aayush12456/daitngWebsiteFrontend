@@ -6,7 +6,7 @@ export const comparePhoneNumberAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/compareNumber/${userObj}`); 
-      console.log('compare number',response.data)
+      // console.log('compare number',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -7,7 +7,7 @@ export const getVisitorData = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getVisitorUser/${userId}`); 
-      console.log('response',response.data)
+      // console.log('response',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -12,10 +12,10 @@ const LoginOtpEnterData=()=>{
     const [countdown, setCountdown] = useState(10);
     const [phone,setPhone]=useState('')
     const loginWithOtpResponse=useSelector((state)=>state.compareLogin.compareloginWithOtpData)
-    const errorOtp=useSelector((state)=>state.compareLogin.compareloginWithOtpData.mssg)
+    const errorOtp=useSelector((state)=>state?.compareLogin?.compareloginWithOtpData?.mssg)
     const phoneNumber=useSelector((state)=>state. loginWithOtp.loginWithOtpData.phoneNumber)
-    console.log('error otp',errorOtp)
-    console.log('login with otp response',loginWithOtpResponse)
+    // console.log('error otp',errorOtp)
+    // console.log('login with otp response',loginWithOtpResponse)
     const phoneObj = {
         phone: phoneNumber
       };
@@ -24,7 +24,7 @@ const LoginOtpEnterData=()=>{
    const otpObj={
     otp:otps
    }
-   console.log('otp is',otpObj)
+  //  console.log('otp is',otpObj)
    dispatch(compareLoginWithOtpAsync(otpObj))
    setOtps('')
     }

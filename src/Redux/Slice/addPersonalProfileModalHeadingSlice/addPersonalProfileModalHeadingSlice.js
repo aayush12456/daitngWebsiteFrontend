@@ -13,7 +13,7 @@ export const addPersonalProfileModalHeadingAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('add personal profile modal heading data is',Responedata)
+      // console.log('add personal profile modal heading data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addPersonalProfileModalHeadingSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(addPersonalProfileModalHeadingAsync.fulfilled, (state, action) => {
       state.addPersonalProfileModalHeadingData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addPersonalProfileModalHeadingAsync.rejected, (state, action) => {

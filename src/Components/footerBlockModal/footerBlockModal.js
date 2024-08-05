@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import '../../../src/styles.css';
 
 const FooterBlockModal = ({ footerOpenData, footerSubName, footerCloseModal }) => {
-    console.log('footer sub name', footerSubName);
-    console.log('footer block open', footerOpenData);
+    // console.log('footer sub name', footerSubName);
+    // console.log('footer block open', footerOpenData);
 
     const style = {
         position: "absolute",

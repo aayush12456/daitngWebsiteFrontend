@@ -7,7 +7,7 @@ const passMatchArraySlice=createSlice({
     reducers:{
         passMatchArrayData(state,action){
         state.passMatchArrayData=action.payload
-        console.log('pass match array',state.passDataObj)
+        // console.log('pass match array',state.passDataObj)
         }
     }
 })

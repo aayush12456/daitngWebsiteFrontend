@@ -13,7 +13,7 @@ export const forgotUpdatePasswordUserAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('forgot password update data is',Responedata)
+      // console.log('forgot password update data is',Responedata)
       return Responedata;
       
     } catch (error) {
@@ -33,7 +33,7 @@ const ForgotPasswordUpdateUserSlice= createSlice({
   extraReducers: (builder) => {
     builder.addCase( forgotUpdatePasswordUserAsync.fulfilled, (state, action) => {
       state. addForgotPasswordUpdateData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( forgotUpdatePasswordUserAsync.rejected, (state, action) => {

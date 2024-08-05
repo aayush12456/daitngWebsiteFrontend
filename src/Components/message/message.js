@@ -22,7 +22,7 @@ const Message=({chatArray})=>{
     let currentYear = currentDate.getFullYear();
     const age = year ? currentYear - parseInt(year) : "";
     const messageDetail=(chatItem)=>{
-    console.log('message detail',chatItem)
+    // console.log('message detail',chatItem)
     const addToChat={
         id:id,
         chatId:chatItem._id

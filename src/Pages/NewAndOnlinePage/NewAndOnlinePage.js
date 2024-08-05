@@ -16,18 +16,18 @@ export const NewAndOnlinePage = () => {
     const [isLoading, setIsLoading] = useState(true);
     // const [selfOnlineLike,setSelfOnlineLike]=useState('')
     const getAllUserSelector=useSelector((state)=>state.userData.getUserArray.users)
-    console.log('getUser',getAllUserSelector)
+    // console.log('getUser',getAllUserSelector)
     const email=sessionStorage.getItem('email')
     const signupEmail=sessionStorage.getItem('signupEmail')
-    console.log('signupemail',signupEmail)
+    // console.log('signupemail',signupEmail)
     const id=sessionStorage.getItem('userId')
-    console.log('id is',id)
+    // console.log('id is',id)
     useEffect(()=>{
     dispatch(getUserData(id))
     dispatch(getOnlineLikeUserData(id))
     },[])
     const selfOnlineLikeUserSelector=useSelector((state)=>state.getOnlineLikeUser.getOnlineLikeUserObj.selfOnlineLikeUser)
-    console.log('self online like user',selfOnlineLikeUserSelector)
+    // console.log('self online like user',selfOnlineLikeUserSelector)
     useEffect(() => {
         if (getAllUserSelector && getAllUserSelector.length > 0) {
             const filteredUsers = getAllUserSelector.filter(user => user.email !== email);
@@ -36,8 +36,8 @@ export const NewAndOnlinePage = () => {
             setSignupUserArray(signupFilters)
         }
     }, [getAllUserSelector, email,signupEmail]);
-    console.log('user Array is',userArray)
-    console.log('signup user Array is',signupuserArray)
+    // console.log('user Array is',userArray)
+    // console.log('signup user Array is',signupuserArray)
      dispatch(passDataArraySliceAcions.passData(userArray))
 
      useEffect(() => {

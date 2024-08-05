@@ -15,7 +15,7 @@ export const addVisitorAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('visitor data is',Responedata)
+      // console.log('visitor data is',Responedata)
       socket.emit('visitorAdded', Responedata);
       return Responedata;
       
@@ -36,7 +36,7 @@ const addVisitorSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addVisitorAsync.fulfilled, (state, action) => {
       state.addVisitorData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addVisitorAsync.rejected, (state, action) => {

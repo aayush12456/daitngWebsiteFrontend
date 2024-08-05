@@ -42,10 +42,10 @@ const style = {
   p: 4,
 };
 export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser,matchedUser,onlineLikeUserPerson}) => {
-    console.log('visitor data',visitor)
+    // console.log('visitor data',visitor)
   // console.log('online content data',OnlineContent)
-    console.log('likeUserPerson',likeUserPerson)
-    console.log('onlineLikeUserPerson',onlineLikeUserPerson)
+    // console.log('likeUserPerson',likeUserPerson)
+    // console.log('onlineLikeUserPerson',onlineLikeUserPerson)
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -77,11 +77,11 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     const age = year ? currentYear - parseInt(year) : "";
     const number=OnlineContent?.phone||visitor?.phone
     const mainNumber = number.substring(0, 4) + 'X'.repeat(number.length - 4);
-    console.log(mainNumber); 
+    // console.log(mainNumber); 
    const loginObj=JSON.parse(sessionStorage.getItem('loginObject'))
    const updateLoginObj=JSON.parse(sessionStorage.getItem('updateUser'))
    const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.  getDeactivateUser.deactivateHeading)
-   console.log('get deactivate user',getDeactivateAccountSelector)
+  //  console.log('get deactivate user',getDeactivateAccountSelector)
    useEffect(()=>{
     dispatch(getDeactivateUserAsync(id))
   },[dispatch])
@@ -153,7 +153,7 @@ const visitorLikeUser={
       id:id,
       recieverUserId:OnlineContent?._id
       }
-    console.log('like obj data',likeObjId)
+    // console.log('like obj data',likeObjId)
 if(visitorUser){
   if( getDeactivateAccountSelector === 'deactivated') {
     setSwalProps({
@@ -373,16 +373,16 @@ toast.success('Like sent successfully')
       }
   
       const getMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.matchUser)
-      console.log('get match user array',getMatchUser)
+      // console.log('get match user array',getMatchUser)
     
       const anothergetMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
-      console.log('another get match user',anothergetMatchUser)
+      // console.log('another get match user',anothergetMatchUser)
      
       const visitorSkipUser=useSelector((state)=>state. getVisitorSkipUser.getVisitorPlusSkipUserArray.skipUserData)
-      console.log('visitor skip data user',visitorSkipUser)
+      // console.log('visitor skip data user',visitorSkipUser)
 
       const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
-      console.log('visitor like data user',visitorLikeUser)
+      // console.log('visitor like data user',visitorLikeUser)
       const selfOnlineLikeUser=useSelector((state)=>state.getOnlineLikeUser.getOnlineLikeUserObj.selfOnlineLikeUser)
 
       // const anothergetMatchUserData=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
@@ -552,7 +552,7 @@ toast.success('Like sent successfully')
                {visitor
                  ? visitor.interest.map((visitorInterest) => {
                    const commonInterest=loginObj?.interest?.includes(visitorInterest) || updateLoginObj?.interest?.includes(visitorInterest)
-                   console.log('common interst',commonInterest)
+                  //  console.log('common interst',commonInterest)
                      return (
                        <>
                          <div className={` rounded mt-3 ${commonInterest?'bg-black':'bg-slate-200'}`}>

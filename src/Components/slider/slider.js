@@ -29,7 +29,7 @@ export const Sliders = (props) => {
           setSearchData(filteredData)
     }
    },[sliderData])
-    console.log('search data is',searchData)
+    // console.log('search data is',searchData)
     props.slider(searchData)
     dispatch(passDataArraySliceAcions.passData(searchData))
   return (

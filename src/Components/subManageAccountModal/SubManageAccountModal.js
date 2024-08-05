@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import { useSelector } from "react-redux";
 const SubManageAccountModal=({subManageAccountModal, closeSubManageAccountModal})=>{
     const subManageAccountSelector=useSelector((state)=>state.passDataObj.passDataObj)
-    console.log('sub manage account',subManageAccountSelector)
+    // console.log('sub manage account',subManageAccountSelector)
     const style = {
         position: "absolute",
         top: "45%",

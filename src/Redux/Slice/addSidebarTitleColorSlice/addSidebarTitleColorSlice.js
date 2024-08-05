@@ -13,7 +13,7 @@ export const addSidebarTitleColorAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('add sidebar color data is',Responedata)
+      // console.log('add sidebar color data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addSidebarTitleColorSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(addSidebarTitleColorAsync.fulfilled, (state, action) => {
       state.addSidebarTitleColorData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addSidebarTitleColorAsync.rejected, (state, action) => {

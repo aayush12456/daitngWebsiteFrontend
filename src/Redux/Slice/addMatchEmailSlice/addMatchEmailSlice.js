@@ -13,7 +13,7 @@ export const addMatchEmailAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('add match email data is',Responedata)
+      // console.log('add match email data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addMatchEmailSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(addMatchEmailAsync.fulfilled, (state, action) => {
       state. addMatchEmailData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addMatchEmailAsync.rejected, (state, action) => {

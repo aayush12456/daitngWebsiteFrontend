@@ -13,7 +13,7 @@ export const addOnlineSkipUserAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('add online skip user data is',Responedata)
+      // console.log('add online skip user data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addOnlineSkipUserSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addOnlineSkipUserAsync.fulfilled, (state, action) => {
       state.addOnlineSkipData = action.payload; // Update responseData in the state after successful login
-      console.log(state.addSkipData)
+      // console.log(state.addSkipData)
     });
     // Additional extra reducers if needed
     builder.addCase(addOnlineSkipUserAsync.rejected, (state, action) => {

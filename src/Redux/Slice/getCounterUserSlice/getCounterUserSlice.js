@@ -8,7 +8,7 @@ export const getCounterUserAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getCountUser/${userId}`); 
-      console.log('response count',response.data)
+      // console.log('response count',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

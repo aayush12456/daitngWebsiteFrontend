@@ -7,7 +7,7 @@ export const getSkipProfileUserAsync = createAsyncThunk(
 
     try {
       const response = await axios.get(`/skipProfileUser/${userId}`); 
-      console.log('response of get skip user',response.data)
+      // console.log('response of get skip user',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

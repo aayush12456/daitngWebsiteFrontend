@@ -15,7 +15,7 @@ export const addOnlineLikeUserAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('visitor data is',Responedata)
+      // console.log('visitor data is',Responedata)
       socket.emit('visitorAdded', Responedata);
       return Responedata;
       
@@ -36,7 +36,7 @@ const addOnlineLikeUserSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addOnlineLikeUserAsync.fulfilled, (state, action) => {
       state. addOnlineLikeUserData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addOnlineLikeUserAsync.rejected, (state, action) => {

@@ -13,7 +13,7 @@ export const addLikeUserAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('addCross data is',Responedata)
+      // console.log('addCross data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addLikeUserSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addLikeUserAsync.fulfilled, (state, action) => {
       state.addLikeUserData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addLikeUserAsync.rejected, (state, action) => {

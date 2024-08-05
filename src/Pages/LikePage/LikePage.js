@@ -10,7 +10,7 @@ import {Helmet} from 'react-helmet'
 export const LikePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const id = sessionStorage.getItem('userId');
-  console.log('id is', id);
+  // console.log('id is', id);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,10 +26,10 @@ export const LikePage = () => {
   const matchSelector = useSelector((state) => state.passDataObj.passDataObj) || {};
   const onlineLikeUserSelector = useSelector((state) => state.getOnlineLikeUser.getOnlineLikeUserObj.onlineLikeUser) || [];
 
-  console.log('online like user', onlineLikeUserSelector);
-  console.log('like is', likeSelector);
-  console.log('match selector', matchSelector);
-  console.log('visitor selector', visitorSelector);
+  // console.log('online like user', onlineLikeUserSelector);
+  // console.log('like is', likeSelector);
+  // console.log('match selector', matchSelector);
+  // console.log('visitor selector', visitorSelector);
 
   const loginData = sessionStorage.getItem('loginObject');
   const loginUser = JSON.parse(loginData);

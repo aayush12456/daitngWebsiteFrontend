@@ -9,7 +9,7 @@ export const loginWithOtpAsync = createAsyncThunk(
       });
 
       const Responedata = response.data;
-      console.log('login with otp data',Responedata)
+      // console.log('login with otp data',Responedata)
       
       return Responedata;
     } catch (error) {

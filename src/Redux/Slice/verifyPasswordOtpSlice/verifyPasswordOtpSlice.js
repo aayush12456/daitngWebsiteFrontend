@@ -29,7 +29,7 @@ const  verifyPasswordOtpSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( verifyPasswordOtpAsync.fulfilled, (state, action) => {
       state.verifyPasswordOtpData = action.payload; // Update responseData in the state after successful login
-      console.log('verify password with otp ',state.verifyPasswordOtpData)
+      // console.log('verify password with otp ',state.verifyPasswordOtpData)
     });
     // Additional extra reducers if needed
     builder.addCase( verifyPasswordOtpAsync.rejected, (state, action) => {

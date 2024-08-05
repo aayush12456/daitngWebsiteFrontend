@@ -15,8 +15,8 @@ export const MainPage = () => {
   // const loginemail = sessionStorage.getItem("email");
   // const loginNameWithNumbers = loginemail?.split("@")[0];
   // const loginName=loginNameWithNumbers.replace(/\d+/g, '')
-  console.log("login token", loginToken);
-  console.log("register token", registerToken);
+  // console.log("login token", loginToken);
+  // console.log("register token", registerToken);
   const loginObj=JSON.parse(sessionStorage.getItem('loginObject'))
   const loginName=loginObj?.firstName
   const personalProfile = {
@@ -25,11 +25,11 @@ export const MainPage = () => {
   };
   const profileSelector=useSelector((state)=>state.headerModal. headerModalToggle)
   const sidebarOpenSelector=useSelector((state)=>state.  sidebarOpen.sidebarModalToggle)
-  console.log('sidebar open select',sidebarOpenSelector)
+  // console.log('sidebar open select',sidebarOpenSelector)
   const addColorModalHeadingSelector=useSelector((state)=>state. addPersonalProfileModalHeading.addPersonalProfileModalHeadingData.user)
   const getColorModalHeadingSelector=useSelector((state)=>state.getPersonalProfileModalHeading.getPersonalProfileModalHeadingData.user)
-  console.log('add color modal',addColorModalHeadingSelector)
-  console.log('get color modal',getColorModalHeadingSelector)
+  // console.log('add color modal',addColorModalHeadingSelector)
+  // console.log('get color modal',getColorModalHeadingSelector)
   const navigate = useNavigate();
   const dispatch=useDispatch()
   //  useEffect(() => { // token is not available then navigate to('/')
@@ -39,7 +39,7 @@ export const MainPage = () => {
   // }, [loginToken]);
   const personalSignupData = sessionStorage.getItem("signupObject");
   const personalSignUpDataObject = JSON.parse(personalSignupData);
-  console.log("personal signup", personalSignUpDataObject);
+  // console.log("personal signup", personalSignUpDataObject);
   // const visitorSelector = useSelector(
   //   (state) => state.getVisitorData.getVisitorArray.getVisitors
   // );

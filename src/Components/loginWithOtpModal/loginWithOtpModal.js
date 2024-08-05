@@ -16,9 +16,9 @@ const LoginWithOtpModal = ({ otpOpen }) => {
   const [error, setError] = useState('');
 
   const loginWithOtpSelector=useSelector((state)=>state?.loginWithOtp?.loginWithOtpData)
-  const errorPhoneMssg=useSelector((state)=>state?.loginWithOtp?.loginWithOtpData.mssg)
-  console.log('compare login data',loginWithOtpSelector)
-  console.log('error phone mssg',errorPhoneMssg)
+  const errorPhoneMssg=useSelector((state)=>state?.loginWithOtp?.loginWithOtpData?.mssg)
+  // console.log('compare login data',loginWithOtpSelector)
+  // console.log('error phone mssg',errorPhoneMssg)
 
 
   const style = {
@@ -55,7 +55,7 @@ const LoginWithOtpModal = ({ otpOpen }) => {
       };
    
       dispatch(loginWithOtpAsync(phoneObj))
-      console.log('phone number is', phoneObj);
+      // console.log('phone number is', phoneObj);
       setPhoneNumber('');
     }
   };

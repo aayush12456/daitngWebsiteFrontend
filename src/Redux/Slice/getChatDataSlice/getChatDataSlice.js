@@ -7,7 +7,7 @@ export const getChatData = createAsyncThunk(
 
     try {
       const response = await axios.get(`/get-chats/${chatId}`); 
-      console.log('response',response.data)
+      // console.log('response',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -32,7 +32,7 @@ const getChatSlice = createSlice({
       
       state.isLoading = false;
       state.getChatArray = action.payload;
-      console.log('chat data', state.getChatArray)
+      // console.log('chat data', state.getChatArray)
     });
     builder.addCase(getChatData.rejected, (state, action) => {
       state.isLoading = false;

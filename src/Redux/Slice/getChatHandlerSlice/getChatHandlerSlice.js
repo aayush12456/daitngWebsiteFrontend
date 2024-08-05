@@ -8,7 +8,7 @@ export const getChatAsyncData = createAsyncThunk(
 
     try {
       const response = await axios.get(`/getChatUser/${chatId}`); 
-      console.log('response',response.data)
+      // console.log('response',response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data);

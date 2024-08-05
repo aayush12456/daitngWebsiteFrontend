@@ -5,7 +5,7 @@ import { PersonalProfile } from '../../Components/personalProfile/personalProfil
 export const MatchesMainContentPage = () => {
     let matchesContent=useLocation()
     const matchesMainDataContent=matchesContent.state
-    console.log('matches main content',matchesMainDataContent)
+    // console.log('matches main content',matchesMainDataContent)
   return (
    <>
    {/* <MatchesMainContent/> */}

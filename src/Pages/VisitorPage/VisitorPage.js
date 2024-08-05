@@ -22,7 +22,7 @@ export const VisitorPage = () => {
     const visitorSelector=useSelector((state)=>state.getVisitorData.getVisitorArray?.visitors)
     // const visitorData=useSelector((state)=>state.getVisitorData.data)
     // console.log('visitor data',visitorData)
-    console.log('visitors is',visitorSelector)
+    // console.log('visitors is',visitorSelector)
 
     // const visitorSelectorData = visitorSelector?.filter((visitorData) => // array of obj  return hoga or ye obj common hoga jo ki selfOnlineLikeUserData and  userData dono present hoga
     // onlineLikeUserSelector?.some(( onlineLikeUser) =>  onlineLikeUser.firstName === visitorData.visitor.firstName))

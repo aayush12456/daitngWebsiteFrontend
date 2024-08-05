@@ -5,10 +5,10 @@ import axios from '../../axios/axios'
 export const updateUserAsync = createAsyncThunk(
   'user/updateuserAsync',
   async (updateUserObj, { rejectWithValue }) => {
-    console.log('obj is',updateUserObj)
+    // console.log('obj is',updateUserObj)
     try {
       const response = await axios.post(`/updateUser/${updateUserObj.id}`, updateUserObj);
-      console.log('update user is',response.data.updateData)
+      // console.log('update user is',response.data.updateData)
       const updateUser=response.data.updateData
       sessionStorage.setItem('updateUser',JSON.stringify(updateUser))
       return response.data; // Assuming the response contains updated data

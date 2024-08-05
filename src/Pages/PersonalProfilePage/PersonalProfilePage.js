@@ -6,7 +6,7 @@ export const PersonalProfilePage = () => {
   const personalDataObject=JSON.parse(personalData)
   const personalSignupData=sessionStorage.getItem('signupObject')
   const personalSignUpDataObject=JSON.parse(personalSignupData)
-  console.log('personal signup',personalSignUpDataObject)
+  // console.log('personal signup',personalSignUpDataObject)
   return (
 <>
 <Helmet>

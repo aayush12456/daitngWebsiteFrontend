@@ -13,7 +13,7 @@ export const addVisitorPlusSkipUserAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('add visitor like user data is',Responedata)
+      // console.log('add visitor like user data is',Responedata)
   
       return Responedata;
       
@@ -34,7 +34,7 @@ const addVisitorPlusSkipUserSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addVisitorPlusSkipUserAsync.fulfilled, (state, action) => {
       state.addSkipData = action.payload; // Update responseData in the state after successful login
-      console.log(state.addSkipData)
+      // console.log(state.addSkipData)
     });
     // Additional extra reducers if needed
     builder.addCase( addVisitorPlusSkipUserAsync.rejected, (state, action) => {

@@ -83,20 +83,20 @@ function App() {
   const dispatch = useDispatch();
   const id = sessionStorage.getItem('userId');
   const token =sessionStorage.getItem('loginToken')
-  console.log('token is in app',token)
+  // console.log('token is in app',token)
   useEffect(() => {
     dispatch(getNotifyUserAsync(id))
     dispatch(getLikeNotifyUserAsync(id))
   }, [dispatch]);
 
   const getNotifyUserResponse = useSelector((state) => state.getNotifyUser.getNotifyUser.data);
-  console.log('get notify response', getNotifyUserResponse);
+  // console.log('get notify response', getNotifyUserResponse);
 
  const getLikeNotifyUserResponse=useSelector((state)=>state.getLikeNotifyUser.getLikeNotifyUser.data)
- console.log('get like notify response', getLikeNotifyUserResponse);
+//  console.log('get like notify response', getLikeNotifyUserResponse);
 
   const lastAnotherMatchObjUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.lastAnotherMatchUser)
-  console.log('last another match obj user',lastAnotherMatchObjUser)
+  // console.log('last another match obj user',lastAnotherMatchObjUser)
 
   // const sidebarOpenSelector=useSelector((state)=>state.  sidebarOpen.sidebarModalToggle)
  const resetObj={

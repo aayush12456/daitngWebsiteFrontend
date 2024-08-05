@@ -49,9 +49,9 @@ const Matches = ({ matches }) =>
   const [modalObj,setModalObj]=useState({})
   const [swalProps, setSwalProps] = useState({});
   const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.  getDeactivateUser.deactivateHeading)
-  console.log('get deactivate user',getDeactivateAccountSelector)
+  // console.log('get deactivate user',getDeactivateAccountSelector)
   const matchesData = useSelector((state) => state.matchData.getMatchesArray.interestUsers);
-  console.log('matches data array',matchesData)
+  // console.log('matches data array',matchesData)
   const handleLeftArrowClick = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? getProfile().images?.length - 1 : prevIndex - 1

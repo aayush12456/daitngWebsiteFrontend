@@ -13,7 +13,7 @@ export const addNotifyAsync = createAsyncThunk(
       }
      
       const Responedata = response.data;
-      console.log('visitor data is',Responedata)
+      // console.log('visitor data is',Responedata)
       return Responedata;
       
     } catch (error) {
@@ -33,7 +33,7 @@ const addNotifySlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase( addNotifyAsync.fulfilled, (state, action) => {
       state.addNotifyData = action.payload; // Update responseData in the state after successful login
-      console.log(state.responseData)
+      // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addNotifyAsync.rejected, (state, action) => {

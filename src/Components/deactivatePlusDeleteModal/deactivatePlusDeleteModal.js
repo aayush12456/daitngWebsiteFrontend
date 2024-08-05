@@ -17,13 +17,13 @@ const DeactivatePlusDeleteModal=({deletePlusDeactivateAccountModal,closeDeletePl
     const navigate=useNavigate()
     const [activates,setActivates]=useState(false)
     const deletePluseDeactivateAccountSelector=useSelector((state)=>state.passDataObj.passDataObj)
-    console.log('delete plus',deletePluseDeactivateAccountSelector)
+    // console.log('delete plus',deletePluseDeactivateAccountSelector)
     const deactivateAccountSelector=useSelector((state)=>state.deactivateAccount. deactivateAccountDataObj.deactivateHeading)
-    console.log('deactivate plus',deactivateAccountSelector)
+    // console.log('deactivate plus',deactivateAccountSelector)
     const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.  getDeactivateUser.deactivateHeading)
-    console.log('get deactivate user',getDeactivateAccountSelector)
+    // console.log('get deactivate user',getDeactivateAccountSelector)
     const activateSelector=useSelector((state)=>state.activateUser.  activateUserObj.activateHeading)
-    console.log('activate user',activateSelector)
+    // console.log('activate user',activateSelector)
     const activateHeading=activateSelector?.deactivation
     const id=sessionStorage.getItem('userId')
     const dispatch=useDispatch()
@@ -72,7 +72,7 @@ const DeactivatePlusDeleteModal=({deletePlusDeactivateAccountModal,closeDeletePl
         setActivates(false)
       }
       const activateAccountHandler=()=>{
-        console.log('activate account')
+        // console.log('activate account')
         const activateAccountObj={
           id:id,
         }
