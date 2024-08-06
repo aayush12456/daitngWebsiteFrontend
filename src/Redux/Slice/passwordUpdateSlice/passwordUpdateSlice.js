@@ -34,12 +34,12 @@ const PasswordUpdateSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(  PasswordUpdateAsync.fulfilled, (state, action) => {
-      state. addPasswordUpdateData = action.payload; // Update responseData in the state after successful login
+      state.addPasswordUpdateData = action.payload; // Update responseData in the state after successful login
       // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase(  PasswordUpdateAsync.rejected, (state, action) => {
-      state.    addPasswordUpdateData = action.payload; // Update responseData even for rejected login attempt
+      state.addPasswordUpdateData = action.payload; // Update responseData even for rejected login attempt
     });
   },
 });

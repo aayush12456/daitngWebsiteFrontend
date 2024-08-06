@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import rightArrow from '../../assets/personalProfileIcons/rightArrow.svg';
@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 
 
 const AccountSettingsModal = ({ accountSettingModal, accountCloseSettingModal, openChangePassword,manageAccountModal, deletePlusDeactivateAccountModal }) => {
-  const dispatch = useDispatch();
   const email = sessionStorage.getItem('email');
   const signupEmail = sessionStorage.getItem('signupEmail');
   const loginData = JSON.parse(sessionStorage.getItem('loginObject'));
@@ -71,11 +70,11 @@ const manageAccount=()=>{
           <div className="w-full rounded overflow-hidden shadow-lg mt-4 mb-4">
             <div className="flex justify-between">
               <p className='pl-3 pt-2 border-slate-300 cursor-pointer' onClick={changePassword}>Change Password</p>
-              <img src={rightArrow} className='w-3 mr-4 mt-2' />
+              <img src={rightArrow} className='w-3 mr-4 mt-2' alt="right-Arrow" />
             </div>
             <div className="flex justify-between mt-4 mb-4">
               <p className='pl-3 pt-2 border-slate-300 cursor-pointer' onClick={manageAccount}>Manage Account</p>
-              <img src={rightArrow} className='w-3 mr-4 mt-2' />
+              <img src={rightArrow} className='w-3 mr-4 mt-2' alt="right-Arrow" />
             </div>
           </div>
         </Box>

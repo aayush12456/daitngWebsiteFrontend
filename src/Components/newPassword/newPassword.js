@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { TextField } from '@mui/material';
 import { useFormik } from 'formik';
 import { newPasswordSchema} from '../../schemas';
@@ -65,12 +65,12 @@ return (
                   variant="outlined"
                   className="w-80"
                   name="confirmNewPassword"
-                  value={values. confirmNewPassword}
+                  value={values.confirmNewPassword}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={Boolean(errors. confirmNewPassword && touched. confirmNewPassword)}
+                  error={Boolean(errors.confirmNewPassword && touched.confirmNewPassword)}
                 />
-                {errors. confirmNewPassword && touched. confirmNewPassword ? <p className='text-red-500 pl-4'>{errors. confirmNewPassword}</p> : null}
+                {errors.confirmNewPassword && touched.confirmNewPassword ? <p className='text-red-500 pl-4'>{errors.confirmNewPassword}</p> : null}
               </div>
               
             </div>

@@ -4,7 +4,7 @@ import rightArrow from '../../assets/personalProfileIcons/rightArrow.svg';
 import { useDispatch } from "react-redux";
 import { passDataObjSliceAcions } from "../../Redux/Slice/passDataSliceObj/passDataSliceObj";
 import { manageAccount } from "../../utils/peronalInfo";
-import { deleteDataObjSliceActions } from "../../Redux/Slice/deleteAccountSliceObj/deleteAccountSliceObj";
+// import { deleteDataObjSliceActions } from "../../Redux/Slice/deleteAccountSliceObj/deleteAccountSliceObj";
 const ManageAccountModal=({ManageAccountModal,closeManageAccountModal, openSubManageAccountModal,deletePlusDeactivateAccountModal})=>{
   const dispatch=useDispatch()
   const sumManageobj={title:"You can't change Email or Number it is permanently fixed for further changes"}
@@ -42,25 +42,25 @@ const ManageAccountModal=({ManageAccountModal,closeManageAccountModal, openSubMa
       };
       const manageAccountData=(accountTitle)=>{
         closeManageAccountModal()
-        if(accountTitle=='Change Mobile or Email'){
-          dispatch(passDataObjSliceAcions. passDataObj(sumManageobj))
+        if(accountTitle==='Change Mobile or Email'){
+          dispatch(passDataObjSliceAcions.passDataObj(sumManageobj))
           openSubManageAccountModal()
         }
-        else if(accountTitle=='Change Name'){
-          dispatch(passDataObjSliceAcions. passDataObj(changeNameManageObj))
+        else if(accountTitle==='Change Name'){
+          dispatch(passDataObjSliceAcions.passDataObj(changeNameManageObj))
           openSubManageAccountModal()
         }
-        else if(accountTitle=='Change Date Of Birth'){
-          dispatch(passDataObjSliceAcions. passDataObj( changeDateOfBirthManageObj))
+        else if(accountTitle==='Change Date Of Birth'){
+          dispatch(passDataObjSliceAcions.passDataObj( changeDateOfBirthManageObj))
           openSubManageAccountModal()
         }
-        else if(accountTitle=='Deactivate Account'){
-          dispatch(passDataObjSliceAcions. passDataObj(deactivateAccountObj))
+        else if(accountTitle==='Deactivate Account'){
+          dispatch(passDataObjSliceAcions.passDataObj(deactivateAccountObj))
           deletePlusDeactivateAccountModal()
         }
-        else if(accountTitle=='Delete Account'){
+        else if(accountTitle==='Delete Account'){
           // dispatch(deleteDataObjSliceActions.deleteAccount(deleteAccountObj))
-          dispatch(passDataObjSliceAcions. passDataObj(deleteAccountObj))
+          dispatch(passDataObjSliceAcions.passDataObj(deleteAccountObj))
           deletePlusDeactivateAccountModal()
         }
       }
@@ -83,7 +83,7 @@ return (
               <>
                <div className="flex justify-between mt-2 mb-2 ">
               <p className='pl-3 pt-2 border-slate-300 cursor-pointer' onClick={()=>manageAccountData(manageItem.accountTitle)}>{manageItem.accountTitle}</p>
-              <img src={rightArrow} className='w-3 mr-4 mt-2' />
+              <img src={rightArrow} className='w-3 mr-4 mt-2' alt="rightArrow-img" />
             </div>
               </>
             )

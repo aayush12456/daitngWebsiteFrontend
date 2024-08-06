@@ -35,12 +35,12 @@ const addOnlineLikeUserSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase( addOnlineLikeUserAsync.fulfilled, (state, action) => {
-      state. addOnlineLikeUserData = action.payload; // Update responseData in the state after successful login
+      state.addOnlineLikeUserData = action.payload; // Update responseData in the state after successful login
       // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addOnlineLikeUserAsync.rejected, (state, action) => {
-      state. addOnlineLikeUserData = action.payload; // Update responseData even for rejected login attempt
+      state.addOnlineLikeUserData = action.payload; // Update responseData even for rejected login attempt
     });
   },
 });

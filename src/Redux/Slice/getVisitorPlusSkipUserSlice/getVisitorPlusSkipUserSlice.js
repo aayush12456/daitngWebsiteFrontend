@@ -31,7 +31,7 @@ const  getVisitorPlusSkipUserSlice = createSlice({
     builder.addCase( getVisitorPlusSkipUserAsync.fulfilled, (state, action) => {
       
       state.isLoading = false;
-      state. getVisitorPlusSkipUserArray = action.payload;
+      state.getVisitorPlusSkipUserArray = action.payload;
       // console.log('matches data', state.getUserArray)
     });
     builder.addCase( getVisitorPlusSkipUserAsync.rejected, (state, action) => {

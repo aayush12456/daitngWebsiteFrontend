@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { getVisitorData } from '../../Redux/Slice/getVisitorSlice/getVisitorSlice'
 import { ExtraSmallCard } from '../../Components/common/extraSmallCard/extraSmallCard'
 import 'react-toastify/dist/ReactToastify.css';
-import { getDeactivateUserAsync } from '../../Redux/Slice/getDeactivateUser/getDeactivateUser'
+// import { getDeactivateUserAsync } from '../../Redux/Slice/getDeactivateUser/getDeactivateUser'
 import animateImg from '../../assets/animateSpinner/colorSpinner.svg'
 // import { getVisitorPlusLikeUserAsync } from '../../Redux/Slice/getVisitorPlusLikeUserSlice/getVisitorPlusLikeUserSlice'
 // import { getVisitorPlusSkipUserAsync } from '../../Redux/Slice/getVisitorPlusSkipUserSlice/getVisitorPlusSkipUserSlice'
@@ -14,10 +14,12 @@ export const VisitorPage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const dispatch=useDispatch()
     useEffect(()=>{
-    dispatch(getVisitorData(id))
+        if(id){
+            dispatch(getVisitorData(id))
+        }
     // dispatch(getVisitorPlusLikeUserAsync(id))
     // dispatch(getVisitorPlusSkipUserAsync(id))
-    },[dispatch])
+    },[dispatch,id])
     
     const visitorSelector=useSelector((state)=>state.getVisitorData.getVisitorArray?.visitors)
     // const visitorData=useSelector((state)=>state.getVisitorData.data)

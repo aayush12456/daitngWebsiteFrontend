@@ -8,7 +8,7 @@ const PageNotFound=()=>{
 return (
     <>
     <div className='flex justify-center'>
-    <img src={errorImage} className='w-[160px] h-[213px] mt-7'/>
+    <img src={errorImage} className='w-[160px] h-[213px] mt-7' alt='errorImage-img'/>
     </div>
     <p className='text-black text-2xl text-center font-semibold'>Oh! Crap!! No Dates Here!</p>
     <div className='pt-4'>

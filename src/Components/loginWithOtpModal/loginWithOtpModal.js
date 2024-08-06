@@ -1,7 +1,7 @@
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useDispatch } from "react-redux";
-import { useEffect, useRef, useState } from "react";
+import {  useState } from "react";
 import { loginWithOtpModalSliceActions } from "../../Redux/Slice/loginWIthOtpModalSlice";
 import leftArrow from '../../assets/personalProfileIcons/leftArrow.svg';
 import { TextField } from '@mui/material';
@@ -70,10 +70,10 @@ const LoginWithOtpModal = ({ otpOpen }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-         {loginWithOtpSelector.mssg=='Login Successfully'?null: <div>
+         {loginWithOtpSelector.mssg==='Login Successfully'?null: <div>
 
           <div className="flex gap-20 ">
-            <img src={leftArrow} className="w-4 cursor-pointer" onClick={handleCloseModalData} />
+            <img src={leftArrow} className="w-4 cursor-pointer" alt="leftArrow-img" onClick={handleCloseModalData} />
             <p className="font-bold text-xl mb-2 text-center">Login with OTP</p>
           </div>
           <form onSubmit={phoneSubmitHandler}>
@@ -105,7 +105,7 @@ const LoginWithOtpModal = ({ otpOpen }) => {
             </div>
           </form>
           </div>}
-        { loginWithOtpSelector.mssg=='Login Successfully'? <LoginOtpEnterData/>:null}
+        { loginWithOtpSelector.mssg==='Login Successfully'? <LoginOtpEnterData/>:null}
         </Box>
       </Modal>
     </>

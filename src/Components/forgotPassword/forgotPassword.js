@@ -50,7 +50,7 @@ const phoneNumbers=useSelector((state)=>state.updatePasswordOtp.updatePasswordOt
         reset:'Reset Password'
       }
       setPhoneNumber(values.phone)
-      dispatch(passDataSliceAcions. passDatas(values.phone))
+      dispatch(passDataSliceAcions.passDatas(values.phone))
       dispatch(updatePasswordOtpAsync(phoneObj))
 
       // console.log('reset data is', values);
@@ -61,7 +61,7 @@ const phoneNumbers=useSelector((state)=>state.updatePasswordOtp.updatePasswordOt
 
   return (
     <>
-      {updateOtpSelector=='Login Successfully'?null:<div className="flex justify-center">
+      {updateOtpSelector==='Login Successfully'?null:<div className="flex justify-center">
         <div className="w-96 rounded overflow-hidden shadow-lg mt-8">
           <form onSubmit={handleSubmit}>
             <div className='flex justify-center'>
@@ -114,8 +114,8 @@ const phoneNumbers=useSelector((state)=>state.updatePasswordOtp.updatePasswordOt
           </form>
         </div>
       </div>}
-      {updateOtpSelector=='Login Successfully'?<p className='text-center pt-2 pb-4'>Your password reset OTP has been sent to your mobile number {phoneNumbers}</p>:null}
-      {updateOtpSelector=='Login Successfully' ? <OTPEnterData forgot={forgots} phoneNumber={phoneNumbers} /> : null}
+      {updateOtpSelector==='Login Successfully'?<p className='text-center pt-2 pb-4'>Your password reset OTP has been sent to your mobile number {phoneNumbers}</p>:null}
+      {updateOtpSelector==='Login Successfully' ? <OTPEnterData forgot={forgots} phoneNumber={phoneNumbers} /> : null}
     </>
   );
 };

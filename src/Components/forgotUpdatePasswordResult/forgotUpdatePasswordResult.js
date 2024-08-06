@@ -10,7 +10,7 @@ return (
     <div>    
     </div>
     <div className='flex justify-center'>
-    <img src={right} className='w-20'/>
+    <img src={right} className='w-20' alt='right-img'/>
     </div>
     <div>
         <p className='text-center pt-3 pb-3 text-lg'>Congrats! Your password has been changed</p>

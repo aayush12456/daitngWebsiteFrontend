@@ -134,14 +134,16 @@ const openOtpModal=()=>{
                 {!showPassword ? (
                   <img
                     src={closeEye}
-                    className={`${touched.password && errors.password || wrongCredentials ? 'w-7 ml-72 relative top-[-4.2rem]' : 'w-7 ml-72 relative top-[-2.5rem]'} cursor-pointer`}
+                   className={`${(touched.password && errors.password) || wrongCredentials ? 'w-7 ml-72 relative top-[-4.2rem]' : 'w-7 ml-72 relative top-[-2.5rem]'} cursor-pointer`}
                     onClick={togglePasswordVisibility}
+                    alt='closeEye-img'
                   />
                 ) : (
                   <img
                     src={openEye}
                     className='w-7 ml-72 relative top-[-2.5rem] cursor-pointer'
                     onClick={togglePasswordVisibility}
+                    alt='openEye-img'
                   />
                 )}
               </div>

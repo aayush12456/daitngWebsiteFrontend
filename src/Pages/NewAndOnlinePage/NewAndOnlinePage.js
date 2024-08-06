@@ -23,9 +23,12 @@ export const NewAndOnlinePage = () => {
     const id=sessionStorage.getItem('userId')
     // console.log('id is',id)
     useEffect(()=>{
-    dispatch(getUserData(id))
-    dispatch(getOnlineLikeUserData(id))
-    },[])
+        if(id){
+            dispatch(getUserData(id))
+            dispatch(getOnlineLikeUserData(id))
+        }
+  
+    },[dispatch,id])
     const selfOnlineLikeUserSelector=useSelector((state)=>state.getOnlineLikeUser.getOnlineLikeUserObj.selfOnlineLikeUser)
     // console.log('self online like user',selfOnlineLikeUserSelector)
     useEffect(() => {

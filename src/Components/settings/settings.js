@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import rightArrow from '../../assets/personalProfileIcons/rightArrow.svg';
 import SkipBlockModal from '../skipBlockModal/skipBlockModal';
 import { useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ export const Settings = () => {
   const [skipModalData, setSkipModalData] = useState(false);
   const [accountSettingsModalData, setAccountSettingsModalData] = useState(false);
   const [skipProfileData, setSkipProfileData] = useState({});
-  const [accountSettingsData, setAccountSettingsData] = useState({});
+  // const [accountSettingsData, setAccountSettingsData] = useState({});
   const skipFilterUser = useSelector((state) => state.getSkipProfile.getSkipProfileUserObj.skipFilterUser || []);
   const onlineSkipUser = useSelector((state) => state.getSkipProfile.getSkipProfileUserObj.onlineSkipUser || []);
   const skipUser = useSelector((state) => state.getSkipProfile.getSkipProfileUserObj.skipUser || []);
@@ -79,18 +79,18 @@ export const Settings = () => {
           <div className='w-screen  sm:w-[42rem] bg-[#f3f4f9] ml-4 mt-2 h-20  '>
             <div className="flex justify-between ">
               <p className='pl-3 pt-2 border-slate-300 cursor-pointer' onClick={skipProfile}>Skipped Profiles</p>
-              <img src={rightArrow} className='w-3  mr-12 sm:mr-4 mt-2 arrow' />
+              <img src={rightArrow} className='w-3  mr-12 sm:mr-4 mt-2 arrow' alt="rightArrow-img"/>
             </div>
             <div className="flex justify-between ">
               <p className='pl-3 pt-2 border-slate-300 cursor-pointer'>Blocked Users</p>
-              <img src={rightArrow} className='w-3  mr-12  sm:mr-4 mt-2 arrow' />
+              <img src={rightArrow} className='w-3  mr-12  sm:mr-4 mt-2 arrow'  alt="rightArrow-img" />
             </div>
           </div>
           <p className="text-lg text-[#757575] pl-4 pt-7 font-semibold cursor-pointer">Account</p>
           <div className='w-screen sm:w-[42rem] bg-[#f3f4f9] ml-4 mt-2 h-10 '>
             <div className="flex justify-between ">
               <p className='pl-3 pt-2 border-slate-300 cursor-pointer' onClick={accountSettings}>Account Settings</p>
-              <img src={rightArrow} className='w-3 mr-12 sm:mr-4 mt-2 arrow' />
+              <img src={rightArrow} className='w-3 mr-12 sm:mr-4 mt-2 arrow'  alt="rightArrow-img" />
             </div>
           </div>
         </div>

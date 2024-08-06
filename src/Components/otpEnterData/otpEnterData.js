@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import OtpInput from 'react-otp-input';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -13,7 +13,7 @@ const OTPEnterData = ({ user,forgot,phoneNumber }) => {
   // console.log('user is ', user);
   const navigate=useNavigate()
   const [otp, setOtp] = useState('');
-  const [errorOtp,setErrorOtp]=useState('')
+  // const [errorOtp,setErrorOtp]=useState('')
  const dispatch=useDispatch()
  const verifyOtpSelector=useSelector((state)=>state?.verifyPasswordOtp?.verifyPasswordOtpData)
 //  console.log('verify password otp selector',verifyOtpSelector)
@@ -42,7 +42,7 @@ const verifyOtp=()=>{
             <input
               {...props}
               style={{
-                border: "1px solid transparent",
+                // border: "1px solid transparent",
                 borderRadius: "8px",
                 width: "54px",
                 height: "54px",
@@ -71,7 +71,7 @@ const verifyOtp=()=>{
           SUBMIT
         </button>
       </div>
-      {verifyOtpSelector?.mssg=='Login Successfully'?    navigate('/newPassword',{state:forgotData}):null}
+      {verifyOtpSelector?.mssg==='Login Successfully'?    navigate('/newPassword',{state:forgotData}):null}
     </>
   );
 };

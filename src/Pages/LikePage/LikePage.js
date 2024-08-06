@@ -22,8 +22,8 @@ export const LikePage = () => {
   }, [dispatch, id]);
 
   const likeSelector = useSelector((state) => state.getlikeUser.getLikeUserArray.likeUser) || [];
-  const visitorSelector = useSelector((state) => state.getVisitorData.getVisitorArray?.visitors) || [];
-  const matchSelector = useSelector((state) => state.passDataObj.passDataObj) || {};
+  // const visitorSelector = useSelector((state) => state.getVisitorData.getVisitorArray?.visitors) || [];
+  // const matchSelector = useSelector((state) => state.passDataObj.passDataObj) || {};
   const onlineLikeUserSelector = useSelector((state) => state.getOnlineLikeUser.getOnlineLikeUserObj.onlineLikeUser) || [];
 
   // console.log('online like user', onlineLikeUserSelector);
@@ -31,8 +31,8 @@ export const LikePage = () => {
   // console.log('match selector', matchSelector);
   // console.log('visitor selector', visitorSelector);
 
-  const loginData = sessionStorage.getItem('loginObject');
-  const loginUser = JSON.parse(loginData);
+  // const loginData = sessionStorage.getItem('loginObject');
+  // const loginUser = JSON.parse(loginData);
 
   // Combine likeSelector and onlineLikeUserSelector into a single array
   const combinedArray = [...likeSelector, ...onlineLikeUserSelector];

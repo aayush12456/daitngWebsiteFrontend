@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
-import { BACKEND_BASE_URL } from "../../../Services/api";
-import emailjs from '@emailjs/browser'
-import axios from "axios";
+// import { BACKEND_BASE_URL } from "../../../Services/api";
+// import emailjs from '@emailjs/browser'
+// import axios from "axios";
 // import Typography from "@mui/material/Typography";
 // import Modal from "@mui/material/Modal";
 // import Box from "@mui/material/Box";
@@ -10,13 +10,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addVisitorAsync } from "../../../Redux/Slice/addVisitorSlice/addVisitorSlice";
-import { addToChatAsync } from "../../../Redux/Slice/addToChatSlice/addToChatSlice";
+// import { addToChatAsync } from "../../../Redux/Slice/addToChatSlice/addToChatSlice";
 // import { sendMessageAsync } from "../../../Redux/Slice/sendMessageSlice/sendMessageSlice";
 // import { addChatHandlerAsync } from "../../../Redux/Slice/addChatHandlerSlice/addChatHandlerSlice";
 // import { modalActions } from "../../../Redux/Slice/modalSlice";
 import { addCounterUserAsync } from "../../../Redux/Slice/addCounterUserSlice/addCounterUserSlice";
 import io from "socket.io-client";
-import { modalActions } from "../../../Redux/Slice/modalSlice";
+// import { modalActions } from "../../../Redux/Slice/modalSlice";
 import { addNotifyAsync } from "../../../Redux/Slice/addNotifySlice/addNotifySlice";
 import { addVisitorEmailSenderAsync } from "../../../Redux/Slice/addVisitorEmailSlice/addVisitorEmailSlice";
 import '../../../../src/styles.css'
@@ -37,17 +37,17 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOn
 
   // console.log('self online ',selfOnlineLikeUserData)
   const socket = io.connect("http://localhost:4000");
-  const [open, setOpen] = React.useState(false);
-  const [name, setName] = useState("");
-  const [selfOnlineLike,setSelfOnlineLike]=useState(true)
+  // const [open, setOpen] = React.useState(false);
+  // const [name, setName] = useState("");
+  // const [selfOnlineLike,setSelfOnlineLike]=useState(true)
   const [message,setMessage]=useState('')
   const [chatOpenData, setChatOpenData] = useState(false);
-  const [obj,setObj]=useState({})
+  // const [obj,setObj]=useState({})
   const id=sessionStorage.getItem('userId')
   const dispatch=useDispatch()
   const navigate=useNavigate()
 
-  const loginData=JSON.parse(sessionStorage.getItem('loginObject'))
+  // const loginData=JSON.parse(sessionStorage.getItem('loginObject'))
   // console.log('login details data',loginData)
   // const handleClose = () => setOpen(false);
   // const handleOpen = (item) => {
@@ -154,14 +154,14 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOn
 
 const addChatHandler=(item,event)=>{
   event.stopPropagation();
-const addChatId={
-  id:id,
-  addToChatId:item._id
-}
-const addToChat={
-      id:id,
-      chatId:item._id
-    }
+// const addChatId={
+//   id:id,
+//   addToChatId:item._id
+// }
+// const addToChat={
+//       id:id,
+//       chatId:item._id
+//     }
     setChatOpenData(true);
     setMessage('chat')
 // dispatch(addChatHandlerAsync(addChatId))
@@ -177,9 +177,9 @@ const selfOnlineLikeUser = selfOnlineLikeUserData?.filter((selfOnlineLikeData) =
 );
 
 // console.log('self online like', selfOnlineLikeUser);
-const commonUsers = selfOnlineLikeUserData?.filter((selfOnlineLikeData) =>
-userData?.some((user) => user?.firstName === selfOnlineLikeData?.firstName)
-);
+// const commonUsers = selfOnlineLikeUserData?.filter((selfOnlineLikeData) =>
+// userData?.some((user) => user?.firstName === selfOnlineLikeData?.firstName)
+// );
 
 // console.log('Common Users:', commonUsers);
   return (
@@ -219,6 +219,7 @@ userData?.some((user) => user?.firstName === selfOnlineLikeData?.firstName)
                             // src={BACKEND_BASE_URL + item.images[0]}
                             src={item.images[0]}
                             className="w-16   rounded-full"
+                            alt="images"
                           />
                           <div>
                             <p className="pt-3">{item.firstName}</p>
@@ -310,6 +311,7 @@ userData?.some((user) => user?.firstName === selfOnlineLikeData?.firstName)
                             // src={BACKEND_BASE_URL + item.images[0]}
                             src={item.images[0]}
                             className="w-16   rounded-full"
+                            alt="images"
                           />
                           <div>
                             <p className="pt-3">{item.firstName}</p>

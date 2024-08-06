@@ -51,7 +51,7 @@ export const ProfileModal = ({addColor}) => {
       return (
         <>
         <div className='cursor-pointer' onClick={()=>modalProfile(modalItem)} >
-          <img src={modalItem.img} className='w-7 ml-3'  />
+          <img src={modalItem.img} className='w-7 ml-3' alt='modalItem-img' />
           <p className={`text-center ${addColor?.PersonalProfileModalHeading===modalItem?.title?'text-[#5394e4]':'text-black'}`}>{modalItem.title}</p>
         </div>
         </>
@@ -62,7 +62,7 @@ export const ProfileModal = ({addColor}) => {
   <hr className='w-full mt-4 '/>
   <div className='flex gap-4'>
 <div>
-  <img src={safety} className='w-10 mt-10 '/>
+  <img src={safety} className='w-10 mt-10 ' alt='safety-img'/>
 </div>
 <div className='pt-2'>
   <p className='text-black font-semibold '>ApnaPan Safety</p>

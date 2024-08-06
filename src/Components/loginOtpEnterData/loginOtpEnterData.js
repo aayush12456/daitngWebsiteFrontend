@@ -13,7 +13,7 @@ const LoginOtpEnterData=()=>{
     const [phone,setPhone]=useState('')
     const loginWithOtpResponse=useSelector((state)=>state.compareLogin.compareloginWithOtpData)
     const errorOtp=useSelector((state)=>state?.compareLogin?.compareloginWithOtpData?.mssg)
-    const phoneNumber=useSelector((state)=>state. loginWithOtp.loginWithOtpData.phoneNumber)
+    const phoneNumber=useSelector((state)=>state.loginWithOtp.loginWithOtpData.phoneNumber)
     // console.log('error otp',errorOtp)
     // console.log('login with otp response',loginWithOtpResponse)
     const phoneObj = {
@@ -82,7 +82,7 @@ return(
         <input
           {...props}
           style={{
-            border: "1px solid transparent",
+            // border: "1px solid transparent",
             borderRadius: "8px",
             width: "54px",
             height: "54px",

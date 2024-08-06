@@ -33,7 +33,7 @@ const deactivateAccountSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase( deactivateAccountAsync.fulfilled, (state, action) => {
-      state. deactivateAccountDataObj = action.payload; // Update responseData in the state after successful login
+      state.deactivateAccountDataObj = action.payload; // Update responseData in the state after successful login
       // console.log(state.responseData)
     });
     // Additional extra reducers if needed

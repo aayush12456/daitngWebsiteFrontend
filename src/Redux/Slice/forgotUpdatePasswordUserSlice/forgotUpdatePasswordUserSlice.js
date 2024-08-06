@@ -32,7 +32,7 @@ const ForgotPasswordUpdateUserSlice= createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase( forgotUpdatePasswordUserAsync.fulfilled, (state, action) => {
-      state. addForgotPasswordUpdateData = action.payload; // Update responseData in the state after successful login
+      state.addForgotPasswordUpdateData = action.payload; // Update responseData in the state after successful login
       // console.log(state.responseData)
     });
     // Additional extra reducers if needed

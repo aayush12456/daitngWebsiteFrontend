@@ -381,7 +381,7 @@
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Grow from "@mui/material/Grow";
-import { BACKEND_BASE_URL } from "../../Services/api";
+// import { BACKEND_BASE_URL } from "../../Services/api";
 import { useState } from "react";
 import leftArrow from "../../assets/personalProfileIcons/leftArrow.svg";
 import rightArrow from "../../assets/personalProfileIcons/rightArrow.svg";
@@ -454,14 +454,14 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
-    },
-  };
+  // const MenuProps = {
+  //   PaperProps: {
+  //     style: {
+  //       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+  //       width: 250,
+  //     },
+  //   },
+  // };
 
   const dob = getProfile().DOB;
   const dobBreak = dob?.split("/");
@@ -487,18 +487,20 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
         <Grow in={match} timeout={500}>
           
           <Box sx={style}>
-            <div className={`flex ${modalData?.images?.length == 1 ? 'justify-center' : 'justify-between'} bg-black`}>
-              {modalData?.images?.length == 1 ? null : (
+            <div className={`flex ${modalData?.images?.length === 1 ? 'justify-center' : 'justify-between'} bg-black`}>
+              {modalData?.images?.length === 1 ? null : (
                 <img
                   src={leftArrow}
                   className="w-5 filter invert cursor-pointer"
                   onClick={handleLeftArrowClick}
+                  alt="leftArrow-img"
                 />
               )}
               <div className="flex justify-center">
                 <img
                   src={getImageUrl()}
                   className="w-48 h-48 object-cover cursor-pointer"
+                  alt="image-url-img"
                 />
               </div>
               {modalData?.images?.length == 1 ? null : (
@@ -506,6 +508,7 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
                   src={rightArrow}
                   className="w-5 filter invert cursor-pointer"
                   onClick={handleRightArrowClick}
+                  alt="rightArrow-img"
                 />
               )}
             </div>

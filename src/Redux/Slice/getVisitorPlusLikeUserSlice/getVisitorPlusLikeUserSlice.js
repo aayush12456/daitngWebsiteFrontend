@@ -31,7 +31,7 @@ const  getVisitorPlusLikeUserSlice = createSlice({
     builder.addCase( getVisitorPlusLikeUserAsync.fulfilled, (state, action) => {
       
       state.isLoading = false;
-      state. getVisitorPlusLikeUserArray = action.payload;
+      state.getVisitorPlusLikeUserArray = action.payload;
       // console.log('matches data', state.getUserArray)
     });
     builder.addCase( getVisitorPlusLikeUserAsync.rejected, (state, action) => {

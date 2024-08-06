@@ -33,12 +33,12 @@ const addMatchEmailSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(addMatchEmailAsync.fulfilled, (state, action) => {
-      state. addMatchEmailData = action.payload; // Update responseData in the state after successful login
+      state.addMatchEmailData = action.payload; // Update responseData in the state after successful login
       // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addMatchEmailAsync.rejected, (state, action) => {
-      state. addMatchEmailData = action.payload; // Update responseData even for rejected login attempt
+      state.addMatchEmailData = action.payload; // Update responseData even for rejected login attempt
     });
   },
 });

@@ -12,7 +12,7 @@ const ChangePasswordModal = ({ changePasswordModal, closeChangePasswordModal }) 
     const [notMatch,setNotMatch]=useState('')
     const id=sessionStorage.getItem('userId')
     const dispatch=useDispatch()
-    const updatePasswordSelector=useSelector((state)=>state. updatePassword.addPasswordUpdateData.msg)
+    const updatePasswordSelector=useSelector((state)=>state.updatePassword.addPasswordUpdateData.msg)
     // console.log('update password selector',updatePasswordSelector)
     useEffect(() => {
         if (updatePasswordSelector) {
@@ -42,7 +42,7 @@ const ChangePasswordModal = ({ changePasswordModal, closeChangePasswordModal }) 
     newPassword:'',
     confirmNewPassword:''
   }
-  const {values, errors, touched, handleBlur, handleChange, handleSubmit,setValues,setFieldValue} = useFormik({
+  const {values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({
     initialValues: initialValues,
     validationSchema: updatePasswordSchema,
     onSubmit: (values, action) => {

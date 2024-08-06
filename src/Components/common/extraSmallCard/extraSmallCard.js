@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { BACKEND_BASE_URL } from '../../../Services/api'
+// import { BACKEND_BASE_URL } from '../../../Services/api'
 import { useNavigate } from 'react-router-dom';
 import {  useDispatch } from 'react-redux';
 import { loginObjectSliceAcions } from '../../../Redux/Slice/loginObjectSlice/loginObjectSlice';
@@ -38,14 +38,22 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
 
   navigate('/mainContent/visitorProfile',{state:obj})
   }
-  useEffect(()=>{
-  dispatch(loginObjectSliceAcions.loginObjectData(visitor))
-  dispatch(getVisitorPlusLikeUserAsync(id))
-  dispatch(getMatchUserAsync(id))
-  dispatch(getVisitorPlusSkipUserAsync(id))
-  dispatch(getDeactivateUserAsync(id))
-  },[dispatch])
-
+  // useEffect(()=>{
+  // dispatch(loginObjectSliceAcions.loginObjectData(visitor))
+  // dispatch(getVisitorPlusLikeUserAsync(id))
+  // dispatch(getMatchUserAsync(id))
+  // dispatch(getVisitorPlusSkipUserAsync(id))
+  // dispatch(getDeactivateUserAsync(id))
+  // },[dispatch])
+  useEffect(() => {
+    if (id && visitor) {
+      dispatch(loginObjectSliceAcions.loginObjectData(visitor));
+      dispatch(getVisitorPlusLikeUserAsync(id));
+      dispatch(getMatchUserAsync(id));
+      dispatch(getVisitorPlusSkipUserAsync(id));
+      dispatch(getDeactivateUserAsync(id));
+    }
+  }, [dispatch, id, visitor]);
   
   const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
   // console.log('visitor like data user',visitorLikeUser)
@@ -64,7 +72,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
   console.log('another get match user',anothergetMatchUser)
 
 
-  const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
+  // const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
   // console.log('another match data response',anotherMatchDataResponse)
 
   useEffect(() => {
@@ -123,7 +131,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
   { <div class="sm:w-52 sm:h-80 h-72   rounded-2xl overflow-hidden shadow-lg ">
   <div>
   {/* <img src={BACKEND_BASE_URL +visitor?.images[0]} className='cursor-pointer h-80' onClick={visitorHandler}/>   */}
-  <img src={visitor?.images[0]} className='w-full cursor-pointer h-72 sm:h-80' onClick={visitorHandler}/>  
+  <img src={visitor?.images[0]} alt='visitor-image' className='w-full cursor-pointer h-72 sm:h-80' onClick={visitorHandler}/>  
   </div>
   {/* <div className='flex gap-2 pl-6 -mt-7 cursor-pointer'>
     <p className='text-lg text-white absolute top-80 pt-28 font-semibold'  onClick={visitorHandler}>{visitor.firstName} ,</p>

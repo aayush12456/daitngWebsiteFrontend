@@ -1,5 +1,5 @@
-import { BACKEND_BASE_URL } from "../../Services/api"
-import { useState, useEffect } from "react"
+// import { BACKEND_BASE_URL } from "../../Services/api"
+import { useState } from "react"
 import cross from '../../assets/matchIcons/cross.png'
 import like from '../../assets/matchIcons/right.png'
 import leftArrow from '../../assets/personalProfileIcons/leftArrow.svg'
@@ -7,15 +7,15 @@ import rightArrow from '../../assets/personalProfileIcons/rightArrow.svg'
 import { useDispatch } from "react-redux"
 import { addCrossMatchAsync } from "../../Redux/Slice/addCrossMatchSlice/addCrossMatchSlice"
 import { useNavigate } from "react-router-dom"
-import { addVisitorAsync } from "../../Redux/Slice/addVisitorSlice/addVisitorSlice"
+// import { addVisitorAsync } from "../../Redux/Slice/addVisitorSlice/addVisitorSlice"
 import { addLikeMatchAsync } from "../../Redux/Slice/addLikeMatchSlice/addLikeMatchSlice"
 import { addLikeUserAsync } from "../../Redux/Slice/addLikeUser/addLikeUser"
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from "react-redux"
-import { addNotifyAsync } from "../../Redux/Slice/addNotifySlice/addNotifySlice"
+// import { addNotifyAsync } from "../../Redux/Slice/addNotifySlice/addNotifySlice"
 import { addLikeNotifyAsync } from "../../Redux/Slice/addLikeNotifySlice/addLikeNotifySlice"
 import { addLikeCounterUserAsync } from "../../Redux/Slice/addLikeCounterUserSlice/addLikeCounterUserSlice"
-import right from '../../assets/personalProfileIcons/right.svg'
+// import right from '../../assets/personalProfileIcons/right.svg'
 import rightTik from '../../assets/personalProfileIcons/rightTikss.svg'
 import crossTik from '../../assets/personalProfileIcons/crossTik.svg'
 import MatchesModal from "../matchesModal/matchesModal"
@@ -24,14 +24,14 @@ import playVideo from '../../assets/personalProfileIcons/playVideo.png'
 import WatchVideo from "../common/watchVideo/watchVideo"
 import SweetAlert2 from 'react-sweetalert2';
 import sorryImage from "../../assets/personalProfileIcons/sorryEmoji.png"
-import { passMatchArraySliceActions } from "../../Redux/Slice/passMatchArraySlice/passMatchArraySlice"
+// import { passMatchArraySliceActions } from "../../Redux/Slice/passMatchArraySlice/passMatchArraySlice"
 import { passDataSliceAcions } from "../../Redux/Slice/passDataSlice/passDataSlice"
 import '../../../src/styles.css'
 const Matches = ({ matches }) => 
 {
 
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const getProfile = () => matches || {};
   const dob = getProfile().DOB;
   const dobBreak = dob?.split("/");
@@ -48,9 +48,9 @@ const Matches = ({ matches }) =>
   const [modalOpen, setModalOpen] = useState(false)
   const [modalObj,setModalObj]=useState({})
   const [swalProps, setSwalProps] = useState({});
-  const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.  getDeactivateUser.deactivateHeading)
+  const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.getDeactivateUser.deactivateHeading)
   // console.log('get deactivate user',getDeactivateAccountSelector)
-  const matchesData = useSelector((state) => state.matchData.getMatchesArray.interestUsers);
+  // const matchesData = useSelector((state) => state.matchData.getMatchesArray.interestUsers);
   // console.log('matches data array',matchesData)
   const handleLeftArrowClick = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -151,10 +151,10 @@ const Matches = ({ matches }) =>
     setModalOpen(true)
     console.log('matches data is',matches)
     // navigate('/mainContent/matchesMainContent', { state: matches })
-    const visitorObjId = {
-      id: id,
-      userId: visitorId
-    }
+    // const visitorObjId = {
+    //   id: id,
+    //   userId: visitorId
+    // }
     // dispatch(addVisitorAsync(visitorObjId))
   }
   const handleClose = () => {
@@ -188,7 +188,7 @@ const Matches = ({ matches }) =>
           <div className={`md:w-80 w-72 match-Card rounded-2xl shadow-lg bg-white ${liked ? 'bg-white' : '' || crosses ? 'bg-white' : ''}`}>
             <div className="">
             <div className="flex absolute justify-center ml-7 mt-3 gap-1 cursor-pointer"  onClick={watchVideoButton}>
-                <img src={playVideo} className="w-6 invert "/>
+                <img src={playVideo} className="w-6 invert " alt="playVideo-img"/>
                 <p className="text-sm font-bold text-white">Watch Video</p>
               </div>
               <div className="flex justify-center">
@@ -196,12 +196,14 @@ const Matches = ({ matches }) =>
                   src={leftArrow}
                   className="w-5 cursor-pointer relative left-6 filter invert"
                   onClick={handleLeftArrowClick}
+                  alt="leftArrow-img"
                 />}
-                <img src={getImageUrl()} className="object-cover w-96 h-96  cursor-pointer" onClick={() => mainContentMatchesHandler(matches._id)} />
+                <img src={getImageUrl()} className="object-cover w-96 h-96  cursor-pointer" alt="imageUrl-img" onClick={() => mainContentMatchesHandler(matches._id)} />
                {matches?.images?.length===1?null: <img
                   src={rightArrow}
                   className="w-5 cursor-pointer relative right-7 filter invert"
                   onClick={handleRightArrowClick}
+                  alt="rightArrow-img"
                 />}
               </div>
              
@@ -216,8 +218,8 @@ const Matches = ({ matches }) =>
               </div>
              
               <div className="mt-7 flex gap-8 justify-center mb-3">
-                <img src={cross} className="w-14 cursor-pointer" onClick={() => addCrossHandler(matches._id)} />
-                <img src={like} className="w-14 h-13 cursor-pointer" onClick={() => addLikeHandler(matches._id)} />
+                <img src={cross} className="w-14 cursor-pointer" alt="cross-img" onClick={() => addCrossHandler(matches._id)} />
+                <img src={like} className="w-14 h-13 cursor-pointer" alt="like-img" onClick={() => addLikeHandler(matches._id)} />
               </div>
             </div>
           </div>

@@ -84,7 +84,7 @@ const SkipBlockModal = ({ skipModal, skipCloseModal, skipProfile }) => {
                                     <div className="w-full rounded overflow-hidden shadow-lg mt-4" key={skipItem._id}>
                                         <div className="flex justify-between">
                                             <div className="flex gap-2">
-                                                <img src={skipItem.images[0]} className="w-16 rounded-full cursor-pointer h-16 mt-3 mb-3 ml-4" />
+                                                <img src={skipItem.images[0]} className="w-16 rounded-full cursor-pointer h-16 mt-3 mb-3 ml-4"  alt="skipItemImage-img" />
                                                 <div className="pt-3">
                                                     <p><span className="text-lg font-semibold text-black">{skipItem.firstName}</span> , <span className="text-md text-black">{age}</span></p>
                                                     <p><span className="text-md  text-[#333]">{skipItem.city}</span> <span className="text-sm text-[#333]">{skipItem.profession}</span></p>

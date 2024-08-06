@@ -30,7 +30,7 @@ import { Language } from "../../../../utils/peronalInfo";
 import { additonalInformationSchema } from "../../../../schemas";
 import { useNavigate } from "react-router-dom";
 import { passDataObjSliceAcions } from "../../../../Redux/Slice/passDataSliceObj/passDataSliceObj";
-import ProgressBarData from "../../progressBar/progressBar";
+// import ProgressBarData from "../../progressBar/progressBar";
 export const AdditonalInformation = ({ additionalData }) => {
   const dispatch=useDispatch()
   // console.log("data is", additionalData);
@@ -134,7 +134,7 @@ export const AdditonalInformation = ({ additionalData }) => {
             <form onSubmit={handleSubmit}>
               <div className="  mt-5 ">
                 <div className="flex gap-2">
-                  <img src={bag} className="w-10 h-9 mt-2" />
+                  <img src={bag} className="w-10 h-9 mt-2" alt="bag-image" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Profession
@@ -163,7 +163,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                   <p className="text-red-500 pl-14">{errors.profession}</p>
                 ) : null}
                 <div className="flex gap-2 mt-5">
-                  <img src={graduate} className="w-10 h-9 mt-2" />
+                  <img src={graduate} className="w-10 h-9 mt-2" alt="graduate-image" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Education
@@ -192,7 +192,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                   <p className="text-red-500 pl-14">{errors.education}</p>
                 ) : null}
                 <div className="flex gap-2 mt-5">
-                  <img src={glass} className="w-10 h-9 mt-2" />
+                  <img src={glass} className="w-10 h-9 mt-2" alt="glass-image" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Drinking
@@ -221,7 +221,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                   <p className="text-red-500 pl-14">{errors.drinking}</p>
                 ) : null}
                 <div className="flex gap-2 mt-5">
-                  <img src={smoke} className="w-10 h-9 mt-2" />
+                  <img src={smoke} className="w-10 h-9 mt-2" alt="smoke-image" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Smoking
@@ -250,7 +250,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                   <p className="text-red-500 pl-14">{errors.smoking}</p>
                 ) : null}
                 <div className="flex gap-2 mt-5">
-                  <img src={spoons} className="w-10 h-9 mt-2" />
+                  <img src={spoons} className="w-10 h-9 mt-2" alt="spoons-image" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Eating
@@ -279,7 +279,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                   <p className="text-red-500 pl-14">{errors.eating}</p>
                 ) : null}
                 <div className="flex gap-2 mt-5">
-                  <img src={heart} className="w-10 h-9 mt-4" />
+                  <img src={heart} className="w-10 h-9 mt-4" alt="heart-image" />
                   <FormControl sx={{ m: 1, width: 300 }}>
                     <InputLabel id="demo-multiple-checkbox-label">
                       Interest
@@ -316,7 +316,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                 ) : null}
                 {/* dfldldffdfd */}
                 <div className="flex gap-2 mt-5">
-                  <img src={relation} className="w-10 h-9 mt-2" />
+                  <img src={relation} className="w-10 h-9 mt-2" alt="relation-image" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Relationship Status
@@ -346,7 +346,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                 ) : null}
                 {/* dfldldffdfd */}
                 <div className="flex gap-2 mt-5">
-                  <img src={looking} className="w-10 h-9 mt-2" />
+                  <img src={looking} className="w-10 h-9 mt-2" alt="looking-image" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                      Looking For
@@ -376,7 +376,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                 ) : null}
                 {/* zodiac */}
                 <div className="flex gap-2 mt-5">
-                  <img src={zodiac} className="w-10 h-9 mt-2" />
+                  <img src={zodiac} className="w-10 h-9 mt-2" alt="zodiac-image" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                     Zodiac Sign
@@ -406,7 +406,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                 ) : null}
                 {/* language */}
                 <div className="flex gap-2 mt-5">
-                  <img src={languageLogo} className="w-10 h-9 mt-2" />
+                  <img src={languageLogo} className="w-10 h-9 mt-2" alt="languageLogo-image" />
                   <FormControl className="w-80 ">
                   <InputLabel id="demo-multiple-checkbox-label">
                     Language

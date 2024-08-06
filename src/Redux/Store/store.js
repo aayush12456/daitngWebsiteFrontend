@@ -11,12 +11,12 @@ import getVisitorSlice from "../Slice/getVisitorSlice/getVisitorSlice"
 import addLikeMatchSlice from "../Slice/addLikeMatchSlice/addLikeMatchSlice"
 import addLikeUser from "../Slice/addLikeUser/addLikeUser"
 import getLikeUser from "../Slice/getLikeUser/getLikeUser"
-import passDataArraySliice from "../Slice/passDataArraySlice/passDataArraySliice"
+// import passDataArraySliice from "../Slice/passDataArraySlice/passDataArraySliice"
 import addToChatSlice from "../Slice/addToChatSlice/addToChatSlice"
 import sendMessageSlice from "../Slice/sendMessageSlice/sendMessageSlice"
 import getChatSlice from '../Slice/getChatDataSlice/getChatDataSlice'
 import addChatHandlerSlice from "../Slice/addChatHandlerSlice/addChatHandlerSlice"
-import getChatHandlerSlice from "../Slice/getChatHandlerSlice/getChatHandlerSlice"
+// import getChatHandlerSlice from "../Slice/getChatHandlerSlice/getChatHandlerSlice"
 import updateUserSlice from "../Slice/updateUserSlice/updateUserSlice"
 import passDataSlice from "../Slice/passDataSlice/passDataSlice"
 import addCounterUserSlice from "../Slice/addCounterUserSlice/addCounterUserSlice"
@@ -51,7 +51,7 @@ import addOnlineSkipUserSlice from "../Slice/addOnlineSkipUserSlice/addOnlineSki
 import addOnlineLikeUserSlice from "../Slice/addOnlineLikeUserSlice/addOnlineLikeUserSlice"
 import  getSkipProfileUserSlice  from "../Slice/getSkipProfileUser/getSkipProfileUser"
 import deleteSkipProfileUserSlice  from "../Slice/deleteSkipProfileUser/deleteSkipProfileUser"
-import accountSettingModalSlice from "../Slice/accountModalSlice.js"
+// import accountSettingModalSlice from "../Slice/accountModalSlice.js"
 import accountModalSlice from "../Slice/accountModalSlice.js"
 import passwordUpdateSlice from "../Slice/passwordUpdateSlice/passwordUpdateSlice"
 import deleteAccountSliceObj from "../Slice/deleteAccountSliceObj/deleteAccountSliceObj"
@@ -88,7 +88,7 @@ const store=configureStore({
     likeData:addLikeMatchSlice,
     likeUser:addLikeUser,
     getlikeUser:getLikeUser,
-    passData:passDataArraySliice,
+    // passData:passDataArraySliice,
     addToChat:addToChatSlice,
     sendMessage:sendMessageSlice,
     getChat:getChatSlice,
@@ -99,7 +99,6 @@ const store=configureStore({
     addCountUser:addCounterUserSlice,
     getCountUser:getCounterUserSlice,
     deleteCountUser:deleteCounterUserSlice,
-    passDataObj:passDataSliceObj,
     addNotfyUser:addNotifySlice,
     getNotifyUser:getNotifySlice,
     addLikeNotifyUser:addLikeNotifySlice,
@@ -114,7 +113,6 @@ const store=configureStore({
     addMatchUser:addMatchUserSlice,
     getMatchUser:getMatchUserSlice,
     addOnlineUser:onlineLikeUserSlice,
-    getOnlineLikeUser:getOnlineLikeUserSlice,
     addOnlineMatchUser: onlineMatchSlice,
     addSmsUser:addSmsSlice,
     addvisitorEmailUser:addVisitorEmailSlice,

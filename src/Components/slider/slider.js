@@ -10,8 +10,10 @@ export const Sliders = (props) => {
     const sliderIdData=sessionStorage.getItem('sliderData')
 
     useEffect(()=>{
+      if(id){
         dispatch(getMatchesData(id))
-        },[])
+      }
+        },[dispatch,id])
     const sliderData=useSelector((state)=>state.matchData.getMatchesArray.interestUsers)
 
    useEffect(()=>{
@@ -28,7 +30,7 @@ export const Sliders = (props) => {
           });
           setSearchData(filteredData)
     }
-   },[sliderData])
+   },[sliderData,sliderIdData])
     // console.log('search data is',searchData)
     props.slider(searchData)
     dispatch(passDataArraySliceAcions.passData(searchData))

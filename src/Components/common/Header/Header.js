@@ -33,7 +33,7 @@ dispatch(sidebarModalActions.sidebarVisibleToggle())
       <div className="rounded overflow-hidden shadow-lg sticky top-0 z-50 bg-black text-white">
         <div className="px-6 py-4">
           <div className="flex justify-between">
-           {token || registerToken? <img src={hamburger} className="w-5 invert md:hidden" onClick={hamburgerClickHandler}/>:null}
+           {token || registerToken? <img src={hamburger} className="w-5 invert md:hidden" onClick={hamburgerClickHandler} alt="hamburger-image"/>:null}
            <p className="text-white text-2xl flex items-center space-x-1 heading">
   <span>Apna</span>
   <div className="flex flex-col items-center ">
@@ -57,6 +57,7 @@ dispatch(sidebarModalActions.sidebarVisibleToggle())
                   src={(personalData.profile || profileImage) || profileImage}
                   className="hidden md:block w-20 rounded-full cursor-pointer h-16"
                   onClick={profileClickHandler}
+                  alt="profile-image"
                 />
                 <p className="hidden md:block pt-4 cursor-pointer pl-4" onClick={profileClickHandler}>
                   {personalData.name || loginName}

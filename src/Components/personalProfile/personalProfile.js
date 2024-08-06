@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BACKEND_BASE_URL } from "../../Services/api";
+import React, { useState } from "react";
+// import { BACKEND_BASE_URL } from "../../Services/api";
 import { InputLabel, Select, MenuItem, FormControl } from "@mui/material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import ListItemText from "@mui/material/ListItemText";
@@ -413,11 +413,12 @@ const watchVideoButton=()=>{
       <div className="flex justify-center mt-10">
         <div class="w-screen bg-white md:w-[50rem] cardWidth rounded overflow-hidden shadow-lg">
           <div class="px-6 py-4  ">
-            <div className={`flex  ${ personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?'justify-center':'justify-between'} bg-black`}>
-             {personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?null: <img
+            <div className={`flex  ${ personalProfile?.images?.length===1|| personalSignupProfile?.images?.length===1?'justify-center':'justify-between'} bg-black`}>
+             {personalProfile?.images?.length===1|| personalSignupProfile?.images?.length===1?null: <img
                 src={leftArrow}
                 className="w-5 filter invert cursor-pointer "
                 onClick={handleLeftArrowClick}
+                alt="leftArrow-img"
               />}
               <div className={`flex justify-center ${personalProfile?.videoUrl ||  personalSignupProfile?.videoUrl?'ml-24':''} `}>
                 <div>
@@ -426,6 +427,7 @@ const watchVideoButton=()=>{
                   src={getImageUrl()}
                   className="w-48 h-48 cursor-pointer object-cover personImgData img"
                   onClick={handleOpen}
+                  alt="imageUrl"
                 />
                 </div>
                {personalProfile?.videoUrl || personalSignupProfile?.videoUrl? <div className="mt-4 relative md:left-32 play  ">
@@ -435,10 +437,11 @@ const watchVideoButton=()=>{
                 </div>:null}
               </div>
               
-             { personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?null:<img
+             { personalProfile?.images?.length===1|| personalSignupProfile?.images?.length===1?null:<img
                 src={rightArrow}
                 className="w-5 filter invert cursor-pointer"
                 onClick={handleRightArrowClick}
+                alt="rightArrow-img"
               />}
             </div>
             <div className="flex justify-between">
@@ -746,7 +749,7 @@ const watchVideoButton=()=>{
       >
         <Box sx={style}>
           <div className="flex justify-center">
-            <img src={getImageUrl()} />
+            <img src={getImageUrl()} alt="imageUrl" />
           </div>
         </Box>
       </Modal>
@@ -771,7 +774,7 @@ const watchVideoButton=()=>{
                 >
                   {relationItem?.relation}
                 </p>
-                {updateProfile?.relationship===relationItem?.relation?<img src={rigthtik} className="w-5 h-5 mt-3"/>:null}
+                {updateProfile?.relationship===relationItem?.relation?<img src={rigthtik} className="w-5 h-5 mt-3" alt="righttike-img" />:null}
               </div>
               </>
             );
@@ -798,7 +801,7 @@ const watchVideoButton=()=>{
                 >
                   {lookingItem.looking}
                 </p>
-                {updateProfile?.looking===lookingItem?.looking?<img src={rigthtik} className="w-5 h-5 mt-3"/>:null}
+                {updateProfile?.looking===lookingItem?.looking?<img src={rigthtik} className="w-5 h-5 mt-3" alt="righttik-img"/>:null}
                 </div>
               </>
             );
@@ -842,7 +845,7 @@ const watchVideoButton=()=>{
                   >
                     {educationItem?.education}
                   </p>
-                  {updateProfile?.education===educationItem?.education?<img src={rigthtik} className="w-5 h-5 mt-3"/>:null}
+                  {updateProfile?.education===educationItem?.education?<img src={rigthtik} className="w-5 h-5 mt-3" alt="righttik-img" />:null}
                    </div>
                 </>
               )
@@ -872,7 +875,7 @@ const watchVideoButton=()=>{
               >
                 {professionItem?.profession}
               </p>
-              {updateProfile?.profession===professionItem?.profession?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+              {updateProfile?.profession===professionItem?.profession?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 " alt="righttik-img"/>:null}
                       </div>
                 </>
               )
@@ -901,7 +904,7 @@ const watchVideoButton=()=>{
                   >
                     {drinkingItem?.drinking}
                   </p>
-                  {updateProfile?.drinking===drinkingItem?.drinking?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+                  {updateProfile?.drinking===drinkingItem?.drinking?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 " alt="righttik-img"/>:null}
                  </div>
                 </>
               )
@@ -929,7 +932,7 @@ const watchVideoButton=()=>{
                   >
                     {smokingItem?.smoking}
                   </p>
-                  {updateProfile?.smoking===smokingItem?.smoking?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+                  {updateProfile?.smoking===smokingItem?.smoking?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 " alt="righttik-img"/>:null}
                             </div>
 
                 </>
@@ -959,7 +962,7 @@ const watchVideoButton=()=>{
                   >
                     {EatingItem?.eating}
                   </p>
-                  {updateProfile?.eating===EatingItem?.eating?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+                  {updateProfile?.eating===EatingItem?.eating?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 " alt="righttik-img"/>:null}
                 </div>
 
                 </>
@@ -989,7 +992,7 @@ const watchVideoButton=()=>{
                   >
                     {zodiacItem?.zodiac}
                   </p>
-                  {updateProfile?.zodiac===zodiacItem?.zodiac?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+                  {updateProfile?.zodiac===zodiacItem?.zodiac?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 " alt="righttik-img"/>:null}
                      </div>
                 </>
               )
@@ -1035,7 +1038,7 @@ const watchVideoButton=()=>{
                   <div className="flex justify-between gap-36">
 
                   <ListItemText primary={languageItem.language} />
-                  {updateProfile?.language===languageItem?.language?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 "/>:null}
+                  {updateProfile?.language===languageItem?.language?<img src={rigthtik} className="w-5 h-5 mt-3 mr-3 " alt="righttik-img"/>:null}
                   </div>
                 </MenuItem>
               ))}

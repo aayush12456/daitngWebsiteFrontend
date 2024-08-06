@@ -60,7 +60,7 @@ const userLoginSlice = createSlice({
     });
     // Additional extra reducers if needed
     builder.addCase(userLoginAsync.rejected, (state, action) => {
-      state. LoginresponseData = action.payload; // Update responseData even for rejected login attempt
+      state.LoginresponseData = action.payload; // Update responseData even for rejected login attempt
       console.error('Login attempt failed:', action.payload)
     });
   },

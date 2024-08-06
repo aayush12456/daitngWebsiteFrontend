@@ -11,8 +11,10 @@ export const NewAndOnlinePageContent = () => {
     let newAndOnlineContentData=newData.state
     // console.log('new data is',newAndOnlineContentData)
     useEffect(()=>{
-    dispatch(getOnlineLikeUserData(id))
-    },[dispatch])
+      if(id){
+        dispatch(getOnlineLikeUserData(id))
+      }
+    },[dispatch,id])
   return (
   <>
 <VisitorProfile OnlineContent={newAndOnlineContentData}/>

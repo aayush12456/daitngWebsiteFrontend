@@ -28,11 +28,11 @@ const updatePasswordOtpSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(updatePasswordOtpAsync.fulfilled, (state, action) => {
-      state.  updatePasswordOtpData = action.payload; // Update responseData in the state after successful login
+      state.updatePasswordOtpData = action.payload; // Update responseData in the state after successful login
     });
     // Additional extra reducers if needed
     builder.addCase(updatePasswordOtpAsync.rejected, (state, action) => {
-      state.   updatePasswordOtpData = action.payload; // Update responseData even for rejected login attempt
+      state.updatePasswordOtpData = action.payload; // Update responseData even for rejected login attempt
       console.error('  update password otp attempt failed:', action.payload)
     });
   },

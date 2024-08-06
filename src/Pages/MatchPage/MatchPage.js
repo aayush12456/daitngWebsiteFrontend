@@ -10,8 +10,8 @@ const MatchPage = () => {
     const matchesData = useSelector((state) => state.matchData.getMatchesArray.interestUsers);
     const [matchArrayData,setMatchArrayData]=useState(matchesData)
     // const matchesData = useSelector((state) => state.matchData.getMatchesArray.interestUsers);
-    const matchArray=useSelector((state)=>state.  passMatchArray.passMatchArrayData)
-    const crossId=useSelector((state)=>state.  passData. passData)
+    // const matchArray=useSelector((state)=>state.  passMatchArray.passMatchArrayData)
+    const crossId=useSelector((state)=>state.passData.passData)
     // console.log('cross id is',crossId)
     // console.log('match array in main',matchArray)
     // console.log('matches data is',matchesData)
@@ -20,8 +20,10 @@ const MatchPage = () => {
     const id = sessionStorage.getItem('userId');
 
     useEffect(() => {
-        dispatch(getMatchesData(id));
-        dispatch(getDeactivateUserAsync(id))
+        if(id){
+            dispatch(getMatchesData(id));
+            dispatch(getDeactivateUserAsync(id))
+        }
     }, [dispatch, id]);
     
   useEffect(()=>{
@@ -35,7 +37,7 @@ const MatchPage = () => {
     else{
         setMatchArrayData(matchesData)
     }
-  },[crossId,matchesData])
+  },[crossId,matchesData,matchArrayData])
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % matchArrayData?.length);

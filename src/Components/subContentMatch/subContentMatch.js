@@ -19,7 +19,7 @@ return (
             animate={isInView ? { x: 0, opacity: 1 } : { x: -500, opacity: 0 }}
             transition={{ duration: 1 }}
           >
-            <img src={location} className="" />
+            <img src={location} className=""  alt="locationImg"/>
             <p className="text-center pt-4 pb-4 sm:text-lg lg:text-lg">
               <span className="text-black font-semibold">Match from anywhere in India,</span>
               <br />
@@ -32,7 +32,7 @@ return (
             animate={isInView ? { y: 0, opacity: 1 } : { y: 300, opacity: 0 }}
             transition={{ duration: 1 }}
           >
-            <img src={matchImg} className="" />
+            <img src={matchImg} className=""  alt="matchImg" />
             <p className="text-center pt-4 pb-4 sm:text-lg  lg:text-lg">
               <span>it's for everyone</span>
               <span className="font-semibold sm:text-lg  lg:text-lg"> Match or make new Friends via MatchMaker</span>
@@ -44,7 +44,7 @@ return (
             animate={isInView ? { x: 0, opacity: 1 } : { x: 500, opacity: 0 }}
             transition={{ duration: 1 }}
           >
-            <img src={twoPerson} className="" />
+            <img src={twoPerson} className=""  alt="twoPersonImg" />
             <p className="text-center pt-4 pb-4 sm:text-lg  lg:text-lg">
               <span className="text-black font-semibold">Meet with your common destinations </span>
               <span>to know each other</span>

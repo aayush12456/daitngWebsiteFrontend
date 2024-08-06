@@ -14,8 +14,8 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
     const [file, setFile] = useState([]);
     const [swalProps, setSwalProps] = useState({});
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const registerResponse = useSelector((state) => state.registerData.registerData);
+    // const navigate = useNavigate();
+    // const registerResponse = useSelector((state) => state.registerData.registerData);
     // console.log('register response', registerResponse);
 
     const handleImageChange = (event, id) => {
@@ -62,7 +62,7 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
             'aboutUser', 'looking', 'relationship', 'zodiac', 'videoUrl', 'language'
         ];
 
-        const isEmptyField = requiredFields.some(field => !photoData[field] || photoData[field] === '');
+        // const isEmptyField = requiredFields.some(field => !photoData[field] || photoData[field] === '');
 
         // if (isEmptyField) {
         //     // alert('Please fill all the previous necessary fields of information');
@@ -173,7 +173,7 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
                         )}
                         <div className="flex justify-center">
                             <div className="flex justify-center gap-3 bg-amber-500 h-10 rounded w-96 mt-4">
-                                <img src={bulb} className="w-7 h-5 mt-2" />
+                                <img src={bulb} className="w-7 h-5 mt-2" alt='bulb-image' />
                                 <p className="pt-1">Upload photos to show up in matches</p>
                             </div>
                         </div>

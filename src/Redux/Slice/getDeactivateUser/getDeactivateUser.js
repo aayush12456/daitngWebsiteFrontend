@@ -23,17 +23,17 @@ const getDeactivateUserSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase( getDeactivateUserAsync .pending, (state) => {
+    builder.addCase( getDeactivateUserAsync.pending, (state) => {
       state.isLoading = true;
       state.error = null;
     });
-    builder.addCase( getDeactivateUserAsync .fulfilled, (state, action) => {
+    builder.addCase( getDeactivateUserAsync.fulfilled, (state, action) => {
       
       state.isLoading = false;
-      state. getDeactivateUser = action.payload;
+      state.getDeactivateUser = action.payload;
       // console.log('matches data', state.getUserArray)
     });
-    builder.addCase( getDeactivateUserAsync .rejected, (state, action) => {
+    builder.addCase( getDeactivateUserAsync.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });

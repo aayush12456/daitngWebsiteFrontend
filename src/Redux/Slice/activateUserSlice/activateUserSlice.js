@@ -32,7 +32,7 @@ const activateUserSlice = createSlice({
     });
     builder.addCase(activateUserAsync.fulfilled, (state, action) => {
       state.isLoading = false;
-      state. activateUserObj = action.payload;
+      state.activateUserObj = action.payload;
     });
     builder.addCase(activateUserAsync.rejected, (state, action) => {
       state.isLoading = false;

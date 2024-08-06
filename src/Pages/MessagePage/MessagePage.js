@@ -2,7 +2,7 @@ import { useEffect,useState } from "react"
 import Message from "../../Components/message/message"
 import { useDispatch, useSelector } from "react-redux"
 import { getChatData } from "../../Redux/Slice/getChatDataSlice/getChatDataSlice"
-import { getChatAsyncData } from "../../Redux/Slice/getChatHandlerSlice/getChatHandlerSlice"
+// import { getChatAsyncData } from "../../Redux/Slice/getChatHandlerSlice/getChatHandlerSlice"
 import {Helmet} from 'react-helmet'
 const MessagePage=()=>{
     const dispatch=useDispatch()
@@ -11,8 +11,10 @@ const MessagePage=()=>{
     const id=sessionStorage.getItem('userId')
     // const chatSelector=useSelector((state)=>state.getChat. getChatAsyncArray.chatUser)
     useEffect(()=>{
-     dispatch(getChatData(id))
-    },[])
+        if(id){
+            dispatch(getChatData(id))
+        }
+    },[dispatch,id])
     const messageSelector=useSelector((state)=>state.getChat.getChatArray)
     // sessionStorage.setItem('chatId',messageSelector._id)
     // console.log('message is',messageSelector)

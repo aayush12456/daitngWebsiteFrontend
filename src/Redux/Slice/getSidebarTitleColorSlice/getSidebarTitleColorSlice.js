@@ -31,7 +31,7 @@ const getSidebarTitleColorSlice = createSlice({
     builder.addCase(getSidebarTitleColorAsync.fulfilled, (state, action) => {
       
       state.isLoading = false;
-      state.  getSidebarTitleColorObj= action.payload;
+      state.getSidebarTitleColorObj=action.payload;
       // console.log('matches data', state.getUserArray)
     });
     builder.addCase(getSidebarTitleColorAsync.rejected, (state, action) => {

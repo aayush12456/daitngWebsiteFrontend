@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from '../../axios/axios'
-import socketIOClient from 'socket.io-client';
-const socket = socketIOClient('http://localhost:4000');
+// import socketIOClient from 'socket.io-client';
+// const socket = socketIOClient('http://localhost:4000');
 export const getCounterUserAsync = createAsyncThunk(
   'counter/getCounterUserAsync',
   async (userId, { rejectWithValue }) => {

@@ -38,7 +38,7 @@ const Video = ({videoRecord}) => {
         stream.getTracks().forEach(track => track.stop());
       }
     };
-  }, [isRecording]);
+  }, [isRecording,stream]);
   
   const downloadVideo=()=>{
  navigate('/step4',{state:videoRecordData})

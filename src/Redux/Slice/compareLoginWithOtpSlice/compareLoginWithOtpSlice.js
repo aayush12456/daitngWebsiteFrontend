@@ -63,7 +63,7 @@ const compareloginWithOtpSlice = createSlice({
     });
     // Additional extra reducers if needed
     builder.addCase(compareLoginWithOtpAsync.rejected, (state, action) => {
-      state. compareloginWithOtpData = action.payload; // Update responseData even for rejected login attempt
+      state.compareloginWithOtpData = action.payload; // Update responseData even for rejected login attempt
       console.error(' compare Login with otp attempt failed:', action.payload)
     });
   },

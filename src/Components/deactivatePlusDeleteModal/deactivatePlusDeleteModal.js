@@ -18,13 +18,13 @@ const DeactivatePlusDeleteModal=({deletePlusDeactivateAccountModal,closeDeletePl
     const [activates,setActivates]=useState(false)
     const deletePluseDeactivateAccountSelector=useSelector((state)=>state.passDataObj.passDataObj)
     // console.log('delete plus',deletePluseDeactivateAccountSelector)
-    const deactivateAccountSelector=useSelector((state)=>state.deactivateAccount. deactivateAccountDataObj.deactivateHeading)
+    const deactivateAccountSelector=useSelector((state)=>state.deactivateAccount.deactivateAccountDataObj.deactivateHeading)
     // console.log('deactivate plus',deactivateAccountSelector)
-    const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.  getDeactivateUser.deactivateHeading)
+    const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.getDeactivateUser.deactivateHeading)
     // console.log('get deactivate user',getDeactivateAccountSelector)
-    const activateSelector=useSelector((state)=>state.activateUser.  activateUserObj.activateHeading)
+    const activateSelector=useSelector((state)=>state.activateUser.activateUserObj.activateHeading)
     // console.log('activate user',activateSelector)
-    const activateHeading=activateSelector?.deactivation
+    // const activateHeading=activateSelector?.deactivation
     const id=sessionStorage.getItem('userId')
     const dispatch=useDispatch()
     const style = {
@@ -81,8 +81,10 @@ const DeactivatePlusDeleteModal=({deletePlusDeactivateAccountModal,closeDeletePl
         // window.location.reload()
       }
     useEffect(()=>{
-   dispatch(getDeactivateUserAsync(id))
-    },[dispatch])
+      if(id){
+        dispatch(getDeactivateUserAsync(id))
+      }
+    },[dispatch,id])
 return (
     <>
     <Modal
@@ -95,8 +97,8 @@ return (
          <p className="text-center font-semibold text-xl text-[#333]">{deletePluseDeactivateAccountSelector?.heading }</p>
          <div className="flex justify-center mt-3 mb-3">
 
-         {deletePluseDeactivateAccountSelector.heading==='Deactivate Account'?<img src={deactivatePerson} className="w-20"/>
-         :<img src={deletePerson} className="w-20"/>}
+         {deletePluseDeactivateAccountSelector.heading==='Deactivate Account'?<img src={deactivatePerson} className="w-20" alt="deactivatePerson-img"/>
+         :<img src={deletePerson} className="w-20" alt="deletePerson-img"/>}
    
          </div>
          <p className="text-[#000] text-md">{deletePluseDeactivateAccountSelector?.title }</p>
@@ -130,7 +132,7 @@ Deactivate Account
 </button>:<button class="bg-[#bbc5d1] activateButton hover:bg-[#bbc5d1] text-white  py-2 px-4 rounded w-52 mt-6 h-14 ml-20" onClick={activateAccountHandler}>
 Activate Account
 </button>}
-{deactivateAccountSelector=='deactivated' ||  getDeactivateAccountSelector=='deactivated'   ?null:<button class="bg-[#5394e4] hover:bg-blue-700 text-white  py-2 px-4 rounded  w-52 mt-6 h-14" onClick={matchesHandler}>
+{deactivateAccountSelector==='deactivated' ||  getDeactivateAccountSelector==='deactivated'   ?null:<button class="bg-[#5394e4] hover:bg-blue-700 text-white  py-2 px-4 rounded  w-52 mt-6 h-14" onClick={matchesHandler}>
   Go To Matches
 </button>}
 {activates &&<button class="bg-[#5394e4] hover:bg-blue-700 text-white  py-2 px-4 rounded  w-52 mt-6 h-14" onClick={matchesHandler}>

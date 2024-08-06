@@ -14,18 +14,21 @@ export const VisitorProfilePage = () => {
   const id=sessionStorage.getItem('userId')
   const dispatch=useDispatch()
   useEffect(()=>{
-    dispatch(getVisitorPlusLikeUserAsync(id))
-    dispatch(getMatchUserAsync(id))
-    dispatch(getVisitorPlusSkipUserAsync(id))
-  },[dispatch])
+    if(id){
+      dispatch(getVisitorPlusLikeUserAsync(id))
+      dispatch(getMatchUserAsync(id))
+      dispatch(getVisitorPlusSkipUserAsync(id))
+    }
+
+  },[dispatch,id])
   let visitor=useLocation()
   let visitorData=visitor.state
   // console.log('likeUserVisitor',visitorData)
-  const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
+  // const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
   // console.log('visitor like data user',visitorLikeUser)
  
 
-  const visitorSkipUser=useSelector((state)=>state. getVisitorSkipUser.getVisitorPlusSkipUserArray.skipUserData)
+  // const visitorSkipUser=useSelector((state)=>state. getVisitorSkipUser.getVisitorPlusSkipUserArray.skipUserData)
   // console.log('visitor skip data user',visitorSkipUser)
 
 
@@ -37,12 +40,12 @@ export const VisitorProfilePage = () => {
   const matchedUser = getMatchUser?.some(user => user?.id === visitorData?.likeUser?.id);
   // console.log('matched user is',matchedUser)
 
-  const anothergetMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
+  // const anothergetMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
   // console.log('another get match user',anothergetMatchUser)
 
 
 
-  const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
+  // const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
   // console.log('another match data response',anotherMatchDataResponse)
 
 

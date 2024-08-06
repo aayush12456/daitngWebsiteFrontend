@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from "react";
-import { BACKEND_BASE_URL } from "../../Services/api";
+// import { BACKEND_BASE_URL } from "../../Services/api";
 import leftArrow from "../../assets/personalProfileIcons/leftArrow.svg";
 import rightArrow from "../../assets/personalProfileIcons/rightArrow.svg";
 import Modal from "@mui/material/Modal";
@@ -14,7 +14,7 @@ import { addVisitorPlusLikeUserAsync } from "../../Redux/Slice/addVisitorPlusLik
 import { addLikeUserAsync } from "../../Redux/Slice/addLikeUser/addLikeUser";
 import { addLikeNotifyAsync } from "../../Redux/Slice/addLikeNotifySlice/addLikeNotifySlice";
 import { addLikeCounterUserAsync } from "../../Redux/Slice/addLikeCounterUserSlice/addLikeCounterUserSlice";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { addVisitorPlusSkipUserAsync } from "../../Redux/Slice/addVisitorPlusSkipUserSlice/addVisitorPlusSkipUserSlice";
 import { passDataObjSliceAcions } from "../../Redux/Slice/passDataSliceObj/passDataSliceObj";
 import { addMatchUserAsync } from "../../Redux/Slice/addMatchUserSlice/addMatchUserSlice";
@@ -47,7 +47,7 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     // console.log('likeUserPerson',likeUserPerson)
     // console.log('onlineLikeUserPerson',onlineLikeUserPerson)
     const dispatch=useDispatch()
-    const navigate=useNavigate()
+    // const navigate=useNavigate()
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [open, setOpen] = React.useState(false);
     const [likeUser,setLikeUser]=useState(false)
@@ -80,11 +80,13 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     // console.log(mainNumber); 
    const loginObj=JSON.parse(sessionStorage.getItem('loginObject'))
    const updateLoginObj=JSON.parse(sessionStorage.getItem('updateUser'))
-   const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.  getDeactivateUser.deactivateHeading)
+   const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.getDeactivateUser.deactivateHeading)
   //  console.log('get deactivate user',getDeactivateAccountSelector)
    useEffect(()=>{
-    dispatch(getDeactivateUserAsync(id))
-  },[dispatch])
+    if(id){
+      dispatch(getDeactivateUserAsync(id))
+    }
+  },[dispatch,id])
     const watchVideoButton=()=>{
       setWatchModalOpen(true)
       setPersonalProfileObj(likeUserPerson)
@@ -378,10 +380,10 @@ toast.success('Like sent successfully')
       const anothergetMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
       // console.log('another get match user',anothergetMatchUser)
      
-      const visitorSkipUser=useSelector((state)=>state. getVisitorSkipUser.getVisitorPlusSkipUserArray.skipUserData)
+      const visitorSkipUser=useSelector((state)=>state.getVisitorSkipUser.getVisitorPlusSkipUserArray.skipUserData)
       // console.log('visitor skip data user',visitorSkipUser)
 
-      const visitorLikeUser=useSelector((state)=>state. getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
+      const visitorLikeUser=useSelector((state)=>state.getVisitorPlusLikeUser.getVisitorPlusLikeUserArray.likeUser)
       // console.log('visitor like data user',visitorLikeUser)
       const selfOnlineLikeUser=useSelector((state)=>state.getOnlineLikeUser.getOnlineLikeUserObj.selfOnlineLikeUser)
 
@@ -404,7 +406,7 @@ toast.success('Like sent successfully')
           setUser(false);
         }
     
-      }, [likeUserPerson, getMatchUser]);
+      }, [likeUserPerson, getMatchUser,anothergetMatchUser,onlineLikeUserPerson]);
       useEffect(() => {
        
         const anothermatchedWatch = anothergetMatchUser?.some(
@@ -423,7 +425,7 @@ toast.success('Like sent successfully')
      if(visitorgetSkippedUser || likeSkipUser ||onlineLikeSkipUser ){
       setSkipPart(false)
      }
-      },[visitorUser,visitorSkipUser,likeUserPerson])
+      },[visitorUser,visitorSkipUser,likeUserPerson,onlineLikeUserPerson])
 
       useEffect(()=>{
         const visitorgetLikeUser=visitorLikeUser?.some((visitorLikeData)=>visitorLikeData?.firstName===visitorUser?.firstName)
@@ -456,7 +458,7 @@ toast.success('Like sent successfully')
       <div className="relative w-full">
       {likeUser && (
             <div className="absolute inset-0 bg-blue-500 opacity-80 rounded-2xl flex items-center justify-center z-10">
-              <img src={likeTik} alt="Right" className="w-12 h-14" />
+              <img src={likeTik} alt="Right" className="w-12 h-14"  />
             </div>
           )}
  {skipUser && (
@@ -468,14 +470,15 @@ toast.success('Like sent successfully')
 <div className={`w-screen md:w-[50rem] cardWidth rounded overflow-hidden shadow-lg ${likeUser ? 'bg-white' : ''|| skipUser ? 'bg-white' : '' }`} >
           <div className="px-6 py-4  ">
           <div style={{ maxHeight: '500px', overflowY: 'auto' }}>
-          <div className={`flex ${likeUserPerson?.images?.length==1 || visitorUser?.images?.length==1?'justify-center':"justify-between"} bg-black`}>
-            { likeUserPerson?.images?.length==1 || visitorUser?.images?.length==1?null: <img
+          <div className={`flex ${likeUserPerson?.images?.length===1 || visitorUser?.images?.length===1?'justify-center':"justify-between"} bg-black`}>
+            { likeUserPerson?.images?.length===1 || visitorUser?.images?.length===1?null: <img
                 src={leftArrow}
                 className="w-5 filter invert cursor-pointer "
                 onClick={handleLeftArrowClick}
+                alt="leftArrow-img"
               />}
               <div className={`flex justify-center  ${likeUserPerson?.videoUrl && user && matchPartUser || OnlineContent?.videoUrl || visitorUser?.videoUrl && watchVideo  ?'ml-24':''} `}>
-                <img src={getImageUrl()} className={`w-48 h-48 cursor-pointer object-cover  ${likeUserPerson?'imgData':'img'}`}  onClick={handleOpen} />
+                <img src={getImageUrl()} alt="getImage" className={`w-48 h-48 cursor-pointer object-cover  ${likeUserPerson?'imgData':'img'}`}  onClick={handleOpen} />
                 {likeUserPerson?.videoUrl && user && matchPartUser ? <div className="mt-4 relative md:left-32 left-2 play   ">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
 
@@ -494,10 +497,11 @@ toast.success('Like sent successfully')
                
               </div>
               
-             {likeUserPerson?.images?.length==1 || visitorUser?.images?.length==1?null: <img
+             {likeUserPerson?.images?.length===1 || visitorUser?.images?.length===1?null: <img
                 src={rightArrow}
                 className="w-5 filter invert cursor-pointer"
                 onClick={handleRightArrowClick}
+                alt="rightArrow"
               />}
             </div>
             <div className="flex gap-0">
@@ -634,13 +638,13 @@ toast.success('Like sent successfully')
 {user && skipPart && likePart && likeUserPart && matchPartUser && selfOnlineLike &&<div className="flex justify-between">
     <div className="flex gap-4 mt-6 ml-20 crossButton ">
       <div className="rounded-full bg-[#71706f] w-12 h-12 flex justify-center cursor-pointer" onClick={skipCancelHandler}>
-        <img src={crossTik} className="w-8 filter invert" />
+        <img src={crossTik} className="w-8 filter invert" alt="crossTik-img" />
       </div>
       <p className="text-[#71706f] font-semibold pt-1 text-xl cursor-pointer" onClick={skipCancelHandler}>SKIP</p>
     </div>
     <div className="flex gap-4 mt-6 mr-16 likeButton">
       <div className="rounded-full bg-blue-600 w-12 h-12 flex justify-center cursor-pointer" onClick={likePersonHandler}>
-        <img src={rightTik} className="w-8" />
+        <img src={rightTik} className="w-8"  alt="rightTikImg"/>
       </div>
       <p className="text-[#0271fe] font-semibold pt-3 text-xl cursor-pointer" onClick={likePersonHandler}>LIKE</p>
     </div>

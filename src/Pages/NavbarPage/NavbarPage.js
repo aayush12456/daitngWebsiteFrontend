@@ -12,11 +12,11 @@ import LoginWithOtpModal from '../../Components/loginWithOtpModal/loginWithOtpMo
 export const NavbarPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
     const modalSelector=useSelector((state)=>state.modal.visibleToggle)
-    const profileSelector=useSelector((state)=>state.headerModal. headerModalToggle)
-    const loginWithOtpSelector=useSelector((state)=>state. loginWithOtpModal.otpModalToggle)
+    const profileSelector=useSelector((state)=>state.headerModal.headerModalToggle)
+    const loginWithOtpSelector=useSelector((state)=>state.loginWithOtpModal.otpModalToggle)
     // console.log('modal selector',modalSelector)
     // console.log('login with otp',loginWithOtpSelector)
-    const profileImage=sessionStorage.getItem('loginImage')
+    // const profileImage=sessionStorage.getItem('loginImage')
   //  console.log('profile',profileImage)
    useEffect(() => {
     const interval = setInterval(() => {
@@ -24,7 +24,7 @@ export const NavbarPage = () => {
     }, 30000); // 60000 ms = 1 minute
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
-}, [mainContentImages]);
+}, []);
 
   return (
    <>

@@ -28,7 +28,7 @@ export const Content = ({ mainContentImages,index }) => {
           <span>Find Your Perfect Match</span><br />
           <span>and Start Your Love Journey</span>
         </p>
-        <img src={heart} className='w-7 mt-5 lg:mt-14'/>
+        <img src={heart} className='w-7 mt-5 lg:mt-14' alt='heart-img'/>
       </div>
       <div   className={`absolute top-40 sm:top-52 left-11 lg:top-64 lg:left-16 ${
           index === 1 ? 'move-button' : ''

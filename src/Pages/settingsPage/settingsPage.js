@@ -8,8 +8,10 @@ export const SettingsPage=()=>{
     // console.log('id skip is',id)
     const dispatch=useDispatch()
     useEffect(()=>{
-    dispatch(getSkipProfileUserAsync(id))
-    },[dispatch])
+        if(id){
+            dispatch(getSkipProfileUserAsync(id))
+        }
+    },[dispatch,id])
 return (
     <>
     <Helmet>

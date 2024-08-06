@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import axios from '../../Redux/axios/messageAxios';
 import io from "socket.io-client";
-import { sendMessageAsync } from "../../Redux/Slice/sendMessageSlice/sendMessageSlice";
+// import { sendMessageAsync } from "../../Redux/Slice/sendMessageSlice/sendMessageSlice";
 import { BACKEND_BASE_URL } from "../../Services/api";
 import send from '../../assets/modalIcons/sendIcon.png';
 
@@ -10,7 +10,7 @@ const MessageDetail = ({ messageDetail }) => {
     // console.log('message detail is',messageDetail)
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const id = sessionStorage.getItem('userId');
     const socket = io.connect("http://localhost:4000");
 
@@ -82,9 +82,9 @@ const MessageDetail = ({ messageDetail }) => {
           console.error("Error fetching messages:", error);
       }
   };
-   useEffect(()=>{
-fetchMessage()
-   },[])
+//    useEffect(()=>{
+// fetchMessage()
+//    },[])
 //  console.log('messages is',messages)
     return (
         <div className="w-[40rem] rounded-2xl overflow-hidden shadow-lg mt-8 h-96 flex flex-col justify-between">

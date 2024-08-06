@@ -31,7 +31,7 @@ const getOnlineLikeUserSlice = createSlice({
     builder.addCase(getOnlineLikeUserData.fulfilled, (state, action) => {
       
       state.isLoading = false;
-      state. getOnlineLikeUserObj= action.payload;
+      state.getOnlineLikeUserObj= action.payload;
       // console.log('matches data', state.getUserArray)
     });
     builder.addCase(getOnlineLikeUserData.rejected, (state, action) => {

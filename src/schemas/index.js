@@ -9,7 +9,7 @@ export const signUpSchema=Yup.object({
     email:Yup.string().email().required("Please enter email"),
     password:Yup.string().min(6).required("Please enter password"),
     gender:Yup.string().min(2).required("Please enter gender"),
-    date: Yup.string() .required('Please enter your date'),
+    date:Yup.string() .required('Please enter your date'),
     city:Yup.string().min(4).required("Please enter  city"),
 })
 

@@ -69,7 +69,7 @@ return (
                 <>
                 <div class="rounded overflow-hidden shadow-lg mt-4 lg:mt-0  lg:w-96 bg-orange-400 " >
                  <p className="text-white text-lg text-center pt-1 pb-1 font-semibold">{SubContentItem.name}</p>
-                 <img src={SubContentItem.img} className="cursor-pointer" onClick={()=>subContentImageHandler(SubContentItem.img)} />
+                 <img src={SubContentItem.img} className="cursor-pointer" alt="subcontentImg" onClick={()=>subContentImageHandler(SubContentItem.img)} />
 </div>
                 </>
             )
@@ -85,7 +85,7 @@ return (
           <Grow in={imageOpen} timeout={500}>
           <Box sx={style}>
           <div className="flex justify-center">
-            <img src={imageBroad} />
+            <img src={imageBroad}  alt="imageBroad" />
           </div>
         </Box>
           </Grow>

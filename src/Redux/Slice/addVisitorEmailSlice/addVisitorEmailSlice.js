@@ -33,12 +33,12 @@ const addVisitorEmailSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(addVisitorEmailSenderAsync.fulfilled, (state, action) => {
-      state. addVisitorEmailData = action.payload; // Update responseData in the state after successful login
+      state.addVisitorEmailData = action.payload; // Update responseData in the state after successful login
       // console.log(state.responseData)
     });
     // Additional extra reducers if needed
     builder.addCase( addVisitorEmailSenderAsync.rejected, (state, action) => {
-      state. addVisitorEmailData = action.payload; // Update responseData even for rejected login attempt
+      state.addVisitorEmailData = action.payload; // Update responseData even for rejected login attempt
     });
   },
 });

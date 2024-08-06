@@ -27,7 +27,7 @@ export const Sidebar = ({ sidebarOpen, personalDataProfile, loginName }) => {
 
   // const visitorData = useSelector((state) => state.getVisitorData.getVisitorArray.data);
   const getCountUser = useSelector((state) => state.getCountUser.getCounterUser.getCount);
-  const modalData = useSelector((state) => state.modal.visibleToggle);
+  // const modalData = useSelector((state) => state.modal.visibleToggle);
   const deleteResponse = useSelector((state) => state.deleteCountUser.deleteCounterUser.message);
   //  const addCounterResponse=useSelector((state)=>state.addCountUser.addCounterUserData)
   //  console.log('add count response',addCounterResponse)
@@ -35,7 +35,7 @@ export const Sidebar = ({ sidebarOpen, personalDataProfile, loginName }) => {
   // console.log('get like count response', getLikeCountUser)
   const deleteLikeResponse = useSelector((state) => state.deleteLikeCounterUser.deleteLikeCounterUser.message)
   // console.log('delete like response', deleteLikeResponse)
-  const addSidebarColorResponse = useSelector((state) => state.addSidebarTitleColor.addSidebarTitleColorData?.user)
+  // const addSidebarColorResponse = useSelector((state) => state.addSidebarTitleColor.addSidebarTitleColorData?.user)
   // console.log('add sidebar color response', addSidebarColorResponse)
   const getSidebarColorResponse = useSelector((state) => state.getSidebarTitleColor.getSidebarTitleColorObj.user)
   // console.log('get sidebar color response', getSidebarColorResponse)
@@ -86,8 +86,8 @@ export const Sidebar = ({ sidebarOpen, personalDataProfile, loginName }) => {
     dispatch(sidebarModalActions.sidebarVisibleToggle())
   }
   return (
-    <div className={`h-full ${sidebarOpen == true ? 'block' : 'hidden'} md:block`}>
-      <div className={`transition-all duration-300 translate-x-0 w-64 ${sidebarOpen == true ? 'rounded-none' : 'rounded'} overflow-hidden shadow-lg h-screen fixed z-10  ${sidebarOpen == true ? 'mt-[3.51rem]' : 'mt-20'} bg-black text-white`}>
+    <div className={`h-full ${sidebarOpen === true ? 'block' : 'hidden'} md:block`}>
+      <div className={`transition-all duration-300 translate-x-0 w-64 ${sidebarOpen === true ? 'rounded-none' : 'rounded'} overflow-hidden shadow-lg h-screen fixed z-10  ${sidebarOpen === true ? 'mt-[3.51rem]' : 'mt-20'} bg-black text-white`}>
         <div className="flex justify-between">
           <div className='flex ml-3'>
             <img
@@ -95,14 +95,14 @@ export const Sidebar = ({ sidebarOpen, personalDataProfile, loginName }) => {
               // src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHDRlp-KGr_M94k_oor4Odjn2UzbAS7n1YoA&s'
               className=" md:hidden w-16 rounded-full cursor-pointer h-16 mt-2"
               onClick={personalProfileHandler}
+              alt='profile-image'
             />
             <p className="md:hidden  pt-4 cursor-pointer pl-4"   onClick={personalProfileHandler} >
               {personalData?.name || loginName || personalSignupData?.firstName}
             </p>
           </div>
           <div>
-
-          <img src={settings} className='w-5 invert mr-7 mt-5 md:hidden'  onClick={settingChangeHandler} />
+          <img src={settings} alt='settings-image' className='w-5 invert mr-7 mt-5 md:hidden'  onClick={settingChangeHandler} />
           </div>
         </div>
         <div className='px-6 py-4'>

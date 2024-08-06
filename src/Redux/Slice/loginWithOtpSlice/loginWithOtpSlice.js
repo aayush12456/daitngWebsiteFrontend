@@ -32,7 +32,7 @@ const loginWithOtpSlice = createSlice({
     });
     // Additional extra reducers if needed
     builder.addCase(loginWithOtpAsync.rejected, (state, action) => {
-      state. loginWithOtpData = action.payload; // Update responseData even for rejected login attempt
+      state.loginWithOtpData = action.payload; // Update responseData even for rejected login attempt
       console.error('  Login with otp attempt failed:', action.payload)
     });
   },

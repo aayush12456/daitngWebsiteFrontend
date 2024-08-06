@@ -3,15 +3,15 @@ import { Header } from "../../Components/common/Header/Header";
 import { Sidebar } from "../../Components/common/Sidebar/Sidebar";
 import { ProfileModal } from "../../Components/modal/profileModal";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getPersonalProfileModalHeadingAsync } from "../../Redux/Slice/getPersonalProfileModalHeadingSlice/getPersonalProfileModalHeadingSlice";
 export const MainPage = () => {
   const Name = sessionStorage.getItem("name");
   const id=sessionStorage.getItem('userId')
   const profileImage = sessionStorage.getItem("profileImage");
-  const loginToken = sessionStorage.getItem("loginToken");
-  const registerToken = sessionStorage.getItem("registerToken");
+  // const loginToken = sessionStorage.getItem("loginToken");
+  // const registerToken = sessionStorage.getItem("registerToken");
   // const loginemail = sessionStorage.getItem("email");
   // const loginNameWithNumbers = loginemail?.split("@")[0];
   // const loginName=loginNameWithNumbers.replace(/\d+/g, '')
@@ -23,22 +23,22 @@ export const MainPage = () => {
     name: Name,
     profile: profileImage,
   };
-  const profileSelector=useSelector((state)=>state.headerModal. headerModalToggle)
-  const sidebarOpenSelector=useSelector((state)=>state.  sidebarOpen.sidebarModalToggle)
+  const profileSelector=useSelector((state)=>state.headerModal.headerModalToggle)
+  const sidebarOpenSelector=useSelector((state)=>state.sidebarOpen.sidebarModalToggle)
   // console.log('sidebar open select',sidebarOpenSelector)
-  const addColorModalHeadingSelector=useSelector((state)=>state. addPersonalProfileModalHeading.addPersonalProfileModalHeadingData.user)
+  const addColorModalHeadingSelector=useSelector((state)=>state.addPersonalProfileModalHeading.addPersonalProfileModalHeadingData.user)
   const getColorModalHeadingSelector=useSelector((state)=>state.getPersonalProfileModalHeading.getPersonalProfileModalHeadingData.user)
   // console.log('add color modal',addColorModalHeadingSelector)
   // console.log('get color modal',getColorModalHeadingSelector)
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch=useDispatch()
   //  useEffect(() => { // token is not available then navigate to('/')
   //   if (!loginToken) {
   //     navigate('/');
   //   }
   // }, [loginToken]);
-  const personalSignupData = sessionStorage.getItem("signupObject");
-  const personalSignUpDataObject = JSON.parse(personalSignupData);
+  // const personalSignupData = sessionStorage.getItem("signupObject");
+  // const personalSignUpDataObject = JSON.parse(personalSignupData);
   // console.log("personal signup", personalSignUpDataObject);
   // const visitorSelector = useSelector(
   //   (state) => state.getVisitorData.getVisitorArray.getVisitors
@@ -53,8 +53,10 @@ export const MainPage = () => {
   //   (state) => state.matchData.getMatchesArray.interestUsers
   // );
   useEffect(()=>{
-  dispatch(getPersonalProfileModalHeadingAsync(id))
-  },[dispatch])
+    if(id){
+      dispatch(getPersonalProfileModalHeadingAsync(id))
+    }
+  },[dispatch,id])
   return (
     <>
       <div className="flex  ">
@@ -62,7 +64,7 @@ export const MainPage = () => {
           <Sidebar />
         </div>
         <div className='h-full'>
-         {sidebarOpenSelector==true? <Sidebar sidebarOpen={sidebarOpenSelector}  personalDataProfile={personalProfile}  loginName={loginName} />:null}
+         {sidebarOpenSelector===true? <Sidebar sidebarOpen={sidebarOpenSelector}  personalDataProfile={personalProfile}  loginName={loginName} />:null}
         </div>
         <div className="w-full">
           <Header personalData={personalProfile} loginName={loginName} />
