@@ -122,19 +122,14 @@ export const AdditonalInformation = ({ additionalData }) => {
   }, [setValues]);
 // console.log('values data',values)
   return (
-    <>
- 
-     
-
-   
-    
+    <> 
       <div className="flex justify-center mt-4">
         <div class=" rounded overflow-hidden shadow-lg h-full w-96">
           <div class="px-6 py-4  ">
             <form onSubmit={handleSubmit}>
               <div className="  mt-5 ">
                 <div className="flex gap-2">
-                  <img src={bag} className="w-10 h-9 mt-2" alt="bag-image" />
+                  <img src={bag} className="w-10 h-9 mt-2" alt="bag" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Profession
@@ -163,7 +158,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                   <p className="text-red-500 pl-14">{errors.profession}</p>
                 ) : null}
                 <div className="flex gap-2 mt-5">
-                  <img src={graduate} className="w-10 h-9 mt-2" alt="graduate-image" />
+                  <img src={graduate} className="w-10 h-9 mt-2" alt="graduate" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Education
@@ -192,7 +187,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                   <p className="text-red-500 pl-14">{errors.education}</p>
                 ) : null}
                 <div className="flex gap-2 mt-5">
-                  <img src={glass} className="w-10 h-9 mt-2" alt="glass-image" />
+                  <img src={glass} className="w-10 h-9 mt-2" alt="glass" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Drinking
@@ -221,7 +216,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                   <p className="text-red-500 pl-14">{errors.drinking}</p>
                 ) : null}
                 <div className="flex gap-2 mt-5">
-                  <img src={smoke} className="w-10 h-9 mt-2" alt="smoke-image" />
+                  <img src={smoke} className="w-10 h-9 mt-2" alt="smoke" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Smoking
@@ -250,7 +245,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                   <p className="text-red-500 pl-14">{errors.smoking}</p>
                 ) : null}
                 <div className="flex gap-2 mt-5">
-                  <img src={spoons} className="w-10 h-9 mt-2" alt="spoons-image" />
+                  <img src={spoons} className="w-10 h-9 mt-2" alt="spoons" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Eating
@@ -279,7 +274,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                   <p className="text-red-500 pl-14">{errors.eating}</p>
                 ) : null}
                 <div className="flex gap-2 mt-5">
-                  <img src={heart} className="w-10 h-9 mt-4" alt="heart-image" />
+                  <img src={heart} className="w-10 h-9 mt-4" alt="heart" />
                   <FormControl sx={{ m: 1, width: 300 }}>
                     <InputLabel id="demo-multiple-checkbox-label">
                       Interest
@@ -316,7 +311,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                 ) : null}
                 {/* dfldldffdfd */}
                 <div className="flex gap-2 mt-5">
-                  <img src={relation} className="w-10 h-9 mt-2" alt="relation-image" />
+                  <img src={relation} className="w-10 h-9 mt-2" alt="relation" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                       Relationship Status
@@ -346,7 +341,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                 ) : null}
                 {/* dfldldffdfd */}
                 <div className="flex gap-2 mt-5">
-                  <img src={looking} className="w-10 h-9 mt-2" alt="looking-image" />
+                  <img src={looking} className="w-10 h-9 mt-2" alt="looking" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                      Looking For
@@ -376,7 +371,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                 ) : null}
                 {/* zodiac */}
                 <div className="flex gap-2 mt-5">
-                  <img src={zodiac} className="w-10 h-9 mt-2" alt="zodiac-image" />
+                  <img src={zodiac} className="w-10 h-9 mt-2" alt="zodiac" />
                   <FormControl className="w-80 ">
                     <InputLabel id="demo-simple-select-label">
                     Zodiac Sign
@@ -406,7 +401,7 @@ export const AdditonalInformation = ({ additionalData }) => {
                 ) : null}
                 {/* language */}
                 <div className="flex gap-2 mt-5">
-                  <img src={languageLogo} className="w-10 h-9 mt-2" alt="languageLogo-image" />
+                  <img src={languageLogo} className="w-10 h-9 mt-2" alt="languageLogo" />
                   <FormControl className="w-80 ">
                   <InputLabel id="demo-multiple-checkbox-label">
                     Language

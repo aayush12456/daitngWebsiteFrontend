@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import rightArrow from '../../assets/personalProfileIcons/rightArrow.svg';
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 
 const AccountSettingsModal = ({ accountSettingModal, accountCloseSettingModal, openChangePassword,manageAccountModal, deletePlusDeactivateAccountModal }) => {

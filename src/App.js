@@ -43,7 +43,7 @@ function CustomToast({image,name}) {
     <>
     <div className='flex  text-center gap-4 '>
       {/* <img src={BACKEND_BASE_URL+image} className='w-12 h-12 ' /> */}
-      <img src={image} className='w-12 h-12 ' alt="visitor user image" />
+      <img src={image} className='w-12 h-12 ' alt="visitorUser" />
       <p className='text-semibold'>{name} visited you</p>
 
     </div>
@@ -57,7 +57,7 @@ function CustomLikeToast({image,name}) {
     <>
     <div className='flex  text-center gap-4 '>
       {/* <img src={BACKEND_BASE_URL+image} className='w-12 h-12 ' /> */}
-      <img src={image} className='w-12 h-12 ' alt='like user image'/>
+      <img src={image} className='w-12 h-12 ' alt='likeUser'/>
       <p className='text-semibold'>{name} likes you</p>
 
     </div>
@@ -71,7 +71,7 @@ function AnotherCustomLikeToast({image,name}) {
     <>
     <div className='flex  text-center gap-4 '>
       {/* <img src={BACKEND_BASE_URL+image} className='w-12 h-12 ' /> */}
-      <img src={image} className='w-12 h-12 ' alt='another like user image' />
+      <img src={image} className='w-12 h-12 ' alt='anotherLikeUser' />
       <p className='text-semibold'>{name} also likes you</p>
 
     </div>

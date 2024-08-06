@@ -22,17 +22,17 @@ import { addVisitorEmailSenderAsync } from "../../../Redux/Slice/addVisitorEmail
 import '../../../../src/styles.css'
 import FooterBlockModal from "../../footerBlockModal/footerBlockModal";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "none",
-  boxShadow: 24,
-  p: 4,
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   bgcolor: "background.paper",
+//   border: "none",
+//   boxShadow: 24,
+//   p: 4,
+// };
 export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOnlineLikeUserData}) => {
 
   // console.log('self online ',selfOnlineLikeUserData)

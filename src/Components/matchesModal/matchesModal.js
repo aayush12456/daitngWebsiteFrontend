@@ -452,8 +452,8 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
     return (getProfile().images?.[currentImageIndex] || "");
   };
 
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
+  // const ITEM_HEIGHT = 48;
+  // const ITEM_PADDING_TOP = 8;
   // const MenuProps = {
   //   PaperProps: {
   //     style: {
@@ -500,10 +500,10 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
                 <img
                   src={getImageUrl()}
                   className="w-48 h-48 object-cover cursor-pointer"
-                  alt="image-url-img"
+                  alt="image-url"
                 />
               </div>
-              {modalData?.images?.length == 1 ? null : (
+              {modalData?.images?.length === 1 ? null : (
                 <img
                   src={rightArrow}
                   className="w-5 filter invert cursor-pointer"

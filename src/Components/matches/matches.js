@@ -6,7 +6,7 @@ import leftArrow from '../../assets/personalProfileIcons/leftArrow.svg'
 import rightArrow from '../../assets/personalProfileIcons/rightArrow.svg'
 import { useDispatch } from "react-redux"
 import { addCrossMatchAsync } from "../../Redux/Slice/addCrossMatchSlice/addCrossMatchSlice"
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 // import { addVisitorAsync } from "../../Redux/Slice/addVisitorSlice/addVisitorSlice"
 import { addLikeMatchAsync } from "../../Redux/Slice/addLikeMatchSlice/addLikeMatchSlice"
 import { addLikeUserAsync } from "../../Redux/Slice/addLikeUser/addLikeUser"

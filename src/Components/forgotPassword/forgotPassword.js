@@ -12,7 +12,7 @@ const ForgotPassword = ({forgot}) => {
   const forgots=forgot
   const dispatch=useDispatch()
   const [captcha, setCaptcha] = useState('');
-  const [phoneNumber,setPhoneNumber]=useState('')
+  // const [phoneNumber,setPhoneNumber]=useState('')
 
 const updateOtpSelector=useSelector((state)=>state?.updatePasswordOtp?.updatePasswordOtpData?.mssg)
 const phoneNumbers=useSelector((state)=>state.updatePasswordOtp.updatePasswordOtpData.phoneNumber)
@@ -49,7 +49,7 @@ const phoneNumbers=useSelector((state)=>state.updatePasswordOtp.updatePasswordOt
         phone:values.phone,
         reset:'Reset Password'
       }
-      setPhoneNumber(values.phone)
+      // setPhoneNumber(values.phone)
       dispatch(passDataSliceAcions.passDatas(values.phone))
       dispatch(updatePasswordOtpAsync(phoneObj))
 

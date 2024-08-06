@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { personalImage } from "../../../../utils/peronalInfo";
 import bulb from '../../../../assets/formIcons/bulb.png';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { userRegisterAsync } from '../../../../Redux/Slice/registerSlice/registerSlice';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import cross from '../../../../assets/personalProfileIcons/crossTik.svg';
 import SweetAlert2 from 'react-sweetalert2';
 
@@ -56,11 +56,11 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
             return;
         }
 
-        const requiredFields = [
-            'firstName', 'phone', 'email', 'password', 'gender', 'city', 'date', 
-            'profession', 'education', 'drinking', 'smoking', 'eating', 'interest', 
-            'aboutUser', 'looking', 'relationship', 'zodiac', 'videoUrl', 'language'
-        ];
+        // const requiredFields = [
+        //     'firstName', 'phone', 'email', 'password', 'gender', 'city', 'date', 
+        //     'profession', 'education', 'drinking', 'smoking', 'eating', 'interest', 
+        //     'aboutUser', 'looking', 'relationship', 'zodiac', 'videoUrl', 'language'
+        // ];
 
         // const isEmptyField = requiredFields.some(field => !photoData[field] || photoData[field] === '');
 
@@ -137,7 +137,7 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
                                             <img
                                                 src={selectedImages.find(selImage => selImage.id === image.id).src}
                                                 className="w-28 cursor-pointer rounded-full"
-                                                alt={`Selected Image ${index + 1}`}
+                                                alt={`SelectedPics ${index + 1}`}
                                             />
                                             <img
                                                 src={cross}
@@ -159,7 +159,7 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
                                             <img
                                                 src={image.img}
                                                 className="w-28 cursor-pointer"
-                                                alt={`Image ${index + 1}`}
+                                                alt={`uploadPics ${index + 1}`}
                                             />
                                         </label>
                                     )}
@@ -173,7 +173,7 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
                         )}
                         <div className="flex justify-center">
                             <div className="flex justify-center gap-3 bg-amber-500 h-10 rounded w-96 mt-4">
-                                <img src={bulb} className="w-7 h-5 mt-2" alt='bulb-image' />
+                                <img src={bulb} className="w-7 h-5 mt-2" alt='bulb' />
                                 <p className="pt-1">Upload photos to show up in matches</p>
                             </div>
                         </div>

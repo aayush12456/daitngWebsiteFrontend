@@ -431,7 +431,7 @@ const watchVideoButton=()=>{
                 />
                 </div>
                {personalProfile?.videoUrl || personalSignupProfile?.videoUrl? <div className="mt-4 relative md:left-32 play  ">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert " alt="playVideo"/>Play</div>
 
 </button>
                 </div>:null}
@@ -471,7 +471,7 @@ const watchVideoButton=()=>{
                         ? matchesMainContent?.city
                         : null}
               </p>
- <div className="hidden personalDataBtn"><div className="  flex gap-1 mt-4 ml-5  " onClick={watchVideoButton}><img src={playVideo} className="w-6 "/>Play</div></div>
+ <div className="hidden personalDataBtn"><div className="  flex gap-1 mt-4 ml-5  " onClick={watchVideoButton}><img src={playVideo} className="w-6 " alt="playVideo"/>Play</div></div>
               </div>
              {!matchesMainContent? <p className="text-lg pt-4 pr-4  text-[#5394e4] hover:text-[blue]  cursor-pointer" onClick={cityOpen}>
                 Edit

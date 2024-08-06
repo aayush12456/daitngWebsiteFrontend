@@ -22,7 +22,7 @@ const DeactivatePlusDeleteModal=({deletePlusDeactivateAccountModal,closeDeletePl
     // console.log('deactivate plus',deactivateAccountSelector)
     const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.getDeactivateUser.deactivateHeading)
     // console.log('get deactivate user',getDeactivateAccountSelector)
-    const activateSelector=useSelector((state)=>state.activateUser.activateUserObj.activateHeading)
+    // const activateSelector=useSelector((state)=>state.activateUser.activateUserObj.activateHeading)
     // console.log('activate user',activateSelector)
     // const activateHeading=activateSelector?.deactivation
     const id=sessionStorage.getItem('userId')
@@ -127,11 +127,16 @@ return (
          </div>:null}
          {deletePluseDeactivateAccountSelector.heading==='Deactivate Account'?<div className="flex justify-between gap-5">
           
-         {deactivateAccountSelector!=='deactivated' &&  getDeactivateAccountSelector!=='deactivated' || activates ?<button class="bg-[#bbc5d1] hover:bg-[#bbc5d1] text-white  py-2 px-4 rounded w-52 mt-6 h-14" onClick={deactivateAccountHandler}>
-Deactivate Account
-</button>:<button class="bg-[#bbc5d1] activateButton hover:bg-[#bbc5d1] text-white  py-2 px-4 rounded w-52 mt-6 h-14 ml-20" onClick={activateAccountHandler}>
-Activate Account
-</button>}
+         {(deactivateAccountSelector !== 'deactivated' && getDeactivateAccountSelector !== 'deactivated') || activates ? (
+  <button className="bg-[#bbc5d1] hover:bg-[#bbc5d1] text-white py-2 px-4 rounded w-52 mt-6 h-14" onClick={deactivateAccountHandler}>
+    Deactivate Account
+  </button>
+) : (
+  <button className="bg-[#bbc5d1] activateButton hover:bg-[#bbc5d1] text-white py-2 px-4 rounded w-52 mt-6 h-14 ml-20" onClick={activateAccountHandler}>
+    Activate Account
+  </button>
+)}
+
 {deactivateAccountSelector==='deactivated' ||  getDeactivateAccountSelector==='deactivated'   ?null:<button class="bg-[#5394e4] hover:bg-blue-700 text-white  py-2 px-4 rounded  w-52 mt-6 h-14" onClick={matchesHandler}>
   Go To Matches
 </button>}

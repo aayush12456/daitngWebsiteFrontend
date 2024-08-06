@@ -95,14 +95,14 @@ export const Sidebar = ({ sidebarOpen, personalDataProfile, loginName }) => {
               // src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHDRlp-KGr_M94k_oor4Odjn2UzbAS7n1YoA&s'
               className=" md:hidden w-16 rounded-full cursor-pointer h-16 mt-2"
               onClick={personalProfileHandler}
-              alt='profile-image'
+              alt='profile'
             />
             <p className="md:hidden  pt-4 cursor-pointer pl-4"   onClick={personalProfileHandler} >
               {personalData?.name || loginName || personalSignupData?.firstName}
             </p>
           </div>
           <div>
-          <img src={settings} alt='settings-image' className='w-5 invert mr-7 mt-5 md:hidden'  onClick={settingChangeHandler} />
+          <img src={settings} alt='settings' className='w-5 invert mr-7 mt-5 md:hidden'  onClick={settingChangeHandler} />
           </div>
         </div>
         <div className='px-6 py-4'>

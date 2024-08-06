@@ -477,20 +477,21 @@ toast.success('Like sent successfully')
                 onClick={handleLeftArrowClick}
                 alt="leftArrow-img"
               />}
-              <div className={`flex justify-center  ${likeUserPerson?.videoUrl && user && matchPartUser || OnlineContent?.videoUrl || visitorUser?.videoUrl && watchVideo  ?'ml-24':''} `}>
+            <div className={`flex justify-center ${((likeUserPerson?.videoUrl && user && matchPartUser) || OnlineContent?.videoUrl || (visitorUser?.videoUrl && watchVideo)) ? 'ml-24' : ''}`}>
+
                 <img src={getImageUrl()} alt="getImage" className={`w-48 h-48 cursor-pointer object-cover  ${likeUserPerson?'imgData':'img'}`}  onClick={handleOpen} />
                 {likeUserPerson?.videoUrl && user && matchPartUser ? <div className="mt-4 relative md:left-32 left-2 play   ">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert " alt="playVideo"/>Play</div>
 
 </button>
                 </div>:null}
                 {OnlineContent?.videoUrl? <div className="mt-4 relative md:left-32 left-2 play  ">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center md:w-28 play  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center md:w-28 play  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert " alt="playVideo"/>Play</div>
 
 </button>
                 </div>:null}
                 {visitorUser?.videoUrl && watchVideo ? <div className="mt-4 relative md:left-32 left-2 play ">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-28  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "  alt="playVideo"/>Play</div>
 
 </button>
                 </div>:null}
@@ -515,9 +516,9 @@ toast.success('Like sent successfully')
               <p className="text-lg pt-4 pl-3 text-[#333] font-semibold">
               {visitor &&visitor.city?visitor?.city:OnlineContent?.city}
               </p>
-             {likeUserPerson?.videoUrl && user && matchPartUser ?<button class="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center  relative top-4 hidden playBtn  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div></button>:null}
-              {OnlineContent?.videoUrl?<button class="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center  relative top-4 hidden playBtn  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div></button>:null}
-             { visitorUser?.videoUrl && watchVideo ?<button class="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center  relative top-4 hidden playBtn  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert "/>Play</div></button>:null}
+             {likeUserPerson?.videoUrl && user && matchPartUser ?<button class="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center  relative top-4 hidden playBtn  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert " alt="playVideo"/>Play</div></button>:null}
+              {OnlineContent?.videoUrl?<button class="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center  relative top-4 hidden playBtn  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert " alt="playVideo"/>Play</div></button>:null}
+             { visitorUser?.videoUrl && watchVideo ?<button class="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center  relative top-4 hidden playBtn  " onClick={watchVideoButton}> <div className="flex gap-1"><img src={playVideo} className="w-6 invert " alt="playVideo"/>Play</div></button>:null}
             </div>
             {OnlineContent?<div className="pl-5 pt-1">
               <p className="text-md ">Working as {OnlineContent?.profession}</p>
@@ -771,7 +772,7 @@ selfOnlineLikeUser?.map(selfOnlineLike=>{
           >
             <Box sx={style}>
               <div className="flex justify-center">
-                <img src={getImageUrl()}  />
+                <img src={getImageUrl()}  alt="imageUrk"/>
               </div>
   
               </Box>

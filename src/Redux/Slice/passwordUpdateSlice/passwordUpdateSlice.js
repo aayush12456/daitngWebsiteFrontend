@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from '../../axios/axios'
-import io from 'socket.io-client';
-const socket = io('http://localhost:4000');
+// import io from 'socket.io-client';
+// const socket = io('http://localhost:4000');
 export const PasswordUpdateAsync = createAsyncThunk(
   'User/PasswordUpdateAsync',
   async (passwordUpdateObj, { rejectWithValue }) => {

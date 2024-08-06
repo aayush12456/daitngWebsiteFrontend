@@ -10,7 +10,7 @@ import { useFormik } from 'formik'
 import { signUpSchema } from "../../schemas";
 import { useNavigate } from "react-router-dom";
 // import { format } from 'date-fns';
-import {  useDispatch } from 'react-redux'
+// import {  useDispatch } from 'react-redux'
 import shield from '../../assets/anotherContentImage/shield.png'
 import rightArrow from '../../assets/anotherContentImage/rightArrow.png'
 import forwardArrow from '../../assets/anotherContentImage/forwardArrow.png'
@@ -121,8 +121,8 @@ export const AnotherContent = ({checkDataArray}) => {
           <p className="text-xl lg:text-2xl font-bold text-center pt-4">Date application</p>
           <div className="flex justify-center ml-8 ">
           <p className="text-md lg:text-lg font-semibold text-center pt-1">Meet Millions of  Awesome Singles Near You</p>
-          <img src={forwardArrow} className="hidden w-12 -mt-2 ml-4 lg:block " alt="forward-Arrow-image"/>
-          <img src={downwardArrow} className=" w-12 -mt-2 ml-4 lg:hidden " alt="backward-Arrow-image"/>
+          <img src={forwardArrow} className="hidden w-12 -mt-2 ml-4 lg:block " alt="forward-Arrow"/>
+          <img src={downwardArrow} className=" w-12 -mt-2 ml-4 lg:hidden " alt="backward-Arrow"/>
           </div>
           <div className="flex justify-center gap-3 mt-7">
           {
@@ -248,9 +248,9 @@ export const AnotherContent = ({checkDataArray}) => {
                   />
                      {errors.password && touched.password? <p className='text-red-500 pl-4'>{errors.password}</p>:null}
                 {!showPassword ? (
-        <img src={closeEye}  alt="closeEye-image" className={`${touched.password && errors.password ? 'w-7 ml-72 lg:ml-80 relative top-[-4.2rem] ' : 'w-7 ml-72 lg:ml-80 relative top-[-2.5rem]'} cursor-pointer`} onClick={togglePasswordVisibility}/>
+        <img src={closeEye}  alt="closeEye" className={`${touched.password && errors.password ? 'w-7 ml-72 lg:ml-80 relative top-[-4.2rem] ' : 'w-7 ml-72 lg:ml-80 relative top-[-2.5rem]'} cursor-pointer`} onClick={togglePasswordVisibility}/>
     ) : (
-        <img src={openEye} alt="openEye-image" className='w-7 ml-72 lg:ml-80 relative top-[-2.5rem]  cursor-pointer' onClick={togglePasswordVisibility}/>
+        <img src={openEye} alt="openEye" className='w-7 ml-72 lg:ml-80 relative top-[-2.5rem]  cursor-pointer' onClick={togglePasswordVisibility}/>
     )}
                 </div>
 
@@ -291,7 +291,7 @@ SUBMIT
             <div className="flex gap-2 justify-between ml-8 mr-8">
            <div className="flex gap-3">
            <div className="rounded-3xl w-12 h-12 mt-3 mb-4 bg-white flex justify-center  ">
-            <img src={shield} className="w-9 h-8 mt-2" alt="shield-image"/>
+            <img src={shield} className="w-9 h-8 mt-2" alt="shield"/>
           </div>
           <div>
             <p className="text-sm text-black font-semibold pt-4">Trusted by<br/> Millions of Indians</p>
@@ -300,7 +300,7 @@ SUBMIT
 
            <div className="flex gap-3">
            <div className="rounded-3xl w-12 h-12 mt-3 mb-4 bg-white flex justify-center ">
-            <img src={rightArrow} className="w-9 h-8 mt-2" alt="rightArrow-image"/>
+            <img src={rightArrow} className="w-9 h-8 mt-2" alt="rightArrow"/>
           </div>
           <div>
             <p className="text-sm text-black font-semibold pt-4">Verified & Screened <br/> No Fakes</p>
@@ -424,9 +424,9 @@ SUBMIT
                   />
                      {errors.password && touched.password? <p className='text-red-500 pl-4'>{errors.password}</p>:null}
                 {!showPassword ? (
-        <img src={closeEye}  alt="closeEye-image"  className={`${touched.password && errors.password ? 'w-7 ml-72 lg:ml-80 relative top-[-4.2rem] ' : 'w-7 ml-72 lg:ml-80 relative top-[-2.5rem]'} cursor-pointer`} onClick={togglePasswordVisibility}/>
+        <img src={closeEye}  alt="closeEye"  className={`${touched.password && errors.password ? 'w-7 ml-72 lg:ml-80 relative top-[-4.2rem] ' : 'w-7 ml-72 lg:ml-80 relative top-[-2.5rem]'} cursor-pointer`} onClick={togglePasswordVisibility}/>
     ) : (
-        <img src={openEye} alt="openEye-image" className='w-7 ml-72 lg:ml-80 relative top-[-2.5rem]  cursor-pointer' onClick={togglePasswordVisibility}/>
+        <img src={openEye} alt="openEye" className='w-7 ml-72 lg:ml-80 relative top-[-2.5rem]  cursor-pointer' onClick={togglePasswordVisibility}/>
     )}
                 </div>
 
@@ -477,7 +477,7 @@ SUBMIT
             return (
               <>
               <div className="grid grid-cols-1">
-              <img src={checkItem.images[0]} alt="checkItem-image" className="w-32 h-40  rounded-lg cursor-pointer"/>
+              <img src={checkItem.images[0]} alt="checkItem" className="w-32 h-40  rounded-lg cursor-pointer"/>
               <div className="flex gap-3">
             <p className="text-center">{checkItem.firstName},</p>
             <p>{age}</p>
@@ -492,19 +492,19 @@ SUBMIT
      <div className="rounded-full border-2 dateWork  border-gray-400  mt-4 mb-8 lg:w-[68rem] lg:ml-40">
       <div className=" flex justify-center  lg:gap-12 ">
       <div className="mt-6 mb-6">
-        <img src={createProfile} alt="createProfile-image" className="w-12 ml-12"/>
+        <img src={createProfile} alt="createProfile" className="w-12 ml-12"/>
         <p className="text-center  text-sm lg:-ml-2 pt-2">Create Profile for free</p>
       </div>
       <div className="rounded-2xl bg-slate-200 w-8 h-8 -ml-6 lg:ml-0 flex justify-center mt-10 /">
-      <img src={rightArrows} className="w-4 " alt="rightArrow-image"/>
+      <img src={rightArrows} className="w-4 " alt="rightArrow"/>
       </div>
       
       <div className="mt-6 mb-6">
-        <img src={date} className="w-12" alt="date-image"/>
+        <img src={date} className="w-12" alt="date"/>
         <p className="text-center text-sm pt-2">Like Match</p>
       </div>
       <div className="rounded-2xl bg-slate-200 w-8 h-8 flex justify-center mt-10 /">
-      <img src={rightArrows} className="w-4 " alt="rightArrows-image"/>
+      <img src={rightArrows} className="w-4 " alt="rightArrows"/>
       </div>
       <div className="mt-6 mb-6">
         <img src={dating} className="w-12" alt="dating-img"/>

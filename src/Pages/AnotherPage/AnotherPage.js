@@ -1,4 +1,4 @@
-import React ,{useEffect} from 'react'
+import React ,{useEffect,useMemo} from 'react'
 import { AnotherContent } from '../../Components/content/anotherContent'
 // import { Header } from '../../Components/common/Header/Header'
 import {  useDispatch } from 'react-redux'
@@ -9,16 +9,15 @@ import { comparePhoneNumberAsync } from '../../Redux/Slice/comparePhoneNumberSli
 import {Helmet} from 'react-helmet'
 export const AnotherPage = () => {
   const dispatch=useDispatch()
-  const obj={
-    name:'join now'
-  }
+  const obj = useMemo(() => ({ name: 'join now' }), []);
     const checkDataSelector=useSelector((state)=>state.comparePhoneNumber.comparePhoneNumberObj.compareArray)
-    useEffect(()=>{
-      if(obj){
-        dispatch(comparePhoneNumberAsync(obj))
+    useEffect(() => {
+      if (obj) {
+        dispatch(comparePhoneNumberAsync(obj));
       }
-// dispatch(getAllLocalUserAsync())
-    },[dispatch,obj])
+      // dispatch(getAllLocalUserAsync());
+    }, [dispatch, obj]);
+    
   return (
  <>
 <Helmet>
