@@ -500,7 +500,7 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
                 <img
                   src={getImageUrl()}
                   className="w-48 h-48 object-cover cursor-pointer"
-                  alt="image-url"
+                  alt="getUrl"
                 />
               </div>
               {modalData?.images?.length === 1 ? null : (

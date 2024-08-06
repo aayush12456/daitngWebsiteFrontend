@@ -108,11 +108,7 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
           prevIndex === (getProfile().images?.length || 0) - 1 ? 0 : prevIndex + 1
         );
       };
-      const getProfile = () =>
-    visitor
-    ||
-    OnlineContent
-      {};
+      const getProfile = () => visitor || OnlineContent;
       const getImageUrl = () => {
         // return BACKEND_BASE_URL + (getProfile().images?.[currentImageIndex] || "");
         return (getProfile().images?.[currentImageIndex] || "");
@@ -783,47 +779,3 @@ selfOnlineLikeUser?.map(selfOnlineLike=>{
 }
 
 
-{/* <div className="flex gap-4">
-<div className="rounded-full bg-blue-600 w-12 h-12 flex justify-center">
-<img src={rightTik} className="w-8" />
-</div>
-<p className="text-[#0271fe] font-semibold pt-3 text-xl">LIKE</p>
-</div> */}
-
-
-// {!(text || likeVisitorUser?.firstName === visitor?.firstName || skipVisitorUser?.firstName === visitor?.firstName || skipText || getMatchUser?.firstName===likeUserPerson?.firstName || anotherGetMatchUser?.firstName===likeUserPerson?.firstName||matchUser)
-
-
-
-{/* <div className="flex gap-4  ">
-               
-                
-{visitor
-  ? visitor.interest.map((visitorInterest) => {
-    const commonInterest=loginObj?.interest?.includes(visitorInterest) || updateLoginObj?.interest?.includes(visitorInterest)
-    console.log('common interst',commonInterest)
-      return (
-        <>
-          <div className={` rounded mt-3 ${commonInterest?'bg-black':'bg-slate-200'}`}>
-            <p className={`text-lg pt-3 text-center pl-4 pr-4 pb-3 ${commonInterest?'text-white':'text-[#757575]'}`}>
-              {visitorInterest}
-            </p>
-          </div>
-        </>
-      );
-    })
-  : null}
-  {
-    OnlineContent?OnlineContent.interest.map(onlineItem=>{
-        return (
-          <>
-           <div className="bg-slate-200 rounded mt-3">
-            <p className="text-lg pt-3 text-center pl-4 pr-4 pb-3 text-[#757575] ">
-              {onlineItem}
-            </p>
-          </div>
-          </>
-        )
-    }):null
-  }
-</div> */}
