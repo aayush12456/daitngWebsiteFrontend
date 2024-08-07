@@ -818,8 +818,8 @@ const watchVideoButton=()=>{
         <Box sx={style}>
           <p className="text-center text-lg">About Me</p>
 
-          <textarea class="resize rounded-md border-2 outline-none w-80 h-36 mt-4 pl-2  pt-4 " onChange={textChangeHandler}  >{updateProfile && updateProfile?.aboutUser ? updateProfile?.aboutUser:personalProfile?.aboutUser}</textarea>
-          <button className=" bg-orange-600   dark:bg-orange-300 dark:hover:bg-orange-300  text-white font-bold py-2 px-4 rounded w-80 mt- h-12" type="submit" onClick={aboutMeSubmitHandler}>
+          <textarea class="resize rounded-md border-2 outline-none w-80 h-36 mt-4 pl-2  pt-4 textArea" onChange={textChangeHandler}  >{updateProfile && updateProfile?.aboutUser ? updateProfile?.aboutUser:personalProfile?.aboutUser}</textarea>
+          <button className=" bg-orange-600   dark:bg-orange-300 dark:hover:bg-orange-300 saveBtn text-white font-bold py-2 px-4 rounded w-80 mt- h-12" type="submit" onClick={aboutMeSubmitHandler}>
             SAVE
           </button>
         </Box>

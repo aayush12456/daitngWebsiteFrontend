@@ -1303,4 +1303,21 @@ right: 2rem;
         font-weight: 400;
         font-style: normal;
       }
-    
+      @media (min-width: 350px) and (max-width: 400px) {
+        .textArea{
+          width: 15rem;
+        }
+        .saveBtn{
+          width: 15rem;
+          margin-top: 1rem;
+        }
+      }
+      @media (min-width: 300px) and (max-width: 350px) {
+        .textArea{
+          width: 9rem;
+        }
+        .saveBtn{
+          width: 9rem;
+          margin-top: 1rem;
+        }
+      }
