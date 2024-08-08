@@ -1314,6 +1314,12 @@ right: 2rem;
         .basicSave{
           width: 15rem;
         }
+        .firstData{
+          font-size: 14px;
+        }
+        .hide{
+          width: 7rem;
+        }
       }
       @media (min-width: 300px) and (max-width: 350px) {
         .textArea{
@@ -1325,5 +1331,11 @@ right: 2rem;
         }
         .basicSave{
           width: 9rem;
+        }
+        .firstData{
+          font-size: 7px;
+        }
+        .hide{
+          width: 4rem;
         }
       }

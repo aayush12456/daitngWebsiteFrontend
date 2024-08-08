@@ -1066,15 +1066,15 @@ const watchVideoButton=()=>{
           <p className="text-center text-lg">Basic Info</p>
           <div className="border-2  h-14 mt-4 pl-4 pr-4 pt-4 ">
             <div className="flex justify-between">
-              <p className="text-md text-[#8f929a]">First name:</p>
-              <p className="text-md text-[#8f929a]">{personalProfile?.firstName}</p>
-              <p className="text-md text-[#8f929a]">Can't change</p>
+              <p className="text-md text-[#8f929a] firstData">First name:</p>
+              <p className="text-md text-[#8f929a] firstData">{personalProfile?.firstName}</p>
+              <p className="text-md text-[#8f929a] firstData">Can't change</p>
             </div>
           </div>
           <div className="border-2  h-14 mt-4 flex justify-between  pl-4 pr-4  ">
-            <p className="text-md text-[#8f929a] pt-4">Age:</p>
+            <p className="text-md text-[#8f929a] pt-4">Age : </p>
             <p className="text-md text-[#8f929a] pt-4">{age}</p>
-            <button className="bg-[#df7101] text-white font-bold basicSave py-2 px-4 rounded mt-2 w-18 h-10 text-sm" type="submit" onClick={dataChanging}>
+            <button className="bg-[#df7101] text-white font-bold basicSave py-2 px-4 rounded mt-2 w-18 h-10 text-sm hide" type="submit" onClick={dataChanging}>
               {text}
             </button>
           </div>
