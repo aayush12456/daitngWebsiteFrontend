@@ -1074,7 +1074,7 @@ const watchVideoButton=()=>{
           <div className="border-2  h-14 mt-4 flex justify-between  pl-4 pr-4  ">
             <p className="text-md text-[#8f929a] pt-4">Age:</p>
             <p className="text-md text-[#8f929a] pt-4">{age}</p>
-            <button className="bg-[#df7101] text-white font-bold py-2 px-4 rounded mt-2 w-18 h-10 text-sm" type="submit" onClick={dataChanging}>
+            <button className="bg-[#df7101] text-white font-bold basicSave py-2 px-4 rounded mt-2 w-18 h-10 text-sm" type="submit" onClick={dataChanging}>
               {text}
             </button>
           </div>
@@ -1083,7 +1083,7 @@ const watchVideoButton=()=>{
             <input class=" appearance-none border-2  rounded w-full py-2 px-4 pl-32 text-gray-700 leading-tight focus:outline-none  focus:border-purple-500" id="inline-full-name" type="text" placeholder={personalProfile?.city} onChange={cityChangeHandler} />
           </div>
           <div className="mt-4">
-            <button className="bg-[#5394e4] text-white font-bold py-2 px-4 rounded w-80   h-12" type="submit" onClick={citySubmitHandler}>
+            <button className="bg-[#5394e4] text-white font-bold py-2 px-4 rounded w-80 basicSave   h-12" type="submit" onClick={citySubmitHandler}>
               SAVE
             </button>
           </div>
