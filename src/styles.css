@@ -1339,3 +1339,87 @@ right: 2rem;
           width: 4rem;
         }
       }
+      @media (min-width: 768px) and (max-width: 1027px) {
+       .registerText{
+      font-size: 16px;
+       }
+       .registerFirstName{
+        padding-left: 16rem;
+       }
+      }
+      @media (min-width: 640px) and (max-width: 700px) {
+        .registerDetails{
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+       
+        }
+        .registerDetailsName{
+          margin-left: -8rem;
+        }
+        .registerDetailsNameSpace{
+          margin-top: -2rem;
+        }
+        .registerAnotherDetails{
+          display: grid;
+          grid-template-columns: 1fr ;
+          
+           }
+           .registerAnotherDetailsNameSpace{
+            margin-top: -3rem;
+          }
+       }
+       @media (min-width: 771px) and (max-width: 870px) {
+        .registerDetails{
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          
+           }
+           .registerDetailsName{
+             margin-left: -8rem;
+           }
+           .registerDetailsNameSpace{
+             margin-top: -2rem;
+           }
+           .registerAnotherDetails{
+             display: grid;
+             grid-template-columns: 1fr ;
+             
+              }
+              .registerAnotherDetailsNameSpace{
+               margin-top: -3rem;
+             }
+             .registerAdminDetailsCard{
+              margin-left: 16rem;
+             }
+       }
+
+       @media (min-width: 874px) and (max-width: 1020px) {
+        .registerDetails{
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          
+           }
+           .registerDetailsName{
+             margin-left: -8rem;
+           }
+           .registerDetailsNameSpace{
+             margin-top: -2rem;
+           }
+           .registerAnotherDetails{
+             display: grid;
+             grid-template-columns: 1fr ;
+             
+              }
+              .registerAnotherDetailsNameSpace{
+               margin-top: -3rem;
+             }
+             .registerAdminDetailsCard{
+              margin-left: 16rem;
+             }
+       }
+
+       @media (min-width: 1021px) and (max-width: 1300px) {
+        .registerAdminDetailsCard{
+          margin-left: 16rem;
+         }
+       }

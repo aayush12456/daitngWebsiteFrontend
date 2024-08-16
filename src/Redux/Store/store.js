@@ -63,12 +63,26 @@ import passMatchArraySlice from "../Slice/passMatchArraySlice/passMatchArraySlic
 import  ForgotPasswordUpdateUserSlice  from "../Slice/forgotUpdatePasswordUserSlice/forgotUpdatePasswordUserSlice"
 import comparePhoneNumberSlice from "../Slice/comparePhoneNumberSlice/comparePhoneNumberSlice"
 import sidebarOpenSlice from "../Slice/sidebarOpenSlice"
-import getAllLocalUserSlice from "../Slice/getAllLocalUserSlice/getAllLocalUserSlice"
 import loginWIthOtpModalSlice from "../Slice/loginWIthOtpModalSlice"
 import compareLoginWithOtpSlice from "../Slice/compareLoginWithOtpSlice/compareLoginWithOtpSlice"
 import loginWithOtpSlice from "../Slice/loginWithOtpSlice/loginWithOtpSlice"
 import updatePasswordOtpSlice from "../Slice/updatePasswordOtpSlice/updatePasswordOtpSlice"
 import verifyPasswordOtpSlice from "../Slice/verifyPasswordOtpSlice/verifyPasswordOtpSlice"
+import getAllRegisterUserSlice from "../Slice/getAllRegisterUserSlice/getAllRegisterUserSlice"
+import adminRegisterSlice from "../Slice/adminRegisterSlice/adminRegisterSlice"
+import adminLoginSlice from "../Slice/adminLoginSlice/adminLoginSlice"
+import getAllFieldRegisterUserSlice from "../Slice/getAllFieldRegisterUserSlice/getAllFieldRegisterUserSlice"
+import visitorAdminModalSlice from "../Slice/visitorAdminModalSlice"
+import hideRemainAdminModalSlice from "../Slice/hideRemainAdminModalSlice"
+import onlineLikeUserAdminModalSlice from "../Slice/onlineLikeUserAdminModalSlice"
+import anotherMatchUserAdminModalSlice from "../Slice/anotherMatchUserAdminModalSlice"
+import skipUserAdminModalSlice from "../Slice/skipUserAdminModalSlice"
+import matchUserAdminModalSlice from "../Slice/matchUserAdminModalSlice"
+import likeFilterUserAdminModalSlice from "../Slice/likeFilterUserAdminModalSlice"
+import selfOnlineLikeUserAdminModalSlice from "../Slice/selfOnlineLikeUserAdminModalSlice"
+import likeUserAdminModalSlice from "../Slice/likeUserAdminModalSlice"
+import selfDeactivateAdminModalSlice from "../Slice/selfDeactivateAdminModalSlice"
+import deleteProfileFromAdminArraySlice from "../Slice/deleteProfileFromAdminArraySlice/deleteProfileFromAdminArraySlice"
 
 
 
@@ -139,12 +153,26 @@ const store=configureStore({
     forgotPasswordUpdateUser:ForgotPasswordUpdateUserSlice,
     comparePhoneNumber:comparePhoneNumberSlice,
     sidebarOpen:sidebarOpenSlice,
-    getLocalUser:getAllLocalUserSlice,
+    getAllRegisterUser:getAllRegisterUserSlice,
     loginWithOtpModal:loginWIthOtpModalSlice,
     compareLogin:compareLoginWithOtpSlice,
     loginWithOtp:loginWithOtpSlice,
     updatePasswordOtp:updatePasswordOtpSlice,
-    verifyPasswordOtp:verifyPasswordOtpSlice
+    verifyPasswordOtp:verifyPasswordOtpSlice,
+    adminRegister:adminRegisterSlice,
+    adminLogin:adminLoginSlice,
+    getAllFieldRegisterUser:getAllFieldRegisterUserSlice,
+    visitorAdminModal:visitorAdminModalSlice,
+    hideRemainAdminModal:hideRemainAdminModalSlice,
+    onlineLikeUserAdminModal:onlineLikeUserAdminModalSlice,
+    anotherMatchUserAdminModal:anotherMatchUserAdminModalSlice,
+    skipUserAdminModal:skipUserAdminModalSlice,
+    matchUserAdminModal:matchUserAdminModalSlice,
+    likeFilterUserAdminModal:likeFilterUserAdminModalSlice,
+    selfOnlineLikeUserAdminModal:selfOnlineLikeUserAdminModalSlice,
+    likeUserAdminModal:likeUserAdminModalSlice,
+    selfDeactivateAdminModal:selfDeactivateAdminModalSlice,
+    deleteFromAdminArray: deleteProfileFromAdminArraySlice
     }
 })
 export default store

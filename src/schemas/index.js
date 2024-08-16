@@ -3,6 +3,10 @@ export const loginSchema=Yup.object({
     email:Yup.string().email().required("Please enter email"),
     password:Yup.string().min(6).required("Please enter password"),
 })
+export const adminLoginSchema=Yup.object({
+    email:Yup.string().email().required("Please enter email"),
+    password:Yup.string().min(6).required("Please enter password"),
+})
 export const signUpSchema=Yup.object({
     firstName:Yup.string().min(2).max(25).required("Please enter name"),
     phone:Yup.string().max(10).required("Please enter phone"),

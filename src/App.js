@@ -36,6 +36,14 @@ import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import PasswordProtectedRoute from './ProtectedRoute/passwordProtectedRoute';
 // import { sidebarModalActions } from './Redux/Slice/sidebarOpenSlice';
 import PageNotFoundPage from './Pages/pageNotFoundPage/pageNotFoundPage';
+import AdminPage from './Pages/adminPage/adminPage';
+import ManageUserPage from './Pages/manageUserPage/manageUserPage';
+import AdminLoginPage from './Pages/adminLoginPage/adminLoginPage';
+import AdminRegistersPage from './Pages/AdminRegistersPage/AdminRegistersPage';
+import MoreAllUserInfoDetailsPage from './Pages/moreAllUserInfoDetailsPage/moreAllUserInfoDetailsPage';
+
+
+
 
 
 function CustomToast({image,name}) {
@@ -232,7 +240,21 @@ useEffect(() => {
         { path: 'accountSettings', element:<SettingsPage/> }
       ]
     },
-
+    {
+   path:'/admin/login',element:<AdminLoginPage/>
+    },
+    {
+      path:'/admin/register',element:<AdminRegistersPage/>
+       },
+    {
+      path: '/admin',
+      element:<ProtectedRoute element={<AdminPage />}/> ,
+      children:[
+        { path: '', element:<ProtectedRoute element={<ManageUserPage />}/> },
+        { path: 'allDetails', element:<ProtectedRoute element={<MoreAllUserInfoDetailsPage/>}/> }
+      ]
+     
+    },
     // {
     //   path: '/mainContent',
     //   element: <MainPage />,
