@@ -41,7 +41,7 @@ const AdminRegister=()=>{
         navigate('/admin/login')
         }
         useEffect(()=>{
-        if(adminRegisterResponse.token){
+        if(adminRegisterResponse?.token){
           navigate('/admin')
         }
         },[adminRegisterResponse,navigate])
