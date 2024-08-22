@@ -94,6 +94,7 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
    const selectSong=useSelector((state)=>state.getSong.getSongObj.selectedObj)
   //  console.log('get deactivate user',getDeactivateAccountSelector)
   const loginUser=JSON.parse(sessionStorage.getItem('loginObject'))
+  const signUpUser=JSON.parse(sessionStorage.getItem('signupObject'))
   // console.log('login user data is',loginUser)
    useEffect(()=>{
     if(id){
@@ -598,7 +599,7 @@ toast.success('Like sent successfully')
      
       />
       </div>
-      <p className="text-center text-sm sm:text-base guruText">Hello <span className="text-black font-semibold">{loginUser?.firstName}</span> you have <span className="text-black font-semibold">{matchPercentage}%</span> match with <span className="text-black font-semibold"> {OnlineContent?.firstName || likeUserPerson?.firstName || visitor?.firstName || onlineLikeUserPerson?.firstName}</span>  {matchPercentage < 50
+      <p className="text-center text-sm sm:text-base guruText">Hello <span className="text-black font-semibold">{loginUser?.firstName || signUpUser?.firstName}</span> you have <span className="text-black font-semibold">{matchPercentage}%</span> match with <span className="text-black font-semibold"> {OnlineContent?.firstName || likeUserPerson?.firstName || visitor?.firstName || onlineLikeUserPerson?.firstName}</span>  {matchPercentage < 50
           ? "As a match predictor, I advice you should not try with."
           : matchPercentage < 80
           ? "As a match predictor, I recommend you should try with."
