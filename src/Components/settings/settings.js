@@ -17,14 +17,13 @@ export const Settings = () => {
   // const [accountSettingsData, setAccountSettingsData] = useState({});
   const skipFilterUser = useSelector((state) => state.getSkipProfile.getSkipProfileUserObj.skipFilterUser || []);
   const onlineSkipUser = useSelector((state) => state.getSkipProfile.getSkipProfileUserObj.onlineSkipUser || []);
-  const skipUser = useSelector((state) => state.getSkipProfile.getSkipProfileUserObj.skipUser || []);
   // const openChangePasswordModal = useSelector((state) => state.accountSettingModal.accountSettingModalToggle);
   const [changePasswordModalData, setChangePasswordModalData] = useState(false);
   const [manageAccountModalData, setManageAccountModalData] = useState(false);
   const [subManageAccountModalData, setSubManageAccountModalData] = useState(false);
   const [deleteAccountModalData, setDeleteAccountModalData] = useState(false);
   // console.log('open change password modal', openChangePasswordModal);
-  const skipProfileUser = [...skipFilterUser, ...onlineSkipUser, ...skipUser];
+  const skipProfileUser = [...skipFilterUser, ...onlineSkipUser];
   // console.log('skip profile user', skipProfileUser);
   const skipData = { title: 'Skipped Profiles', skipProfile: skipProfileUser };
 

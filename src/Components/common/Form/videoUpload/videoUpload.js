@@ -59,7 +59,8 @@ const VideoUpload = ({ VideoUploadDatas }) => {
             zodiac: VideoUploadDatas.zodiac,
             language: VideoUploadDatas.language,
             aboutUser: VideoUploadDatas.aboutUser,
-            videoUrl: videoFile
+            videoUrl: videoFile,
+            songId:VideoUploadDatas.songId
         };
         navigate('/step5', { state: videoUploadData });
     };

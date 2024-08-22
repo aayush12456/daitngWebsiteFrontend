@@ -29,6 +29,13 @@ import SweetAlert2 from 'react-sweetalert2';
 import sorryImage from "../../assets/personalProfileIcons/sorryEmoji.png"
 import { getDeactivateUserAsync } from "../../Redux/Slice/getDeactivateUser/getDeactivateUser";
 import '../../../src/styles.css'
+import {  Circle } from 'rc-progress';
+// import guru from '../../assets/guruIcon/guru.svg'
+import guru from '../../assets/guruIcon/guru1.png'
+import { motion } from 'framer-motion';
+import { getSongAsync } from "../../Redux/Slice/getSongSlice/getSongSlice";
+import play from "../../assets/personalProfileIcons/play.png";
+import pause from "../../assets/personalProfileIcons/pause.png";
 const style = {
   position: "absolute",
   top: "50%",
@@ -61,6 +68,8 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     const [watchVideo,setWatchVideo]=useState(true)
     const [skipPart,setSkipPart]=useState(true)
     const [likePart,setLikePart]=useState(true)
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [songId, setSongId] = useState('');
     const [likeUserPart,setLikeUserPart]=useState(true)
     const [matchPartUser,setMatchPartUser]=useState(true)
     const [watchModalOpen, setWatchModalOpen] = useState(false)
@@ -68,6 +77,7 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
     const [onlinePersonalProfileObj,setOnlinePersonalProfileObj]=useState({})
     const [visitorPersonalProfileObj,setVisitorPersonalProfileObj]=useState({})
     const [swalProps, setSwalProps] = useState({});
+    const [visible, setVisible] = useState(false);
     const id =sessionStorage.getItem('userId')
     const dob = visitor?.DOB || OnlineContent?.DOB;
     const dobBreak = dob?.split("/");
@@ -81,12 +91,25 @@ export const VisitorProfile = ({visitor,OnlineContent,likeUserPerson,visitorUser
    const loginObj=JSON.parse(sessionStorage.getItem('loginObject'))
    const updateLoginObj=JSON.parse(sessionStorage.getItem('updateUser'))
    const getDeactivateAccountSelector=useSelector((state)=>state.getDeactivateUser.getDeactivateUser.deactivateHeading)
+   const selectSong=useSelector((state)=>state.getSong.getSongObj.selectedObj)
   //  console.log('get deactivate user',getDeactivateAccountSelector)
+  const loginUser=JSON.parse(sessionStorage.getItem('loginObject'))
+  // console.log('login user data is',loginUser)
    useEffect(()=>{
     if(id){
       dispatch(getDeactivateUserAsync(id))
     }
   },[dispatch,id])
+
+  useEffect(()=>{
+    if(OnlineContent?._id || visitor?._id || likeUserPerson?._id || onlineLikeUserPerson?._id ){
+   dispatch(getSongAsync(OnlineContent?._id))
+   dispatch(getSongAsync(visitor?._id))
+   dispatch(getSongAsync(likeUserPerson?._id))
+   dispatch(getSongAsync(onlineLikeUserPerson?._id))
+    }
+     },[OnlineContent,visitor,dispatch,likeUserPerson,onlineLikeUserPerson])
+     
     const watchVideoButton=()=>{
       setWatchModalOpen(true)
       setPersonalProfileObj(likeUserPerson)
@@ -447,9 +470,147 @@ toast.success('Like sent successfully')
          const updateVisitorCommonInterest=visitorUser?.interst?.filter((visitorItem)=>updateLoginObj?.interest?.includes(visitorItem))
          const likeCommonInterest=likeUserPerson?.interest?.filter((likeItem)=>loginObj?.interest?.includes(likeItem))
          const updateLikeCommonInterest=likeUserPerson?.interest?.filter((likeItem)=>updateLoginObj?.interest?.includes(likeItem))
+
+         const calculateMatchPercentage = () => {
+          let matchCount = 0;
+      
+          if (loginUser?.drinking === OnlineContent?.drinking || loginUser?.drinking === visitor?.drinking 
+            || loginUser?.drinking === likeUserPerson?.drinking  || loginUser?.drinking === onlineLikeUserPerson?.drinking ) {
+            matchCount++;
+          }
+          if (loginUser?.smoking === OnlineContent?.smoking || loginUser?.drinking === visitor?.smoking 
+            || loginUser?.smoking === likeUserPerson?.smoking  || loginUser?.smoking === onlineLikeUserPerson?.smoking) {
+            matchCount++;
+          }
+          if (loginUser?.eating === OnlineContent?.eating || loginUser?.eating === visitor?.eating 
+            || loginUser?.eating === likeUserPerson?.eating  || loginUser?.eating === onlineLikeUserPerson?.eating) {
+            matchCount++;
+          }
+          if (loginUser?.language === OnlineContent?.language || loginUser?.language === visitor?.language 
+            || loginUser?.language === likeUserPerson?.language  || loginUser?.language === onlineLikeUserPerson?.language) {
+            matchCount++;
+          }
+          if (loginUser?.zodiac === OnlineContent?.zodiac || loginUser?.zodiac === visitor?.zodiac 
+            || loginUser?.zodiac === likeUserPerson?.zodiac  || loginUser?.zodiac === onlineLikeUserPerson?.zodiac) {
+            matchCount++;
+          }
+         
+          if (loginUser?.looking === OnlineContent?.looking || loginUser?.looking === visitor?.looking 
+            || loginUser?.looking === likeUserPerson?.looking  || loginUser?.smoking === onlineLikeUserPerson?.looking) {
+            matchCount++;
+          }
+          const interest=loginUser?.interest?.map(item=>OnlineContent?.interest?.includes(item))
+          const visitorInterest=loginUser?.interest?.map(item=>visitor?.interest?.includes(item))
+          const likeUserInterest=loginUser?.interest?.map(item=>likeUserPerson?.interest?.includes(item))
+          const onlineLikeUserInterest=loginUser?.interest?.map(item=>onlineLikeUserPerson?.interest?.includes(item))
+          if(interest ||  visitorInterest || likeUserInterest ||onlineLikeUserInterest  ){
+            matchCount++;
+          }
+          // Calculate the percentage based on the number of matches
+          const percentage = (matchCount / 8) * 100;
+          return percentage.toFixed(2);
+        };
+        const matchPercentage = calculateMatchPercentage();
+
+        useEffect(() => {
+          // Show the content after 3 minutes
+          const showTimer = setTimeout(() => {
+            setVisible(true);
+          }, 6000); // 180,000 milliseconds = 3 minutes
         
+          return () => clearTimeout(showTimer);
+        }, []);
+        
+        useEffect(() => {
+          // Hide the content 3000 ms after it becomes visible
+          if (visible===true) {
+            const hideTimer = setTimeout(() => {
+              setVisible(false);
+            }, 7500); // 3000 milliseconds = 3 seconds
+        
+            return () => clearTimeout(hideTimer);
+          }
+        }, [visible]);
+        
+        const audioRef = React.createRef();
+        const selectedHandlePlayPause = (id) => {
+          console.log('id of spotify',id)
+          const audio = audioRef.current;
+          if (audio.paused) {
+            audio.play();
+            setIsPlaying(true); 
+            setSongId(id)
+      
+          } else {
+            audio.pause();
+            setIsPlaying(false);
+            setSongId(id)
+          }
+        };
+      
   return (
    <>
+     {/* <div className="absolute z-10 w-full h-screen">
+      {visible && (
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-center animate-slideDownFadeOut">
+          <img src={guru} alt="Profile" className="mx-auto" />
+          <p>Your Text Here</p>
+        </div>
+      )}
+    </div> */}
+ {visible  && (OnlineContent || likeUserPerson || visitor || onlineLikeUserPerson) && user===true && skipPart===true && likePart===true && selfOnlineLike===true    && (
+  <div className="absolute z-10 w-96 h-screen">
+    <div
+      className="blur-background"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        backdropFilter: "blur(4px)", // Adjust the blur intensity as needed
+        zIndex: 5,
+      }}
+    ></div>
+     <div className="mt-12">
+     <motion.div
+      className="topImg"
+      initial={{ opacity: 0, scale: 0, y: "50vh" }} // Start from bottom
+      animate={{ opacity: 1, scale: 1, y: "0vh" }} // Move to center
+      transition={{
+        duration: 1.5,
+      }}
+      style={{
+        position: "relative", // Ensures it's on top of the blur
+        zIndex: 6, // Higher z-index to avoid blur
+      }}
+    >
+      <div className="flex justify-center">
+      <img
+        src={guru}
+        alt="Animated Circle"
+        style={{
+          width: "70%",
+          height: "70%",
+          objectFit: "cover",
+          
+        }}
+     
+      />
+      </div>
+      <p className="text-center text-sm sm:text-base guruText">Hello <span className="text-black font-semibold">{loginUser?.firstName}</span> you have <span className="text-black font-semibold">{matchPercentage}%</span> match with <span className="text-black font-semibold"> {OnlineContent?.firstName || likeUserPerson?.firstName || visitor?.firstName || onlineLikeUserPerson?.firstName}</span>  {matchPercentage < 50
+          ? "As a match predictor, I advice you should not try with."
+          : matchPercentage < 80
+          ? "As a match predictor, I recommend you should try with."
+          : "As a match predictor, I highly recommend you should go with."} <span className="text-black font-semibold">{OnlineContent?.firstName || likeUserPerson?.firstName || visitor?.firstName || onlineLikeUserPerson?.firstName}  </span> 
+      </p>
+    </motion.div>
+     </div>
+    {/* Ensure the image container is outside of the blur effect */}
+  
+  </div>
+)}
+
     <div className="flex justify-center mt-10">
       <div className="relative w-full">
       {likeUser && (
@@ -501,6 +662,9 @@ toast.success('Like sent successfully')
                 alt="rightArrow"
               />}
             </div>
+            {/* firstName div */}
+            <div className="flex justify-between">
+            <div className="">
             <div className="flex gap-0">
               <p className="pl-5 pt-4 text-lg font-semibold">
                {visitor && visitor.firstName?visitor.firstName:OnlineContent.firstName}
@@ -522,12 +686,21 @@ toast.success('Like sent successfully')
                 Studied {OnlineContent?.education}
               </p>
             </div>:null}
-
+            <div className="flex justify-between">
             <div className="pl-5 pt-6">
               <p className="text-lg text-[#757575]">Mobile Number</p>
               <p className="text-lg pt-1 font-semibold">
               {mainNumber}
               </p>
+            </div>
+            { user===false || likePart===false ?null: <div className={` flex mr-20 sm:hidden  ${user===true || likePart===true?'mt-8':''}`}>
+          
+          <div className="w-[4.2rem]  ">
+        <Circle percent={matchPercentage} strokeLinecap="square" strokeWidth={8} strokeColor="blue" trailColor="lightBlue" trailWidth={8}  /> 
+          </div>
+        <p className=" -ml-14 pt-4 text-sm ">{matchPercentage}%</p>
+        <p className=" -ml-11  pt-8 text-sm ">match</p>
+        </div>}
             </div>
             {visitor?<div className="pl-5 pt-6">
               <p className="text-lg text-[#757575]">Relationship status</p>
@@ -617,6 +790,17 @@ toast.success('Like sent successfully')
               {visitor && visitor.eating?visitor.eating:OnlineContent.eating}
               </p>
             </div>
+            </div>
+           { user===false || likePart===false ?null: <div className=" sm:flex sm:mr-12 sm:mt-6 hidden    ">
+          
+              <div className="w-[4.2rem]  ">
+            <Circle percent={matchPercentage} strokeLinecap="square" strokeWidth={8} strokeColor="blue" trailColor="lightBlue" trailWidth={8}  /> 
+              </div>
+            <p className=" -ml-14 pt-4 text-sm ">{matchPercentage}%</p>
+            <p className=" -ml-11  pt-8 text-sm ">match</p>
+            </div>}
+            </div>
+           
            {visitor? <div className="pl-5 pt-6">
               <p className="text-lg text-[#757575]">Zodiac sign</p>
               <p className="text-lg pt-1 font-semibold">
@@ -629,6 +813,16 @@ toast.success('Like sent successfully')
                 {visitor.language}
               </p>
             </div>:null}
+            {selectSong? <div className="pl-5 pt-5">
+                <p className="md:text-lg text-[#757575]">Bio Track</p>
+               <div className="flex mt-2 gap-3">
+               <img src={selectSong?.songImage} className="rounded-full w-14 h-14 mb-3" alt="spotifyImage" />
+               <p className="text-center pt-2 pb-2">{selectSong?.songName}</p>
+               { songId!==selectSong?._id || isPlaying===false? <img src={play} className="w-6 h-6 mt-3 -mr-3 cursor-pointer"  alt="pause"  onClick={()=>selectedHandlePlayPause(selectSong?._id)}/>
+ :<img src={pause} className="w-6 h-6 mt-3 -mr-3 cursor-pointer"  alt="play"  onClick={()=>selectedHandlePlayPause(selectSong?._id)}/>}
+    <audio ref={audioRef} src={selectSong?.songUrl} />
+               </div>
+              </div>:null}
           </div>
           <hr class="  w-full border-t-1 border-gray-400"/>
          

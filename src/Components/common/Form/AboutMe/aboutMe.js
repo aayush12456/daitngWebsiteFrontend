@@ -32,7 +32,8 @@ const AboutMe=({aboutMe})=>{
         looking:aboutMe?.looking,
         zodiac:aboutMe?.zodiac,
         language:aboutMe?.language,
-        aboutUser:text
+        aboutUser:text,
+        songId:aboutMe.songId
     }
     // console.log('about me',aboutMeData)
     sessionStorage.setItem('aboutMeInformation', JSON.stringify(aboutMeData));

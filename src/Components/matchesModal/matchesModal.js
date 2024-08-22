@@ -378,18 +378,30 @@
 
 // export default MatchesModal;
 // under se bhar modal open karne wala animation ka code 
+import React from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Grow from "@mui/material/Grow";
 // import { BACKEND_BASE_URL } from "../../Services/api";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import leftArrow from "../../assets/personalProfileIcons/leftArrow.svg";
 import rightArrow from "../../assets/personalProfileIcons/rightArrow.svg";
-
+import {  Circle } from 'rc-progress';
+import { useSelector } from "react-redux";
+import {getSongAsync} from '../../Redux/Slice/getSongSlice/getSongSlice'
+import { useDispatch } from "react-redux";
+import play from "../../assets/personalProfileIcons/play.png";
+import pause from "../../assets/personalProfileIcons/pause.png";
+import '../../styles.css'
 const MatchesModal = ({ modalData, match, handleCloses }) => {
   // console.log('modal data', modalData)
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [songId, setSongId] = useState('');
+  const loginUser=JSON.parse(sessionStorage.getItem('loginObject'))
+  const dispatch=useDispatch()
+  const selectSong=useSelector((state)=>state.getSong.getSongObj.selectedObj)
+  // console.log('selected song',selectSong)
   const style = {
     position: "absolute",
     top: "20%",
@@ -469,7 +481,59 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
   let currentDate = new Date();
   let currentYear = currentDate.getFullYear();
   const age = year ? currentYear - parseInt(year) : "";
+  const calculateMatchPercentage = () => {
+    let matchCount = 0;
 
+    if (loginUser?.drinking === modalData?.drinking  ) {
+      matchCount++;
+    }
+    if (loginUser?.smoking === modalData?.smoking ) {
+      matchCount++;
+    }
+    if (loginUser?.eating === modalData?.eating ) {
+      matchCount++;
+    }
+    if (loginUser?.language === modalData?.language ) {
+      matchCount++;
+    }
+    if (loginUser?.zodiac === modalData?.zodiac) {
+      matchCount++;
+    }
+   
+    if (loginUser?.looking === modalData?.looking ) {
+      matchCount++;
+    }
+    const interest=loginUser?.interest?.map(item=>modalData?.interest?.includes(item))
+    if(interest){
+      matchCount++;
+    }
+   
+    // Calculate the percentage based on the number of matches
+    const percentage = (matchCount / 8) * 100;
+    return percentage.toFixed(2);
+  };
+  const matchPercentage = calculateMatchPercentage();
+  useEffect(()=>{
+ if(modalData._id){
+dispatch(getSongAsync(modalData._id))
+ }
+  },[modalData._id,dispatch])
+
+  const audioRef = React.createRef();
+  const selectedHandlePlayPause = (id) => {
+    console.log('id of spotify',id)
+    const audio = audioRef.current;
+    if (audio.paused) {
+      audio.play();
+      setIsPlaying(true); 
+      setSongId(id)
+
+    } else {
+      audio.pause();
+      setIsPlaying(false);
+      setSongId(id)
+    }
+  };
   return (
     <>
 
@@ -514,6 +578,8 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
             </div>
             <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
               <div className="flex justify-between">
+               <div className="1">
+               <div className="flex justify-between">
                 <div className="flex gap-0">
                   <p className="pl-5 pt-4 md:text-lg font-semibold">
                     {modalData?.firstName},
@@ -525,6 +591,7 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
                     {modalData?.city}
                   </p>
                 </div>
+            
               </div>
               <div className="pl-5 pt-3">
                 <p className="md:text-lg text-[#757575]">Relationship status</p>
@@ -600,6 +667,28 @@ const MatchesModal = ({ modalData, match, handleCloses }) => {
                   {modalData?.language}
                 </p>
               </div>
+             {selectSong? <div className="pl-5 pt-5">
+                <p className="md:text-lg text-[#757575]">Bio Track</p>
+               <div className="flex mt-2 gap-3">
+               <img src={selectSong?.songImage} className="rounded-full w-14 h-14" alt="spotifyImage" />
+               <p className="text-center pt-2 pb-2">{selectSong?.songName}</p>
+               { songId!==selectSong?._id || isPlaying===false? <img src={play} className="w-6 h-6 mt-3 -mr-3 cursor-pointer"  alt="pause"  onClick={()=>selectedHandlePlayPause(selectSong?._id)}/>
+ :<img src={pause} className="w-6 h-6 mt-3 -mr-3 cursor-pointer"  alt="play"  onClick={()=>selectedHandlePlayPause(selectSong?._id)}/>}
+    <audio ref={audioRef} src={selectSong?.songUrl} />
+               </div>
+              </div>:null}
+               </div>
+               <div className="">
+               <div className={` flex mr-12 mt-6 `  }>
+              <div className="w-[4.2rem] modalProgress ">
+            <Circle percent={matchPercentage} strokeLinecap="square" strokeWidth={8} strokeColor="blue" trailColor="lightBlue" trailWidth={8}  /> 
+              </div>
+            <p className=" -ml-14 pt-4 text-sm textData ">{matchPercentage}%</p>
+            <p className=" -ml-11  pt-8 text-sm textDatas ">match</p>
+            </div>
+               </div>
+              </div>
+              
             </div>
           </Box>
         </Grow>

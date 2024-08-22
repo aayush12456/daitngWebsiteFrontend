@@ -69,7 +69,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
   // console.log('get match user array',getMatchUser)
 
   const anothergetMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
-  console.log('another get match user',anothergetMatchUser)
+  // console.log('another get match user',anothergetMatchUser)
 
 
   // const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)

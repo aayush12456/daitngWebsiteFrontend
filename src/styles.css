@@ -1423,3 +1423,39 @@ right: 2rem;
           margin-left: 16rem;
          }
        }
+       @media (min-width: 350px) and (max-width: 400px){
+       .guruText{
+        width: 20rem;
+        margin-left: 2rem;
+       }
+       .progressBar{
+        margin-top: 7rem;
+        margin-left: -8rem;
+       }
+       .modalProgress{
+        width: 3rem;
+        position: absolute;
+        margin-left: 0rem; 
+       }
+       .textData{
+        font-size: 12px;
+        padding-left: 60.5px;
+        position: absolute;
+      top: 15.3rem;
+       }
+       .textDatas{
+        display: none;
+       }
+       }
+       @media (min-width: 300px) and (max-width: 350px){
+        .progressBar{
+          margin-top: 7rem;
+          margin-left: -8rem;
+         }
+       }
+       @media (min-width: 405px) and (max-width: 460px){
+        .progressBar{
+          margin-top: 7rem;
+          margin-left: -8rem;
+         }
+       }

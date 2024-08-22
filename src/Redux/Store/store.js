@@ -83,7 +83,10 @@ import selfOnlineLikeUserAdminModalSlice from "../Slice/selfOnlineLikeUserAdminM
 import likeUserAdminModalSlice from "../Slice/likeUserAdminModalSlice"
 import selfDeactivateAdminModalSlice from "../Slice/selfDeactivateAdminModalSlice"
 import deleteProfileFromAdminArraySlice from "../Slice/deleteProfileFromAdminArraySlice/deleteProfileFromAdminArraySlice"
-
+import getBollywoodSongsFromSpotifySlice from "../Slice/getBollywoodSongsFromSpotifySlice/getBollywoodSongsFrom SpotifySlice"
+import addSongSlice from "../Slice/addSongSlice/addSongSlice"
+import getSongSlice from "../Slice/getSongSlice/getSongSlice"
+import addNoneSongSlice from "../Slice/addNoneSongSlice/addNoneSongSlice"
 
 
 const store=configureStore({
@@ -172,7 +175,11 @@ const store=configureStore({
     selfOnlineLikeUserAdminModal:selfOnlineLikeUserAdminModalSlice,
     likeUserAdminModal:likeUserAdminModalSlice,
     selfDeactivateAdminModal:selfDeactivateAdminModalSlice,
-    deleteFromAdminArray: deleteProfileFromAdminArraySlice
+    deleteFromAdminArray: deleteProfileFromAdminArraySlice,
+    getBollywoodSongs:getBollywoodSongsFromSpotifySlice,
+    addSong:addSongSlice,
+    getSong:getSongSlice,
+    addNoneSong:addNoneSongSlice
     }
 })
 export default store

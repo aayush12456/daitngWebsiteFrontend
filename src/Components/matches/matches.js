@@ -149,7 +149,7 @@ const Matches = ({ matches }) =>
     sessionStorage.setItem('visitorId', visitorId)
     setModalObj(matches)
     setModalOpen(true)
-    console.log('matches data is',matches)
+    // console.log('matches data is',matches)
     // navigate('/mainContent/matchesMainContent', { state: matches })
     // const visitorObjId = {
     //   id: id,

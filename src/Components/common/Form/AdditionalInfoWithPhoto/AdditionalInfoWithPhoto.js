@@ -107,6 +107,7 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
         formData.append('zodiac', photoData?.zodiac);
         formData.append('videoUrl', photoData?.videoUrl);
         formData.append('language', photoData?.language);
+        formData.append('songId', photoData?.songId);
 
         file.forEach((file) => {
             formData.append('images', file);

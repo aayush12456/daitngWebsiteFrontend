@@ -18,7 +18,7 @@ export const signUpSchema=Yup.object({
 })
 
 export const additonalInformationSchema=Yup.object({
-    profession:Yup.string().min(2).max(25).required("Please enter profession"),
+    profession:Yup.string().min(2).max(50).required("Please enter profession"),
     education:Yup.string().min(2).required("Please enter education"),
     drinking:Yup.string().min(2).required("Please enter drinking"),
     smoking:Yup.string().min(6).required("Please enter smoking"),

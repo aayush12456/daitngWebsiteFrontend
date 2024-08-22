@@ -6,6 +6,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import leftArrow from "../../assets/personalProfileIcons/leftArrow.svg";
 import rightArrow from "../../assets/personalProfileIcons/rightArrow.svg";
+import play from "../../assets/personalProfileIcons/play.png";
+import pause from "../../assets/personalProfileIcons/pause.png";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { Eating, Language, relationshipStatus, zodiacSign } from "../../utils/peronalInfo";
@@ -21,6 +23,10 @@ import rigthtik from '../../assets/personalProfileIcons/rightTik.png'
 import playVideo from '../../assets/personalProfileIcons/playVideo.png'
 import WatchVideo from "../common/watchVideo/watchVideo";
 import '../../styles.css'
+import 'react-h5-audio-player/lib/styles.css';
+import { addSongAsync } from "../../Redux/Slice/addSongSlice/addSongSlice";
+import Slider from '@mui/material/Slider';
+import { addNoneSongAsync } from "../../Redux/Slice/addNoneSongSlice/addNoneSongSlice";
 const style = {
   position: "absolute",
   top: "50%",
@@ -158,10 +164,13 @@ export const PersonalProfile = ({
   personalProfile,
   personalSignupProfile,
   matchesMainContent,
+  allSongs,
+  selectedSong
 }) => {
   const getProfile = () =>
     personalProfile || personalSignupProfile || matchesMainContent || {};
   const dipsatch = useDispatch();
+  
   const dob = getProfile().DOB;
   const dobBreak = dob?.split("/");
   const year = dobBreak?.[2];
@@ -173,8 +182,11 @@ export const PersonalProfile = ({
   const updateProfile = JSON.parse(updateData);
   // console.log("update profile", updateProfile);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [open, setOpen] = React.useState(false);
   const [openRelationship, setOpenRelationship] = React.useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [songId, setSongId] = useState('');
   const [looking, setLooking] = useState(false);
   const [interests, setInterests] = useState(false);
   const [citys, setCitys] = useState(false);
@@ -186,6 +198,7 @@ export const PersonalProfile = ({
   const [eatings, setEatings] = useState(false)
   const [zodiacs, setzodiacs] = useState(false)
   const [languages, setLanguages] = useState(false)
+  const [songs, setSongs] = useState(false)
   const [language, setLanguage] = useState([])
   const [aboutText, setAboutText] = useState('')
   const [text, setText] = useState('Hide')
@@ -194,6 +207,8 @@ export const PersonalProfile = ({
   const [selectedInterests, setSelectedInterests] = useState([]);
   const [watchModalOpen, setWatchModalOpen] = useState(false)
   const [personalProfileObj,setPersonalProfileObj]=useState({})
+  const userId=sessionStorage.getItem('userId')
+  
 const watchVideoButton=()=>{
   setWatchModalOpen(true)
   setPersonalProfileObj(personalProfile || personalSignupProfile)
@@ -244,6 +259,8 @@ const watchVideoButton=()=>{
     setLanguages(false)
     setCitys(false)
     setInterests(false)
+    setSongs(false)
+
   };
   const handleOpen = () => {
     setOpen(true);
@@ -280,6 +297,9 @@ const watchVideoButton=()=>{
   }
   const languageData = () => {
     setLanguages(true)
+  }
+  const songData = () => {
+    setSongs(true)
   }
   const interestData = () => {
     setInterests(true)
@@ -408,6 +428,54 @@ const watchVideoButton=()=>{
     setLanguages(false)
   }
   // personalProfile?.images?.length==1|| personalSignupProfile?.images?.length==1?null
+  const addSongHandler=(songId)=>{
+  const songObj={
+    id:id,
+    songId:songId
+  }
+  dipsatch(addSongAsync(songObj))
+  window.location.reload()
+  }
+  const audioRef = React.createRef();
+  const selectedHandlePlayPause = (id) => {
+    console.log('id of spotify',id)
+    const audio = audioRef.current;
+    if (audio.paused) {
+      audio.play();
+      setIsPlaying(true); 
+      setSongId(id)
+
+    } else {
+      audio.pause();
+      setIsPlaying(false);
+      setSongId(id)
+    }
+  };
+  const handleTimeUpdate = () => {
+    const audio = audioRef.current;
+    if (audio && audio.duration > 0) {
+      const currentTime = audio.currentTime;
+      const duration = audio.duration;
+      const progressPercentage = (currentTime / duration) * 100;
+      setProgress(progressPercentage);
+    }
+  };
+  
+  const handleSliderChange = (event, newValue) => {
+    const audio = audioRef.current;
+    if (audio) {
+      const newTime = (newValue / 100) * audio.duration;
+      audio.currentTime = newTime;
+      setProgress(newValue);
+    }
+  };
+  const addNoneSongData=()=>{
+    const addNoneSongObj={
+      id:userId
+    }
+    dipsatch(addNoneSongAsync(addNoneSongObj))
+    window.location.reload()
+  }
   return (
     <>
       <div className="flex justify-center mt-10">
@@ -737,6 +805,31 @@ const watchVideoButton=()=>{
                         ? matchesMainContent?.language
                         : null}
               </p>
+            </div>
+            {/* //spotify songs */}
+            <div className="pl-5 pt-6">
+              <div className="flex justify-between  ">
+                <p className="text-lg text-[#757575]">Connect With Songs</p>
+                {!matchesMainContent?<p className="text-lg  pr-4 text-[#5394e4] hover:text-[blue] cursor-pointer" onClick={songData}>
+                  Edit
+                </p>:null}
+              </div>
+               {selectedSong?<div className="flex gap-6 mt-5">
+                <img src={selectedSong?.songImage} className="rounded-full w-20 h-20" alt="spotifyImage" />
+                <div>
+                <p className="text-lg pt-5 font-semibold">{selectedSong?.songName}</p>
+                <Slider
+        aria-label="Temperature"
+        value={progress}
+        onChange={handleSliderChange}
+        color="secondary"
+    
+      />
+                  </div>
+ { songId!==selectedSong?._id || isPlaying===false? <img src={play} className="w-6 h-6 mt-6 cursor-pointer"  alt="pause"  onClick={()=>selectedHandlePlayPause(selectedSong?._id)}/>
+ :<img src={pause} className="w-8 h-6 mt-6 cursor-pointer"  alt="play"  onClick={()=>selectedHandlePlayPause(selectedSong?._id)}/>}
+        <audio ref={audioRef} src={selectedSong?.songUrl} onTimeUpdate={handleTimeUpdate}  onLoadedMetadata={handleTimeUpdate}  />
+                </div>:<p className="text-lg pt-1 font-semibold">None</p>}
             </div>
           </div>
         </div>
@@ -1129,6 +1222,56 @@ const watchVideoButton=()=>{
         </div>
       </Box>
     </Modal>
+
+    {/* //song data */}
+    
+    <Modal
+        open={songs}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <p className="text-center text-lg text-[#333]">Select songs</p>
+          <div className="overflow-y-auto max-h-48 ">
+          {
+          allSongs?.map(songItem=>{
+              // console.log('song data item',songItem)
+              const audioRef = React.createRef();
+              const handlePlayPause = (id) => {
+                console.log('id of spotify',id)
+                const audio = audioRef.current;
+                if (audio.paused) {
+                  audio.play();
+                  setIsPlaying(true); 
+                  setSongId(id)
+
+                } else {
+                  audio.pause();
+                  setIsPlaying(false);
+                  setSongId(id)
+                }
+              };
+              return (
+                <>
+                <div className="flex justify-between mt-5">
+                <img src={songItem?.songImage} className="rounded-full w-14 h-14 cursor-pointer" alt="spotifyImage" onClick={()=>addSongHandler(songItem?._id)}/>
+                <p className={`text-center pt-2 pb-2 cursor-pointer ${songItem?._id===selectedSong?._id?'text-[#5595e4]':'text-[#333]'}`} onClick={()=>addSongHandler(songItem?._id)}>{songItem?.songName}</p>
+ { songId!==songItem?._id || isPlaying===false? <img src={play} className="w-6 h-6 mt-2 cursor-pointer"  onClick={()=>handlePlayPause(songItem?._id)} alt="pause"/>
+ :<img src={pause} className="w-8 h-6 mt-2 cursor-pointer"  onClick={()=>handlePlayPause(songItem?._id)} alt="play"/>}
+        {/* Hidden Audio Element */}
+        <audio ref={audioRef} src={songItem?.songUrl} />
+                </div>
+             
+                </>
+              )
+            })
+          }
+          <p className="text-center pt-2 pb-2 cursor-pointer" onClick={addNoneSongData}>None</p>
+          </div>
+         
+        </Box>
+      </Modal>
     <WatchVideo modalOpen={watchModalOpen} handleClose={ handleWatchClose} personalVideoData={personalProfileObj}/>
     </>
   );

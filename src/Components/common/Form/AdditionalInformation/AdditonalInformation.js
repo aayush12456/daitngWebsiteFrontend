@@ -13,6 +13,9 @@ import heart from "../../../../assets/formIcons/heart.png";
 import looking from "../../../../assets/formIcons/looking.png";
 import zodiac from "../../../../assets/formIcons/zodiac.png";
 import languageLogo from "../../../../assets/formIcons/language.png";
+import music from "../../../../assets/formIcons/music.png";
+import play from "../../../../assets/personalProfileIcons/play.png";
+import pause from "../../../../assets/personalProfileIcons/pause.png";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import {
@@ -31,11 +34,13 @@ import { additonalInformationSchema } from "../../../../schemas";
 import { useNavigate } from "react-router-dom";
 import { passDataObjSliceAcions } from "../../../../Redux/Slice/passDataSliceObj/passDataSliceObj";
 // import ProgressBarData from "../../progressBar/progressBar";
-export const AdditonalInformation = ({ additionalData }) => {
+export const AdditonalInformation = ({ additionalData,allSongs }) => {
   const dispatch=useDispatch()
   // console.log("data is", additionalData);
   const [personName, setPersonName] = React.useState([]);
   const [language,setLanguage]=useState([])
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [songId, setSongId] = useState('');
   const navigate = useNavigate();
   const initialValues = {
     profession: "",
@@ -47,7 +52,8 @@ export const AdditonalInformation = ({ additionalData }) => {
     looking:"",
     relation:"",
     zodiac:"",
-    language:""
+    language:"",
+    song:""
   };
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -71,6 +77,7 @@ export const AdditonalInformation = ({ additionalData }) => {
     const languageString = value.join(", "); // Convert array of selected languages to comma-separated string
     setValues({ ...values, language: languageString }); // Update Formik values with selected languages
   };
+
   const {
     values,
     errors,
@@ -104,7 +111,8 @@ export const AdditonalInformation = ({ additionalData }) => {
         relation:values.relation,
         looking:values.looking,
         zodiac:values.zodiac,
-        language:values.language
+        language:values.language,
+        songId:values.song
       };
       // console.log("information is", additionalInformation);
       dispatch(passDataObjSliceAcions.passDataObj(additionalInformation))
@@ -436,7 +444,72 @@ export const AdditonalInformation = ({ additionalData }) => {
                 {errors.language && touched.language ? (
                   <p className="text-red-500 pl-14">{errors.language}</p>
                 ) : null}
-                <div class="flex justify-center mt-7 mb-9 ">
+                {/* //music */}
+
+                <div className="flex gap-2 mt-5">
+  <img src={music} className="w-10 h-9 mt-2" alt="languageLogo" />
+  <FormControl className="w-80 ">
+    <InputLabel id="demo-multiple-checkbox-label">Bio Track (optional)</InputLabel>
+    <Select
+      labelId="demo-multiple-checkbox-label"
+      id="demo-multiple-checkbox"
+      onChange={(event) => {
+        const selectedSongId = event.target.value;
+        const selectedSongName = allSongs?.find(song => song._id === selectedSongId).songName;
+        console.log('Selected Song ID:', selectedSongId);
+        console.log('Selected Song Name:', selectedSongName);
+        handleChange(event);
+      }}
+      value={values.song} // this should be the ID of the song
+      name="song"
+      displayEmpty
+      renderValue={(selected) => {
+        const selectedSong = allSongs?.find(song => song._id === selected);
+        return selectedSong?.songName || '';
+      }}
+    >
+             <div style={{ maxHeight: '250px', overflowY: 'auto' }}>
+             {allSongs?.map((songItem) => {
+        const audioRef = React.createRef();
+        const handlePlayPause = (id) => {
+          console.log('ID of Spotify:', id);
+          const audio = audioRef.current;
+          if (audio.paused) {
+            audio.play();
+            setIsPlaying(true);
+            setSongId(id);
+          } else {
+            audio.pause();
+            setIsPlaying(false);
+            setSongId(id);
+          }
+        };
+        return (
+          <MenuItem key={songItem._id} value={songItem._id}>
+
+            <div className="flex justify-between mt-5 ml-2 mr-2">
+              <img src={songItem?.songImage} className="rounded-full w-14 h-14 cursor-pointer" alt="spotifyImage" />
+              <p className={`text-center pt-2 pb-2 cursor-pointer `}>{songItem?.songName}</p>
+              {songId !== songItem?._id || isPlaying === false ? (
+                <img src={play} className="w-6 h-6 mt-2 cursor-pointer" onClick={() => handlePlayPause(songItem?._id)} alt="play" />
+              ) : (
+                <img src={pause} className="w-8 h-6 mt-2 cursor-pointer" onClick={() => handlePlayPause(songItem?._id)} alt="pause" />
+              )}
+              {/* Hidden Audio Element */}
+              <audio ref={audioRef} src={songItem?.songUrl} />
+              
+            </div>
+
+          </MenuItem>
+        );
+      })}
+             </div>
+     
+    </Select>
+    
+  </FormControl>
+</div>
+<div class="flex justify-center mt-7 mb-9 ">
                   <button
                     className=" bg-orange-600   dark:bg-orange-300 dark:hover:bg-orange-300  text-white font-bold py-2 px-4 rounded w-96 h-12"
                     type="submit"

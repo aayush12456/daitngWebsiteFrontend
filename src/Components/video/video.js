@@ -5,15 +5,17 @@ const Video = ({videoRecord}) => {
   // console.log('video record is',videoRecord)
   const videoRecordData={...videoRecord}
   const [isRecording, setIsRecording] = useState(false);
-  const [stream, setStream] = useState(null);
+
+  const streamRef = useRef(null);
   const videoRef = useRef(null);
+  
   const navigate=useNavigate()
   const startCamera = async () => {
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({
         video: { width: 1280, height: 720, facingMode: 'user' },
       });
-      setStream(mediaStream);
+      streamRef.current = mediaStream;
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
       }
@@ -21,24 +23,23 @@ const Video = ({videoRecord}) => {
       console.error("Error accessing camera: ", err);
     }
   };
-
+  const stopCamera = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(track => track.stop());
+      streamRef.current = null;
+    }
+  };
   useEffect(() => {
     if (isRecording) {
       startCamera();
     } else {
-      if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-        setStream(null);
-      }
+      stopCamera();
     }
 
-    // Clean up the stream on component unmount
     return () => {
-      if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-      }
+      stopCamera();
     };
-  }, [isRecording,stream]);
+  }, [isRecording]);
   
   const downloadVideo=()=>{
  navigate('/step4',{state:videoRecordData})
