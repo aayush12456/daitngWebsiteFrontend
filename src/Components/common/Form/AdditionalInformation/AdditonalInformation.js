@@ -15,7 +15,6 @@ import zodiac from "../../../../assets/formIcons/zodiac.png";
 import languageLogo from "../../../../assets/formIcons/language.png";
 import music from "../../../../assets/formIcons/music.png";
 import play from "../../../../assets/personalProfileIcons/play.png";
-import pause from "../../../../assets/personalProfileIcons/pause.png";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import {
@@ -39,8 +38,7 @@ export const AdditonalInformation = ({ additionalData,allSongs }) => {
   // console.log("data is", additionalData);
   const [personName, setPersonName] = React.useState([]);
   const [language,setLanguage]=useState([])
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [songId, setSongId] = useState('');
+
   const navigate = useNavigate();
   const initialValues = {
     profession: "",
@@ -448,67 +446,56 @@ export const AdditonalInformation = ({ additionalData,allSongs }) => {
 
                 <div className="flex gap-2 mt-5">
   <img src={music} className="w-10 h-9 mt-2" alt="languageLogo" />
-  <FormControl className="w-80 ">
+  <FormControl className="w-80">
     <InputLabel id="demo-multiple-checkbox-label">Bio Track (optional)</InputLabel>
     <Select
       labelId="demo-multiple-checkbox-label"
       id="demo-multiple-checkbox"
       onChange={(event) => {
         const selectedSongId = event.target.value;
-        const selectedSongName = allSongs?.find(song => song._id === selectedSongId).songName;
-        console.log('Selected Song ID:', selectedSongId);
-        console.log('Selected Song Name:', selectedSongName);
+        // const selectedSongName = allSongs?.find(song => song._id === selectedSongId)?.songName;
+
+        // Update the form values with the selected song's ID
         handleChange(event);
+
+        // Manually update the song field with the selected song ID
+        setValues((prevValues) => ({
+          ...prevValues,
+          song: selectedSongId,  // Setting the song ID
+        }));
       }}
-      value={values.song} // this should be the ID of the song
+      value={values.song} // The selected song ID
       name="song"
       displayEmpty
       renderValue={(selected) => {
         const selectedSong = allSongs?.find(song => song._id === selected);
         return selectedSong?.songName || '';
       }}
+      MenuProps={{
+        PaperProps: {
+          style: {
+            maxHeight: 200, // Set the max height for the dropdown
+            width: 250, // Set the width for the dropdown (optional)
+          },
+        },
+      }}
     >
-             <div style={{ maxHeight: '250px', overflowY: 'auto' }}>
-             {allSongs?.map((songItem) => {
-        const audioRef = React.createRef();
-        const handlePlayPause = (id) => {
-          console.log('ID of Spotify:', id);
-          const audio = audioRef.current;
-          if (audio.paused) {
-            audio.play();
-            setIsPlaying(true);
-            setSongId(id);
-          } else {
-            audio.pause();
-            setIsPlaying(false);
-            setSongId(id);
-          }
-        };
+  
+      {allSongs?.map((songItem) => {
         return (
           <MenuItem key={songItem._id} value={songItem._id}>
-
-            <div className="flex justify-between mt-5 ml-2 mr-2">
+            <div className="flex justify-between mt-5 ml-2 mr-2 gap-11">
               <img src={songItem?.songImage} className="rounded-full w-14 h-14 cursor-pointer" alt="spotifyImage" />
-              <p className={`text-center pt-2 pb-2 cursor-pointer `}>{songItem?.songName}</p>
-              {songId !== songItem?._id || isPlaying === false ? (
-                <img src={play} className="w-6 h-6 mt-2 cursor-pointer" onClick={() => handlePlayPause(songItem?._id)} alt="play" />
-              ) : (
-                <img src={pause} className="w-8 h-6 mt-2 cursor-pointer" onClick={() => handlePlayPause(songItem?._id)} alt="pause" />
-              )}
-              {/* Hidden Audio Element */}
-              <audio ref={audioRef} src={songItem?.songUrl} />
-              
+              <p className="text-center pt-2 pb-2 cursor-pointer">{songItem?.songName}</p>
+              <img src={play} className="w-6 h-6 mt-2 cursor-pointer" alt="play" />
             </div>
-
           </MenuItem>
         );
       })}
-             </div>
-     
     </Select>
-    
   </FormControl>
 </div>
+
 <div class="flex justify-center mt-7 mb-9 ">
                   <button
                     className=" bg-orange-600   dark:bg-orange-300 dark:hover:bg-orange-300  text-white font-bold py-2 px-4 rounded w-96 h-12"
