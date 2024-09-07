@@ -217,11 +217,10 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
         if (id) {
             const filterMessageArray = fetchMessages.filter((messageItem) => messageItem.chatId === chatIdObj?._id)
             setFinalMessageArray(filterMessageArray)
-            // console.log('final message Array is',filterMessageArray)
 
         }
     }, [id, fetchMessages,chatIdObj?._id])
-
+    //    console.log('final message Array is',finalMessageArray)
     useEffect(() => {
         const getMessageNotify = async () => {
             try {

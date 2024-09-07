@@ -271,6 +271,9 @@
     align-items: center;
     transform: translateX(-50%, -50%);
   }
+  .personalBg{
+    height: 9rem;
+  }
 }
 @media (min-width: 300px) and (max-width: 350px) {
   .play {
@@ -918,6 +921,7 @@
     align-items: center;
     transform: translateX(-50%, -50%);
   }
+  
 }
 @media (min-width: 1500px) and (max-width: 1600px) {
   .leftImg {

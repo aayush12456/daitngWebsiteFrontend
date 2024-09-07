@@ -12,7 +12,7 @@ const FilteredChatMessage=({filterItem,chatItem})=>{
             try {
                 // const response = await axios.get(`http://localhost:4000/user/getRecordChat/${id}`);
                 const response = await axios.get(`https://apnapanbackend.onrender.com/user/getRecordChat/${id}`);
-                console.log('record chat messages is',response.data.recordChat)
+                // console.log('record chat messages is',response.data.recordChat)
                 setrecordChatMessage(response.data.recordChat)
             } catch (error) {
                 console.error("Error fetching messages:", error);
@@ -33,7 +33,7 @@ const FilteredChatMessage=({filterItem,chatItem})=>{
             socket.off('chatRecordDeleted');
         }
        },[id])
-       console.log('record chat array',recordChatMessage)
+    //    console.log('record chat array',recordChatMessage)
     
        useEffect(() => {
         const recordChat = recordChatMessage?.some(
@@ -41,7 +41,7 @@ const FilteredChatMessage=({filterItem,chatItem})=>{
           );
     
         if (recordChat) {
-            console.log("Matching chatId found between recordChatMessage and filteredMessages.",recordChat);
+            // console.log("Matching chatId found between recordChatMessage and filteredMessages.",recordChat);
             // Execute your logic here
             setrecordChatMessageData(true)
         }
