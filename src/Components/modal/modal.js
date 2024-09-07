@@ -111,7 +111,7 @@ useEffect(() => {
     socket.emit('loginUser', loginResponse.existingLoginData);
     console.log('Emitted login data:', loginResponse.existingLoginData);
   }
-}, [loginResponse.existingLoginData, socket]);
+}, [loginResponse.existingLoginData]);
 
   return (
     <>
