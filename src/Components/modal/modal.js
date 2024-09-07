@@ -12,8 +12,9 @@ import Box from "@mui/material/Box";
 import { modalActions } from '../../Redux/Slice/modalSlice';
 import { loginWithOtpModalSliceActions } from '../../Redux/Slice/loginWIthOtpModalSlice';
 import io from "socket.io-client";
+// const socket = io.connect("http://localhost:4000");
+const socket = io.connect("https://apnapanbackend.onrender.com");
 export const Modals = ({ match }) => {
-  const socket = io.connect("http://localhost:4000");
   const [showPassword, setShowPassword] = useState(false);
   const wrongCredentials=useSelector((state)=>state?.loginData?.LoginresponseData?.mssg)
   // console.log('wrong credentials',wrongCredentials)
