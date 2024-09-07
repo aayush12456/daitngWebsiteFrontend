@@ -109,7 +109,7 @@ const openOtpModal=()=>{
 useEffect(() => {
   if (loginResponse.existingLoginData) {
     socket.emit('loginUser', loginResponse.existingLoginData);
-    console.log('Emitted login data:', loginResponse.existingLoginData);
+    // console.log('Emitted login data:', loginResponse.existingLoginData);
   }
 }, [loginResponse.existingLoginData]);
 

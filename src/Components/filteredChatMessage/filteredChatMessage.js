@@ -10,6 +10,7 @@ const FilteredChatMessage=({filterItem,chatItem})=>{
     useEffect(()=>{
         const getChatRecordMessage = async () => {
             try {
+                // const response = await axios.get(`http://localhost:4000/user/getRecordChat/${id}`);
                 const response = await axios.get(`https://apnapanbackend.onrender.com/user/getRecordChat/${id}`);
                 console.log('record chat messages is',response.data.recordChat)
                 setrecordChatMessage(response.data.recordChat)
@@ -52,7 +53,8 @@ const FilteredChatMessage=({filterItem,chatItem})=>{
             ...filterItem
         }
         console.log('filter record data',filterItem)
-        try{       
+        try{     
+            // const response = await axios.post(`http://localhost:4000/user/deleteRecordData/${filterItemObj.id}`, filterItemObj);  
             const response = await axios.post(`https://apnapanbackend.onrender.com/user/deleteRecordData/${filterItemObj.id}`, filterItemObj);
             console.log('message of delete chat data is',response.data)
             

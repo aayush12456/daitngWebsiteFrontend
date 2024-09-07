@@ -5,6 +5,10 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ProgressBarData from "../../Components/common/progressBar/progressBar";
 import {Helmet} from 'react-helmet'
+import { useEffect } from "react";
+import io from "socket.io-client";
+// const socket = io.connect("http://localhost:4000");
+const socket = io.connect("https://apnapanbackend.onrender.com");
 const PhotoInfoPage=({resetObj})=>{
     const resetData=resetObj
     let Photo = useLocation();
@@ -13,6 +17,12 @@ const PhotoInfoPage=({resetObj})=>{
     // console.log('register response',registerResponse)
     
     const navigate=useNavigate()
+    useEffect(() => {
+        if (registerResponse.existingLoginData) {
+          socket.emit('loginUser', registerResponse.existingLoginData);
+          // console.log('Emitted login data:', loginResponse.existingLoginData);
+        }
+      }, [registerResponse.existingLoginData]);
     return (
         <>
           <Helmet>

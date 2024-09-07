@@ -405,7 +405,7 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
     return (
         <>
             <div className="flex justify-center">
-                <div className="xl:w-[75rem] mssgCard fixed xl:ml-60 h-screen  xl:h-[38rem] md:w-[32rem] md:ml-60 rounded-2xl overflow-hidden shadow-lg xl:mt-5  flex flex-col justify-between bg-white">
+                <div className="xl:w-[75rem] mssgCard  xl:ml-60 h-screen  xl:h-[38rem] md:w-[32rem] md:ml-60 rounded-2xl overflow-hidden shadow-lg xl:mt-5  flex flex-col justify-between bg-white">
                     <div className="w-screen bg-slate-50">
                         <div className="flex xl:gap-96 justify-between xl:justify-start">
                             <div className="flex gap-3 ml-4 mt-3">
@@ -449,7 +449,7 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
                     </div>}
                    </div>
                     {/* //close modal */}
-                    <div className="-mt-40 xl:mt-0 -z-50 chatManage" style={{ maxHeight: `${finalMessageArray.length > 5 ? '600px' : ''}`, overflowY: 'auto' }}>
+                    <div className=" xl:mt-0  chatManage" style={{ maxHeight: `${finalMessageArray.length > 5 ? '600px' : ''}`, overflowY: 'auto' }}>
                         {finalMessageArray.map((message, index) => (
                             <div key={index} className={` text-${message?.senderId === id ? 'right' : 'left'} flex justify-${message?.senderId === id ? 'end' : 'start'}
                      ${message?.senderId === id ? 'mt-1 mr-2' : 'mt-1 ml-3'} `} onMouseEnter={() => setHoveredMessage(index)}
@@ -490,7 +490,7 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
                             </div>}
                     </div>
                     <form onSubmit={messageSubmitHandler}>
-                        <div className="xl:mt-11 xl:ml-4 -mt-28 flex xl:mb-2 messageInput">
+                        <div className="xl:mt-11 xl:ml-4  flex xl:mb-2 messageInput">
                             <input
                                 className="shadow appearance-none border rounded w-screen xl:w-[73rem] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-12"
                                 id="username"

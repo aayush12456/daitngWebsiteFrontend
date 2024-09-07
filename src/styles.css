@@ -1507,11 +1507,12 @@
     width: 31em;
     margin-left: 17rem;
   }
-  .messageInput {
+  /* .messageInput {
     margin-top: -9rem;
-  }
+  } */
   .chatManage {
-    margin-top: -20rem;
+    /* margin-top: -20rem; */
+    z-index: 1;
   }
 }
 @media (min-width: 840px) and (max-width: 900px) {
@@ -1590,20 +1591,20 @@
   }
 }
 @media (min-width: 1200px) and (max-width: 1260px) {
-  .messageInput {
+  /* .messageInput {
     margin-top: -9rem;
-  }
+  } */
   .chatManage {
     margin-top: -20rem;
   }
 }
 @media (min-width: 1260px) and (max-width: 1280px) {
-  .messageInput {
+  /* .messageInput {
     margin-top: -9rem;
-  }
-  .chatManage {
+  } */
+  /* .chatManage {
     margin-top: -20rem;
-  }
+  } */
 }
 @media (min-width: 350px) and (max-width: 400px) {
   .loginCard{
