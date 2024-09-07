@@ -9,6 +9,8 @@ import yourself from '../../src/assets/mainBodyImage/yourself.jpg'
 import communicate from '../../src/assets/mainBodyImage/communicate.jpg'
 import foundation from '../../src/assets/mainBodyImage/foundation.jpg'
 import single from '../../src/assets/mainBodyImage/single1.jpg'
+import message from '../../src/assets/mainBodyImage/message.png'
+import expert from '../../src/assets/mainBodyImage/expert.png'
 export const mainContentImages=[
     {id:'1',img:romanceCouple},
     {id:'2',img:romanceDataCouple},
@@ -18,7 +20,9 @@ export const subContentImages=[
     {id:'1',img:match ,name:'Match'},
     {id:'2',img:like,name:'Like'},
     {id:'3',img:visitor,name:'Visitor'},
-    {id:'4',img:New,name:'New and Online'}
+    {id:'4',img:New,name:'New and Online'},
+    {id:'5',img:message,name:'Messages'},
+    {id:'6',img:expert,name:'Expert Advice'}
 ]
 export const datingAdviceArray=[
     {id:'1',img:yourself ,name:'Be Yourself',data:"Authenticity is crucial when starting a new relationship. It's important to present yourself genuinely rather than trying to fit an image you think others might prefer. Being true to yourself not only attracts people who appreciate you for who you are but also lays a strong foundation for a lasting connection. Remember, a relationship built on honesty and authenticity is more likely to thrive."},

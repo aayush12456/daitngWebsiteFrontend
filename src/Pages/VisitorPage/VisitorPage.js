@@ -45,6 +45,7 @@ export const VisitorPage = () => {
 <Helmet>
             <title>ApnaPan - Visitors</title>
         </Helmet>
+        <p className='text-center font-bold text-2xl pt-6 absolute new-Text  '>Visitors</p>
 {isLoading ? (
                 <div className="flex justify-center items-center h-screen -mt-28 ">
                     <img src={animateImg} className="w-28" alt="Loading..." />
@@ -63,7 +64,7 @@ export const VisitorPage = () => {
     })
 }
 </div>:
-<p className='text-center pt-60 text-2xl font-semibold'>No Visitor is there</p>}
+<p className='text-center pt-60 text-lg font-semibold'>No Visitor is there</p>}
 </div>)}
 
 

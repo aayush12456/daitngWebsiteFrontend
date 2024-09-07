@@ -1,13 +1,15 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { modalData } from '../../utils/modalData'
-import { useDispatch } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { addPersonalProfileModalHeadingAsync } from '../../Redux/Slice/addPersonalProfileModalHeadingSlice/addPersonalProfileModalHeadingSlice'
 import { headerModalActions } from '../../Redux/Slice/headerModalSlice'
 import safety from "../../assets/modalIcons/safety_icon.webp"
+import { deleteLoginIdUserAsync } from '../../Redux/Slice/deleteLoginIdUserSlice/deleteLoginIdUserSlice'
 export const ProfileModal = ({addColor}) => {
     const navigate=useNavigate()
     const dispatch=useDispatch()
+
     const id=sessionStorage.getItem('userId')
     // console.log('id is ',id)
     // const logoutHandler=()=>{
@@ -21,9 +23,14 @@ export const ProfileModal = ({addColor}) => {
         PersonalProfileModalHeading:modalItem.title
       }
     if( modalItem &&modalItem.title==='logout'){
-      navigate('/')
+      // navigate('/')
+      dispatch(deleteLoginIdUserAsync(id))
       sessionStorage.clear()
-      window.location.reload()
+      // window.location.reload()
+      setTimeout(()=>{
+ navigate('/')
+       window.location.reload()
+      },100)
       
     }
     else if(modalItem && modalItem.title==='Profile'){

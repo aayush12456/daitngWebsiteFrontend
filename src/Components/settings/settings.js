@@ -9,8 +9,10 @@ import SubManageAccountModal from '../subManageAccountModal/SubManageAccountModa
 import DeactivatePlusDeleteModal from '../deactivatePlusDeleteModal/deactivatePlusDeleteModal';
 import '../../../src/styles.css'
 import { useNavigate } from 'react-router-dom';
+import BlockUserModal from '../blockUserModal/blockUserModal';
 export const Settings = () => {
   const [skipModalData, setSkipModalData] = useState(false);
+  const [blockModalData, setBlockModalData] = useState(false);
   const [accountSettingsModalData, setAccountSettingsModalData] = useState(false);
   const [skipProfileData, setSkipProfileData] = useState({});
   const navigate=useNavigate()
@@ -33,6 +35,12 @@ export const Settings = () => {
   };
   const skipCloseProfile = () => {
     setSkipModalData(false);
+  };
+  const blockProfile = () => {
+    setBlockModalData(true);
+  };
+  const blockCloseProfile = () => {
+    setBlockModalData(false);
   };
   const accountSettings = () => {
     setAccountSettingsModalData(true);
@@ -88,7 +96,7 @@ window.location.reload()
               <img src={rightArrow} className='w-3  mr-12 sm:mr-4 mt-2 arrow' alt="rightArrow-img"/>
             </div>
             <div className="flex justify-between ">
-              <p className='pl-3 pt-2 border-slate-300 cursor-pointer'>Blocked Users</p>
+              <p className='pl-3 pt-2 border-slate-300 cursor-pointer'  onClick={blockProfile}>Blocked Users</p>
               <img src={rightArrow} className='w-3  mr-12  sm:mr-4 mt-2 arrow'  alt="rightArrow-img" />
             </div>
           </div>
@@ -106,6 +114,7 @@ window.location.reload()
         </div>
       </div>
       <SkipBlockModal skipModal={skipModalData} skipCloseModal={skipCloseProfile} skipProfile={skipProfileData} />
+      <BlockUserModal blockModal={blockModalData} blockCloseModal={blockCloseProfile}/>
       <AccountSettingsModal
         accountSettingModal={accountSettingsModalData}
         accountCloseSettingModal={accountCloseSettings}

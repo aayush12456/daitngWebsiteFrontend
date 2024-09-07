@@ -42,7 +42,7 @@ const FooterBlockModal = ({ footerOpenData, footerSubName, footerCloseModal }) =
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <p>in a <span className="text-black font-semibold">{footerSubName}</span> work is going on  </p>
+                <p><span className="text-black font-semibold">{footerSubName}</span> only works when you have paired with your match person  </p>
             </Box>
         </Modal>
         <style jsx="true">{`

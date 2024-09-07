@@ -1,1461 +1,1843 @@
 @media (min-width: 788px) and (max-width: 1000px) {
-    .custom-margin {
-      margin-left: 15rem;
-    }
+  .custom-margin {
+    margin-left: 15rem;
   }
+}
 
-  @media (min-width: 769px) and (max-width: 1200px) {
-    .new-Card {
-      margin-left: 15rem;
-    }
-    .new-Text{
+@media (min-width: 769px) and (max-width: 1200px) {
+  .new-Card {
+    margin-left: 15rem;
+  }
+  .new-Text {
     padding-left: 12rem;
-    }
   }
-  @media (min-width: 769px) and (max-width: 800px) {
-    .match-Card {
-      margin-left: 14rem;
-    }
- 
+}
+@media (min-width: 769px) and (max-width: 800px) {
+  .match-Card {
+    margin-left: 14rem;
   }
-  @media (min-width: 600px) and (max-width: 700px) {
-   .play{
+}
+@media (min-width: 600px) and (max-width: 700px) {
+  .play {
     position: relative;
     left: 9%;
     width: 7rem;
-   }
-   .editText{
+  }
+  .editText {
     display: flex;
     justify-content: space-between;
     margin-right: 1rem;
   }
-  .leftImg{
+  .leftImg {
     position: fixed;
     top: 30%;
     left: 33%;
     width: 8rem;
     height: 8rem;
-    border-Radius: 50%;
+    border-radius: 50%;
     overflow: hidden;
-    background-Color: rgba(0, 150, 255, 0.5);
-    z-Index: 10;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
     display: flex;
-    justify-Content: center;
-    align-Items: center;
-    transform: translateX(-50%)
-  
-   }
-   .rightImg{
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
     position: fixed;
     top: 30%;
     left: 47%;
     width: 8rem;
     height: 8rem;
-    border-Radius: 50%;
+    border-radius: 50%;
     overflow: hidden;
-    background-Color: rgba(0, 150, 255, 0.5);
-    z-Index: 10;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
     display: flex;
-    justify-Content: center;
-    align-Items: center;
-    transform: translateX(-50%)
-   }
-   .centerImg{
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
     position: fixed;
     top: 42%;
     left: 49%;
     width: 3.5rem;
     height: 3.5rem;
-    border-Radius: 50%;
+    border-radius: 50%;
     overflow: hidden;
-    background-Color: rgba(0, 150, 255, 0.5);
-    z-Index: 10;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
     display: flex;
-    justify-Content: center;
-    align-Items: center;
-    transform: translateX(-50%,-50%)
-   }
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
   }
-  @media (min-width: 700px) and (max-width: 800px) {
-    .play{
-     position: relative;
-     left: 16%;
-     width: 7rem;
-    }
-    .editText{
-        display: flex;
-        justify-content: space-between;
-        margin-right: 1rem;
-      }
-      .leftImg{
-        position: fixed;
-        top: 30%;
-        left: 37%;
-        width: 8rem;
-        height: 8rem;
-        border-Radius: 50%;
-        overflow: hidden;
-        background-Color: rgba(0, 150, 255, 0.5);
-        z-Index: 10;
-        display: flex;
-        justify-Content: center;
-        align-Items: center;
-        transform: translateX(-50%)
-      
-       }
-       .rightImg{
-        position: fixed;
-        top: 30%;
-        left: 47%;
-        width: 8rem;
-        height: 8rem;
-        border-Radius: 50%;
-        overflow: hidden;
-        background-Color: rgba(0, 150, 255, 0.5);
-        z-Index: 10;
-        display: flex;
-        justify-Content: center;
-        align-Items: center;
-        transform: translateX(-50%)
-       }
-       .centerImg{
-        position: fixed;
-        top: 42%;
-        left: 50%;
-        width: 3.5rem;
-        height: 3.5rem;
-        border-Radius: 50%;
-        overflow: hidden;
-        background-Color: rgba(0, 150, 255, 0.5);
-        z-Index: 10;
-        display: flex;
-        justify-Content: center;
-        align-Items: center;
-        transform: translateX(-50%,-50%)
-       }
-   }
-  @media (min-width: 500px) and (max-width: 600px) {
-    .play{
-     position: relative;
-     left: 5%;
-     width: 6rem;
-    }
-    .editText{
-      display: flex;
-      justify-content: space-between;
-      margin-right: 1rem;
-    }
-    .likeCard{
-      display: grid;
-      grid-template-columns: 1fr 1fr     ;
-      gap: 1rem;
-      width: 27rem;
-     }
-     .leftImg{
-      position: fixed;
-      top: 30%;
-      left: 24.5%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-    
-     }
-     .rightImg{
-      position: fixed;
-      top: 30%;
-      left: 41.7%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-     }
-     .centerImg{
-      position: fixed;
-      top: 42%;
-      left: 43%;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%,-50%)
-     }
-   }
-
-   @media (min-width: 350px) and (max-width: 450px) {
-    .play{
- display: none;
-    }
-    .playBtn{
-      display: block;
-      margin-left: 2rem;
-    }
-  .img{
-  margin-right:6rem ;
+}
+@media (min-width: 700px) and (max-width: 800px) {
+  .play {
+    position: relative;
+    left: 16%;
+    width: 7rem;
   }
-  .crossButton{
-margin-left: 2rem;
-  }
-  .likeButton{
-    margin-left: 4rem;
-  }
-  .editText{
+  .editText {
     display: flex;
     justify-content: space-between;
     margin-right: 1rem;
   }
-  .personImgData{
+  .leftImg {
+    position: fixed;
+    top: 30%;
+    left: 37%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 30%;
+    left: 47%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 42%;
+    left: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 500px) and (max-width: 600px) {
+  .play {
+    position: relative;
+    left: 5%;
+    width: 6rem;
+  }
+  .editText {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+  }
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 27rem;
+  }
+  .leftImg {
+    position: fixed;
+    top: 30%;
+    left: 24.5%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 30%;
+    left: 41.7%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 42%;
+    left: 43%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+
+@media (min-width: 350px) and (max-width: 450px) {
+  .play {
+    display: none;
+  }
+  .playBtn {
+    display: block;
+    margin-left: 2rem;
+  }
+  .img {
+    margin-right: 6rem;
+  }
+  .crossButton {
+    margin-left: 2rem;
+  }
+  .likeButton {
+    margin-left: 4rem;
+  }
+  .editText {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+  }
+  .personImgData {
     margin-left: -3rem;
- }
- .personalDataBtn{
-  display: block;
-
- }
- .activateButton{
-  margin-left: 2rem;
- }
- .leftImg{
-  position: fixed;
-  top: 30%;
-  left: 20%;
-  width: 8rem;
-  height: 8rem;
-  border-Radius: 50%;
-  overflow: hidden;
-  background-Color: rgba(0, 150, 255, 0.5);
-  z-Index: 10;
-  display: flex;
-  justify-Content: center;
-  align-Items: center;
-  transform: translateX(-50%)
-
- }
- .rightImg{
-  position: fixed;
-  top: 30%;
-  left: 44%;
-  width: 8rem;
-  height: 8rem;
-  border-Radius: 50%;
-  overflow: hidden;
-  background-Color: rgba(0, 150, 255, 0.5);
-  z-Index: 10;
-  display: flex;
-  justify-Content: center;
-  align-Items: center;
-  transform: translateX(-50%)
- }
- .centerImg{
-  position: fixed;
-  top: 42.3%;
-  left: 44.5%;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-Radius: 50%;
-  overflow: hidden;
-  background-Color: rgba(0, 150, 255, 0.5);
-  z-Index: 10;
-  display: flex;
-  justify-Content: center;
-  align-Items: center;
-  transform: translateX(-50%,-50%)
- }
-   }
-   @media (min-width: 300px) and (max-width: 350px) {
-    .play{
- display: none;
-    }
-    .playBtn{
-      display: block;
-      margin-left: 1rem;
-    }
-    .img{
-      margin-right:6rem ;
-      }
-      .imgData{
-        margin-right:4rem ;
-        }
-      .personImgData{
-         margin-left: -3rem;
-      }
-      /* .crossButton{
+  }
+  .personalDataBtn {
+    display: block;
+  }
+  .activateButton {
+    margin-left: 2rem;
+  }
+  .leftImg {
+    position: fixed;
+    top: 30%;
+    left: 20%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 30%;
+    left: 44%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 42.3%;
+    left: 44.5%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 300px) and (max-width: 350px) {
+  .play {
+    display: none;
+  }
+  .playBtn {
+    display: block;
+    margin-left: 1rem;
+  }
+  .img {
+    margin-right: 6rem;
+  }
+  .imgData {
+    margin-right: 4rem;
+  }
+  .personImgData {
+    margin-left: -3rem;
+  }
+  /* .crossButton{
         margin-left: 2rem;
         
       } */
-      .editText{
-        display: flex;
-        justify-content: space-between;
-        margin-right: 1rem;
-      }
-      .crossButton{
-        margin-left: 1rem;
-          }
-          .likeButton{
-            margin-left: 4rem;
-          }
-          .personalDataBtn{
-            display: block;
-            margin-left: -1rem;
-          
-           }
-           .interestModal{
-            width:12rem ;
-           }
-           .settings{
-            width: 16rem;
-           }
-           .activateButton{
-            margin-left: 1rem;
-           }
-           .likeCard{
-            display: grid;
-            grid-template-columns: 1fr    ;
-            gap: 1rem;
-        
-           }
-           .leftImg{
-            position: fixed;
-            top: 28%;
-            left: 15%;
-            width: 8rem;
-            height: 8rem;
-            border-Radius: 50%;
-            overflow: hidden;
-            background-Color: rgba(0, 150, 255, 0.5);
-            z-Index: 10;
-            display: flex;
-            justify-Content: center;
-            align-Items: center;
-            transform: translateX(-50%)
-          
-           }
-           .rightImg{
-            position: fixed;
-            top: 28%;
-            left: 46%;
-            width: 8rem;
-            height: 8rem;
-            border-Radius: 50%;
-            overflow: hidden;
-            background-Color: rgba(0, 150, 255, 0.5);
-            z-Index: 10;
-            display: flex;
-            justify-Content: center;
-            align-Items: center;
-            transform: translateX(-50%)
-           }
-           .centerImg{
-            position: fixed;
-            top: 40%;
-            left: 44.5%;
-            width: 3.5rem;
-            height: 3.5rem;
-            border-Radius: 50%;
-            overflow: hidden;
-            background-Color: rgba(0, 150, 255, 0.5);
-            z-Index: 10;
-            display: flex;
-            justify-Content: center;
-            align-Items: center;
-            transform: translateX(-50%,-50%)
-           }
-   }
+  .editText {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+  }
+  .crossButton {
+    margin-left: 1rem;
+  }
+  .likeButton {
+    margin-left: 4rem;
+  }
+  .personalDataBtn {
+    display: block;
+    margin-left: -1rem;
+  }
+  .interestModal {
+    width: 12rem;
+  }
+  .settings {
+    width: 16rem;
+  }
+  .activateButton {
+    margin-left: 1rem;
+  }
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .leftImg {
+    position: fixed;
+    top: 28%;
+    left: 15%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 28%;
+    left: 46%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 40%;
+    left: 44.5%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
 
-   @media (min-width: 769px) and (max-width: 900px) {
-  .cardWidth{
-width: 32rem;
-margin-left: 14rem;
+@media (min-width: 769px) and (max-width: 900px) {
+  .cardWidth {
+    width: 32rem;
+    margin-left: 14rem;
   }
-  .play{
- display: none;
+  .play {
+    display: none;
   }
-  .playBtn{
+  .playBtn {
     display: block;
     margin-left: 5rem;
   }
-  .interest{
+  .interest {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
-  .img{
-    margin-right:6rem ;
-    }
-      .editText{
-        display: flex;
-        justify-content: space-between;
-        margin-right: 1rem;
-      }
-      .personalDataBtn{
-        display: block;
-       margin-left: 3rem;      
-       }
-       .setting{
-        width: 30rem;
-        margin-left: 16rem;
-       }
-       .arrow{
-        margin-right: 14rem;
-       }
-       .likeCard{
-        display: grid;
-        grid-template-columns: 1fr 1fr ;
-        gap: 1rem;
-       }
-   }
+  .img {
+    margin-right: 6rem;
+  }
+  .editText {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+  }
+  .personalDataBtn {
+    display: block;
+    margin-left: 3rem;
+  }
+  .setting {
+    width: 30rem;
+    margin-left: 16rem;
+  }
+  .arrow {
+    margin-right: 14rem;
+  }
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
 
-   @media (min-width: 900px) and (max-width: 1000px) {
-    .cardWidth{
-  width: 40rem;
-  margin-left: 14rem;
-    }
-    .play{
-      display: none;
-       }
-       .playBtn{
-         display: block;
-         margin-left: 9rem;
-         width: 7rem;
-       }
-    .interest{
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    .img{
-      margin-right:5rem ;
-      }
-      .editText{
-        display: flex;
-        justify-content: space-between;
-        margin-right: 1rem;
-      }
-      .personalDataBtn{
-        display: block;
-       margin-left: 7rem;      
-       }
-       .setting{
-        width: 40rem;
-        margin-left: 16rem;
-       }
-       .arrow{
-        margin-right: 4rem;
-       }
-       .likeCard{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr ;
-        gap: 1rem;
-       }
-       .leftImg{
-        position: fixed;
-        top: 30%;
-        left: 40%;
-        width: 8rem;
-        height: 8rem;
-        border-Radius: 50%;
-        overflow: hidden;
-        background-Color: rgba(0, 150, 255, 0.5);
-        z-Index: 10;
-        display: flex;
-        justify-Content: center;
-        align-Items: center;
-        transform: translateX(-50%)
-      
-       }
-       .rightImg{
-        position: fixed;
-        top: 30%;
-        left: 47%;
-        width: 8rem;
-        height: 8rem;
-        border-Radius: 50%;
-        overflow: hidden;
-        background-Color: rgba(0, 150, 255, 0.5);
-        z-Index: 10;
-        display: flex;
-        justify-Content: center;
-        align-Items: center;
-        transform: translateX(-50%)
-       }
-       .centerImg{
-        position: fixed;
-        top: 42%;
-        left: 50%;
-        width: 3.5rem;
-        height: 3.5rem;
-        border-Radius: 50%;
-        overflow: hidden;
-        background-Color: rgba(0, 150, 255, 0.5);
-        z-Index: 10;
-        display: flex;
-        justify-Content: center;
-        align-Items: center;
-        transform: translateX(-50%,-50%)
-       }
-     }
+@media (min-width: 900px) and (max-width: 1000px) {
+  .cardWidth {
+    width: 40rem;
+    margin-left: 14rem;
+  }
+  .play {
+    display: none;
+  }
+  .playBtn {
+    display: block;
+    margin-left: 9rem;
+    width: 7rem;
+  }
+  .interest {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .img {
+    margin-right: 5rem;
+  }
+  .editText {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+  }
+  .personalDataBtn {
+    display: block;
+    margin-left: 7rem;
+  }
+  .setting {
+    width: 40rem;
+    margin-left: 16rem;
+  }
+  .arrow {
+    margin-right: 4rem;
+  }
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  .leftImg {
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 30%;
+    left: 47%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 42%;
+    left: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
 
-     @media (min-width: 1000px) and (max-width: 1200px) {
-      .cardWidth{
+@media (min-width: 1000px) and (max-width: 1200px) {
+  .cardWidth {
     width: 45rem;
     margin-left: 14rem;
-      }
-      .play{
-     position: relative;
-right: 4rem;
-         }
-    
-      .interest{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-    .setting{
-      margin-left: 16rem;
-    }
- 
-       }
+  }
+  .play {
+    position: relative;
+    right: 4rem;
+  }
 
-       
-     @media (min-width: 1200px) and (max-width: 1300px) {
-      .cardWidth{
+  .interest {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .setting {
+    margin-left: 16rem;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .cardWidth {
     width: 50rem;
     margin-left: 14rem;
-      }
-      .play{
-     position: relative;
-right: 2rem;
-         }
-    
-      .interest{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-      .likeCard{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1rem;
-      
-       }
-       .leftImg{
-        position: fixed;
-        top: 30%;
-        left: 43%;
-        width: 8rem;
-        height: 8rem;
-        border-Radius: 50%;
-        overflow: hidden;
-        background-Color: rgba(0, 150, 255, 0.5);
-        z-Index: 10;
-        display: flex;
-        justify-Content: center;
-        align-Items: center;
-        transform: translateX(-50%)
-      
-       }
-       .rightImg{
-        position: fixed;
-        top: 30%;
-        left: 47%;
-        width: 8rem;
-        height: 8rem;
-        border-Radius: 50%;
-        overflow: hidden;
-        background-Color: rgba(0, 150, 255, 0.5);
-        z-Index: 10;
-        display: flex;
-        justify-Content: center;
-        align-Items: center;
-        transform: translateX(-50%)
-       }
-       .centerImg{
-        position: fixed;
-        top: 42%;
-        left: 51%;
-        width: 3.5rem;
-        height: 3.5rem;
-        border-Radius: 50%;
-        overflow: hidden;
-        background-Color: rgba(0, 150, 255, 0.5);
-        z-Index: 10;
-        display: flex;
-        justify-Content: center;
-        align-Items: center;
-        transform: translateX(-50%,-50%)
-       }
-       }
-       @media (min-width: 651px) and (max-width: 704px) {
-        .setting{
-          width:40rem;
-        }
-        .arrow{
-          margin-right: 5rem;
-        }
-        
-       }
-
-       
-   @media (min-width: 450px) and (max-width: 500px) {
-    .activateButton{
-      margin-left: 4rem;
-     }
-     .leftImg{
-      position: fixed;
-      top: 30%;
-      left: 22.5%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-    
-     }
-     .rightImg{
-      position: fixed;
-      top: 30%;
-      left: 41.7%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-     }
-     .centerImg{
-      position: fixed;
-      top: 42%;
-      left: 43%;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%,-50%)
-     }
-   }
-   @media (min-width: 1170px) and (max-width: 1200px) {
-    .likeCard{
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 1rem;
-    
-     }
-     .leftImg{
-      position: fixed;
-      top: 30%;
-      left: 43%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-    
-     }
-     .rightImg{
-      position: fixed;
-      top: 30%;
-      left: 47%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-     }
-     .centerImg{
-      position: fixed;
-      top: 42%;
-      left: 51%;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%,-50%)
-     }
-   }
-   @media (min-width: 1000px) and (max-width: 1170px) {
-    .likeCard{
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr ;
-      gap: 1rem;
-    
-     }
-     .leftImg{
-      position: fixed;
-      top: 30%;
-      left: 40%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-    
-     }
-     .rightImg{
-      position: fixed;
-      top: 30%;
-      left: 47%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-     }
-     .centerImg{
-      position: fixed;
-      top: 42%;
-      left: 50%;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%,-50%)
-     }
-   }
-   @media (min-width: 1300px) and (max-width: 1400px) {
-    .likeCard{
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr  ;
-      gap: 1rem;
-    
-     }
-     .leftImg{
-      position: fixed;
-      top: 27%;
-      left: 48%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-    
-     }
-     .rightImg{
-      position: fixed;
-      top: 27%;
-      left: 51%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-     }
-     .centerImg{
-      position: fixed;
-      top: 39%;
-      left: 55%;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%,-50%)
-     }
-   }
-   @media (min-width: 1400px) and (max-width: 1500px) {
-    .likeCard{
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr   ;
-      gap: 1rem;
-    
-     }
-     .leftImg{
-      position: fixed;
-      top: 27%;
-      left: 48%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-    
-     }
-     .rightImg{
-      position: fixed;
-      top: 27%;
-      left: 51%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-     }
-     .centerImg{
-      position: fixed;
-      top: 43%;
-      left: 55%;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%,-50%)
-     }
-   }
-   @media (min-width: 903px) and (max-width: 943px) {
-    .likeCard{
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr    ;
-      gap: 1rem;
-      margin-left: 16.3rem;
-    
-     }
-     
-   }
-   @media (min-width: 600px) and (max-width: 640px) {
-    .likeCard{
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr    ;
-      gap: 1rem;
-  
-     }
-   }
-   @media (min-width: 407px) and (max-width: 500px) {
-    .likeCard{
-      display: grid;
-      grid-template-columns: 1fr 1fr    ;
-      gap: 1rem;
-  
-     }
-   }
-   @media (min-width: 800px) and (max-width: 900px) {
-    .leftImg{
-      position: fixed;
-      top: 30%;
-      left: 38%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-    
-     }
-     .rightImg{
-      position: fixed;
-      top: 30%;
-      left: 47%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-     }
-     .centerImg{
-      position: fixed;
-      top: 42%;
-      left: 50%;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%,-50%)
-     }
-   }
-   @media (min-width: 1500px) and (max-width: 1600px) {
-     .leftImg{
-      position: fixed;
-      top: 29%;
-      left: 48%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-    
-     }
-     .rightImg{
-      position: fixed;
-      top: 29.3%;
-      left: 50.3%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-     }
-     .centerImg{
-      position: fixed;
-      top: 43.2%;
-      left: 54.5%;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%,-50%)
-     }
-   }
-   @media (min-width: 1600px) and (max-width: 1700px) {
-    .leftImg{
-     position: fixed;
-     top: 29%;
-     left: 48%;
-     width: 8rem;
-     height: 8rem;
-     border-Radius: 50%;
-     overflow: hidden;
-     background-Color: rgba(0, 150, 255, 0.5);
-     z-Index: 10;
-     display: flex;
-     justify-Content: center;
-     align-Items: center;
-     transform: translateX(-50%)
-   
-    }
-    .rightImg{
-     position: fixed;
-     top: 29.3%;
-     left: 50.3%;
-     width: 8rem;
-     height: 8rem;
-     border-Radius: 50%;
-     overflow: hidden;
-     background-Color: rgba(0, 150, 255, 0.5);
-     z-Index: 10;
-     display: flex;
-     justify-Content: center;
-     align-Items: center;
-     transform: translateX(-50%)
-    }
-    .centerImg{
-     position: fixed;
-     top: 43%;
-     left: 54%;
-     width: 3.5rem;
-     height: 3.5rem;
-     border-Radius: 50%;
-     overflow: hidden;
-     background-Color: rgba(0, 150, 255, 0.5);
-     z-Index: 10;
-     display: flex;
-     justify-Content: center;
-     align-Items: center;
-     transform: translateX(-50%,-50%)
-    }
   }
-  @media (min-width: 1700px) and (max-width: 1800px) {
-    .leftImg{
-     position: fixed;
-     top: 29%;
-     left: 48%;
-     width: 8rem;
-     height: 8rem;
-     border-Radius: 50%;
-     overflow: hidden;
-     background-Color: rgba(0, 150, 255, 0.5);
-     z-Index: 10;
-     display: flex;
-     justify-Content: center;
-     align-Items: center;
-     transform: translateX(-50%)
-   
-    }
-    .rightImg{
-     position: fixed;
-     top: 29.3%;
-     left: 50.3%;
-     width: 8rem;
-     height: 8rem;
-     border-Radius: 50%;
-     overflow: hidden;
-     background-Color: rgba(0, 150, 255, 0.5);
-     z-Index: 10;
-     display: flex;
-     justify-Content: center;
-     align-Items: center;
-     transform: translateX(-50%)
-    }
-    .centerImg{
-     position: fixed;
-     top: 43%;
-     left: 54%;
-     width: 3.5rem;
-     height: 3.5rem;
-     border-Radius: 50%;
-     overflow: hidden;
-     background-Color: rgba(0, 150, 255, 0.5);
-     z-Index: 10;
-     display: flex;
-     justify-Content: center;
-     align-Items: center;
-     transform: translateX(-50%,-50%)
-    }
-  }
-  @media (min-width: 1800px) and (max-width: 1900px) {
-    .leftImg{
-     position: fixed;
-     top: 29%;
-     left: 48%;
-     width: 8rem;
-     height: 8rem;
-     border-Radius: 50%;
-     overflow: hidden;
-     background-Color: rgba(0, 150, 255, 0.5);
-     z-Index: 10;
-     display: flex;
-     justify-Content: center;
-     align-Items: center;
-     transform: translateX(-50%)
-   
-    }
-    .rightImg{
-     position: fixed;
-     top: 29.3%;
-     left: 50.3%;
-     width: 8rem;
-     height: 8rem;
-     border-Radius: 50%;
-     overflow: hidden;
-     background-Color: rgba(0, 150, 255, 0.5);
-     z-Index: 10;
-     display: flex;
-     justify-Content: center;
-     align-Items: center;
-     transform: translateX(-50%)
-    }
-    .centerImg{
-     position: fixed;
-     top: 43%;
-     left: 54%;
-     width: 3.5rem;
-     height: 3.5rem;
-     border-Radius: 50%;
-     overflow: hidden;
-     background-Color: rgba(0, 150, 255, 0.5);
-     z-Index: 10;
-     display: flex;
-     justify-Content: center;
-     align-Items: center;
-     transform: translateX(-50%,-50%)
-    }
-  }
-  @media (min-width: 1100px) and (max-width: 1166px) {
-    .leftImg{
-      position: fixed;
-      top: 30%;
-      left: 42.5%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-    
-     }
-     .rightImg{
-      position: fixed;
-      top: 30%;
-      left: 47%;
-      width: 8rem;
-      height: 8rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%)
-     }
-     .centerImg{
-      position: fixed;
-      top: 42%;
-      left: 51%;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-Radius: 50%;
-      overflow: hidden;
-      background-Color: rgba(0, 150, 255, 0.5);
-      z-Index: 10;
-      display: flex;
-      justify-Content: center;
-      align-Items: center;
-      transform: translateX(-50%,-50%)
-     }
+  .play {
+    position: relative;
+    right: 2rem;
   }
 
-  @media (min-width: 300px) and (max-width: 530px) {
-    .move-button {
-      left: auto; 
-      right: 20px; 
-    }
+  .interest {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
-  @media (min-width: 1028px) and (max-width: 1180px) {
-    .dateLocal{
-      margin-left: 20rem;
-    }
-    .dateWork{
-      margin-left: 2rem;
-    }
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
   }
-  @media (min-width: 1028px) and (max-width: 1061px) {
-    .subFooterData{
-      width: 72rem;
-    }
+  .leftImg {
+    position: fixed;
+    top: 30%;
+    left: 43%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
   }
-  @media (min-width: 1061px) and (max-width: 1100px) {
-    .subFooterData{
-      width: 74rem;
-    }
+  .rightImg {
+    position: fixed;
+    top: 30%;
+    left: 47%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
   }
-  @media (min-width: 1100px) and (max-width: 1150px) {
-    .subFooterData{
-      width: 75rem;
-    }
+  .centerImg {
+    position: fixed;
+    top: 42%;
+    left: 51%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
   }
-  @media (min-width: 1150px) and (max-width: 1220px) {
-    .subFooterData{
-      width: 78rem;
-    }
-  }
-  @media (min-width: 1180px) and (max-width: 1250px) {
-    .dateLocal{
-      margin-left: 10rem;
-    }
-    .dateWork{
-      margin-left: 6rem;
-    }
-  }
-  @media (min-width: 1250px) and (max-width: 1360px) {
-    .dateLocal{
-      margin-left: 12rem;
-    }
-    .dateWork{
-      margin-left: 9rem;
-    }
-  }
-  @media (min-width: 1360px) and (max-width: 1450px) {
-    .dateLocal{
-      margin-left: 7rem;
-    }
- 
-  }
-  @media (min-width: 1600px) and (max-width: 1650px) {
-    .localSingles{
-      margin-left: 13rem;
-    }
-    .dateWork{
-      margin-left: 12rem;
-    }
-  }
-  @media (min-width: 1650px) and (max-width: 1700px) {
-    .localSingles{
-      margin-left: 16rem;
-    }
-    .dateWork{
-      margin-left: 16rem;
-    }
-  }
-  @media (min-width: 1700px) and (max-width: 1750px) {
-    .localSingles{
-      margin-left: 17rem;
-    }
-    .dateWork{
-      margin-left: 16rem;
-    }
-  }
-  @media (min-width: 1750px) and (max-width: 1800px) {
-    .localSingles{
-      margin-left: 19rem;
-    }
-    .dateWork{
-      margin-left: 19rem;
-    }
-  }
-  @media (min-width: 1800px) and (max-width: 1850px) {
-    .localSingles{
-      margin-left: 19.5rem;
-    }
-    .dateWork{
-      margin-left: 19rem;
-    }
-  }
-  @media (min-width: 570px) and (max-width: 640px) {
-.localArray{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }
+@media (min-width: 651px) and (max-width: 704px) {
+  .setting {
+    width: 40rem;
   }
-  @media (min-width: 650px) and (max-width: 770px) {
-  .signUpSingles{
+  .arrow {
+    margin-right: 5rem;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 500px) {
+  .activateButton {
+    margin-left: 4rem;
+  }
+  .leftImg {
+    position: fixed;
+    top: 30%;
+    left: 22.5%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 30%;
+    left: 41.7%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 42%;
+    left: 43%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 1170px) and (max-width: 1200px) {
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  .leftImg {
+    position: fixed;
+    top: 30%;
+    left: 43%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 30%;
+    left: 47%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 42%;
+    left: 51%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 1000px) and (max-width: 1170px) {
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  .leftImg {
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 30%;
+    left: 47%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 42%;
+    left: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 1300px) and (max-width: 1400px) {
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  .leftImg {
+    position: fixed;
+    top: 27%;
+    left: 48%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 27%;
+    left: 51%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 39%;
+    left: 55%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 1400px) and (max-width: 1500px) {
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  .leftImg {
+    position: fixed;
+    top: 27%;
+    left: 48%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 27%;
+    left: 51%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 43%;
+    left: 55%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 903px) and (max-width: 943px) {
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-left: 16.3rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 640px) {
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}
+@media (min-width: 407px) and (max-width: 500px) {
+  .likeCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+@media (min-width: 800px) and (max-width: 900px) {
+  .leftImg {
+    position: fixed;
+    top: 30%;
+    left: 38%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 30%;
+    left: 47%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 42%;
+    left: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 1500px) and (max-width: 1600px) {
+  .leftImg {
+    position: fixed;
+    top: 29%;
+    left: 48%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 29.3%;
+    left: 50.3%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 43.2%;
+    left: 54.5%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 1600px) and (max-width: 1700px) {
+  .leftImg {
+    position: fixed;
+    top: 29%;
+    left: 48%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 29.3%;
+    left: 50.3%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 43%;
+    left: 54%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 1700px) and (max-width: 1800px) {
+  .leftImg {
+    position: fixed;
+    top: 29%;
+    left: 48%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 29.3%;
+    left: 50.3%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 43%;
+    left: 54%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 1800px) and (max-width: 1900px) {
+  .leftImg {
+    position: fixed;
+    top: 29%;
+    left: 48%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 29.3%;
+    left: 50.3%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 43%;
+    left: 54%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+@media (min-width: 1100px) and (max-width: 1166px) {
+  .leftImg {
+    position: fixed;
+    top: 30%;
+    left: 42.5%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .rightImg {
+    position: fixed;
+    top: 30%;
+    left: 47%;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+  }
+  .centerImg {
+    position: fixed;
+    top: 42%;
+    left: 51%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 150, 255, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%, -50%);
+  }
+}
+
+@media (min-width: 300px) and (max-width: 530px) {
+  .move-button {
+    left: auto;
+    right: 20px;
+  }
+}
+@media (min-width: 1028px) and (max-width: 1180px) {
+  .dateLocal {
+    margin-left: 20rem;
+  }
+  .dateWork {
+    margin-left: 2rem;
+  }
+}
+@media (min-width: 1028px) and (max-width: 1061px) {
+  .subFooterData {
+    width: 72rem;
+  }
+}
+@media (min-width: 1061px) and (max-width: 1100px) {
+  .subFooterData {
+    width: 74rem;
+  }
+}
+@media (min-width: 1100px) and (max-width: 1150px) {
+  .subFooterData {
+    width: 75rem;
+  }
+}
+@media (min-width: 1150px) and (max-width: 1220px) {
+  .subFooterData {
+    width: 78rem;
+  }
+}
+@media (min-width: 1180px) and (max-width: 1250px) {
+  .dateLocal {
     margin-left: 10rem;
   }
-      }
+  .dateWork {
+    margin-left: 6rem;
+  }
+}
+@media (min-width: 1250px) and (max-width: 1360px) {
+  .dateLocal {
+    margin-left: 12rem;
+  }
+  .dateWork {
+    margin-left: 9rem;
+  }
+}
+@media (min-width: 1360px) and (max-width: 1450px) {
+  .dateLocal {
+    margin-left: 7rem;
+  }
+}
+@media (min-width: 1600px) and (max-width: 1650px) {
+  .localSingles {
+    margin-left: 13rem;
+  }
+  .dateWork {
+    margin-left: 12rem;
+  }
+}
+@media (min-width: 1650px) and (max-width: 1700px) {
+  .localSingles {
+    margin-left: 16rem;
+  }
+  .dateWork {
+    margin-left: 16rem;
+  }
+}
+@media (min-width: 1700px) and (max-width: 1750px) {
+  .localSingles {
+    margin-left: 17rem;
+  }
+  .dateWork {
+    margin-left: 16rem;
+  }
+}
+@media (min-width: 1750px) and (max-width: 1800px) {
+  .localSingles {
+    margin-left: 19rem;
+  }
+  .dateWork {
+    margin-left: 19rem;
+  }
+}
+@media (min-width: 1800px) and (max-width: 1850px) {
+  .localSingles {
+    margin-left: 19.5rem;
+  }
+  .dateWork {
+    margin-left: 19rem;
+  }
+}
+@media (min-width: 570px) and (max-width: 640px) {
+  .localArray {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (min-width: 650px) and (max-width: 770px) {
+  .signUpSingles {
+    margin-left: 10rem;
+  }
+}
 
-      .heading {
-        font-family: "Calistoga", serif;
-        font-weight: 400;
-        font-style: normal;
-      }
-      @media (min-width: 350px) and (max-width: 400px) {
-        .textArea{
-          width: 15rem;
-        }
-        .saveBtn{
-          width: 15rem;
-          margin-top: 1rem;
-        }
-        .basicSave{
-          width: 15rem;
-        }
-        .firstData{
-          font-size: 14px;
-        }
-        .hide{
-          width: 7rem;
-        }
-      }
-      @media (min-width: 300px) and (max-width: 350px) {
-        .textArea{
-          width: 9rem;
-        }
-        .saveBtn{
-          width: 9rem;
-          margin-top: 1rem;
-        }
-        .basicSave{
-          width: 9rem;
-        }
-        .firstData{
-          font-size: 7px;
-        }
-        .hide{
-          width: 4rem;
-        }
-      }
-      @media (min-width: 768px) and (max-width: 1027px) {
-       .registerText{
-      font-size: 16px;
-       }
-       .registerFirstName{
-        padding-left: 16rem;
-       }
-      }
-      @media (min-width: 640px) and (max-width: 700px) {
-        .registerDetails{
-       display: grid;
-       grid-template-columns: 1fr 1fr;
-       
-        }
-        .registerDetailsName{
-          margin-left: -8rem;
-        }
-        .registerDetailsNameSpace{
-          margin-top: -2rem;
-        }
-        .registerAnotherDetails{
-          display: grid;
-          grid-template-columns: 1fr ;
-          
-           }
-           .registerAnotherDetailsNameSpace{
-            margin-top: -3rem;
-          }
-       }
-       @media (min-width: 771px) and (max-width: 870px) {
-        .registerDetails{
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          
-           }
-           .registerDetailsName{
-             margin-left: -8rem;
-           }
-           .registerDetailsNameSpace{
-             margin-top: -2rem;
-           }
-           .registerAnotherDetails{
-             display: grid;
-             grid-template-columns: 1fr ;
-             
-              }
-              .registerAnotherDetailsNameSpace{
-               margin-top: -3rem;
-             }
-             .registerAdminDetailsCard{
-              margin-left: 16rem;
-             }
-       }
+.heading {
+  font-family: "Calistoga", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@media (min-width: 350px) and (max-width: 400px) {
+  .textArea {
+    width: 15rem;
+  }
+  .saveBtn {
+    width: 15rem;
+    margin-top: 1rem;
+  }
+  .basicSave {
+    width: 15rem;
+  }
+  .firstData {
+    font-size: 14px;
+  }
+  .hide {
+    width: 7rem;
+  }
+}
+@media (min-width: 300px) and (max-width: 350px) {
+  .textArea {
+    width: 9rem;
+  }
+  .saveBtn {
+    width: 9rem;
+    margin-top: 1rem;
+  }
+  .basicSave {
+    width: 9rem;
+  }
+  .firstData {
+    font-size: 7px;
+  }
+  .hide {
+    width: 4rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1027px) {
+  .registerText {
+    font-size: 16px;
+  }
+  .registerFirstName {
+    padding-left: 16rem;
+  }
+}
+@media (min-width: 640px) and (max-width: 700px) {
+  .registerDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .registerDetailsName {
+    margin-left: -8rem;
+  }
+  .registerDetailsNameSpace {
+    margin-top: -2rem;
+  }
+  .registerAnotherDetails {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .registerAnotherDetailsNameSpace {
+    margin-top: -3rem;
+  }
+}
+@media (min-width: 771px) and (max-width: 870px) {
+  .registerDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .registerDetailsName {
+    margin-left: -8rem;
+  }
+  .registerDetailsNameSpace {
+    margin-top: -2rem;
+  }
+  .registerAnotherDetails {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .registerAnotherDetailsNameSpace {
+    margin-top: -3rem;
+  }
+  .registerAdminDetailsCard {
+    margin-left: 16rem;
+  }
+}
 
-       @media (min-width: 874px) and (max-width: 1020px) {
-        .registerDetails{
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          
-           }
-           .registerDetailsName{
-             margin-left: -8rem;
-           }
-           .registerDetailsNameSpace{
-             margin-top: -2rem;
-           }
-           .registerAnotherDetails{
-             display: grid;
-             grid-template-columns: 1fr ;
-             
-              }
-              .registerAnotherDetailsNameSpace{
-               margin-top: -3rem;
-             }
-             .registerAdminDetailsCard{
-              margin-left: 16rem;
-             }
-       }
+@media (min-width: 874px) and (max-width: 1020px) {
+  .registerDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .registerDetailsName {
+    margin-left: -8rem;
+  }
+  .registerDetailsNameSpace {
+    margin-top: -2rem;
+  }
+  .registerAnotherDetails {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .registerAnotherDetailsNameSpace {
+    margin-top: -3rem;
+  }
+  .registerAdminDetailsCard {
+    margin-left: 16rem;
+  }
+}
 
-       @media (min-width: 1021px) and (max-width: 1300px) {
-        .registerAdminDetailsCard{
-          margin-left: 16rem;
-         }
-       }
-       @media (min-width: 350px) and (max-width: 400px){
-       .guruText{
-        width: 20rem;
-        margin-left: 2rem;
-       }
-       .progressBar{
-        margin-top: 7rem;
-        margin-left: -8rem;
-       }
-       .modalProgress{
-        width: 3rem;
-        position: absolute;
-        margin-left: 0rem; 
-       }
-       .textData{
-        font-size: 12px;
-        padding-left: 60.5px;
-        position: absolute;
-      top: 15.3rem;
-       }
-       .textDatas{
-        display: none;
-       }
-       }
-       @media (min-width: 300px) and (max-width: 350px){
-        .progressBar{
-          margin-top: 7rem;
-          margin-left: -8rem;
-         }
-       }
-       @media (min-width: 405px) and (max-width: 460px){
-        .progressBar{
-          margin-top: 7rem;
-          margin-left: -8rem;
-         }
-       }
+@media (min-width: 1021px) and (max-width: 1300px) {
+  .registerAdminDetailsCard {
+    margin-left: 16rem;
+  }
+}
+@media (min-width: 350px) and (max-width: 400px) {
+  .guruText {
+    width: 20rem;
+    margin-left: 2rem;
+  }
+  .progressBar {
+    margin-top: 7rem;
+    margin-left: -8rem;
+  }
+  .modalProgress {
+    width: 3rem;
+    position: absolute;
+    margin-left: 0rem;
+  }
+  .textData {
+    font-size: 12px;
+    padding-left: 60.5px;
+    position: absolute;
+    top: 15.3rem;
+  }
+  .textDatas {
+    display: none;
+  }
+}
+@media (min-width: 300px) and (max-width: 350px) {
+  .progressBar {
+    margin-top: 7rem;
+    margin-left: -8rem;
+  }
+}
+@media (min-width: 405px) and (max-width: 460px) {
+  .progressBar {
+    margin-top: 7rem;
+    margin-left: -8rem;
+  }
+}
+@media (min-width: 350px) and (max-width: 400px) {
+  .keepButton {
+    margin-left: -4rem;
+  }
+  .sendButton {
+    margin-left: 6.4rem;
+    width: 15rem;
+  }
+}
+@media (min-width: 400px) and (max-width: 450px) {
+  .keepButton {
+    margin-left: -4rem;
+  }
+  .sendButton {
+    margin-left: 6.4rem;
+    width: 15rem;
+  }
+}
+@media (min-width: 450px) and (max-width: 500px) {
+  .keepButton {
+    margin-left: -4rem;
+  }
+  .sendButton {
+    margin-left: 6.4rem;
+    width: 15rem;
+  }
+}
+@media (min-width: 500px) and (max-width: 550px) {
+  .keepButton {
+    margin-left: -6rem;
+  }
+  .sendButton {
+    margin-left: 5rem;
+    width: 15rem;
+  }
+}
+@media (min-width: 550px) and (max-width: 600px) {
+  .keepButton {
+    margin-left: -6rem;
+  }
+  .sendButton {
+    margin-left: 5rem;
+    width: 15rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 638px) {
+  .keepButton {
+    margin-left: -4rem;
+  }
+  .sendButton {
+    margin-left: 5rem;
+    width: 15rem;
+  }
+}
+@media (min-width: 375px) and (max-width: 400px) {
+  .messageCard {
+    width: 23rem;
+  }
+}
+@media (min-width: 400px) and (max-width: 450px) {
+  .messageCard {
+    width: 25rem;
+  }
+}
+@media (min-width: 450px) and (max-width: 500px) {
+  .messageCard {
+    width: 27rem;
+  }
+}
+@media (min-width: 500px) and (max-width: 550px) {
+  .messageCard {
+    width: 29rem;
+  }
+}
+@media (min-width: 550px) and (max-width: 600px) {
+  .messageCard {
+    width: 31em;
+  }
+}
+@media (min-width: 600px) and (max-width: 640px) {
+  .messageCard {
+    width: 34em;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .messageCard {
+    width: 31em;
+    margin-left: 17rem;
+  }
+  .messageInput {
+    margin-top: -9rem;
+  }
+  .chatManage {
+    margin-top: -20rem;
+  }
+}
+@media (min-width: 840px) and (max-width: 900px) {
+  .mssgCard {
+    width: 38rem;
+  }
+}
+@media (min-width: 900px) and (max-width: 960px) {
+  .mssgCard {
+    width: 38rem;
+  }
+  .fourIcon {
+    margin-right: 23rem;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1034px) {
+  .mssgCard {
+    width: 42rem;
+  }
+  .fourIcon {
+    margin-right: 23rem;
+  }
+}
+@media (min-width: 1034px) and (max-width: 1100px) {
+  .mssgCard {
+    width: 50rem;
+  }
+  .fourIcon {
+    margin-right: 23rem;
+  }
+}
+@media (min-width: 1100px) and (max-width: 1160px) {
+  .mssgCard {
+    width: 50rem;
+  }
+  .fourIcon {
+    margin-right: 23rem;
+  }
+}
+@media (min-width: 1160px) and (max-width: 1250px) {
+  .mssgCard {
+    width: 55rem;
+  }
+  .fourIcon {
+    margin-right: 23rem;
+  }
+}
+@media (min-width: 1250px) and (max-width: 1280px) {
+  .mssgCard {
+    width: 60rem;
+  }
+  .fourIcon {
+    margin-right: 30rem;
+  }
+}
+@media (min-width: 1280px) and (max-width: 1320px) {
+  .mssgCard {
+    width: 64rem;
+  }
+  .extraModalCard {
+    margin-right: -22rem;
+  }
+}
+@media (min-width: 1320px) and (max-width: 1370px) {
+  .mssgCard {
+    width: 68rem;
+  }
+  .extraModalCard {
+    margin-right: -22rem;
+  }
+}
+@media (min-width: 1370px) and (max-width: 1470px) {
+  .mssgCard {
+    width: 68rem;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1260px) {
+  .messageInput {
+    margin-top: -9rem;
+  }
+  .chatManage {
+    margin-top: -20rem;
+  }
+}
+@media (min-width: 1260px) and (max-width: 1280px) {
+  .messageInput {
+    margin-top: -9rem;
+  }
+  .chatManage {
+    margin-top: -20rem;
+  }
+}
+@media (min-width: 350px) and (max-width: 400px) {
+  .loginCard{
+    width: 23.5rem;
+  }
+  .img{
+    width: 3rem;
+    height: 3rem;
+  }
+  .firstName{
+    margin-left: -6rem;
+    font-size:10px;
+  }
+  .email{
+    font-size: 10px;
+  }
+  .phone{
+    font-size:10px;
+  }
+  .delete{
+    margin-top: 0.5rem;
+    width: 4rem;
+    font-size: 12px;
+    height: 2rem;
+    
+  }
+}
+
+@media (min-width: 400px) and (max-width: 450px) {
+  .loginCard{
+    width: 25rem;
+  }
+  .img{
+    width: 3rem;
+    height: 3rem;
+  }
+  .firstName{
+    margin-left: -6rem;
+    font-size:11.5px;
+  }
+  .email{
+    font-size: 11.5px;
+  }
+  .phone{
+    font-size:11.5px;
+  }
+  .delete{
+    margin-top: 0.5rem;
+    width: 4rem;
+    font-size: 12px;
+    height: 2rem;
+    
+  }
+}
+@media (min-width: 450px) and (max-width: 500px) {
+  .loginCard{
+    width: 27rem;
+  }
+  .img{
+    width: 3rem;
+    height: 3rem;
+  }
+  .firstName{
+    font-size:11.5px;
+  }
+  .email{
+    font-size: 11.5px;
+  }
+  .phone{
+    font-size:11.5px;
+  }
+  .delete{
+    margin-top: 0.5rem;
+    width: 4rem;
+    font-size: 12px;
+    height: 2rem;
+    
+  }
+}
+@media (min-width: 500px) and (max-width: 550px) {
+  .loginCard{
+    width: 30rem;
+  }
+  .img{
+    width: 3rem;
+    height: 3rem;
+  }
+  .firstName{
+    font-size:13px;
+  }
+  .email{
+    font-size: 13px;
+  }
+  .phone{
+    font-size:13px;
+  }
+  .delete{
+    margin-top: 0.5rem;
+    width: 4rem;
+    font-size: 12px;
+    height: 2rem;
+    
+  }
+}
+@media (min-width: 760px) and (max-width: 800px) {
+  .loginCard{
+    width: 32rem;
+    margin-left: 16rem;
+  }
+  .img{
+    width: 3rem;
+    height: 3rem;
+  }
+  .firstName{
+    margin-left: -7rem;
+    font-size:15px;
+  }
+  .email{
+    font-size: 15px;
+  }
+  .phone{
+    font-size:15px;
+  }
+  .delete{
+    margin-top: 0.5rem;
+    width: 4rem;
+    font-size: 12px;
+    height: 2rem;
+    
+  }
+}
+@media (min-width: 800px) and (max-width: 900px) {
+  .loginCard{
+    width: 35rem;
+    margin-left: 16rem;
+  }
+  .img{
+    width: 3rem;
+    height: 3rem;
+  }
+  .firstName{
+    margin-left: -7rem;
+    font-size:15px;
+  }
+  .email{
+    font-size: 15px;
+  }
+  .phone{
+    font-size:15px;
+  }
+  .delete{
+    margin-top: 0.5rem;
+    width: 4rem;
+    font-size: 12px;
+    height: 2rem;
+    
+  }
+}
+@media (min-width: 900px) and (max-width: 1000px) {
+  .loginCard{
+    width: 35rem;
+    margin-left: 16rem;
+  }
+  .img{
+    width: 3rem;
+    height: 3rem;
+  }
+  .firstName{
+    margin-left: -6rem;
+    font-size:15px;
+  }
+  .email{
+    font-size: 15px;
+  }
+  .phone{
+    font-size:15px;
+  }
+  .delete{
+    margin-top: 0.5rem;
+    width: 4rem;
+    font-size: 12px;
+    height: 2rem;
+    
+  }
+}
+@media (min-width: 1000px) and (max-width: 1100px) {
+  .loginCard{
+    width: 42rem;
+    margin-left: 16rem;
+  }
+  .img{
+    width: 3rem;
+    height: 3rem;
+  }
+  .firstName{
+    font-size:15px;
+  }
+  .email{
+    font-size: 15px;
+  }
+  .phone{
+    font-size:15px;
+  }
+  .delete{
+    margin-top: 0.5rem;
+    width: 4rem;
+    font-size: 12px;
+    height: 2rem;
+    
+  }
+}
+@media (min-width: 1100px) and (max-width: 1200px) {
+  .loginCard{
+    width: 42rem;
+    margin-left: 16rem;
+  }
+  .img{
+    width: 3rem;
+    height: 3rem;
+  }
+  .firstName{
+    font-size:15px;
+  }
+  .email{
+    font-size: 15px;
+  }
+  .phone{
+    font-size:15px;
+  }
+  .delete{
+    margin-top: 0.5rem;
+    width: 4rem;
+    font-size: 12px;
+    height: 2rem;
+    
+  }
+}

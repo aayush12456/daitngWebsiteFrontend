@@ -11,7 +11,9 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { modalActions } from '../../Redux/Slice/modalSlice';
 import { loginWithOtpModalSliceActions } from '../../Redux/Slice/loginWIthOtpModalSlice';
+import io from "socket.io-client";
 export const Modals = ({ match }) => {
+  const socket = io.connect("http://localhost:4000");
   const [showPassword, setShowPassword] = useState(false);
   const wrongCredentials=useSelector((state)=>state?.loginData?.LoginresponseData?.mssg)
   // console.log('wrong credentials',wrongCredentials)
@@ -37,6 +39,7 @@ export const Modals = ({ match }) => {
   });
 
   const loginResponse = useSelector((state) => state.loginData.LoginresponseData);
+
   // console.log('login response', loginResponse);
   const forgotObj={
     name:'forgotPassword'
@@ -78,11 +81,36 @@ const openOtpModal=()=>{
         case 'Visitors':
           navigate('/mainContent/visitors');
           break;
+        case 'Messages':
+          navigate('/mainContent/allMessages');
+          break;  
         default:
           navigate('/mainContent');
       }
     }
   }, [loginResponse, navigate]);
+
+
+//   useEffect(() => {
+//     // Emit "setup" event to the server to establish the connection with the user's id
+//     socket.emit("setup", id);
+
+//     // Listen for "connected" event from the server
+//     socket.on("connected", () => {
+//         console.log('Socket is connected');
+//     });
+
+//     // Clean up function to disconnect the socket on component unmount
+//     return () => {
+//         socket.disconnect();
+//     };
+// }, [id]);
+useEffect(() => {
+  if (loginResponse.existingLoginData) {
+    socket.emit('loginUser', loginResponse.existingLoginData);
+    console.log('Emitted login data:', loginResponse.existingLoginData);
+  }
+}, [loginResponse.existingLoginData, socket]);
 
   return (
     <>

@@ -36,6 +36,7 @@ import { motion } from 'framer-motion';
 import { getSongAsync } from "../../Redux/Slice/getSongSlice/getSongSlice";
 import play from "../../assets/personalProfileIcons/play.png";
 import pause from "../../assets/personalProfileIcons/pause.png";
+import MatchPerson from "../common/matchPerson/matchPerson";
 const style = {
   position: "absolute",
   top: "50%",
@@ -535,7 +536,7 @@ toast.success('Like sent successfully')
         
         const audioRef = React.createRef();
         const selectedHandlePlayPause = (id) => {
-          console.log('id of spotify',id)
+          // console.log('id of spotify',id)
           const audio = audioRef.current;
           if (audio.paused) {
             audio.play();
@@ -969,6 +970,7 @@ selfOnlineLikeUser?.map(selfOnlineLike=>{
               </Box>
           </Modal>
           <WatchVideo modalOpen={watchModalOpen} handleClose={ handleWatchClose} personalVideoData={personalProfileObj} onlinePersonalVideoData={onlinePersonalProfileObj} visitorPersonalVideoData={visitorPersonalProfileObj}/>
+          <MatchPerson/>
    </>
   )
 }

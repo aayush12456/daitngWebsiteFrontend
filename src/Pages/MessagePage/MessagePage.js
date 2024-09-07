@@ -1,46 +1,66 @@
-// import { useEffect,useState } from "react"
-// import Message from "../../Components/message/message"
-// import { useDispatch, useSelector } from "react-redux"
-// import { getChatData } from "../../Redux/Slice/getChatDataSlice/getChatDataSlice"
-// // import { getChatAsyncData } from "../../Redux/Slice/getChatHandlerSlice/getChatHandlerSlice"
-// import {Helmet} from 'react-helmet'
-// const MessagePage=()=>{
-//     const dispatch=useDispatch()
-//     const [messageArray,setMessageArray]=useState([])
-//     const [chatId,setChatId]=useState('')
-//     const id=sessionStorage.getItem('userId')
-//     // const chatSelector=useSelector((state)=>state.getChat. getChatAsyncArray.chatUser)
-//     useEffect(()=>{
-//         if(id){
-//             dispatch(getChatData(id))
-//         }
-//     },[dispatch,id])
-//     const messageSelector=useSelector((state)=>state.getChat.getChatArray)
-//     // sessionStorage.setItem('chatId',messageSelector._id)
-//     // console.log('message is',messageSelector)
-//     useEffect(()=>{
-//     const Id=messageSelector?.map((item)=>item._id)
-//    Id.map(item=>{
-//     setChatId(item)
-//    })
-//     const message=messageSelector?.map((messageItem)=>messageItem.users.filter((messageId)=>messageId._id!==id))
-//     const messageData=message?.map(item=>item[0])
-//     setMessageArray(messageData)
-//     },[messageSelector])
-//     // console.log('message array',messageArray)
-  
-// //     useEffect(()=>{
-// // dispatch(getChatAsyncData(id))
-// //     },[])
-// // console.log('chat is',chatId)
-//     return (
-//         <>
-//          <Helmet>
-//             <title>ApnaPan - All Messages</title>
-//         </Helmet>
-//        <Message chatArray={messageArray} chatId={chatId}  />
-//         </>
-//     )
-// }
-// export default MessagePage
 
+import { useState } from "react";
+import Message from "../../Components/message/message"
+import { useSelector } from 'react-redux';
+import {  useDispatch } from 'react-redux';
+import { useEffect } from "react";  
+import { getMatchUserAsync } from "../../Redux/Slice/getMatchUserSlice/getMatchUserSlice";
+import {Helmet} from 'react-helmet'
+import animateImage from '../../assets/animateSpinner/colorSpinner.svg'
+const MessagePage=()=>{
+    const id=sessionStorage.getItem('userId')
+    const [isLoading, setIsLoading] = useState(true);
+    const dispatch=useDispatch()
+    const getMatchUser=useSelector((state)=>state?.getMatchUser?.getMatchUserObj?.matchUser)||[]
+    const anothergetMatchUser=useSelector((state)=>state?.getMatchUser?.getMatchUserObj?.anotherMatchUser)||[]
+    // console.log('get match user is',getMatchUser)
+    // console.log('anither get match user is',anothergetMatchUser)
+    
+    useEffect(() => {
+        const loadingTimeout = setTimeout(() => {
+            setIsLoading(false);
+        }, 500); 
+        return () => clearTimeout(loadingTimeout);
+    }, []);
+    
+    useEffect(()=>{
+    if(id){
+        dispatch(getMatchUserAsync(id));
+    }
+    },[id,dispatch])
+    const allMessageArray=[...getMatchUser,...anothergetMatchUser]
+    // console.log('all message array',allMessageArray)
+
+
+
+
+
+return (
+    <>
+         <Helmet>
+            <title>ApnaPan - All Messages</title>
+        </Helmet>
+    <p className='text-center font-bold text-2xl pt-6 absolute new-Text  '>Messages</p>
+    {isLoading ? (
+                <div className=" flex justify-center items-center h-screen -mt-28 ">
+                    <img src={animateImage} className="w-28  " alt="Loading..." />
+                </div>
+            ):
+    (<div className="grid grid-cols-1 mt-12">
+    {
+        allMessageArray.length >0?allMessageArray.map(allMessage=>{
+            return (
+                <>
+ <Message chatItem={allMessage} />
+                </>
+
+            )
+        }): <p className="text-center pt-60 text-lg font-semibold">No Match User is there for Message</p>
+    }
+    </div>)
+}
+    
+    </>
+)
+}
+export default MessagePage

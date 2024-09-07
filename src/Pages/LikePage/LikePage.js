@@ -49,6 +49,7 @@ export const LikePage = () => {
     <Helmet>
             <title>ApnaPan - Likes You</title>
         </Helmet>
+        <p className='text-center font-bold text-2xl pt-6 absolute new-Text  '>Likes</p>
     {isLoading ? (
                 <div className="flex justify-center items-center h-screen -mt-28 ">
                     <img src={animateImg} className="w-28" alt="Loading..." />
@@ -65,7 +66,7 @@ export const LikePage = () => {
             ))}
           </div>
         ) : (
-          <p className='text-center pt-60 text-2xl font-semibold'>No Likes are there</p>
+          <p className='text-center pt-60 text-lg font-semibold'>No Likes are there</p>
         )}
       </div>)}
     </>

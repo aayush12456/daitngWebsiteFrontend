@@ -521,7 +521,7 @@ dispatch(getSongAsync(modalData._id))
 
   const audioRef = React.createRef();
   const selectedHandlePlayPause = (id) => {
-    console.log('id of spotify',id)
+    // console.log('id of spotify',id)
     const audio = audioRef.current;
     if (audio.paused) {
       audio.play();

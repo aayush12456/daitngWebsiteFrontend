@@ -69,7 +69,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
   // console.log('get match user array',getMatchUser)
 
   const anothergetMatchUser=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUser)
-  // console.log('another get match user',anothergetMatchUser)
+  console.log('another get match user',anothergetMatchUser)
 
 
   // const anotherMatchDataResponse=useSelector((state)=>state.getMatchUser.getMatchUserObj.anotherMatchUserData)
@@ -128,7 +128,7 @@ export const ExtraSmallCard = ({visitor,likePerson,visitorPart, visitorPlusPart,
   // }, [getMatchUser,likeUserPerson]);
   return (
     <>
-  { <div class="sm:w-52 sm:h-80 h-72   rounded-2xl overflow-hidden shadow-lg ">
+  { <div class="sm:w-52 sm:h-80 h-72 mt-6   rounded-2xl overflow-hidden shadow-lg ">
   <div>
   {/* <img src={BACKEND_BASE_URL +visitor?.images[0]} className='cursor-pointer h-80' onClick={visitorHandler}/>   */}
   <img src={visitor?.images[0]} alt='visitor' className='w-full cursor-pointer h-72 sm:h-80' onClick={visitorHandler}/>  

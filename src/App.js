@@ -17,14 +17,15 @@ import { NewAndOnlinePageContent } from './Components/NewAndOnlinePageContent.js
 import MessagePage from './Pages/MessagePage/MessagePage';
 import MessageDetailPage from './Pages/MessageDetailPage/MessageDetailPage';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect,useRef } from 'react';
 import { getNotifyUserAsync } from './Redux/Slice/getNotifySlice/getNotifySlice';
 import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import io from "socket.io-client";
 // import { BACKEND_BASE_URL } from './Services/api';
 import { getLikeNotifyUserAsync } from './Redux/Slice/getLikeNotifySlice/getLikeNotifySlice';
-import MatchPerson from './Components/common/matchPerson/matchPerson';
+// import MatchPerson from './Components/common/matchPerson/matchPerson';
 import VideoPage from './Pages/VideoPage/VideoPage';
 import VideoUploadPage from './Pages/videoUploadPage/videoUploadPage';
 import { SettingsPage } from './Pages/settingsPage/settingsPage';
@@ -41,6 +42,7 @@ import ManageUserPage from './Pages/manageUserPage/manageUserPage';
 import AdminLoginPage from './Pages/adminLoginPage/adminLoginPage';
 import AdminRegistersPage from './Pages/AdminRegistersPage/AdminRegistersPage';
 import MoreAllUserInfoDetailsPage from './Pages/moreAllUserInfoDetailsPage/moreAllUserInfoDetailsPage';
+import AdminLoginUserPage from './Pages/adminLoginUserPage/adminLoginUserPage';
 
 
 
@@ -90,6 +92,7 @@ function App() {
 
   const dispatch = useDispatch();
   const id = sessionStorage.getItem('userId');
+  const socketRef = useRef(null);
   // const token =sessionStorage.getItem('loginToken')
   // console.log('token is in app',token)
 useEffect(() => {
@@ -179,8 +182,119 @@ useEffect(() => {
       );
     }
    },[lastAnotherMatchObjUser])
+   // pehla connection hai socket ka
+//    const socket = io.connect("http://localhost:4000");
 
-  
+//    useEffect(() => {
+//     // Emit "setup" event to the server to establish the connection with the user's id
+//     socket.emit("setup", id);
+
+//     // Listen for "connected" event from the server
+//     socket.on("connected", () => {
+//         console.log('Socket is connected');
+//     });
+
+//     // Clean up function to disconnect the socket on component unmount
+//     return () => {
+//         socket.disconnect();
+//     };
+// }, [id]);
+
+// ye dusra hai jo mene use kara hai 
+// useEffect(() => {
+//   const socket = io('http://localhost:4000', {
+//       reconnection: true,           // Ensure reconnection is enabled
+//       reconnectionAttempts: 10,     // Number of reconnection attempts before giving up
+//       reconnectionDelay: 1000,      // Initial delay before first reconnection attempt
+//       reconnectionDelayMax: 5000,   // Maximum delay between reconnection attempts
+//       randomizationFactor: 0.5,      // Randomization factor for reconnection delay
+//       timeout: 20000, // Increase the connection timeout to 20 seconds
+//       transports: ['websocket'], // Force WebSocket transport only
+//       pingTimeout: 60000, // Same timeout as server
+//     pingInterval: 25000, // Same interval as server
+//     // pingTimeout: 120000, // Same as server
+//     // pingInterval: 10000, // Same as server
+//   });
+
+//   // Emit "setup" event to the server to establish the connection with the user's id
+//   socket.emit("setup", id);
+
+//   // Listen for connection
+//   socket.on('connect', () => {
+//       console.log('Connected to server');
+//       console.log('Socket ID:', socket.id);
+//   });
+
+//   // Listen for disconnection
+//   socket.on('disconnect', () => {
+//       console.log('Disconnected from server');
+//   });
+
+//   // Additional events you might have
+//   socket.on("connected", () => {
+//       console.log('Socket is connected');
+//   });
+
+//   // Clean up function to disconnect the socket on component unmount
+//   return () => {
+//       socket.disconnect();
+//   };
+// }, [id]);
+
+useEffect(() => {
+  if (!socketRef.current) {
+    // Initialize the socket only once
+    // socketRef.current = io('http://localhost:4000', {
+    //   reconnection: true,           // Ensure reconnection is enabled
+    //   reconnectionAttempts: 10,     // Number of reconnection attempts before giving up
+    //   reconnectionDelay: 1000,      // Initial delay before first reconnection attempt
+    //   reconnectionDelayMax: 5000,   // Maximum delay between reconnection attempts
+    //   randomizationFactor: 0.5,     // Randomization factor for reconnection delay
+    //   timeout: 20000,               // Increase the connection timeout to 20 seconds
+    //   transports: ['websocket'],    // Force WebSocket transport only
+    //   pingTimeout: 60000,           // Same timeout as server
+    //   pingInterval: 25000,          // Same interval as server
+    // });
+    socketRef.current = io('https://apnapanbackend.onrender.com', {
+      reconnection: true,           // Ensure reconnection is enabled
+      reconnectionAttempts: 10,     // Number of reconnection attempts before giving up
+      reconnectionDelay: 1000,      // Initial delay before first reconnection attempt
+      reconnectionDelayMax: 5000,   // Maximum delay between reconnection attempts
+      randomizationFactor: 0.5,     // Randomization factor for reconnection delay
+      timeout: 20000,               // Increase the connection timeout to 20 seconds
+      transports: ['websocket'],    // Force WebSocket transport only
+      pingTimeout: 60000,           // Same timeout as server
+      pingInterval: 25000,          // Same interval as server
+    });
+
+    // Emit "setup" event to the server to establish the connection with the user's id
+    socketRef.current.emit("setup", id);
+
+    // Listen for connection
+    socketRef.current.on('connect', () => {
+      console.log('Connected to server');
+      console.log('Socket ID:', socketRef.current.id);  // Log the socket ID
+    });
+
+    // Listen for disconnection
+    socketRef.current.on('disconnect', () => {
+      console.log('Disconnected from server');
+    });
+
+    // Additional events you might have
+    socketRef.current.on("connected", () => {
+      console.log('Socket is connected');
+    });
+  }
+
+  // Clean up function to disconnect the socket on component unmount
+  return () => {
+    if (socketRef.current) {
+      socketRef.current.disconnect();
+    }
+  };
+}, [id]);  // Only re-run if the `id` changes
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -234,8 +348,8 @@ useEffect(() => {
         { path: 'likeMe', element:<ProtectedRoute element={<LikePage />} />},
         { path: 'search', element:  <ProtectedRoute element={<SearchPage />} /> },
         { path: 'newMainContent', element: <ProtectedRoute element={<NewAndOnlinePageContent />} /> },
-        { path: 'allMessages', element: <MessagePage /> },
-        { path: 'messageDetail', element: <MessageDetailPage /> },
+        { path: 'allMessages', element:<ProtectedRoute element={<MessagePage/>} /> },
+        { path: 'messageDetail', element:<ProtectedRoute element={<MessageDetailPage />} />},
         { path: 'settings', element:<ProtectedRoute element={<SettingsPage />} /> },
         { path: 'accountSettings', element:<SettingsPage/> }
       ]
@@ -251,7 +365,8 @@ useEffect(() => {
       element:<ProtectedRoute element={<AdminPage />}/> ,
       children:[
         { path: '', element:<ProtectedRoute element={<ManageUserPage />}/> },
-        { path: 'allDetails', element:<ProtectedRoute element={<MoreAllUserInfoDetailsPage/>}/> }
+        { path: 'allDetails', element:<ProtectedRoute element={<MoreAllUserInfoDetailsPage/>}/> },
+        { path: 'loginUser', element:<ProtectedRoute element={<AdminLoginUserPage/>}/> }
       ]
      
     },
@@ -308,7 +423,7 @@ useEffect(() => {
       autoClose="2000"
       icon={false}
       />
-    <MatchPerson/>
+    {/* <MatchPerson/> */}
     {/* { sidebarOpenSelector && (
         <div className="fixed inset-0 bg-transparent z-40" onClick={overlayClickHandler}></div>
       )} */}

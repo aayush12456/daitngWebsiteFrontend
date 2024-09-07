@@ -1239,7 +1239,7 @@ const watchVideoButton=()=>{
               // console.log('song data item',songItem)
               const audioRef = React.createRef();
               const handlePlayPause = (id) => {
-                console.log('id of spotify',id)
+                // console.log('id of spotify',id)
                 const audio = audioRef.current;
                 if (audio.paused) {
                   audio.play();

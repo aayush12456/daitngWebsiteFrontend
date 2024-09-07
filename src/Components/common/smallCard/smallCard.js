@@ -163,7 +163,7 @@ const addChatHandler=(item,event)=>{
 //       chatId:item._id
 //     }
     setChatOpenData(true);
-    setMessage('chat')
+    setMessage('Add Chat')
 // dispatch(addChatHandlerAsync(addChatId))
 // dispatch(addToChatAsync(addToChat))
 }

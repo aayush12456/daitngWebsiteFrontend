@@ -185,7 +185,7 @@ const Matches = ({ matches }) =>
             </div>
           )}
 
-          <div className={`md:w-80 w-72 match-Card rounded-2xl shadow-lg bg-white ${liked ? 'bg-white' : '' || crosses ? 'bg-white' : ''}`}>
+          <div className={`md:w-80 w-72 match-Card rounded-2xl shadow-lg mt-6 bg-white ${liked ? 'bg-white' : '' || crosses ? 'bg-white' : ''}`}>
             <div className="">
             <div className="flex absolute justify-center ml-7 mt-3 gap-1 cursor-pointer"  onClick={watchVideoButton}>
                 <img src={playVideo} className="w-6 invert " alt="playVideo-img"/>

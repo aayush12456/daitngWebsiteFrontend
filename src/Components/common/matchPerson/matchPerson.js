@@ -5,7 +5,9 @@ import './matchPerson.css';
 import rightTik from '../../../assets/personalProfileIcons/rightTiks.svg';
 import '../../../../src/styles.css'
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const MatchPerson = () => {
+  const navigate=useNavigate()
   const [show,setShow]=useState(true)
   const matchPersonSelector = useSelector((state) => state.addMatchUser.addMatchUserData);
   // console.log('match person selector', matchPersonSelector);
@@ -14,6 +16,9 @@ const MatchPerson = () => {
   const matchLikesData = matchPersonSelector.matchLikes;
 const keepData=()=>{
 setShow(false)
+}
+const sendMessage=()=>{
+navigate('/mainContent/allMessages')
 }
   return (
     <>
@@ -144,11 +149,19 @@ setShow(false)
             <p className="text-center text-black font-medium " style={{paddingTop:'1rem',fontSize:"1.1rem"}}>{matchUser?.firstName} & {matchLikesData?.firstName}</p>
             <p className="text-center text-black font-medium" style={{fontSize:"1.1rem"}}>Yay! You`re now paired. Let's get to know each other</p>
           </div>
-          <div  style={{ position: 'fixed', top: '66%', left: '55%', transform: 'translate(-50%, -50%)', zIndex: 20 }}>
+         <div className="flex justify-center">
+         <div className="sm:-ml-12 xl:ml-2 keepButton " style={{ position: 'fixed', top: '66%', left: '49%', transform: 'translate(-50%, -50%)', zIndex: 20 }}>
+
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={keepData}>
   KEEP MATCHING
 </button>
           </div>
+          <div className="sm:ml-11 sendButton" style={{ position: 'fixed', top: '66%', left: '60%', transform: 'translate(-50%, -50%)', zIndex: 20 }}>
+          <button class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded" onClick={sendMessage}>
+  SEND MESSAGE
+</button>
+          </div>
+         </div>
         </div>
       )}
     </>

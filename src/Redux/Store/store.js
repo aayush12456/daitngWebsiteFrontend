@@ -87,6 +87,16 @@ import getBollywoodSongsFromSpotifySlice from "../Slice/getBollywoodSongsFromSpo
 import addSongSlice from "../Slice/addSongSlice/addSongSlice"
 import getSongSlice from "../Slice/getSongSlice/getSongSlice"
 import addNoneSongSlice from "../Slice/addNoneSongSlice/addNoneSongSlice"
+import addChatDetailsSlice from "../Slice/addChatDetailsSlice/addChatDetailsSlice"
+import getChatDetailSlice from "../Slice/getChatDetailSlice/getChatDetailSlice"
+import deleteLoginIdUserSlice from "../Slice/deleteLoginIdUserSlice/deleteLoginIdUserSlice"
+import dotsOpenSlice from "../Slice/dotsOpenSlice"
+import addBlockUserSlice from "../Slice/addBlockUserSlice/addBlockUserSlice"
+import getBlockUserSlice from "../Slice/getBlockUserSlice/getBlockUserSlice"
+import deleteBlockUserSlice from "../Slice/deleteBlockUserSlice/deleteBlockUserSlice"
+import moreChatSlice from "../Slice/moreChatSlice"
+import getAdminLoginUserSlice from "../Slice/getAdminLoginUserSlice/getAdminLoginUserSlice"
+import deleteAdminLoginUserSlices from "../Slice/deleteAdminLoginUserSlices/deleteAdminLoginUserSlices"
 
 
 const store=configureStore({
@@ -179,7 +189,17 @@ const store=configureStore({
     getBollywoodSongs:getBollywoodSongsFromSpotifySlice,
     addSong:addSongSlice,
     getSong:getSongSlice,
-    addNoneSong:addNoneSongSlice
+    addNoneSong:addNoneSongSlice,
+    chatDetails:addChatDetailsSlice,
+    getChatDetail:getChatDetailSlice,
+    deleteLoginIdUser:deleteLoginIdUserSlice,
+    dotsOpenSlice:dotsOpenSlice,
+    addBlockUser:addBlockUserSlice,
+    getBlockUser:getBlockUserSlice,
+    deleteBlockYser:deleteBlockUserSlice,
+    moreChat:moreChatSlice,
+    getAdminLoginUser:getAdminLoginUserSlice,
+   deleteAdminLoginUser:deleteAdminLoginUserSlices
     }
 })
 export default store

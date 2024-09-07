@@ -60,6 +60,7 @@ const MatchPage = () => {
         <Helmet>
             <title>ApnaPan - Matches</title>
         </Helmet>
+        <p className='text-center font-bold text-2xl pt-6 absolute new-Text  '>Matches</p>
         {isLoading ? (
                 <div className=" flex justify-center items-center h-screen -mt-28 ">
                     <img src={animateImg} className="w-28  " alt="Loading..." />
@@ -69,7 +70,7 @@ const MatchPage = () => {
                     {matchArrayData && matchArrayData.length > 0 ? (
                         <Matches matches={matchArrayData[currentIndex]} />
                     ) : (
-                        <p className="text-center pt-60 text-2xl font-semibold">No matches is there</p>
+                        <p className="text-center pt-60 text-lg font-semibold">No matches is there</p>
                     )}
                 </div>
             )}
