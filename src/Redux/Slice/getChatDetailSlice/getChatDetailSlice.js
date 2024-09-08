@@ -5,7 +5,10 @@ export const getChatDetailAsync = createAsyncThunk(
     'chatDetail/getChatDetail',
     async (userIdObj, { rejectWithValue }) => {
       try {
-        const response = await axios.get('http://localhost:4000/chat/getChatId', {
+        // const response = await axios.get('http://localhost:4000/chat/getChatId', {
+        //   params: userIdObj // Pass the object as query parameters
+        // });
+        const response = await axios.get('https://apnapanbackend.onrender.com/chat/getChatId', {
           params: userIdObj // Pass the object as query parameters
         });
         // console.log('response get chat id', response.data);
