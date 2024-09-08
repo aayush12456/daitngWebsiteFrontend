@@ -5,6 +5,9 @@ import { compareLoginWithOtpAsync } from '../../Redux/Slice/compareLoginWithOtpS
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginWithOtpAsync } from '../../Redux/Slice/loginWithOtpSlice/loginWithOtpSlice';
+import io from "socket.io-client";
+// const socket = io.connect("http://localhost:4000");
+const socket = io.connect("https://apnapanbackend.onrender.com");
 const LoginOtpEnterData=()=>{
     const dispatch=useDispatch()
     const navigate = useNavigate();
@@ -48,6 +51,13 @@ const LoginOtpEnterData=()=>{
       }
     }
   }, [loginWithOtpResponse, navigate]);
+
+  useEffect(() => {
+    if (loginWithOtpResponse.existingLoginData) {
+      socket.emit('loginUser', loginWithOtpResponse.existingLoginData);
+      // console.log('Emitted login data:', loginResponse.existingLoginData);
+    }
+  }, [loginWithOtpResponse.existingLoginData]);
 
   useEffect(() => {
     if (countdown > 0) {

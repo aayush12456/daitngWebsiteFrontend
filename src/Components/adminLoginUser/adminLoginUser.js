@@ -22,7 +22,7 @@ return (
             <>
              <div class="w-full rounded overflow-hidden shadow-lg mt-7 loginCard">
                 <div className="flex gap-2  sm:gap-4 justify-between mt-4 mb-4 ml-4 mr-4 lg:gap-11">
-                <img src={allLogin.images[0]} className="w-16 rounded-full img" alt="loginUser"/>
+                <img src={allLogin.images[0]} className="w-16 rounded-full adminLoginCircularImg" alt="loginUser"/>
                 <p className=" pt-3 firstName">{allLogin.firstName}</p>
                 <p className="pt-3 email">{allLogin.email}</p>
                 <p className="pt-3 phone">{allLogin.phone}</p>

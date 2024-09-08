@@ -1519,6 +1519,14 @@
     z-index: 1;
   }
 }
+@media (min-width: 350px) and (max-width: 400px) {
+  .mssgCard {
+    height:42rem
+  }
+  .chatManage{
+    margin-top: 2rem;
+  }
+}
 @media (min-width: 840px) and (max-width: 900px) {
   .mssgCard {
     width: 38rem;
@@ -1612,14 +1620,14 @@
 }
 @media (min-width: 350px) and (max-width: 400px) {
   .loginCard{
-    width: 23.5rem;
+    width: 21rem;
   }
-  .img{
+  .adminLoginCircularImg{
     width: 3rem;
     height: 3rem;
   }
   .firstName{
-    margin-left: -6rem;
+    /* margin-left: -6rem; */
     font-size:10px;
   }
   .email{
@@ -1639,14 +1647,14 @@
 
 @media (min-width: 400px) and (max-width: 450px) {
   .loginCard{
-    width: 25rem;
+    width: 23rem;
   }
-  .img{
+  .adminLoginCircularImg{
     width: 3rem;
     height: 3rem;
   }
   .firstName{
-    margin-left: -6rem;
+    /* margin-left: -6rem; */
     font-size:11.5px;
   }
   .email{
@@ -1667,7 +1675,7 @@
   .loginCard{
     width: 27rem;
   }
-  .img{
+  .adminLoginCircularImg{
     width: 3rem;
     height: 3rem;
   }
@@ -1692,7 +1700,7 @@
   .loginCard{
     width: 30rem;
   }
-  .img{
+  .adminLoginCircularImg{
     width: 3rem;
     height: 3rem;
   }
@@ -1718,7 +1726,7 @@
     width: 32rem;
     margin-left: 16rem;
   }
-  .img{
+  .adminLoginCircularImg{
     width: 3rem;
     height: 3rem;
   }
@@ -1745,7 +1753,7 @@
     width: 35rem;
     margin-left: 16rem;
   }
-  .img{
+  .adminLoginCircularImg{
     width: 3rem;
     height: 3rem;
   }
@@ -1772,7 +1780,7 @@
     width: 35rem;
     margin-left: 16rem;
   }
-  .img{
+  .adminLoginCircularImg{
     width: 3rem;
     height: 3rem;
   }
@@ -1799,7 +1807,7 @@
     width: 42rem;
     margin-left: 16rem;
   }
-  .img{
+  .adminLoginCircularImg{
     width: 3rem;
     height: 3rem;
   }
@@ -1825,7 +1833,7 @@
     width: 42rem;
     margin-left: 16rem;
   }
-  .img{
+  .adminLoginCircularImg{
     width: 3rem;
     height: 3rem;
   }

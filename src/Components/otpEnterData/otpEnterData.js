@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { verifyPasswordOtpAsync } from '../../Redux/Slice/verifyPasswordOtpSlice/verifyPasswordOtpSlice';
 import { useSelector } from 'react-redux';
-const OTPEnterData = ({ user,forgot,phoneNumber }) => {
+
+const OTPEnterData = ({forgot,phoneNumber }) => {
   const phone=phoneNumber
     const forgotData={
       name:forgot?.name,
@@ -26,6 +27,8 @@ const verifyOtp=()=>{
  dispatch(verifyPasswordOtpAsync(otpObj)) 
  setOtp('')
 }
+
+
   return (
     <>
  
