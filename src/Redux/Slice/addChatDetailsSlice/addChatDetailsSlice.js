@@ -4,7 +4,10 @@ export const addChatDetailsAsync = createAsyncThunk(
   'chatDetailUser/addChatDetailsAsync',
   async (chatDetailObj, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`http://localhost:4000/chat/addChatId`, chatDetailObj, {
+      // const response = await axios.post(`http://localhost:4000/chat/addChatId`, chatDetailObj, {
+      //   headers: { 'Content-Type': 'application/json', }
+      // });
+      const response = await axios.post(`https://apnapanbackend.onrender.com/chat/addChatId`, chatDetailObj, {
         headers: { 'Content-Type': 'application/json', }
       });
    
