@@ -62,8 +62,32 @@ export const NewAndOnlinePage = () => {
                 </div>
             ) :
 
- (<div className='flex justify-center'><p className='text-center font-bold text-2xl pt-6 absolute new-Text  '>New and Online</p>
- <SmallCard userData={userArray} signupUserData={signupuserArray} email={email} signupEmail={signupEmail} selfOnlineLikeUserData={selfOnlineLikeUserSelector} /></div>)}
+ (<div className='flex justify-center'>
+    <p className='text-center font-bold text-2xl pt-6 absolute new-Text  '>New and Online</p>
+    <div className='grid grid-cols-1 mt-12'>
+    {
+        userArray.map(userItem=>{
+            return (
+                <>
+ <SmallCard userData={userItem}  email={email}  selfOnlineLikeUserData={selfOnlineLikeUserSelector} />
+                </>
+            )
+        })
+    }
+    </div>
+
+    <div className='grid grid-cols-1 mt-12'>
+    {
+        signupuserArray.map(signUpUserItem=>{
+            return (
+                <>
+ <SmallCard  signupUserData={signUpUserItem}  signupEmail={signupEmail} selfOnlineLikeUserData={selfOnlineLikeUserSelector} />
+                </>
+            )
+        })
+    }
+    </div>
+ </div>)}
  </>
   )
 }

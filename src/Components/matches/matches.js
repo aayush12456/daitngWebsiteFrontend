@@ -209,11 +209,11 @@ const Matches = ({ matches }) =>
              
               <div className="flext justify-center -mt-20">
               <div className="flex gap-7 -mt-14 ml-4 text-white justify-center">
-                <p className="text-3xl font-bold">{matches.firstName}</p>
+                <p className="text-3xl font-bold">{matches?.firstName}</p>
                 <p className="text-xl font-bold pt-1">{age}</p>
               </div>
               <div className="flex justify-center text-white ">
-              <p className="text-1xl font-bold tracking-wider pt-0">{matches.city}</p>
+              <p className="text-1xl font-bold tracking-wider pt-0">{matches?.city}</p>
               </div>
               </div>
              

@@ -43,6 +43,7 @@ import AdminLoginPage from './Pages/adminLoginPage/adminLoginPage';
 import AdminRegistersPage from './Pages/AdminRegistersPage/AdminRegistersPage';
 import MoreAllUserInfoDetailsPage from './Pages/moreAllUserInfoDetailsPage/moreAllUserInfoDetailsPage';
 import AdminLoginUserPage from './Pages/adminLoginUserPage/adminLoginUserPage';
+import { sidebarModalActions } from './Redux/Slice/sidebarOpenSlice';
 
 
 
@@ -93,6 +94,7 @@ function App() {
   const dispatch = useDispatch();
   const id = sessionStorage.getItem('userId');
   const socketRef = useRef(null);
+    const sidebarOpenSelector=useSelector((state)=>state.sidebarOpen.sidebarModalToggle)
   // const token =sessionStorage.getItem('loginToken')
   // console.log('token is in app',token)
 useEffect(() => {
@@ -118,13 +120,15 @@ useEffect(() => {
 //   dispatch(sidebarModalActions.   sidebarVisibleToggle());
 // };
   useEffect(() => {
-    if (getNotifyUserResponse) {
+    const hasShownToast = localStorage.getItem('hasShownToast');
+    if (getNotifyUserResponse && !hasShownToast ) {
       toast.error(<CustomToast image={getNotifyUserResponse?.images[0]}  name={getNotifyUserResponse?.firstName}/>,
       {
         autoClose: 5000, // Auto close the toast after 5 seconds,
        icon:false
       }
       );
+      sessionStorage.setItem('hasShownToast', 'true');
     }
   }, [getNotifyUserResponse]);
 
@@ -154,7 +158,8 @@ useEffect(() => {
   //   }
   // }, [lastAnotherMatchObjUser, getLikeNotifyUserResponse]);
   useEffect(()=>{
-   if(getLikeNotifyUserResponse){
+    const hasShownLikeToast = sessionStorage.getItem('hasShownLikeToast');
+   if(getLikeNotifyUserResponse && !hasShownLikeToast  ){
     toast.error(
       <CustomLikeToast 
         image={getLikeNotifyUserResponse?.images[0]}  
@@ -165,11 +170,13 @@ useEffect(() => {
         icon: false
       }
     );
+    sessionStorage.setItem('hasShownLikeToast', 'true');
    }
   },[getLikeNotifyUserResponse])
 
   useEffect(()=>{
-    if(lastAnotherMatchObjUser){
+    const hasShownAnotherMatchToast = sessionStorage.getItem('hasShownAnotherMatchToast');
+    if(lastAnotherMatchObjUser  && !hasShownAnotherMatchToast){
       toast.error(
         <AnotherCustomLikeToast 
           image={lastAnotherMatchObjUser?.images[0]}  
@@ -180,8 +187,26 @@ useEffect(() => {
           icon: false
         }
       );
+      sessionStorage.setItem('hasShownAnotherMatchToast', 'true');
     }
    },[lastAnotherMatchObjUser])
+
+   useEffect(() => {
+    // Function to handle click anywhere in the document
+    const handleClick = () => {
+      if(sidebarOpenSelector===true){
+        dispatch(sidebarModalActions.sidebarVisibleToggle())
+      }
+    };
+
+    // Add event listener when component mounts
+    document.addEventListener('click', handleClick);
+
+    // Clean up the event listener when component unmounts
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, [dispatch,sidebarOpenSelector]);
    // pehla connection hai socket ka
 //    const socket = io.connect("http://localhost:4000");
 

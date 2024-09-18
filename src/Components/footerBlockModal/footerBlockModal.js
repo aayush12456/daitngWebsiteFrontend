@@ -5,6 +5,10 @@ import '../../../src/styles.css';
 const FooterBlockModal = ({ footerOpenData, footerSubName, footerCloseModal }) => {
     // console.log('footer sub name', footerSubName);
     // console.log('footer block open', footerOpenData);
+    const matchFooterArray=[
+    'Terms of Use','Privacy Policy','Cookie Policy','safety Tips','Safe and Secure','Code of conduct',
+    'About Us ','Careers','Media','Success Stories ','ApnaPan Reviews ','Blog ','Contact Support',"FAQ's"
+    ]
 
     const style = {
         position: "absolute",
@@ -42,7 +46,8 @@ const FooterBlockModal = ({ footerOpenData, footerSubName, footerCloseModal }) =
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <p><span className="text-black font-semibold">{footerSubName}</span> only works when you have paired with your match person  </p>
+
+               {matchFooterArray.includes(footerSubName)?<p><span className="text-black font-semibold">{footerSubName}</span> work is going on   </p>: <p><span className="text-black font-semibold">Add Chat</span> only works when you have paired with <span className="text-black font-semibold">{footerSubName}</span>  </p>}
             </Box>
         </Modal>
         <style jsx="true">{`

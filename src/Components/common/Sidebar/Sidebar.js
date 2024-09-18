@@ -13,6 +13,7 @@ import settings from '../../../assets/modalIcons/settings.svg'
 
 import { useNavigate } from 'react-router-dom';
 import { sidebarModalActions } from '../../../Redux/Slice/sidebarOpenSlice';
+import { addPersonalProfileModalHeadingAsync } from '../../../Redux/Slice/addPersonalProfileModalHeadingSlice/addPersonalProfileModalHeadingSlice';
 
 export const Sidebar = ({ sidebarOpen, personalDataProfile, loginName }) => {
   const [count, setCount] = useState(null);
@@ -78,12 +79,24 @@ export const Sidebar = ({ sidebarOpen, personalDataProfile, loginName }) => {
 
   }
   const personalProfileHandler=()=>{
+    const personalProfileModalHeadingObj={
+      id:id,
+      PersonalProfileModalHeading:''
+    }
+    dispatch(addPersonalProfileModalHeadingAsync(personalProfileModalHeadingObj))
     navigate('/mainContent/personalProfile')
     dispatch(sidebarModalActions.sidebarVisibleToggle())
+    window.location.reload()
   }
   const settingChangeHandler=()=>{
+    const personalProfileModalHeadingObj={
+      id:id,
+      PersonalProfileModalHeading:''
+    }
+    dispatch(addPersonalProfileModalHeadingAsync(personalProfileModalHeadingObj))
     navigate('/mainContent/settings')
     dispatch(sidebarModalActions.sidebarVisibleToggle())
+    window.location.reload()
   }
   return (
     <div className={`h-full ${sidebarOpen === true ? 'block' : 'hidden'} md:block`}>

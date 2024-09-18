@@ -31,36 +31,41 @@ const VideoUpload = ({ VideoUploadDatas }) => {
         setVideoFile(null);
         sessionStorage.removeItem('videoUpload');
     };
-
+    let videoNameBreak
     const VideoSubmitFileUploadHandler = (e) => {
         e.preventDefault();
+         videoNameBreak = videoFile?.name ? videoFile.name.split('-') : null;
+        const videoName = videoNameBreak && videoNameBreak.length > 0 ? videoNameBreak[0] : '';
 
         if (!videoFile) {
             setErrorMessage('Please upload a video');
             return;
         }
-
+        if(videoName!=='recorded' || videoFile.type!=="video/mp4"){
+            setErrorMessage('Please upload live recorded video');
+            return
+        }
         const videoUploadData = {
-            firstName: VideoUploadDatas.firstName,
-            phone: VideoUploadDatas.phone,
-            email: VideoUploadDatas.email,
-            password: VideoUploadDatas.password,
-            gender: VideoUploadDatas.gender,
-            city: VideoUploadDatas.city,
-            date: VideoUploadDatas.date,
-            profession: VideoUploadDatas.profession,
-            education: VideoUploadDatas.education,
-            drinking: VideoUploadDatas.drinking,
-            smoking: VideoUploadDatas.smoking,
-            eating: VideoUploadDatas.eating,
-            interest: VideoUploadDatas.interest,
-            relationship: VideoUploadDatas.relationship,
-            looking: VideoUploadDatas.looking,
-            zodiac: VideoUploadDatas.zodiac,
-            language: VideoUploadDatas.language,
-            aboutUser: VideoUploadDatas.aboutUser,
+            firstName: VideoUploadDatas?.firstName,
+            phone: VideoUploadDatas?.phone,
+            email: VideoUploadDatas?.email,
+            password: VideoUploadDatas?.password,
+            gender: VideoUploadDatas?.gender,
+            city: VideoUploadDatas?.city,
+            date: VideoUploadDatas?.date,
+            profession: VideoUploadDatas?.profession,
+            education: VideoUploadDatas?.education,
+            drinking: VideoUploadDatas?.drinking,
+            smoking: VideoUploadDatas?.smoking,
+            eating: VideoUploadDatas?.eating,
+            interest: VideoUploadDatas?.interest,
+            relationship: VideoUploadDatas?.relationship,
+            looking: VideoUploadDatas?.looking,
+            zodiac: VideoUploadDatas?.zodiac,
+            language: VideoUploadDatas?.language,
+            aboutUser: VideoUploadDatas?.aboutUser,
             videoUrl: videoFile,
-            songId:VideoUploadDatas.songId
+            songId:VideoUploadDatas?.songId
         };
         navigate('/step5', { state: videoUploadData });
     };

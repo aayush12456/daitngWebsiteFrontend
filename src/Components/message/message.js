@@ -30,9 +30,9 @@ const Message = ({ chatItem }) => {
     const messageDetail = async (chatItem) => {
         const addChatDetails = {
             id: id,
-            anotherId: chatItem._id,
-            loginName: loginObj.firstName,
-            anotherName: chatItem.firstName
+            anotherId: chatItem?._id,
+            loginName: loginObj?.firstName,
+            anotherName: chatItem?.firstName
         }
         dispatch(addChatDetailsAsync(addChatDetails))
         navigate('/mainContent/messageDetail', { state: chatItem })

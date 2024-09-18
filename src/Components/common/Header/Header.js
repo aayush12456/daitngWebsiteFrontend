@@ -29,7 +29,8 @@ export const Header = ({ add, photo, aboutMe, personalData, loginName ,VideoUplo
   const profileClickHandler = () => {
     dispatch(headerModalActions.headerVisibleToggle());
   };
- const hamburgerClickHandler=()=>{
+ const hamburgerClickHandler=(event)=>{
+  event.stopPropagation()
 dispatch(sidebarModalActions.sidebarVisibleToggle())
  }
   return (
@@ -37,7 +38,7 @@ dispatch(sidebarModalActions.sidebarVisibleToggle())
       <div className="rounded overflow-hidden shadow-lg sticky top-0 z-50 bg-black text-white">
         <div className="px-6 py-4">
           <div className="flex justify-between">
-           {token || registerToken || adminLoginToken || adminRegisterToken? <img src={hamburger} className="w-5 invert md:hidden" onClick={hamburgerClickHandler} alt="hamburger"/>:null}
+           {token || registerToken || adminLoginToken || adminRegisterToken? <img src={hamburger} className="w-5 invert md:hidden" onClick={(event)=>hamburgerClickHandler(event)} alt="hamburger"/>:null}
            <p className="text-white text-2xl flex items-center space-x-1 heading">
   <span>Apna</span>
   <div className="flex flex-col items-center ">

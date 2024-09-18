@@ -160,10 +160,10 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
         const messageSubmitData = {
             id: id,
             senderId: id,
-            recieverId: messageDetail._id,
+            recieverId: messageDetail?._id,
             message: message,
-            senderName: loginObj.firstName,
-            images: loginObj.images[0]
+            senderName: loginObj?.firstName,
+            images: loginObj?.images[0]
         }
         if(messageSubmitData.message===''){
             return
