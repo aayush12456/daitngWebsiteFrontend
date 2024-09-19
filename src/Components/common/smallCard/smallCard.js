@@ -40,7 +40,7 @@ export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOn
  
 }
 const addChatHandler=(event)=>{
-  console.log('user data',userData)
+  // console.log('user data',userData)
   event.stopPropagation();
     setChatOpenData(true);
     setMessage(userData?.firstName)

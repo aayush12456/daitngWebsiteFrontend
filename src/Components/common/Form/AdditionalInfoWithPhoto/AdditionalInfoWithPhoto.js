@@ -20,20 +20,43 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
 
     const handleImageChange = (event, id) => {
         const file = event.target.files[0];
+        // console.log('type of image',file)
+        const allowedExtensions = ['jpg', 'jpeg', 'png', 'svg'];
+        // if (file) {
+        //     const reader = new FileReader();
+        //     reader.onloadend = () => {
+        //         const newImage = {
+        //             id: id,
+        //             src: reader.result,
+        //         };
+        //         setSelectedImages(prevState => [...prevState, newImage]);
+        //         // console.log("Selected Images:", selectedImages);
+        //     };
+        //     reader.readAsDataURL(file);
+        // }
+        // setFile(prevFiles => [...prevFiles, file]);
+        // setPhotoError('');
         if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                const newImage = {
-                    id: id,
-                    src: reader.result,
+            // Extract the file extension
+            const fileExtension = file.name.split('.').pop().toLowerCase();
+    
+            // Check if the file extension is valid
+            if (allowedExtensions.includes(fileExtension)) {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    const newImage = {
+                        id: id,
+                        src: reader.result,
+                    };
+                    setSelectedImages(prevState => [...prevState, newImage]);
                 };
-                setSelectedImages(prevState => [...prevState, newImage]);
-                // console.log("Selected Images:", selectedImages);
-            };
-            reader.readAsDataURL(file);
+                reader.readAsDataURL(file);
+                setFile(prevFiles => [...prevFiles, file]);
+                setPhotoError(''); // Clear any previous error if the file extension is valid
+            } else {
+                setPhotoError('Invalid file Please upload a JPG, JPEG, PNG, or SVG image.');
+            }
         }
-        setFile(prevFiles => [...prevFiles, file]);
-        setPhotoError('');
     };
 
     const imageSubmitHandler = (e) => {
@@ -168,7 +191,7 @@ const AdditionalInfoWithPhoto = ({ photoData }) => {
                             ))}
                         </div>
                         {photoError && (
-                            <div className="flex justify-center mt-2 text-red-500">
+                            <div className="flex text-center justify-center mt-2 text-red-500">
                                 {photoError}
                             </div>
                         )}

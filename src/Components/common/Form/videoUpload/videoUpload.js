@@ -31,19 +31,30 @@ const VideoUpload = ({ VideoUploadDatas }) => {
         setVideoFile(null);
         sessionStorage.removeItem('videoUpload');
     };
-    let videoNameBreak
+    // let videoNameBreak
     const VideoSubmitFileUploadHandler = (e) => {
         e.preventDefault();
-         videoNameBreak = videoFile?.name ? videoFile.name.split('-') : null;
-        const videoName = videoNameBreak && videoNameBreak.length > 0 ? videoNameBreak[0] : '';
+        //  videoNameBreak = videoFile?.name ? videoFile.name.split('-') : null;
+        // const videoName = videoNameBreak && videoNameBreak.length > 0 ? videoNameBreak[0] : '';
 
         if (!videoFile) {
             setErrorMessage('Please upload a video');
             return;
         }
-        if(videoName!=='recorded' || videoFile.type!=="video/mp4"){
+        // if(videoName!=='recorded' || videoFile.type!=="video/mp4"){
+        //     setErrorMessage('Please upload live recorded video');
+        //     return
+        // }
+
+        const maxSize = 5 * 1024 * 1024;
+        if (videoFile.size > maxSize) {
+            setErrorMessage('Video size should not exceed 5 MB');
+            return;
+        }
+    
+        if (!videoFile.name.includes('recorded') || !videoFile.type.includes('video/mp4')) {
             setErrorMessage('Please upload live recorded video');
-            return
+            return;
         }
         const videoUploadData = {
             firstName: VideoUploadDatas?.firstName,
