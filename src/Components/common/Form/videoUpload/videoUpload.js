@@ -51,11 +51,6 @@ const VideoUpload = ({ VideoUploadDatas }) => {
             setErrorMessage('Video size should not exceed 5 MB');
             return;
         }
-    
-        if (!videoFile.name.includes('recorded') || !videoFile.type.includes('video/mp4')) {
-            setErrorMessage('Please upload live recorded video');
-            return;
-        }
         const videoUploadData = {
             firstName: VideoUploadDatas?.firstName,
             phone: VideoUploadDatas?.phone,
