@@ -9,6 +9,7 @@ import SubContentMatch from '../../Components/subContentMatch/subContentMatch'
 import DatingTips from '../../Components/datingTips/datingTips'
 import Footer from '../../Components/footer/footer'
 import LoginWithOtpModal from '../../Components/loginWithOtpModal/loginWithOtpModal'
+import ShowRegisterVideo from '../../Components/showRegisterVideo/showRegisterVideo'
 export const NavbarPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
     const modalSelector=useSelector((state)=>state.modal.visibleToggle)
@@ -40,6 +41,7 @@ export const NavbarPage = () => {
    <div className='bg-white  '>
   <SubContent/>
   <SubContentMatch/>
+  <ShowRegisterVideo/>
   <DatingTips/>
   <Footer/>
    </div>
