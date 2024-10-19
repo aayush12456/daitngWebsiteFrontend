@@ -2,7 +2,7 @@ import axios from "axios";
 import io from "socket.io-client";
 import { useEffect,useState } from "react";
 // const socket = io.connect("http://localhost:4000");
-const socket = io.connect("https://apnapanbackend.onrender.com");
+const socket = io.connect("https://apnapandaitingwebsitebackend-sooa.onrender.com");
 const FilteredChatMessage=({filterItem,chatItem})=>{
     const [recordChatMessage, setrecordChatMessage] = useState([]);
     const [recordChatMessageData,setrecordChatMessageData]=useState(false)
@@ -11,7 +11,7 @@ const FilteredChatMessage=({filterItem,chatItem})=>{
         const getChatRecordMessage = async () => {
             try {
                 // const response = await axios.get(`http://localhost:4000/user/getRecordChat/${id}`);
-                const response = await axios.get(`https://apnapanbackend.onrender.com/user/getRecordChat/${id}`);
+                const response = await axios.get(`https://apnapandaitingwebsitebackend-sooa.onrender.com/user/getRecordChat/${id}`);
                 // console.log('record chat messages is',response.data.recordChat)
                 setrecordChatMessage(response.data.recordChat)
             } catch (error) {
@@ -55,7 +55,7 @@ const FilteredChatMessage=({filterItem,chatItem})=>{
         console.log('filter record data',filterItem)
         try{     
             // const response = await axios.post(`http://localhost:4000/user/deleteRecordData/${filterItemObj.id}`, filterItemObj);  
-            const response = await axios.post(`https://apnapanbackend.onrender.com/user/deleteRecordData/${filterItemObj.id}`, filterItemObj);
+            const response = await axios.post(`https://apnapandaitingwebsitebackend-sooa.onrender.com/user/deleteRecordData/${filterItemObj.id}`, filterItemObj);
             console.log('message of delete chat data is',response.data)
             
         }catch(error){

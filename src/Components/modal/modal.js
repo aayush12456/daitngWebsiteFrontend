@@ -13,7 +13,7 @@ import { modalActions } from '../../Redux/Slice/modalSlice';
 import { loginWithOtpModalSliceActions } from '../../Redux/Slice/loginWIthOtpModalSlice';
 import io from "socket.io-client";
 // const socket = io.connect("http://localhost:4000");
-const socket = io.connect("https://apnapanbackend.onrender.com");
+const socket = io.connect("https://apnapandaitingwebsitebackend-sooa.onrender.com");
 export const Modals = ({ match }) => {
   const [showPassword, setShowPassword] = useState(false);
   const wrongCredentials=useSelector((state)=>state?.loginData?.LoginresponseData?.mssg)
