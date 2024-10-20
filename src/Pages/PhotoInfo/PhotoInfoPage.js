@@ -8,7 +8,7 @@ import {Helmet} from 'react-helmet'
 import { useEffect } from "react";
 import io from "socket.io-client";
 // const socket = io.connect("http://localhost:4000");
-const socket = io.connect("https://apnapandaitingwebsitebackend-sooa.onrender.com");
+const socket = io.connect("https://apnapandaitingwebsitebackend.up.railway.app");
 const PhotoInfoPage=({resetObj})=>{
     const resetData=resetObj
     let Photo = useLocation();

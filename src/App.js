@@ -280,7 +280,7 @@ useEffect(() => {
     //   pingTimeout: 60000,           // Same timeout as server
     //   pingInterval: 25000,          // Same interval as server
     // });
-    socketRef.current = io('https://apnapandaitingwebsitebackend-sooa.onrender.com', {
+    socketRef.current = io('https://apnapandaitingwebsitebackend.up.railway.app', {
       reconnection: true,           // Ensure reconnection is enabled
       reconnectionAttempts: 10,     // Number of reconnection attempts before giving up
       reconnectionDelay: 1000,      // Initial delay before first reconnection attempt

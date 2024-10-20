@@ -8,7 +8,7 @@ export const getChatDetailAsync = createAsyncThunk(
         // const response = await axios.get('http://localhost:4000/chat/getChatId', {
         //   params: userIdObj // Pass the object as query parameters
         // });
-        const response = await axios.get('https://apnapandaitingwebsitebackend-sooa.onrender.com/chat/getChatId', {
+        const response = await axios.get('https://apnapandaitingwebsitebackend.up.railway.app/chat/getChatId', {
           params: userIdObj // Pass the object as query parameters
         });
         // console.log('response get chat id', response.data);

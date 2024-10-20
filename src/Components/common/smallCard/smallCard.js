@@ -10,7 +10,7 @@ import '../../../../src/styles.css'
 import FooterBlockModal from "../../footerBlockModal/footerBlockModal";
 import axios from 'axios'
 // const socket = io.connect("http://localhost:4000");
-const socket = io.connect("https://apnapandaitingwebsitebackend-sooa.onrender.com");
+const socket = io.connect("https://apnapandaitingwebsitebackend.up.railway.app");
 export const SmallCard = ({ userData, signupUserData, email, signupEmail ,selfOnlineLikeUserData}) => {
   const [message,setMessage]=useState('')
   const [chatOpenData, setChatOpenData] = useState(false);
@@ -59,7 +59,7 @@ useEffect(() => {
   const getLoginIdUserAsync = async () => {
       try {
           // const response = await axios.get(`http://localhost:4000/user/getloginIdUser/${id}`);
-          const response = await axios.get(`https://apnapandaitingwebsitebackend-sooa.onrender.com/user/getloginIdUser/${id}`);
+          const response = await axios.get(`https://apnapandaitingwebsitebackend.up.railway.app/user/getloginIdUser/${id}`);
           // console.log('response of get loginId user', response.data)
           setLoginArray(response.data.loginIdUser)
 
