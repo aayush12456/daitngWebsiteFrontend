@@ -47,7 +47,7 @@ const ChatWithExpertModal=({openChatExpert,closeChatExpertModal})=>{
   //aayushtapadia28@gmail.com api key for googleAi studio
   // const API_KEY='AIzaSyAQ82J1ulkv8NMEsP2ZMTNo7OiyuQgdCSc'
   //apnapan93@gmail.com Api key
-  const API_KEY='AIzaSyDwhJoYwyMUIaoY0ZGPWPEW14zEvHBtBWM'
+  const API_KEY='AIzaSyBduAA94TNeI_kOBgSv9M60qz6Cjl_05hU'
   const [queryText,setQueryText]=useState('')
   const [showResponse,setShowResponse]=useState(null)
   const [isLoading, setIsLoading] = useState(false);
