@@ -73,7 +73,7 @@ export const AnotherContent = ({checkDataArray}) => {
     
         let errors = {};
     
-        for (let i = 0; i < checkDataArray.length; i++) {
+        for (let i = 0; i < checkDataArray?.length; i++) {
           const checkObj = checkDataArray[i];
           if (obj.firstName === checkObj.firstName) {
             errors.firstName = 'First name already exists';

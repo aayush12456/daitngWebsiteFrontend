@@ -14,7 +14,7 @@ export const userRegisterAsync = createAsyncThunk(
     
 
       const Responedata = response.data;
-      // console.log( 'register response data ',Responedata)
+      console.log( 'register response data ',Responedata)
             const token = response.data.token;
       sessionStorage.setItem("registerToken", token);
             const name=response.data.user.firstName

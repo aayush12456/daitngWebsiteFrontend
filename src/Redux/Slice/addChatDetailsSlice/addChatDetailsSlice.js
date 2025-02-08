@@ -7,7 +7,7 @@ export const addChatDetailsAsync = createAsyncThunk(
       // const response = await axios.post(`http://localhost:4000/chat/addChatId`, chatDetailObj, {
       //   headers: { 'Content-Type': 'application/json', }
       // });
-      const response = await axios.post(`https://apnapandaitingwebsitebackend.up.railway.app/chat/addChatId`, chatDetailObj, {
+      const response = await axios.post(`https://daitingwebsitebackend.onrender.com/chat/addChatId`, chatDetailObj, {
         headers: { 'Content-Type': 'application/json', }
       });
    

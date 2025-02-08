@@ -75,7 +75,7 @@ function CustomToast({ image, name, mssg }) {
     );
 }
 // const socket = io.connect("http://localhost:4000")
-const socket = io.connect("https://apnapandaitingwebsitebackend.up.railway.app")
+const socket = io.connect("https://daitingwebsitebackend.onrender.com")
 const MessageDetail = ({ messageDetail, chatIdObj }) => {
     // console.log('message detail is', messageDetail)
     const id = sessionStorage.getItem('userId')
@@ -122,7 +122,7 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
 
         try {
             // const response = await axios.post(`http://localhost:4000/chat/postTyping`, postTypeObj);
-            const response = await axios.post(`https://apnapandaitingwebsitebackend.up.railway.app/chat/postTyping`, postTypeObj);
+            const response = await axios.post(`https://daitingwebsitebackend.onrender.com/chat/postTyping`, postTypeObj);
             // console.log('message typing  of data is', response.data.data)
             socket.emit('typingMessage', response.data.data)
             // setMessage('');
@@ -136,7 +136,7 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
         const getTypeMessage = async () => {
             try {
                 // const response = await axios.get(`http://localhost:4000/chat/getTyping/${id}`);
-                const response = await axios.get(`https://apnapandaitingwebsitebackend.up.railway.app/chat/getTyping/${id}`);
+                const response = await axios.get(`https://daitingwebsitebackend.onrender.com/chat/getTyping/${id}`);
                 // console.log('get type  messages is', response.data.typeData)
                 setShowTyping(response.data.typeData)
 
@@ -171,7 +171,7 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
         // console.log('sending message is', messageSubmitData)
         try {
             // const response = await axios.post(`http://localhost:4000/chat/senderId/${messageSubmitData.id}`, messageSubmitData);
-            const response = await axios.post(`https://apnapandaitingwebsitebackend.up.railway.app/chat/senderId/${messageSubmitData.id}`, messageSubmitData);
+            const response = await axios.post(`https://daitingwebsitebackend.onrender.com/chat/senderId/${messageSubmitData.id}`, messageSubmitData);
             // console.log(' send message of data is', response.data.chatUser)
             // console.log('message of sender notify', response.data.senderUser)
             socket.emit('sendMessage', response.data.chatUser)
@@ -187,7 +187,7 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
         const fetchMessage = async () => {
             try {
                 // const response = await axios.get(`http://localhost:4000/chat/getMessage/${id}`);
-                const response = await axios.get(`https://apnapandaitingwebsitebackend.up.railway.app/chat/getMessage/${id}`);
+                const response = await axios.get(`https://daitingwebsitebackend.onrender.com/chat/getMessage/${id}`);
                 // console.log('fetch messages is', response.data.chatUserArray)
                 // console.log('fetch message in reciever', response.data.recieverChatUserArray)
                 setFetchMessages(response.data.chatUserArray);
@@ -225,7 +225,7 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
         const getMessageNotify = async () => {
             try {
                 // const response = await axios.get(`http://localhost:4000/user/getMessageNotify/${id}`);
-                const response = await axios.get(`https://apnapandaitingwebsitebackend.up.railway.app/user/getMessageNotify/${id}`);
+                const response = await axios.get(`https://daitingwebsitebackend.onrender.com/user/getMessageNotify/${id}`);
                 // console.log('get messages notify is', response.data)
                 setRecieveMssgNotify(response.data.messageNotify)
 
@@ -309,7 +309,7 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
         const getLoginIdUserAsync = async () => {
             try {
                 // const response = await axios.get(`http://localhost:4000/user/getloginIdUser/${id}`);
-                const response = await axios.get(`https://apnapandaitingwebsitebackend.up.railway.app/user/getloginIdUser/${id}`);
+                const response = await axios.get(`https://daitingwebsitebackend.onrender.com/user/getloginIdUser/${id}`);
                 // console.log('response of get loginId user',response.data)
                 setLoginArray(response.data.loginIdUser)
            
@@ -388,7 +388,7 @@ const MessageDetail = ({ messageDetail, chatIdObj }) => {
         // console.log('delete item is', deleteItem)
         try {
             // await axios.post(`http://localhost:4000/chat/deleteChat`, deleteItem);
-            await axios.post(`https://apnapandaitingwebsitebackend.up.railway.app/chat/deleteChat`, deleteItem);
+            await axios.post(`https://daitingwebsitebackend.onrender.com/chat/deleteChat`, deleteItem);
             // console.log('message of delete chat data is', response.data)
 
         } catch (error) {

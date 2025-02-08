@@ -8,7 +8,7 @@ import axios from 'axios'
 import FilteredChatMessage from "../filteredChatMessage/filteredChatMessage";
 import '../../../src/styles.css'
 // const socket = io.connect("http://localhost:4000");
-const socket = io.connect("https://apnapandaitingwebsitebackend.up.railway.app");
+const socket = io.connect("https://daitingwebsitebackend.onrender.com");
 const Message = ({ chatItem }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -49,7 +49,7 @@ const Message = ({ chatItem }) => {
         const getLoginIdUserAsync = async () => {
             try {
                 // const response = await axios.get(`http://localhost:4000/user/getloginIdUser/${id}`);
-                const response = await axios.get(`https://apnapandaitingwebsitebackend.up.railway.app/user/getloginIdUser/${id}`);
+                const response = await axios.get(`https://daitingwebsitebackend.onrender.com/user/getloginIdUser/${id}`);
                 // console.log('response of get loginId user', response.data)
                 setLoginArray(response.data.loginIdUser)
 
@@ -91,7 +91,7 @@ const Message = ({ chatItem }) => {
         const fetchMessage = async () => {
             try {
                 // const response = await axios.get(`http://localhost:4000/chat/getMessage/${id}`);
-                const response = await axios.get(`https://apnapandaitingwebsitebackend.up.railway.app/chat/getMessage/${id}`);
+                const response = await axios.get(`https://daitingwebsitebackend.onrender.com/chat/getMessage/${id}`);
                 // console.log('fetch messages is',response.data.chatUserArray)
                 setFetchMessages(response.data.chatUserArray);
 
@@ -113,7 +113,7 @@ const Message = ({ chatItem }) => {
         const fetchAllChatId = async () => {
             try {
                 // const response = await axios.get(`http://localhost:4000/chat/getAllChatId`);
-                const response = await axios.get(`https://apnapandaitingwebsitebackend.up.railway.app/chat/getAllChatId`);
+                const response = await axios.get(`https://daitingwebsitebackend.onrender.com/chat/getAllChatId`);
                 // console.log('fetch chat id messages is',response.data)
                 setChatIdArray(response.data.chatIdArray)
 
