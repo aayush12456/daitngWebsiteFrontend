@@ -56,7 +56,7 @@ const FilteredChatMessage=({filterItem,chatItem})=>{
         try{     
             // const response = await axios.post(`http://localhost:4000/user/deleteRecordData/${filterItemObj.id}`, filterItemObj);  
             const response = await axios.post(`https://daitingwebsitebackend.onrender.com/user/deleteRecordData/${filterItemObj.id}`, filterItemObj);
-            // console.log('message of delete chat data is',response.data)
+            console.log('message of delete chat data is',response.data)
             
         }catch(error){
             console.error('Error sending message:', error);
