@@ -6,5 +6,7 @@ export const adminSidebarData=[
     {id:'1',image:manageUser,title:'Manage Users' ,link:'/admin'},
     {id:'2',image:chat,title:'Chat' },
     {id:'3',image:payment,title:'Payment'},
-    {id:'4',image:loginUser,title:'Login User' ,link:'/admin/loginUser'}
+    {id:'4',image:loginUser,title:'Login User' ,link:'/admin/loginUser'},
+    {id:'5',image:manageUser,title:'App User' ,link:'/admin/appManageUser'},
+    {id:'6',image:loginUser,title:'App Login User' ,link:'/admin/appLoginUser'}
 ]

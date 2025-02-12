@@ -1,95 +1,93 @@
-import { useSelector } from "react-redux"
+import { useSelector,useDispatch } from "react-redux"
 import { useState,useEffect } from "react"
+import {useNavigate} from "react-router-dom"
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import {useNavigate} from "react-router-dom"
-import { useDispatch } from "react-redux";
-import { deleteProfileUserAsync } from "../../Redux/Slice/deleteProfileUser/deleteProfileUser";
 import leftArrow from '../../assets/adminIcons/leftArrow.svg'
 import rightArrow from '../../assets/adminIcons/rightArrow.svg'
 import '../../../src/styles.css'
-const ManageUser = () => {
-  const allRegisterSelector = useSelector((state) => state.getAllRegisterUser.getAllRegisterUserArray.users)
-  // console.log('all register user', allRegisterSelector)
-  const [open, setOpen] = useState(false);
-  const [image,setImage] =useState(null)
-  const [allRegister,setAllRegister]=useState(allRegisterSelector)
-  const [id,setId]=useState('')
-  const [text,setText]=useState('')
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 7;
-  const navigate=useNavigate()
-  const dispatch=useDispatch()
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "none",
-    boxShadow: 24,
-    p: 4,
-  }
-  const handleOpen = (item) => {
-    setOpen(true);
-    setImage(item)
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const moreInfoDetail=(allItem)=>{
-navigate('/admin/allDetails',{state:allItem})
-  }
-  const deleteProfileHandler=(id)=>{
-    setId(id)
-    dispatch(deleteProfileUserAsync(id))
-  }
-  useEffect(()=>{
-    if(id){
-      const allRegisterArray=allRegister?.filter((allItem)=>allItem._id!==id)
-      setAllRegister(allRegisterArray)
-    }
-    else{
-     setAllRegister(allRegisterSelector)
- }
-     },[id,allRegisterSelector,allRegister])
+import { deleteProfileAppAsync } from "../../Redux/Slice/deleteProfileAppSlice/deleteProfileAppSlice";
+const AppManageUser=()=>{
+    const allAppRegisterSelector = useSelector((state) => state.getAllAppUser.getAllAppRegisterUserArray.users)
+    // console.log('get all app user',allAppRegisterSelector)
+    const [open, setOpen] = useState(false);
+    const [image,setImage] =useState(null)
+    const [allAppRegister,setAllAppRegister]=useState(allAppRegisterSelector)
+    const [id,setId]=useState('')
+    const [text,setText]=useState('')
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 7;
+    const navigate=useNavigate()
+    const dispatch=useDispatch()
 
-     const handleNextPage = () => {
-      if ((currentPage + 1) * itemsPerPage < allRegister.length) {
-        setCurrentPage(currentPage + 1);
+    const style = {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: 400,
+        bgcolor: "background.paper",
+        border: "none",
+        boxShadow: 24,
+        p: 4,
       }
-    };
-  
-    const handlePreviousPage = () => {
-      if (currentPage > 0) {
-        setCurrentPage(currentPage - 1);
-      }
-    };
-  
-    const textChangeHandler=(event)=>{
-setText(event.target.value)
-setCurrentPage(0)
-    }
-       // Filter data based on the search text
-  const filteredData = text
-  ? allRegister?.filter((allItem) =>
-      allItem.firstName.toLowerCase().includes(text.toLowerCase())
-    )
-  : allRegister;
-
-// Paginate the filtered data
-const currentData = filteredData?.slice(
-  currentPage * itemsPerPage,
-  (currentPage + 1) * itemsPerPage
-);
-
-     return (
+      const handleOpen = (item) => {
+        setOpen(true);
+        setImage(item)
+      };
+      const handleClose = () => {
+        setOpen(false);
+      };
+      const moreInfoDetail=(allItem)=>{
+        navigate('/admin/allAppDetails',{state:allItem})
+          }
+          const deleteProfileHandler=(id)=>{
+            setId(id)
+            dispatch(deleteProfileAppAsync(id))
+          }
+          useEffect(()=>{
+            if(id){
+              const allAppRegisterArray=allAppRegister?.filter((allItem)=>allItem._id!==id)
+              setAllAppRegister(allAppRegisterArray)
+            }
+            else{
+             setAllAppRegister(allAppRegisterSelector)
+         }
+             },[id,allAppRegisterSelector,allAppRegister])
+        
+             const handleNextPage = () => {
+              if ((currentPage + 1) * itemsPerPage < allAppRegister.length) {
+                setCurrentPage(currentPage + 1);
+              }
+            };
+          
+            const handlePreviousPage = () => {
+              if (currentPage > 0) {
+                setCurrentPage(currentPage - 1);
+              }
+            };
+          
+            const textChangeHandler=(event)=>{
+        setText(event.target.value)
+        setCurrentPage(0)
+            }
+               // Filter data based on the search text
+          const filteredData = text
+          ? allAppRegister?.filter((allItem) =>
+              allItem.firstName.toLowerCase().includes(text.toLowerCase())
+            )
+          : allAppRegister;
+        
+        // Paginate the filtered data
+        const currentData = filteredData?.slice(
+          currentPage * itemsPerPage,
+          (currentPage + 1) * itemsPerPage
+        );
+return (
     <>
-    
-      <div className="w-full rounded overflow-hidden shadow-lg mt-3">
+ <div className="w-full rounded overflow-hidden shadow-lg mt-3">
         <div className="flex justify-end mr-5 mt-3 mb-3" >
-        <input type="text" className="pl-4 pt-2 pb-2 border-none " placeholder="Search " onChange={textChangeHandler}/>
+        <input type="text" className="pl-4 pt-2 pb-2 border-none " placeholder="Search in App User " onChange={textChangeHandler}/>
         </div>
         <div className="lg:ml-80">
           {/* <p>Heelo world</p> */}
@@ -140,7 +138,7 @@ const currentData = filteredData?.slice(
           />
           <img
             src={rightArrow}
-            className={`w-4 cursor-pointer ${(currentPage + 1) * itemsPerPage >= allRegister?.length ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`w-4 cursor-pointer ${(currentPage + 1) * itemsPerPage >= allAppRegister?.length ? 'opacity-50 cursor-not-allowed' : ''}`}
             alt="rightArrow"
             onClick={handleNextPage}
           />
@@ -160,9 +158,7 @@ const currentData = filteredData?.slice(
           </div>
         </Box>
       </Modal>
-
     </>
-  )
+)
 }
-
-export default ManageUser
+export default AppManageUser

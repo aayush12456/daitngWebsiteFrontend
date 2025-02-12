@@ -97,6 +97,24 @@ import deleteBlockUserSlice from "../Slice/deleteBlockUserSlice/deleteBlockUserS
 import moreChatSlice from "../Slice/moreChatSlice"
 import getAdminLoginUserSlice from "../Slice/getAdminLoginUserSlice/getAdminLoginUserSlice"
 import deleteAdminLoginUserSlices from "../Slice/deleteAdminLoginUserSlices/deleteAdminLoginUserSlices"
+import getAllAppRegisterUserSlice from "../Slice/getAllAppRegisterUserSlice/getAllAppRegisterUserSlice"
+import appModalSlice from "../Slice/appModalSlice"
+import getAllAppFieldRegisterUserSlice from "../Slice/getAllAppFieldRegisterUserSlice/getAllAppFieldRegisterUserSlice"
+import visitorAdminAppModalSlice from "../Slice/visitorAdminAppModalSlice"
+import onlineLikeUserAppAdminModalSlice from "../Slice/onlineLikeUserAppAdminModalSlice"
+import anotherMatchUserAdminAppModalSlice from "../Slice/anotherMatchUserAdminAppModalSlice"
+import skipUserAdminAppModalSlice from "../Slice/skipUserAdminAppModalSlice"
+import matchUserAdminAppModalSlice from "../Slice/matchUserAdminAppModalSlice"
+import likeFilterUserAdminAppModalSlice from "../Slice/likeFilterUserAdminAppModalSlice"
+import selfOnlineLikeUserAdminAppModalSlice from "../Slice/selfOnlineLikeUserAdminAppModalSlice"
+import likeUserAdminAppModalSlice from "../Slice/likeUserAdminAppModalSlice"
+import recordMessageModalSlice from "../Slice/recordMessageModalSlice"
+import anotherRecordMessageModalSlice from "../Slice/anotherRecordMessageModalSlice"
+import typingModalSlice from "../Slice/typingModalSlice"
+import deleteProfileFromAdminAppArraySlice from "../Slice/deleteProfileFromAdminAppArraySlice/deleteProfileFromAdminAppArraySlice"
+import passAppDataSlice from "../Slice/passAppDataSlice/passAppDataSlice"
+import deleteProfileAppSlice from "../Slice/deleteProfileAppSlice/deleteProfileAppSlice"
+import getAdminAppLoginUserSlice from "../Slice/getAdminAppLoginUserSlice/getAdminAppLoginUserSlice"
 
 
 const store=configureStore({
@@ -199,7 +217,25 @@ const store=configureStore({
     deleteBlockYser:deleteBlockUserSlice,
     moreChat:moreChatSlice,
     getAdminLoginUser:getAdminLoginUserSlice,
-   deleteAdminLoginUser:deleteAdminLoginUserSlices
+   deleteAdminLoginUser:deleteAdminLoginUserSlices,
+   getAllAppUser:getAllAppRegisterUserSlice,
+   getAllAppFieldUser:getAllAppFieldRegisterUserSlice,
+   appToggle:appModalSlice,
+   visitorAppToggle:visitorAdminAppModalSlice,
+   onlineLikeAppToggle:onlineLikeUserAppAdminModalSlice,
+   anotherMatchAppToggle:anotherMatchUserAdminAppModalSlice,
+   skipUserToggle:skipUserAdminAppModalSlice,
+   matchUserToggle:matchUserAdminAppModalSlice,
+   likeFilterUserToggle:likeFilterUserAdminAppModalSlice,
+   selfOnlineLikeToggle:selfOnlineLikeUserAdminAppModalSlice,
+   likeUserToggle:likeUserAdminAppModalSlice,
+   recordMessageToggle:recordMessageModalSlice,
+   anotherRecordToggle:anotherRecordMessageModalSlice ,
+   typingToggle:typingModalSlice,
+   deleteProfileAdmin:deleteProfileFromAdminAppArraySlice,
+   passAppData:passAppDataSlice,
+   deleteProfileApp:deleteProfileAppSlice,
+   getAdminAppLoginUser:getAdminAppLoginUserSlice
     }
 })
 export default store

@@ -44,6 +44,9 @@ import AdminRegistersPage from './Pages/AdminRegistersPage/AdminRegistersPage';
 import MoreAllUserInfoDetailsPage from './Pages/moreAllUserInfoDetailsPage/moreAllUserInfoDetailsPage';
 import AdminLoginUserPage from './Pages/adminLoginUserPage/adminLoginUserPage';
 import { sidebarModalActions } from './Redux/Slice/sidebarOpenSlice';
+import AppManageUserPage from './Pages/appManageUserPage/appManageUserPage';
+import AppLoginUserPage from './Pages/appLoginUserPage/appLoginUserPage';
+import MoreAllAppUserInfoDetailsPage from './Pages/moreAllAppUserInfoDetailsPage/moreAllAppUserInfoDetailsPage';
 
 
 
@@ -391,7 +394,10 @@ useEffect(() => {
       children:[
         { path: '', element:<ProtectedRoute element={<ManageUserPage />}/> },
         { path: 'allDetails', element:<ProtectedRoute element={<MoreAllUserInfoDetailsPage/>}/> },
-        { path: 'loginUser', element:<ProtectedRoute element={<AdminLoginUserPage/>}/> }
+        { path: 'loginUser', element:<ProtectedRoute element={<AdminLoginUserPage/>}/> },
+        { path: 'appManageUser', element:<ProtectedRoute element={<AppManageUserPage/>}/> },
+        { path: 'appLoginUser', element:<ProtectedRoute element={<AppLoginUserPage/>}/> },
+        { path: 'allAppDetails', element:<ProtectedRoute element={<MoreAllAppUserInfoDetailsPage/>}/> }
       ]
      
     },
