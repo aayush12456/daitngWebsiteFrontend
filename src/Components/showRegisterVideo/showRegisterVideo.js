@@ -7,7 +7,7 @@ return (
   How to Register on Apnapan
       </p>
     <div className="flex justify-center mt-7 ">
-  <div className="lg:flex lg:gap-12 mb-16">
+  <div className="lg:grid lg:grid-cols-2 lg:gap-12 mb-16">
     <div>
       <iframe
        className=" sm:w-[30rem] sm:h-[18rem]"
@@ -29,6 +29,9 @@ return (
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe>
+    </div>
+    <div className="mt-12 lg:mt-0">
+    <iframe  className="sm:w-[30rem] sm:h-[18rem]" src="https://www.youtube.com/embed/YuUyXGNOmks?si=djHTwN_XoA4im0I7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </div>
 </div>
