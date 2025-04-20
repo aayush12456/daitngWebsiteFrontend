@@ -2,15 +2,21 @@ import romanceCouple from '../../src/assets/mainBodyImage/romanceCouple.jpg'
 import romanceDataCouple from '../../src/assets/mainBodyImage/romanceCouple1.jpg'
 import anotherDate from '../../src/assets/mainBodyImage/anotherDate.jpg'
 import match from '../../src/assets/mainBodyImage/match.png'
+import appMatch from '../../src/assets/mainBodyImage/appMatches.jpg'
 import like from '../../src/assets/mainBodyImage/like.png'
+import appLike from '../../src/assets/mainBodyImage/appLike.png'
 import visitor from '../../src/assets/mainBodyImage/visitor.png'
+import appVisitor from '../../src/assets/mainBodyImage/appVisitor.jpg'
 import New from '../../src/assets/mainBodyImage/new.png'
+import appOnline from '../../src/assets/mainBodyImage/appOnline.jpg'
 import yourself from '../../src/assets/mainBodyImage/yourself.jpg'
 import communicate from '../../src/assets/mainBodyImage/communicate.jpg'
 import foundation from '../../src/assets/mainBodyImage/foundation.jpg'
 import single from '../../src/assets/mainBodyImage/single1.jpg'
 import message from '../../src/assets/mainBodyImage/message.png'
+import appMessage from '../../src/assets/mainBodyImage/appMessage.png'
 import expert from '../../src/assets/mainBodyImage/expert.png'
+import appExpert from '../../src/assets/mainBodyImage/appExpert.png'
 export const mainContentImages=[
     {id:'1',img:romanceCouple},
     {id:'2',img:romanceDataCouple},
@@ -23,6 +29,14 @@ export const subContentImages=[
     {id:'4',img:New,name:'New and Online'},
     {id:'5',img:message,name:'Messages'},
     {id:'6',img:expert,name:'Expert Advice'}
+]
+export const subContentAppImages=[
+    {id:'1',img:appMatch ,name:'Match'},
+    {id:'2',img:appLike,name:'Like'},
+    {id:'3',img:appVisitor,name:'Visitor'},
+    {id:'4',img:appOnline,name:'New and Online'},
+    {id:'5',img:appMessage,name:'Messages'},
+    {id:'6',img:appExpert,name:'Expert Advice'}
 ]
 export const datingAdviceArray=[
     {id:'1',img:yourself ,name:'Be Yourself',data:"Authenticity is crucial when starting a new relationship. It's important to present yourself genuinely rather than trying to fit an image you think others might prefer. Being true to yourself not only attracts people who appreciate you for who you are but also lays a strong foundation for a lasting connection. Remember, a relationship built on honesty and authenticity is more likely to thrive."},
