@@ -3,6 +3,7 @@ import { useState } from "react"
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { Grow } from "@mui/material";
+import apnapan from '../../assets/mainBodyImage/apnapan.jpg'
 const SubContent=()=>{
     const [imageOpen,setImageOpen]=useState(false)
     const [imageAppOpen,setImageAppOpen]=useState(false)
@@ -130,20 +131,31 @@ return (
     <div className="bg-[#fff] mt-[-5rem]">
 <p className="text-[16px] lg:text-[25px] sm:text-[22px] md:text-[25px] text-center text-black font-bold pt-6 lg:pt-12"> Now on Mobile Date Smarter love better</p>
     </div>
-    <div className=" lg:flex gap-7 xs:grid grid-cols-2 justify-center  mt-6 mb-20">
+    <div className="hidden lg:flex gap-7 justify-center  mt-6 mb-20">
     {
         subContentAppImages.map(SubContentAppItem=>{
             return (
                 <>
-                <div class="rounded overflow-hidden shadow-lg mt-4 lg:mt-0  lg:w-96 bg-orange-400 w-full h-full    " >
+                <div class="rounded  shadow-lg mt-4 lg:mt-0  lg:w-96 bg-orange-400 w-full h-full    " >
                  <p className="text-white text-lg text-center pt-1 pb-1 font-semibold">{SubContentAppItem.name}</p>
                  <img src={SubContentAppItem.img} className="cursor-pointer lg:h-[300px] lg:w-[300px]  w-screen h-screen " alt="subcontentImg" onClick={()=>subContentAppImageHandler(SubContentAppItem.img)} />
 </div>
                 </>
             )
         })
-    }     
+    }
     </div>
+    <div className="flex justify-center lg:hidden mt-4 ">
+   <img src={apnapan} className="cursor-pointer w-96  " alt="apnapanImg"  />
+   </div>
+   <div className="flex justify-center lg:-mt-12 mt-4 mb-4 lg:mb-8 ">
+  <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded sm:w-32 sm:h-12 lg:w-44 lg:h-12"
+          onClick={() => window.open("https://drive.google.com/file/d/1Mmr3wI6aLdRFkNQuDvciaMQ9z9ocxUKN/view", "_blank")}
+        >
+          install App!
+        </button>
+   </div>
     <Modal
         open={imageOpen}
         onClose={closeImageHandler}
